@@ -1,0 +1,12 @@
+cd C:\goutokuji-app
+
+firebase init hosting
+
+y（ready?）
+.(public)
+y(Configure)
+n（setup）
+n(File)
+y(Would you like)
+
+firebase deploy
