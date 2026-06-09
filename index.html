@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* ═══ CSS CUSTOM PROPERTIES ═══ */
+
 :root {
   --ink:        #1a1512;
   --parchment:  #f5f0e8;
@@ -26,15 +26,11 @@
   --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
 }
 
-/* ═══ RESET & BASE
-   BUG FIX B1: 旧コードは全要素に calc(1em*var(--font-scale)) を適用していたため
-   継承の複利でフォントが崩壊。html の font-size のみに絞り rem/em で管理。 ═══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:calc(16px * var(--font-scale))}
 body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-body);font-size:1rem;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ═══ ACCESSIBILITY BAR ═══ */
 .accessibility-bar{
   position:fixed;top:12px;right:12px;z-index:9999;
   background:rgba(26,21,18,0.92);backdrop-filter:blur(10px);
@@ -46,14 +42,12 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-mono);font-size:.6875rem;cursor:pointer;padding:2px 7px;border-radius:4px;transition:all .2s;line-height:1}
 .size-btn.active{border-color:var(--gold);color:var(--gold-light);background:rgba(201,168,76,0.15)}
 
-/* ═══ SPA PAGES ═══ */
 .page{display:none;min-height:100svh;position:relative}
 .page.active{display:flex;flex-direction:column}
 .grain-overlay{position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:200px}
 
-/* ═══ ANIMATIONS ═══ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes stampIn{from{transform:scale(.3) rotate(-20deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
@@ -63,7 +57,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .fade-up-1{animation-delay:.10s}.fade-up-2{animation-delay:.22s}
 .fade-up-3{animation-delay:.36s}.fade-up-4{animation-delay:.50s}.fade-up-5{animation-delay:.64s}
 
-/* ═══ SHARED COMPONENTS ═══ */
 .divider-wa{display:flex;align-items:center;gap:14px;margin:20px 0}
 .divider-wa::before,.divider-wa::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .divider-wa span{color:var(--gold);font-size:.75rem;opacity:.65}
@@ -88,7 +81,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .media-container{width:100%;border:1px solid rgba(201,168,76,.2);background:#0a0a0a;border-radius:4px;overflow:hidden}
 .media-container img{width:100%;height:auto;display:block;object-fit:cover;max-height:260px}
 
-/* ═══ SHORTS CAROUSEL ═══ */
 .shorts-viewport{width:100%;aspect-ratio:9/16;max-height:400px;background:#000;position:relative;
   overflow:hidden;border-radius:6px;border:1px solid rgba(201,168,76,.25);
   box-shadow:0 12px 40px rgba(0,0,0,.65)}
@@ -103,13 +95,11 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .shorts-dot{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.22);transition:background .3s}
 .shorts-dot.active{background:var(--gold)}
 
-/* ═══ MANNER BOX  (BUG FIX B2: CSS was entirely missing) ═══ */
 .manner-box{display:flex;flex-direction:column;gap:12px}
 .manner-item{background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.18);border-radius:4px;padding:14px 16px}
 .manner-item h4{font-family:var(--font-body);font-size:.875rem;color:var(--gold-light);margin-bottom:6px;font-weight:600}
 .manner-item p{font-size:.8125rem;color:var(--mist);opacity:.85;line-height:1.7}
 
-/* ═══ PAGE 0 — LANG SELECT ═══ */
 #page-lang-select{
   background:
     radial-gradient(ellipse 80% 55% at 50% 0%,  rgba(201,168,76,.22), transparent 65%),
@@ -141,7 +131,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   box-shadow:0 2px 12px rgba(0,0,0,.3)}
 .lang-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.12);transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.4)}
 .lang-btn:active{transform:scale(.97);box-shadow:none}
-/* lang-btn-flag removed — no flag emojis */
+
 .lang-btn-name{
   font-family:var(--font-display);font-size:1.375rem;font-weight:300;
   color:var(--white);line-height:1.15;letter-spacing:.02em;text-align:center}
@@ -156,19 +146,16 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 }
 .lang-foot-note{font-family:var(--font-mono);font-size:.625rem;color:var(--mist);opacity:.45;letter-spacing:.15em;text-align:center}
 
-/* ═══ PAGE 1 — VISUAL INTRO ═══ */
 #page-visual-intro{background:var(--ink)}
 .intro-inner{max-width:420px;width:100%;margin:0 auto;padding:32px 22px 40px;display:flex;flex-direction:column;gap:18px}
 .intro-eyebrow{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.25em;color:var(--gold);opacity:.75;text-transform:uppercase;margin-bottom:8px}
 .intro-title{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--white);line-height:1.2}
 
-/* ═══ PAGE 2 — MANNER ═══ */
 #page-manner-gate{background:var(--ink)}
 .manner-inner{max-width:440px;width:100%;margin:0 auto;padding:36px 22px 40px;display:flex;flex-direction:column;gap:20px}
 .manner-title{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:5px;text-align:center}
 .manner-subtitle{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;opacity:.75;text-align:center}
 
-/* ═══ PAGE 3 — WELCOME ═══ */
 #page-welcome{background:var(--ink)}
 .welcome-hero{position:relative;overflow:hidden;min-height:52svh;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:36px}
@@ -221,7 +208,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background:rgba(0,0,0,.28);font-size:.6875rem;color:var(--mist);opacity:.7;
   font-family:var(--font-mono);line-height:1.75;text-align:center}
 
-/* ═══ PAGE 4 — GROUP SHARE ═══ */
 #page-group-share{background:var(--ink)}
 .share-inner{max-width:420px;width:100%;margin:0 auto;padding:36px 22px 40px;display:flex;flex-direction:column;gap:22px}
 .share-title{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:5px;text-align:center}
@@ -233,7 +219,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .qr-dot{width:8px;height:8px;background:var(--ink);border-radius:50%}
 .share-desc-box{background:rgba(255,255,255,.02);border:1px dashed rgba(201,168,76,.28);padding:14px;border-radius:4px;font-size:.8125rem;color:var(--mist);line-height:1.7;opacity:.9}
 
-/* ═══ PAGE 5 — SURVEY ═══ */
 #page-survey{background:var(--ink)}
 .survey-header{padding:36px 22px 22px;position:relative;max-width:480px;width:100%;margin:0 auto}
 .survey-header::after{content:'';position:absolute;bottom:0;left:22px;right:22px;height:1px;
@@ -256,7 +241,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .option-btn.selected{box-shadow:inset 0 0 0 1px var(--gold)}
 .option-btn.selected .opt-label{color:var(--gold)}
 
-/* ═══ PAGE 6 — QUEST  (BUG FIX B5: all quest CSS was missing) ═══ */
 #page-quest{background:radial-gradient(ellipse at 50% 0%,rgba(155,35,53,.14),transparent 55%),var(--ink)}
 .quest-header{padding:28px 22px 16px;display:flex;align-items:flex-start;justify-content:space-between}
 .quest-badge{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;color:var(--red);
@@ -300,7 +284,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .quiz-feedback.correct{background:rgba(74,103,65,.14);color:#a8d4a0;border:1px solid rgba(74,103,65,.28)}
 .quiz-feedback.wrong{background:rgba(155,35,53,.12);color:#e8a0a8;border:1px solid rgba(155,35,53,.28)}
 
-/* ═══ PAGE 7 — CLEAR  (BUG FIX B6: all clear CSS was missing) ═══ */
 #page-clear{background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.11),transparent 50%),var(--ink)}
 .clear-hero{padding:44px 22px 28px;text-align:center}
 .clear-stamp{width:76px;height:76px;margin:0 auto 18px;border:2px solid var(--gold);border-radius:50%;
@@ -341,13 +324,12 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .survey-stars{display:flex;gap:10px;justify-content:center;margin:6px 0}
 .star-btn{background:transparent;border:none;font-size:1.625rem;color:rgba(201,168,76,.14);cursor:pointer;transition:color .15s}
 .star-btn.active{color:var(--gold)}
-/* BUG FIX B9: font-radius は存在しない → border-radius に修正 */
+
 .survey-textarea{width:100%;height:78px;background:rgba(255,255,255,.02);
   border:1px solid rgba(201,168,76,.25);border-radius:3px;
   color:var(--white);padding:10px;font-family:var(--font-body);font-size:.875rem;resize:none;margin-top:4px}
 .survey-label{font-size:.8125rem;color:var(--mist);opacity:.8}
 
-/* ═══ NAV & TOAST ═══ */
 .nav-back{position:fixed;top:12px;left:12px;z-index:500;width:36px;height:36px;
   background:rgba(26,21,18,.88);backdrop-filter:blur(8px);border:1px solid rgba(201,168,76,.22);
   border-radius:50%;display:none;align-items:center;justify-content:center;
@@ -362,7 +344,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .toast-title{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;color:var(--gold);margin-bottom:3px}
 .toast-body{font-size:.8125rem;color:var(--white);line-height:1.55;white-space:pre-line}
 
-/* ═══ AR MODAL  (BUG FIX B8: CSS was missing) ═══ */
 .ar-modal{display:none;position:fixed;inset:0;z-index:9000;background:#000;
   flex-direction:column;align-items:center;justify-content:center}
 .ar-modal.open{display:flex}
@@ -383,7 +364,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   .welcome-body,.survey-body,.quest-body,.clear-body{padding-left:32px;padding-right:32px}
 }
 
-/* ═══ PAGE: FULL MAP ═══ */
 #page-full-map{background:var(--ink)}
 .fullmap-inner{max-width:480px;width:100%;margin:0 auto;padding:32px 22px 48px;display:flex;flex-direction:column;gap:20px}
 .fullmap-eyebrow{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.28em;color:var(--gold);opacity:.8;text-transform:uppercase}
@@ -411,7 +391,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-size:.8125rem;color:var(--mist);line-height:1.7;opacity:.92}
 .fullmap-route-hint strong{color:var(--gold-light);font-weight:400}
 
-/* ═══ AR MODAL UPGRADE ═══ */
 .ar-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.97);
   flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px}
 .ar-modal.open{display:flex}
@@ -428,7 +407,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .ar-scanning-zone{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px;text-align:center}
 .ar-scanning-text{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.18em;color:var(--gold)}
 .ar-scanning-sub{font-family:var(--font-mono);font-size:.5625rem;color:var(--mist);opacity:.5;letter-spacing:.12em}
-/* detection result panel */
+
 .ar-detected{display:none;flex-direction:column;align-items:center;gap:0;width:100%;height:100%;position:relative;overflow:hidden}
 .ar-detected.show{display:flex}
 .ar-detected-img{width:100%;flex:1;object-fit:cover;opacity:.5}
@@ -446,7 +425,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .ar-detected.show .ar-detected-img{animation:arPulse 2s ease-in-out infinite}
 .ar-footer{display:flex;gap:12px}
 
-/* ═══ FIX1: btnStartQuest disabled style ═══ */
 #btnStartQuest{transition:background .35s var(--ease-silk),color .35s,opacity .35s,box-shadow .35s}
 #btnStartQuest:disabled{
   background:#2e2620 !important;color:#6a5d54 !important;
@@ -455,7 +433,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 #btnStartQuest:disabled::after{display:none}
 #btnStartQuest:disabled:active{transform:none !important}
 
-/* ═══ FIX2: 前のスポットボタン ═══ */
 .btn-prev-spot{
   display:block;width:100%;background:transparent;
   border:1px solid rgba(201,168,76,.35);border-radius:2px;
@@ -466,7 +443,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   margin-top:10px}
 .btn-prev-spot:hover{background:rgba(201,168,76,.08);border-color:var(--gold);color:var(--gold)}
 
-/* ═══ FIX4: 音声コントロールバー ═══ */
 .narration-controls{
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
   padding-top:4px;border-top:1px solid rgba(201,168,76,.12);margin-top:6px}
@@ -485,7 +461,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background-repeat:no-repeat;background-position:right 8px center;
   padding-right:24px}
 
-/* ═══ FIX5a: スタンプラリー（クエスト画面）═══ */
 .stamp-rail{
   display:flex;gap:6px;flex-wrap:wrap;align-items:center;
   padding:14px 16px;background:rgba(255,255,255,.02);
@@ -504,14 +479,13 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background:rgba(155,35,53,.18);border-color:var(--red);
   box-shadow:0 0 8px rgba(155,35,53,.35)}
 .stamp-cell.stamped::after{
-  content:'';/* emoji is now rendered as textContent, no ::after needed */}
+  content:'';}
 .stamp-cell.current{
   background:rgba(201,168,76,.15);border-color:var(--gold);
   box-shadow:0 0 10px rgba(201,168,76,.4);animation:stampPulse 1.5s ease-in-out infinite}
 @keyframes stampPulse{0%,100%{box-shadow:0 0 6px rgba(201,168,76,.35)}50%{box-shadow:0 0 16px rgba(201,168,76,.6)}}
 .stamp-cell-num{font-family:var(--font-mono);font-size:.5rem;color:var(--mist);opacity:.5;position:absolute;bottom:2px;right:3px}
 
-/* ═══ FIX5b: 満願成就スタンプシート（クリア画面）═══ */
 .manganjouju-sheet{
   background:linear-gradient(135deg,#251810 0%,#1a1008 100%);
   border:2px solid var(--gold);border-radius:6px;
@@ -543,7 +517,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-display);font-size:.9375rem;
   color:var(--parchment);opacity:.85;line-height:1.7;font-style:italic;font-variant-numeric:lining-nums}
 
-/* ═══ FEAT1+2: AR-tap media wrapper ═══ */
 .ar-media-wrap{
   position:relative;width:100%;border:1px solid rgba(201,168,76,.2);
   background:#0a0a0a;border-radius:4px;overflow:hidden;cursor:pointer;
@@ -551,7 +524,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .ar-media-wrap img{width:100%;height:auto;display:block;
   object-fit:cover;max-height:260px;transition:opacity .2s}
 .ar-media-wrap:active img{opacity:.85}
-/* ARバッジ */
+
 .ar-tap-badge{
   position:absolute;bottom:10px;right:10px;
   display:flex;align-items:center;gap:6px;
@@ -565,17 +538,15 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   0%,100%{box-shadow:0 0 0 rgba(201,168,76,0)}
   50%{box-shadow:0 0 12px rgba(201,168,76,.35)}}
 .ar-tap-badge .ar-badge-cam{font-size:.875rem}
-/* AR scan ripple on tap */
+
 .ar-media-wrap::after{
   content:'';position:absolute;inset:0;
   background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);
   opacity:0;pointer-events:none;transition:opacity .15s}
 .ar-media-wrap:active::after{opacity:1}
 
-/* ═══ FEAT3: click sound visual feedback ═══ */
-/* (audio is pure JS, no visual needed) */
 
-/* ═══ FEAT4: real audio player ═══ */
+
 .audio-player{
   display:none;flex-direction:column;gap:8px;
   background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.2);
@@ -606,7 +577,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23c9a84c' opacity='.7'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 5px center}
 
-/* ═══ FEAT1: page-welcome-map ═══ */
 #page-welcome-map{background:var(--ink)}
 .wm-inner{max-width:480px;width:100%;margin:0 auto;padding:32px 22px 48px;display:flex;flex-direction:column;gap:18px}
 .wm-eyebrow{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.28em;color:var(--gold);opacity:.8;text-transform:uppercase;margin-bottom:4px}
@@ -618,7 +588,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .wm-narration-card{background:linear-gradient(135deg,rgba(201,168,76,.055),rgba(155,35,53,.055));
   border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:12px}
 .wm-narr-label{font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.2em;color:var(--mist);opacity:.6;text-transform:uppercase}
-/* アコーディオン: 5行クランプ */
+
 .narr-clamp{
   font-family:var(--font-display);font-size:.9375rem;font-style:italic;
   color:var(--parchment);line-height:1.85;opacity:.92;
@@ -630,11 +600,10 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   cursor:pointer;text-transform:uppercase;padding:4px 0;opacity:.8;
   display:flex;align-items:center;gap:4px;transition:opacity .2s}
 .narr-read-more:hover{opacity:1}
-/* Quest 画面にも同じアコーディオンを適用 */
+
 .narration-text.narr-clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .narration-text.narr-clamp.expanded{display:block;overflow:visible}
 
-/* ═══ NEW FLOW: page-app-appeal ═══ */
 #page-app-appeal{
   background:
     radial-gradient(ellipse 70% 50% at 50% 0%,rgba(201,168,76,.12),transparent 60%),
@@ -680,7 +649,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   display:flex;align-items:center;justify-content:center;font-size:.875rem;
   background:rgba(255,255,255,.02)}
 
-/* ═══ NEW FLOW: page-checkout ═══ */
 #page-checkout{background:var(--ink)}
 .checkout-inner{
   max-width:480px;width:100%;margin:0 auto;
@@ -723,7 +691,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   color:var(--mist);opacity:.5;letter-spacing:.1em}
 .checkout-free-note a{color:var(--gold);opacity:.7;cursor:pointer}
 
-/* ═══ NEW FLOW: page-sync ═══ */
 #page-sync{background:var(--ink)}
 .sync-inner{
   max-width:440px;width:100%;margin:0 auto;
@@ -752,7 +719,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   text-align:center;font-family:var(--font-mono);font-size:.625rem;
   color:var(--mist);opacity:.45;letter-spacing:.1em}
 
-/* ═══ NEW FLOW: page-manners ═══ */
 #page-manners{background:var(--ink)}
 .manners-inner{
   max-width:440px;width:100%;margin:0 auto;
@@ -765,7 +731,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;
   color:var(--gold);text-transform:uppercase;opacity:.75}
 
-/* FEAT2: price strikethrough */
 .checkout-price-stack{display:flex;flex-direction:column;gap:2px}
 .checkout-price-orig{
   font-family:var(--font-mono);font-size:.75rem;color:var(--mist);opacity:.55;
@@ -776,7 +741,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   color:var(--gold);line-height:1;letter-spacing:-.02em}
 .checkout-price-now sup{font-size:.85rem;vertical-align:super}
 
-/* FEAT3: welcome-map slideshow */
 .wm-slides-wrap{
   width:100%;position:relative;overflow:hidden;
   border:1px solid rgba(201,168,76,.3);border-radius:6px;
@@ -793,7 +757,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background:rgba(201,168,76,.25);transition:background .3s;cursor:pointer}
 .wm-slide-dot.active{background:var(--gold)}
 
-/* FEAT4: AI voice button highlight */
 #lblPlayVoiceBtn{
   background:linear-gradient(135deg,#c9a84c 0%,#b59a6d 100%) !important;
   color:#1a1512 !important;
@@ -807,7 +770,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background:linear-gradient(135deg,#e8d08a 0%,#c9a84c 100%) !important;
   box-shadow:0 6px 24px rgba(201,168,76,.5)}
 
-/* FEAT5: map hotspot overlays */
 .fullmap-hotspot-layer{
   position:absolute;inset:0;pointer-events:none}
 .map-hotspot{
@@ -827,7 +789,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   color:var(--white);opacity:0;transition:opacity .2s}
 .map-hotspot:hover span{opacity:1}
 
-/* FEAT1: omikuji 1-per-person */
 .omikuji-used-msg{
   font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.1em;
   color:var(--mist);opacity:.8;line-height:1.7;text-align:center;padding:10px 0}
@@ -840,7 +801,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .omikuji-member-btn:hover{background:rgba(201,168,76,.14)}
 .omikuji-member-btn:disabled{opacity:.35;cursor:not-allowed}
 
-/* FEAT3: manners checkbox & disabled btn */
 .manner-item{
   background:rgba(255,255,255,.025);
   border:1px solid rgba(201,168,76,.18);border-radius:4px;padding:14px 16px;
@@ -859,7 +819,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   box-shadow:none !important;transform:none !important}
 #mannersAgreeBtn{transition:background .35s,opacity .35s,box-shadow .35s}
 
-/* FEAT4: hidden cats special section */
 .hidden-cats-card{
   background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(155,35,53,.06));
   border:2px solid rgba(201,168,76,.4);border-radius:6px;
@@ -896,7 +855,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   transition:transform .15s}
 .hidden-cats-ar-btn:active{transform:scale(.97)}
 
-/* FEAT5: Google Maps button on spot cards */
 .spot-card-map-btn{
   display:inline-flex;align-items:center;gap:5px;
   background:transparent;border:1px solid rgba(201,168,76,.35);
@@ -906,9 +864,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   transition:background .2s;text-transform:uppercase}
 .spot-card-map-btn:hover{background:rgba(201,168,76,.1)}
 
-/* FEAT1: visited-spot stamp tracking (already handled by state.visitedSpots) */
 
-/* FEAT2: checkout price layout improvement */
+
 .checkout-price-now{
   font-family:var(--font-display);font-size:1.6rem;font-weight:600;
   color:var(--gold);line-height:1.3;letter-spacing:.02em;
@@ -922,14 +879,12 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   color:var(--red);text-transform:uppercase;opacity:.85;margin-top:2px}
 .checkout-price-stack{display:flex;flex-direction:column;gap:4px;padding:4px 0}
 
-/* FEAT3: manners guide text */
 .manners-guide-text{
   font-family:var(--font-body);font-size:.8125rem;color:var(--mist);
   opacity:.85;line-height:1.7;
   border-left:2px solid var(--gold);padding-left:12px;
   background:rgba(201,168,76,.04);border-radius:0 3px 3px 0;padding:10px 12px}
 
-/* FEAT4: hidden cats 2-stage reveal */
 .hidden-cats-reveal-btn{
   background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(155,35,53,.1));
   border:1px dashed rgba(201,168,76,.5);border-radius:6px;
@@ -952,14 +907,12 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .hidden-cats-revealed{display:none}
 .hidden-cats-revealed.show{display:block;animation:fadeUp .5s ease both}
 
-/* FEAT5: omikuji fresh-draw style */
 .omikuji-redraw-btn{
   background:transparent;border:1px solid rgba(201,168,76,.4);border-radius:3px;
   color:var(--gold);font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.1em;
   padding:10px;cursor:pointer;margin-top:8px;width:100%;transition:background .2s}
 .omikuji-redraw-btn:hover{background:rgba(201,168,76,.1)}
 
-/* Quest slideshow */
 .quest-slide-wrap{
   position:relative;width:100%;overflow:hidden;
   border:1px solid rgba(201,168,76,.2);border-radius:4px;
@@ -983,10 +936,9 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .quest-slide-nav:hover{background:rgba(0,0,0,.7)}
 .quest-slide-prev{left:6px}
 .quest-slide-next{right:6px}
-/* AR badge overlay on slideshow */
+
 .quest-slide-wrap .ar-tap-badge{z-index:4}
 
-/* Topic box */
 .topic-box{
   background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(155,35,53,.05));
   border:1px solid rgba(201,168,76,.3);border-radius:5px;
@@ -1001,7 +953,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.15em;
   color:var(--red);text-transform:uppercase;opacity:.8}
 
-/* FEAT1: checkout hero slideshow */
 .checkout-slides-wrap{
   width:100%;position:relative;overflow:hidden;
   border:1px solid rgba(201,168,76,.25);border-radius:6px;
@@ -1019,7 +970,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background:rgba(255,255,255,.3);transition:background .3s;cursor:pointer}
 .checkout-slide-dot.active{background:var(--gold)}
 
-/* FIX4: welcome-map slideshow manual nav */
 .wm-slide-nav{
   position:absolute;top:50%;transform:translateY(-50%);
   z-index:3;background:rgba(0,0,0,.45);border:none;
@@ -1044,7 +994,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   <div class="toast-body" id="toastBody">System ready.</div>
 </div>
 
-<!-- PAGE 0 — LANG SELECT -->
 <section class="page active" id="page-lang-select">
   <div class="lang-select-inner">
     <div class="lang-top-deco fade-up"><div class="lang-vert-line"></div><div class="lang-temple-tag">Setagaya · Tokyo</div></div>
@@ -1119,8 +1068,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 0.5 — WELCOME MAP (新設: 言語選択→この画面→イントロ) -->
-<!-- ═══ PAGE A — APP APPEAL (新設) ═══ -->
+
 <section class="page" id="page-app-appeal">
   <div class="appeal-inner">
 
@@ -1189,7 +1137,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- ═══ PAGE B — CHECKOUT (新設) ═══ -->
 <section class="page" id="page-checkout">
   <div class="checkout-inner">
 
@@ -1246,7 +1193,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- ═══ PAGE C — SYNC (新設) ═══ -->
 <section class="page" id="page-sync">
   <div class="sync-inner">
 
@@ -1273,7 +1219,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     </div>
 
     <div class="sync-desc fade-up fade-up-2" id="syncDesc">
-      同行者のスマホで標準カメラを起動し、QRコードをスキャンしてください。追加費用なしで最大4台のデバイスに完全なガイドが展開されます。<br><br>
+      同行者のスマホで標準カメラを起動し、QRコードをスキャンしてください。追加費用なしで最大4台のデバイスに完全なガイドが展開されます。<br>
       Open your companion's camera app and scan the QR code to share the full guide — no extra payment required for up to 4 devices.
     </div>
 
@@ -1291,7 +1237,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- ═══ PAGE D — MANNERS (新設) ═══ -->
 <section class="page" id="page-manners">
   <div class="manners-inner">
     <div class="manners-header fade-up">
@@ -1309,7 +1254,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     </button></div>
   </div>
 </section>
-
 
 <section class="page" id="page-welcome-map">
   <div class="wm-inner">
@@ -1340,7 +1284,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     <div class="wm-narration-card fade-up fade-up-2">
       <div class="wm-narr-label" id="wmNarrLabel">🎙 Audio Guide — 境内全体ナレーション</div>
 
-      <!-- Audio player (実音声) -->
       <button class="btn-api" id="wmPlayBtn" onclick="wmTogglePlay()">▶ <span id="wmPlayLabel">音声ガイドを再生 / Play Audio Guide</span></button>
       <div class="audio-player show" id="wmAudioPlayer">
         <div class="audio-progress-wrap">
@@ -1365,7 +1308,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
         </div>
       </div>
 
-      <!-- ナレーションテキスト（5行クランプ） -->
       <div class="narr-clamp" id="wmNarrText"></div>
       <button class="narr-read-more" id="wmReadMoreBtn" onclick="wmToggleNarr()">
         <span id="wmReadMoreLabel">▼ 続きを読む / Read More</span>
@@ -1378,7 +1320,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 1 — VISUAL INTRO (旧: 新フローでは使用しない) -->
 <section class="page" id="page-visual-intro">
   <div class="intro-inner">
     <div class="fade-up"><div class="intro-eyebrow">Pre-Visit Preview</div><h2 class="intro-title" id="lblIntroTitle">Goutokuji Sanctuary Preview</h2></div>
@@ -1393,7 +1334,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 2 — MANNER GATE (旧: page-mannersに移行) -->
 <section class="page" id="page-manner-gate">
   <div class="manner-inner">
     <div class="fade-up"><h2 class="manner-title" id="lblMannerTitle">Manners &amp; Safety</h2><div class="manner-subtitle" id="lblMannerSubtitle">境内安全ガイドライン</div></div>
@@ -1402,7 +1342,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 3 — WELCOME OLD (旧: page-checkoutに移行) -->
 <section class="page" id="page-welcome">
   <div class="welcome-hero">
     <div class="hero-kanji">豪徳寺</div>
@@ -1411,7 +1350,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
       <span class="welcome-lang-chip-label" id="chipLabel">JA</span>
       <span class="welcome-lang-chip-change">change</span>
     </div>
-    <div class="neko-container fade-up fade-up-1"><div class="neko-frame"><img src="2_三重塔の猫.jpg" alt="Maneki Neko"></div></div>
+    <div class="neko-container fade-up fade-up-1"><div class="neko-frame"><img src="2_三重塔の猫.jpg" alt="Maneki Neko" loading="eager" fetchpriority="high"></div></div>
     <h1 class="hero-title fade-up fade-up-2" id="dynamicHeroTitle"></h1>
   </div>
   <div class="welcome-body">
@@ -1427,7 +1366,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     <div class="sample-box fade-up fade-up-4">
       <div class="sample-box-title" id="lblSampleTitle">✨ Experience Sample Preview</div>
       <div class="sample-box-desc" id="lblSampleDesc"></div>
-      <div class="media-container"><img src="その他_参道.jpg" alt="Sample Path"></div>
+      <div class="media-container"><img src="その他_参道.jpg" alt="Sample Path" loading="lazy"></div>
     </div>
     <div class="fade-up fade-up-4"><button class="btn-primary" id="btnStripe"><span id="lblBuyBtnText">Buy Pass ¥1,000</span></button></div>
     <div class="stripe-note" id="lblStripeNote">🔒 Secured by Stripe</div>
@@ -1435,7 +1374,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   <div class="corporate-footer" id="prePayFooter"></div>
 </section>
 
-<!-- PAGE 4 — GROUP SHARE OLD (旧: page-syncに移行) -->
 <section class="page" id="page-group-share">
   <div class="share-inner">
     <div class="fade-up" style="text-align:center"><div style="font-size:2rem;margin-bottom:12px">👥</div><h2 class="share-title" id="lblShareTitle">Group Device Connection</h2><div class="share-subtitle" id="lblShareSubtitle">MULTIPASS NODE SYNC</div></div>
@@ -1445,10 +1383,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 5 — SURVEY: 廃止済み (FEAT1) -->
 
 
-<!-- PAGE 5.5 — FULL MAP (新設: アンケート→地図→クエスト) -->
 <section class="page" id="page-full-map">
   <div class="fullmap-inner">
     <div class="fade-up">
@@ -1459,7 +1395,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     </div>
 
     <div class="fullmap-img-wrap fade-up fade-up-1" style="position:relative">
-      <img src="full-map-optimized.jpg" onerror="this.src='全体マップ.jpg'" alt="豪徳寺 境内全体マップ" id="fullmapImg" style="width:100%;display:block">
+      <img src="full-map-optimized.jpg" onerror="this.src='全体マップ.jpg'" alt="豪徳寺 境内全体マップ" id="fullmapImg" style="width:100%;display:block" loading="lazy">
       <div class="fullmap-img-label" id="fullmapImgLabel">GOUTOKUJI MAP · タップでスポットへジャンプ</div>
       <div class="fullmap-hotspot-layer" id="mapHotspotLayer">
         <div class="map-hotspot" style="left:47%;top:87%;" onclick="playClickSound();jumpToSpot(0)" title="Spot 1"><span>1</span></div>
@@ -1502,18 +1438,17 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 6 — QUEST -->
 <section class="page" id="page-quest">
   <div class="quest-header"><div class="quest-badge" id="questBadge">Step 01 / 10</div><div class="quest-mission-num" id="questMissionNum">01</div></div>
   <div class="quest-body">
     <div class="stamp-rail fade-up" id="stampRail">
       <div class="stamp-rail-label" id="stampRailLabel">🏯 STAMP RALLY · 御朱印スタンプラリー</div>
-      <!-- JS で動的に生成 -->
+      
     </div>
     <div class="map-legend-box fade-up"><div class="map-header-label" id="lblMapHeader">GOUTOKUJI ROUTE MAP</div><div class="map-scroll-container" id="mapProgressBar"></div></div>
     <div id="questTitle" class="quest-title fade-up fade-up-1"></div>
     <div class="quest-slide-wrap fade-up fade-up-1" id="questSlideWrap">
-      <!-- slides injected by buildQuestContent -->
+      
       <button class="quest-slide-nav quest-slide-prev" onclick="playClickSound();questSlidePrev()" id="qSlidePrev">‹</button>
       <button class="quest-slide-nav quest-slide-next" onclick="playClickSound();questSlideNext()" id="qSlideNext">›</button>
       <div class="quest-slide-dots" id="questSlideDots"></div>
@@ -1522,15 +1457,15 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
         <span id="arBadgeText">TAP FOR WebAR</span>
       </div>
     </div>
-    <!-- topic box: shown for butsuden (step2) and jizodo (step9) -->
+    
     <div class="topic-box" id="questTopicBox" style="display:none"></div>
-    <div class="sub-map-container" id="subMapContainer"><div class="sub-map-label">📍 SUB-MAP / 墓所内詳細案内図</div><img src="5_井伊家墓所地図.jpg" alt="Map"></div>
+    <div class="sub-map-container" id="subMapContainer"><div class="sub-map-label">📍 SUB-MAP / 墓所内詳細案内図</div><img src="5_井伊家墓所地図.jpg" alt="Map" loading="lazy"></div>
     <div class="narration-card fade-up fade-up-2">
       <div class="narration-label" id="lblNarrationLabel">🎙 AI Narration — ElevenLabs</div>
       <div class="narration-text narr-clamp" id="narrationText"></div>
       <button class="narr-read-more" id="questReadMoreBtn" onclick="toggleNarrClamp(this)">▼ 続きを読む / Read More</button>
       <button class="btn-api" id="lblPlayVoiceBtn" onclick="handlePlayVoice()">▶ Play AI Voice</button>
-      <!-- FEAT4: real audio player (山門 only) -->
+      
       <div class="audio-player" id="realAudioPlayer">
         <div class="audio-progress-wrap">
           <span class="audio-time" id="audioCurrentTime">0:00</span>
@@ -1564,7 +1499,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
         </select>
       </div>
     </div>
-    <!-- FEAT4: hidden cats section (Step 2のみ表示) -->
+    
     <div id="hiddenCatsSection" style="display:none" class="hidden-cats-card fade-up fade-up-2"></div>
     <div class="quiz-card fade-up fade-up-3">
       <div class="quiz-label" id="lblQuizLabel">Quiz Challenge</div>
@@ -1576,11 +1511,10 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
 </section>
 
-<!-- PAGE 7 — CLEAR -->
 <section class="page" id="page-clear">
   <div class="clear-hero"><div class="clear-stamp">🐱</div><h2 class="clear-title" id="lblClearTitle"><em>All Paths Cleared</em>Well Done!</h2><div class="clear-sub">大吉 · Fortune favours you</div></div>
   <div class="clear-body">
-    <!-- FIX5b: 満願成就スタンプシート -->
+    
     <div class="manganjouju-sheet fade-up" id="manganSheet">
       <div class="manganjouju-title" id="manganTitle">🎉 10大スポット満願成就！</div>
       <div class="manganjouju-sub" id="manganSub">ALL SPOTS COMPLETED · 令和 GOUTOKUJI</div>
@@ -1608,7 +1542,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   <div class="corporate-footer" id="postPayFooter"></div>
 </section>
 
-<!-- AR MODAL (UPGRADED) -->
 <div class="ar-modal" id="arModal">
   <div class="ar-viewfinder">
     <div class="ar-corners">
@@ -1616,15 +1549,15 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
       <div class="ar-corner-bl"></div><div class="ar-corner-br"></div>
     </div>
     <div class="ar-scan-line" id="arScanLine"></div>
-    <!-- SCANNING STATE -->
+    
     <div class="ar-scanning-zone" id="arScanningZone">
       <div style="font-size:2.5rem;animation:float 2s ease-in-out infinite">🔍</div>
       <div class="ar-scanning-text">SCANNING FOR MARKERS…</div>
       <div class="ar-scanning-sub">Point at the landmark · マーカーを認識中</div>
     </div>
-    <!-- DETECTED STATE -->
+    
     <div class="ar-detected" id="arDetected">
-      <img id="arDetectedImg" src="" alt="AR Overlay" class="ar-detected-img">
+      <img id="arDetectedImg" src="" alt="AR Overlay" class="ar-detected-img" loading="lazy">
       <div class="ar-detected-overlay">
         <div class="ar-detected-badge">✓ MARKER DETECTED</div>
         <div class="ar-detected-title" id="arDetectedTitle">Three-Story Pagoda</div>
@@ -1640,7 +1573,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 
 <script>
 
-/* ════════ CONFIG_LANG ════════ */
 const CONFIG_LANG = {
   en:{
     flag:'🇬🇧',code:'EN',
@@ -2101,29 +2033,22 @@ const CONFIG_LANG = {
 
 
 
-/* ════════ STATE ════════ */
 const state={lang:null,group:null,visit:null,currentStep:0,rating:0,omikujiDraws:0,omikujiGroupSize:1,visitedSpots:new Set()};
 let quizAnswered=false,shortsInterval=null,shortsIdx=0;
 
-/* ════════ SESSION RESTORE
-   BUG FIX B7: 旧実装は selectLanguageGateway()→showPage('page-visual-intro') を
-   呼ぶため復旧時に常にイントロ画面へ飛んでしまっていた。
-   修正: applyLangUI() でUIのみ適用し、直接 page-quest へ遷移する。 ════════ */
 window.addEventListener('DOMContentLoaded',()=>{
-  /* FEAT5: セッション復旧を完全廃止 — 常に lang-select からスタート */
+  
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-lang-select').classList.add('active');
-  localStorage.clear(); /* 前回の残留データをリセット */
+  localStorage.clear(); 
 });
 
-/* ════════ ACCESSIBILITY ════════ */
 function changeFontSize(size,btn){
   document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.documentElement.style.setProperty('--font-scale',{small:'1.0',medium:'1.2',large:'1.4'}[size]);
 }
 
-/* ════════ PAGE ROUTER ════════ */
 const PAGE_ORDER=['page-lang-select','page-app-appeal','page-checkout','page-sync','page-manners','page-welcome-map','page-full-map','page-quest','page-clear'];
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -2133,7 +2058,7 @@ function showPage(id){
   if(id==='page-visual-intro')startShortsEngine();else stopShortsEngine();
   if(id==='page-manners'){
     const mb=document.getElementById('mannersBox');
-    /* Reset agree btn disabled */
+    
     setTimeout(()=>{
       const btn=document.getElementById('mannersAgreeBtn');
       if(btn){btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='not-allowed';}
@@ -2144,11 +2069,11 @@ function showPage(id){
     const mt=document.getElementById('mannersTitle');
     if(mt&&d)mt.textContent=d.mannerTitle||'参拝マナーと安全確認';
   }
-  /* page-survey 廃止済み */
+  
   if(id==='page-checkout'){_startCheckoutSlides();}
   else{_stopCheckoutSlides();}
   if(id==='page-full-map'){
-    /* FIX4: マップページに入ったら currentStep を必ず 0 にリセット */
+    
     state.currentStep=0;
     localStorage.setItem('goutokuji_dx_page','page-full-map');
   }
@@ -2156,10 +2081,10 @@ function showPage(id){
     state.currentStep=0;
     _stopWmAudio();
     _startWmSlides();
-    /* init wm audio player display */
+    
     const wmp=document.getElementById('wmAudioPlayer');
     if(wmp){wmp.classList.add('show');}
-    /* reset narr clamp */
+    
     const nt=document.getElementById('wmNarrText');
     if(nt)nt.classList.remove('expanded');
     const rb=document.getElementById('wmReadMoreBtn');
@@ -2167,9 +2092,9 @@ function showPage(id){
   }
   if(id!=='page-quest'&&id!=='page-full-map'&&id!=='page-welcome-map')_stopRealAudio();
   if(id!=='page-welcome-map'){_stopWmAudio();_stopWmSlides();}
-  /* new pages: keep audio stopped */
+  
   if(id==='page-quest'){localStorage.setItem('goutokuji_dx_step',state.currentStep);localStorage.setItem('goutokuji_dx_page','page-quest');buildQuestContent();}
-  if(id==='page-clear'){/* FEAT4: deferred to ensure DOM is ready */setTimeout(()=>{buildClearContent();updateStampRail_clear();},20);}
+  if(id==='page-clear'){setTimeout(()=>{buildClearContent();updateStampRail_clear();},20);}
 }
 {const _nb=document.getElementById('navBack');
 if(_nb)_nb.addEventListener('click',()=>{
@@ -2178,7 +2103,6 @@ if(_nb)_nb.addEventListener('click',()=>{
   if(idx>0)showPage(PAGE_ORDER[idx-1]);
 });}
 
-/* ════════ SHORTS ════════ */
 function startShortsEngine(){
   shortsIdx=0;
   const slides=document.querySelectorAll('.shorts-slide');
@@ -2192,7 +2116,6 @@ function startShortsEngine(){
 }
 function stopShortsEngine(){clearInterval(shortsInterval);}
 
-/* ════════ LANGUAGE ════════ */
 function selectLanguageGateway(langKey){
   state.lang=langKey;
   localStorage.setItem('goutokuji_dx_lang',langKey);
@@ -2201,7 +2124,6 @@ function selectLanguageGateway(langKey){
 }
 
 
-/* ════════ FEAT3: manners checkbox validation ════════ */
 
 function _mannersHintClick(){
   const btn=document.getElementById('mannersAgreeBtn');
@@ -2213,7 +2135,7 @@ function _mannersHintClick(){
 }
 
 function checkAllManners(){
-  playClickSound(); /* FEAT2: click sound on checkbox */
+  playClickSound(); 
   const checks=document.querySelectorAll('#mannersBox .manner-check');
   const allChecked=Array.from(checks).every(c=>c.checked);
   const btn=document.getElementById('mannersAgreeBtn');
@@ -2226,7 +2148,6 @@ function checkAllManners(){
 }
 
 
-/* ════════ Checkout slideshow ════════ */
 let _coSlideIdx=0, _coSlideTimer=null;
 function _startCheckoutSlides(){
   _stopCheckoutSlides();
@@ -2244,7 +2165,6 @@ function _startCheckoutSlides(){
 }
 function _stopCheckoutSlides(){clearInterval(_coSlideTimer);}
 
-/* ════════ CHECKOUT FLOW ════════ */
 function doCheckout(){
   showToast('STRIPE CHECKOUT',state.lang==='ja'
     ?'Stripe決済デモ（¥1,000）。完了後、同行者同期へ進みます。'
@@ -2252,7 +2172,6 @@ function doCheckout(){
   setTimeout(()=>showPage('page-sync'),1400);
 }
 
-/* 安全なヘルパー：要素が存在しない場合は何もしない */
 function _set(id,prop,val){
   const el=document.getElementById(id);
   if(el) el[prop]=val;
@@ -2262,21 +2181,17 @@ function applyLangUI(lk){
   const d=CONFIG_LANG[lk];
   if(!d)return;
 
-  /* lang-select chip on welcome screen */
-  _set('chipFlag','textContent',d.code); /* no flag — use code */
+  _set('chipFlag','textContent',d.code); 
   _set('chipLabel','textContent',d.code);
 
-  /* visual intro */
   _set('lblIntroTitle','textContent',d.introTitle);
   _set('lblIntroNextBtn','textContent',d.introNextBtn);
 
-  /* manner */
   _set('lblMannerTitle','textContent',d.mannerTitle);
   _set('lblMannerSubtitle','textContent',d.mannerSubtitle);
   _set('lblMannerAgreeBtn','innerHTML',d.mannerAgreeBtn);
   _set('lblMannerBox','innerHTML',d.mannerItems);
 
-  /* welcome */
   _set('dynamicHeroTitle','innerHTML',d.heroTitle);
   _set('lblPriceTitle','textContent',d.priceTitle);
   _set('lblPriceIncludes','textContent',d.priceIncludes);
@@ -2290,13 +2205,11 @@ function applyLangUI(lk){
   const fl=document.getElementById('dynamicFeatureList');
   if(fl) fl.innerHTML=d.features.map(f=>`<div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">${f}</div></div>`).join('');
 
-  /* group share */
   _set('lblShareTitle','textContent',d.shareTitle);
   _set('lblShareSubtitle','textContent',d.shareSubtitle);
   _set('lblShareBoxDesc','innerHTML',d.shareBoxDesc);
   _set('lblShareNextBtn','textContent',d.shareNextBtn);
 
-  /* survey */
   _set('lblSurveyTitle','innerHTML',d.surveyTitle);
   _set('lblPartyLabel','textContent',d.partyLabel);
   _set('lblHistoryLabel','textContent',d.historyLabel);
@@ -2308,14 +2221,12 @@ function applyLangUI(lk){
   _set('optRepeat','textContent',d.optRepeat);
   _set('lblStartQuestText','textContent',d.startQuestBtn);
 
-  /* quest */
   _set('lblMapHeader','textContent',d.mapHeader);
   _set('lblNarrationLabel','textContent',d.narrationLabel);
   _set('lblPlayVoiceBtn','textContent',d.playVoiceBtn);
   const ql=document.getElementById('lblQuizLabel');
   if(ql&&ql.childNodes[0]) ql.childNodes[0].textContent=d.quizLabel+' ';
 
-  /* NEW PAGES: appeal / checkout / sync / manners */
   const isJa=lk==='ja';
   _set('appealEyebrow','textContent',d.appealEyebrow||(isJa?'体験価値 · Premium Experience':'Premium Experience · 体験価値'));
   _set('appealTitle','innerHTML',d.appealTitle||(isJa?'<em>プレミアムな参拝体験をあなたに</em>Premium Pilgrimage Experience':'<em>Premium Pilgrimage Experience</em>プレミアムな参拝体験をあなたに'));
@@ -2350,27 +2261,25 @@ function applyLangUI(lk){
   const mb2=document.getElementById('mannersBox');
   if(mb2&&d)mb2.innerHTML=d.mannerItems||'';
 
-  /* FEAT1: welcome-map labels */
   _set('wmTitle','innerHTML',d.wmTitle||'<em>豪徳寺へようこそ</em>Welcome to Goutokuji');
   _set('wmNextBtn','textContent',d.wmNextBtn||'Start Pilgrimage ➔');
-  /* FIX2: render narr with sentence breaks */
+  
   const _wmNt=document.getElementById('wmNarrText');
   if(_wmNt&&d.welcomeNarr){
     const _wn=d.welcomeNarr
-      .replace(/。(?=\S)/g,'。<br><br>')
-      .replace(/\. (?=[A-ZÀ-ɏ\u4E00-\u9FFF])/g,'.<br><br>')
+      .replace(/。(?=\S)/g,'。<br>')
+      .replace(/\. (?=[A-ZÀ-ɏ\u4E00-\u9FFF])/g,'.<br>')
       .replace(/！(?=\S)/g,'！<br>')
       .replace(/\\n/g,'<br>');
     _wmNt.innerHTML=_wn;
   }
   _set('wmReadMoreLabel','textContent',d.readMoreLabel||'▼ Read More');
-  /* Reset accordion state */
+  
   const nt=document.getElementById('wmNarrText');
   if(nt){nt.classList.remove('expanded');}
   const rb=document.getElementById('wmReadMoreBtn');
   if(rb)rb.style.display='block';
 
-  /* full map page */
   _set('lblMapEyebrow','textContent',d.mapEyebrow||'Sanctuary Overview');
   _set('lblMapTitle','innerHTML',d.mapTitle||'Sanctuary Map');
   _set('lblMapDescTitle','textContent',d.mapDescTitle||'10 Key Landmarks');
@@ -2383,8 +2292,7 @@ function applyLangUI(lk){
     });
   }
 
-
-  /* clear */
+  
   _set('lblClearTitle','innerHTML',d.clearTitle);
   _set('lblOmiBoxTitle','textContent',d.omiBoxTitle);
   _set('lblOmiBoxDesc','textContent',d.omiBoxDesc);
@@ -2397,8 +2305,7 @@ function applyLangUI(lk){
   _set('lblSurveySubmitBtn','textContent',d.surveySubmitBtn);
 }
 
-/* ════════ STRIPE ════════ */
-/* btnStripe: null-guard (page-welcome is legacy page) */
+
 {const _bs=document.getElementById('btnStripe');
 if(_bs)_bs.addEventListener('click',()=>{
   const isJa=state.lang==='ja';
@@ -2407,12 +2314,11 @@ if(_bs)_bs.addEventListener('click',()=>{
   setTimeout(()=>showPage('page-group-share'),900);
 });}
 
-/* ════════ SURVEY ════════ */
 function selectOption(btn){
   const q=btn.dataset.q,v=btn.dataset.v;
   document.querySelectorAll(`.option-btn[data-q="${q}"]`).forEach(b=>b.classList.remove('selected'));
   btn.classList.add('selected');state[q]=v;
-  /* FIX1: 両方揃ったら disabled を解除し、CSS transition でスムーズに活性化 */
+  
   const sb=document.getElementById('btnStartQuest');
   if(state.group&&state.visit){
     sb.disabled=false;sb.style.opacity='1';sb.style.cursor='pointer';
@@ -2421,7 +2327,6 @@ function selectOption(btn){
   }
 }
 
-/* ════════ QUEST ENGINE ════════ */
 function buildQuestContent(){
   quizAnswered=false;
   const d=CONFIG_LANG[state.lang||'ja'];
@@ -2430,17 +2335,16 @@ function buildQuestContent(){
   const isJa=state.lang!=='en';
   const isLast=state.currentStep>=9;
 
-  /* FEAT4: スポット切替時に音声プレイヤーをリセット */
   _stopRealAudio();
-  /* FEAT5: クエスト切替時にアコーディオンをリセット */
+  
   const _qnt=document.getElementById('narrationText');
   if(_qnt)_qnt.classList.remove('expanded');
   const _qrb=document.getElementById('questReadMoreBtn');
   if(_qrb){const _d2=CONFIG_LANG[state.lang||'ja'];_qrb.textContent=_d2.readMoreLabel||'▼ Read More';}
-  /* FEAT2: ARバッジテキストを言語に合わせて更新 */
+  
   const _badge=document.getElementById('arBadgeText');
   if(_badge){const _d4=CONFIG_LANG[state.lang||'ja'];_badge.textContent=_d4.arBadgeLabel||'TAP FOR WebAR';}
-  /* FIX5: クイズ回答義務を廃止 — ボタンを最初から表示 */
+  
   document.getElementById('quizFeedback').className='quiz-feedback';
   document.getElementById('quizFeedback').textContent='';
   document.getElementById('questBadge').textContent=`Step ${String(n).padStart(2,'0')} / 10`;
@@ -2451,19 +2355,19 @@ function buildQuestContent(){
       :`<span style="opacity:.32">${i+1}.${st.title}</span>`
   ).join(' ➔ ');
   document.getElementById('questTitle').innerHTML=`<em>${s.title}</em>`;
-  /* FEAT: slideshow */
+  
   _stopQuestSlides();
   _buildQuestSlides(s.images||[s.img]);
-  /* FEAT3: convert sentence breaks to <br><br> for readability */
+  
   const _narr=s.narrative;
   const _narrHtml=_narr
-    .replace(/。(?=\S)/g,'。<br><br>')
-    .replace(/\. (?=[A-ZÀ-ɏ])/g,'.<br><br>')
+    .replace(/。(?=\S)/g,'。<br>')
+    .replace(/\. (?=[A-ZÀ-ɏ])/g,'.<br>')
     .replace(/！(?=\S)/g,'！<br>')
     .replace(/\n/g,'<br>');
   document.getElementById('narrationText').innerHTML=_narrHtml;
   document.getElementById('subMapContainer').style.display=state.currentStep===4?'block':'none';
-  /* FEAT4: hidden cats section for Step 2 (三重塔) */
+  
   const hcs=document.getElementById('hiddenCatsSection');
   if(hcs){
     if(state.currentStep===1){
@@ -2476,7 +2380,7 @@ function buildQuestContent(){
         <div class="hidden-cats-msg">${isJa
           ?'この三重塔には、職人の遊び心によって彫られた「3匹の隠れ招き猫」がひっそりと息を潜めています。ぜひ現地で探してみてください！答えはタップで確認できます。'
           :'This pagoda hides 3 secret beckoning cats carved by a playful craftsman. Try finding them on-site first! Tap below when you are ready for a hint.'}</div>
-        <!-- STAGE 1: spoiler-free reveal button -->
+        
         <button class="hidden-cats-reveal-btn" id="hcRevealBtn" onclick="playClickSound();_revealHiddenCats()">
           <div class="hidden-cats-reveal-icon">🐱</div>
           <div class="hidden-cats-reveal-title">${isJa?'現地で探してみよう！':'Try to Find Them On-Site!'}</div>
@@ -2485,19 +2389,19 @@ function buildQuestContent(){
             :'First explore with your own eyes. Found them? Launch the AR camera!'}</div>
           <div class="hidden-cats-reveal-cta">${isJa?'▼ 答え（手がかり）を表示する':'▼ Show Hints / Reveal Answers'}</div>
         </button>
-        <!-- STAGE 2: hidden until tapped -->
+        
         <div class="hidden-cats-revealed" id="hcRevealedArea">
           <div class="hidden-cats-grid">
             <div class="hidden-cat-thumb" onclick="playClickSound();openARHiddenCat(0)">
-              <img src="2_三重塔の隠れ猫1.jpg" onerror="this.src='2_三重塔の猫.jpg'" alt="Hidden Cat 1">
+              <img src="2_三重塔の隠れ猫1.jpg" onerror="this.src='2_三重塔の猫.jpg'" alt="Hidden Cat 1" loading="lazy">
               <div class="hidden-cat-thumb-label">${isJa?'手がかり1':'Clue 1'}</div>
             </div>
             <div class="hidden-cat-thumb" onclick="playClickSound();openARHiddenCat(1)">
-              <img src="2_三重塔の隠れ猫2.jpg" onerror="this.src='2_三重塔の猫.jpg'" alt="Hidden Cat 2">
+              <img src="2_三重塔の隠れ猫2.jpg" onerror="this.src='2_三重塔の猫.jpg'" alt="Hidden Cat 2" loading="lazy">
               <div class="hidden-cat-thumb-label">${isJa?'手がかり2':'Clue 2'}</div>
             </div>
             <div class="hidden-cat-thumb" onclick="playClickSound();openARHiddenCat(2)">
-              <img src="2_三重塔の隠れ猫3.jpg" onerror="this.src='2_三重塔の猫.jpg'" alt="Hidden Cat 3">
+              <img src="2_三重塔の隠れ猫3.jpg" onerror="this.src='2_三重塔の猫.jpg'" alt="Hidden Cat 3" loading="lazy">
               <div class="hidden-cat-thumb-label">${isJa?'手がかり3':'Clue 3'}</div>
             </div>
           </div>
@@ -2515,7 +2419,6 @@ function buildQuestContent(){
     `<button class="quiz-option" data-letter="${letters[i]}" data-correct="${o.correct}" onclick="answerQuiz(this,${o.correct})">${o.text}</button>`
   ).join('');
 
-  /* FIX5+6: ボタンを最初から表示 ＆ ボタン名に次スポット名を動的挿入 */
   const nb=document.getElementById('btnClear');
   nb.style.display='block';
   if(isLast){
@@ -2526,7 +2429,7 @@ function buildQuestContent(){
       ?`次のスポット（${nextTitle}）へ ➔`
       :`Proceed to Next Spot (${nextTitle}) ➔`;
   }
-  /* btnClear の onclick を毎回セット（前のハンドラをクリア） */
+  
   nb.onclick=()=>{
     if(state.currentStep<9){
       state.currentStep++;
@@ -2538,7 +2441,6 @@ function buildQuestContent(){
     }
   };
 
-  /* FIX2: 前のスポットに戻るボタンを動的に追加/更新 */
   let prevBtn=document.getElementById('btnPrevSpot');
   if(!prevBtn){
     prevBtn=document.createElement('button');
@@ -2562,9 +2464,8 @@ function buildQuestContent(){
     };
   }
 
-  /* FIX5a: スタンプラリーを更新 */
   updateStampRail();
-  /* Topic box */
+  
   _updateTopicBox(state.currentStep, isJa);
 }
 function answerQuiz(btn,isCorrect){
@@ -2573,24 +2474,23 @@ function answerQuiz(btn,isCorrect){
   const s=d.steps[state.currentStep];
   document.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.correct==='true')b.classList.add('correct');});
   if(!isCorrect)btn.classList.add('wrong');
-  if(isCorrect)stampSpot(state.currentStep); /* FEAT1: stamp on correct answer */
+  if(isCorrect)stampSpot(state.currentStep); 
   const fb=document.getElementById('quizFeedback');
   fb.innerHTML=isCorrect?s.correctFb:s.wrongFb;
   fb.className=`quiz-feedback show ${isCorrect?'correct':'wrong'}`;
-  /* FIX5: ボタンは既に表示済み。クイズ回答後はフィードバックへスクロールするだけ */
+  
   setTimeout(()=>{
     document.getElementById('quizFeedback').scrollIntoView({behavior:'smooth',block:'nearest'});
   },320);
 }
 
-/* ════════ OMIKUJI ════════ */
 function executeOmikujiFlow(){
   const isJa=state.lang==='ja';
   const d=CONFIG_LANG[state.lang||'ja'];
   const btn=document.getElementById('btnDrawOmikuji');
   const res=document.getElementById('omikujiResultArea');
   const usedBox=document.getElementById('omikujiUsedBox');
-  /* 結果を一旦クリア */
+  
   res.style.display='none';
   if(usedBox)usedBox.style.display='none';
   btn.disabled=true;
@@ -2602,7 +2502,7 @@ function executeOmikujiFlow(){
     res.style.display='block';
     res.scrollIntoView({behavior:'smooth',block:'nearest'});
     showToast('OMIKUJI',isJa?'神託が届きました。':'Your fortune has been revealed.');
-    /* 引いた後は「もう一度引く」ボタンに変更 */
+    
     btn.disabled=false;
     btn.innerHTML=isJa
       ?`🔄 &nbsp;もう一度引く（リセット）`
@@ -2610,11 +2510,9 @@ function executeOmikujiFlow(){
   },1100);
 }
 
-/* ════════ CLEAR CONTENT (FIX3: 固定4件 + FIX5b: 満願成就) ════════ */
 function buildClearContent(){
   const isJa=state.lang==='ja';
 
-  /* 固定4件を常時表示（プロファイル不問） */
   const spots=[
     {icon:'🕯',
      name:isJa?'常徳院':'Jōtoku-in Temple',
@@ -2638,7 +2536,7 @@ function buildClearContent(){
               :'Enjoy artisan Matcha lattes and lucky cat-themed dorayaki sweets inside a cozy retro architectural interior.'}
   ];
   const _mapsUrl=(name)=>{
-    /* スポット名→正確な検索クエリのマッピング */
+    
     const spotQueries={
       '常徳院':'常徳院 世田谷区 豪徳寺',
       'Jōtoku-in Temple':'Jotoku-in Temple Setagaya Tokyo',
@@ -2663,7 +2561,6 @@ function buildClearContent(){
       </a>
     </div></div>`).join('');
 
-  /* FIX5b: 満願成就シート */
   const _sc=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
   _sc('manganTitle',isJa?'🎉 10大スポット満願成就！':'🎉 10 Spots Sanctuary Completed!');
   _sc('manganSub',isJa?'ALL SPOTS COMPLETED · 令和 GOUTOKUJI':'ALL SPOTS COMPLETED · REIWA ERA');
@@ -2671,11 +2568,10 @@ function buildClearContent(){
     ?'招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。'
     :'Under the blessing of the Beckoning Cat, you have completed all 10 Goutokuji landmarks. May this sacred journey bring great fortune to your life.');
   const stamps=['⛩️','🏯','🪔','🐱','⚔️','🏛️','🕯️','🏮','🔔','🌸'];
-  /* FEAT4: delegate to updateStampRail_clear for reliable rendering */
+  
   updateStampRail_clear();
 }
 
-/* FEAT4: Re-render mangan stamps reliably */
 function updateStampRail_clear(){
   const stamps=['⛩️','🏯','🪔','🐱','⚔️','🏛️','🕯️','🏮','🔔','🌸'];
   const ms=document.getElementById('manganStamps');
@@ -2690,21 +2586,18 @@ function updateStampRail_clear(){
     div.textContent=done?e:'○';
     ms.appendChild(div);
   });
-  /* Also update stampRail if present */
+  
   updateStampRail();
 }
 
-/* ════════ FEEDBACK ════════ */
 function rateStars(n){state.rating=n;document.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('active',i<n));}
 function submitFeedback(){
   showToast('FEEDBACK',state.lang==='ja'?'アンケートのご協力ありがとうございました！':'Thank you for your valuable feedback!');
   document.getElementById('surveyComments').value='';rateStars(0);
 }
 
-/* ════════ API DUMMIES ════════ */
 function demoElevenLabs(){showToast('ELEVENLABS API','ElevenLabs API Call Demo\nModel: eleven_multilingual_v2\nStreaming audio narration would play here.');}
-/* handlePlayVoice は FEAT4 セクションで定義 */
-/* FIX4: 音声コントロール mock */
+
 function narrRewind(){if(_realAudio){audioSkip(-10);}else{showToast('⏪ AUDIO',state.lang==='ja'?'10秒 巻き戻し':'Rewinded 10s');}}
 function narrForward(){if(_realAudio){audioSkip(10);}else{showToast('⏩ AUDIO',state.lang==='ja'?'10秒 早送り':'Forwarded 10s');}}
 function narrSpeed(sel){
@@ -2715,13 +2608,12 @@ function narrSpeed(sel){
 
 
 
-/* ════════ FEAT3: Web Audio click sound ════════ */
 let _audioCtx=null;
 function playClickSound(){
   try{
     if(!_audioCtx) _audioCtx=new(window.AudioContext||window.webkitAudioContext)();
     const ctx=_audioCtx;
-    /* 上品な高音コンッ音: sine wave 1400Hz → 900Hz, 55ms */
+    
     const osc=ctx.createOscillator();
     const gain=ctx.createGain();
     osc.connect(gain);gain.connect(ctx.destination);
@@ -2734,7 +2626,7 @@ function playClickSound(){
     osc.stop(ctx.currentTime+0.06);
   }catch(e){}
 }
-/* 全ボタン・option-btn・lang-btn にクリック音を付与 */
+
 document.addEventListener('click',function(e){
   const t=e.target;
   if(t.matches('button,select,.option-btn,.lang-btn,.quiz-option,.star-btn,.share-btn,.shop-card,.spot-card,.ar-media-wrap')){
@@ -2743,12 +2635,11 @@ document.addEventListener('click',function(e){
 },true);
 
 
-/* ════════ FEAT4: Real Audio Player (山門 Step 0) ════════ */
 let _realAudio=null;
 let _audioRaf=null;
 
 function handlePlayVoice(){
-  /* 山門（Step 0）のみ実音声、他はモック */
+  
   if(state.currentStep===0){
     const src=state.lang==='en'?'map_en.mp3':'map_ja.mp3';
     _initRealAudio(src);
@@ -2758,7 +2649,7 @@ function handlePlayVoice(){
 }
 
 function _initRealAudio(src){
-  /* 既存のオーディオがあれば停止・破棄 */
+  
   if(_realAudio){_realAudio.pause();_realAudio=null;}
   const player=document.getElementById('realAudioPlayer');
   player.classList.add('show');
@@ -2831,7 +2722,6 @@ function _fmtTime(s){
   return`${m}:${ss.toString().padStart(2,'0')}`;
 }
 
-/* 画面遷移時に音声停止 */
 function _stopRealAudio(){
   if(_realAudio){_realAudio.pause();_realAudio=null;}
   cancelAnimationFrame(_audioRaf);
@@ -2841,7 +2731,6 @@ function _stopRealAudio(){
 
 
 
-/* ════════ FEAT3: welcome-map slideshow ════════ */
 let _wmSlideIdx=0;
 let _wmSlideTimer=null;
 function _startWmSlides(){
@@ -2866,7 +2755,7 @@ function wmGoSlide(idx){playClickSound();clearInterval(_wmSlideTimer);_wmGoSlide
 function wmNavPrev(){
   clearInterval(_wmSlideTimer);
   _wmGoSlideInner((_wmSlideIdx-1+4)%4);
-  /* restart auto after manual */
+  
   _wmSlideTimer=setInterval(()=>_wmGoSlideInner((_wmSlideIdx+1)%4),3000);
 }
 function wmNavNext(){
@@ -2876,9 +2765,8 @@ function wmNavNext(){
 }
 
 
-/* ════════ FEAT5: spot jump from map ════════ */
 function jumpToSpot(stepIdx){
-  /* スタンプラリーはクイズ正解時のみ捺印 — stepを直接セットしてjump */
+  
   state.currentStep=stepIdx;
   showPage('page-quest');
   showToast('SPOT JUMP',
@@ -2887,7 +2775,6 @@ function jumpToSpot(stepIdx){
       :`Jumped to Spot ${stepIdx+1}`);
 }
 
-/* ════════ FEAT1: Welcome-Map Audio Player ════════ */
 let _wmAudio=null;
 let _wmRaf=null;
 let _wmNarrExpanded=false;
@@ -2900,7 +2787,7 @@ function _stopWmAudio(){
 }
 
 function _initWmAudio(){
-  if(_wmAudio)return; /* already loaded */
+  if(_wmAudio)return; 
   const file=state.lang==='ja'?'map_ja.mp3':'map_en.mp3';
   _wmAudio=new Audio(file);
   _wmAudio.preload='metadata';
@@ -2963,10 +2850,8 @@ function wmChangeSpeed(sel){
   showToast('🎚 SPEED',state.lang==='ja'?`再生速度: ${v}x`:`Playback Speed: ${v}x`);
 }
 
-/* ════════ FEAT5: Narr accordion (welcome-map + quest) ════════ */
 
 
-/* ════════ Quest Slideshow ════════ */
 let _qSlideIdx=0;
 let _qSlideTimer=null;
 let _qSlideImages=[];
@@ -2977,9 +2862,9 @@ function _buildQuestSlides(images){
   clearInterval(_qSlideTimer);
   const wrap=document.getElementById('questSlideWrap');
   if(!wrap)return;
-  /* remove old slides */
+  
   Array.from(wrap.querySelectorAll('img.quest-slide')).forEach(el=>el.remove());
-  /* insert slides before first child (nav buttons) */
+  
   const first=wrap.querySelector('.quest-slide-prev');
   images.forEach((src,i)=>{
     const img=document.createElement('img');
@@ -2989,15 +2874,15 @@ function _buildQuestSlides(images){
     img.onerror=function(){this.style.display='none';};
     wrap.insertBefore(img,first);
   });
-  /* dots */
+  
   const dots=document.getElementById('questSlideDots');
   if(dots){
     dots.innerHTML=images.map((_,i)=>`<div class="quest-slide-dot${i===0?' active':''}" onclick="questGoSlide(${i})"></div>`).join('');
   }
-  /* nav visibility */
+  
   document.getElementById('qSlidePrev').style.display=images.length>1?'block':'none';
   document.getElementById('qSlideNext').style.display=images.length>1?'block':'none';
-  /* auto-advance if multiple images */
+  
   if(images.length>1){
     _qSlideTimer=setInterval(()=>_questSlideInner((_qSlideIdx+1)%_qSlideImages.length),4000);
   }
@@ -3017,7 +2902,7 @@ function questGoSlide(idx){
   playClickSound();
   clearInterval(_qSlideTimer);
   _questSlideInner(idx);
-  /* FIX3: restart auto-advance after manual interaction */
+  
   if(_qSlideImages.length>1){
     _qSlideTimer=setInterval(()=>_questSlideInner((_qSlideIdx+1)%_qSlideImages.length),4000);
   }
@@ -3026,7 +2911,6 @@ function questSlidePrev(){questGoSlide((_qSlideIdx-1+_qSlideImages.length)%_qSli
 function questSlideNext(){questGoSlide((_qSlideIdx+1)%_qSlideImages.length);}
 function _stopQuestSlides(){clearInterval(_qSlideTimer);}
 
-/* ════════ FEAT4: Hidden cats AR (Step 2 special) ════════ */
 const HIDDEN_CAT_DATA=[
   {title:"隠れ猫1 ロックオン！ / Hidden Cat 1 Locked!",
    desc:"屋根の下のシルエットに潜む招き猫を発見！職人がここに隠した奇跡の一匹です。",
@@ -3041,7 +2925,6 @@ const HIDDEN_CAT_DATA=[
    descEn:"Only visible from below — the 3rd cat completes the set. A true pagoda miracle!",
    emoji:"🐱🎊🌟"},
 ];
-
 
 function _revealHiddenCats(){
   const btn=document.getElementById('hcRevealBtn');
@@ -3078,7 +2961,6 @@ function openARHiddenCat(catIdx){
 }
 
 
-/* ════════ Topic boxes (butsuden + jizodo) ════════ */
 const TOPIC_DATA={
   2:{
     ja:{icon:'🪔',title:'お線香体験のすすめ',body:'仏殿では、お線香を立てて身を清めることができます。大切な現地マナーとして、お線香代（お気持ちの金額）は、香炉の目の前ではなく「仏殿正面のお賽銭箱」に直接入れるのが粋な参拝作法です。ぜひ立ち上る煙を身体に浴び、心身ともに清めてからご本尊と向き合いましょう！',note:'📸 現地写真参照：仏殿前の焼香.jpg'},
@@ -3123,7 +3005,6 @@ function toggleNarrClamp(btn){
   btn.textContent=expanded?(_dQ.showLessLabel||'▲ Show Less'):(_dQ.readMoreLabel||'▼ Read More');
 }
 
-/* ════════ FIX5a: STAMP RALLY ════════ */
 function updateStampRail(){
   const rail=document.getElementById('stampRail');
   if(!rail)return;
@@ -3138,7 +3019,7 @@ function updateStampRail(){
     const isCurrent=i===state.currentStep;
     cell.className='stamp-cell'+(isStamped?' stamped':isCurrent?' current':'');
     if(isStamped){
-      /* Show the spot emoji inside the stamped cell */
+      
       cell.textContent=icon;
     }else{
       cell.textContent=String(i+1);
@@ -3149,63 +3030,60 @@ function updateStampRail(){
   });
 }
 
-/* スポットクリア時にスタンプを押す（クイズ正解 or AR起動後に呼ぶ） */
 function stampSpot(idx){
   state.visitedSpots.add(idx);
   updateStampRail();
 }
 
-/* ════════ AR ENGINE — UPGRADED ════════ */
 let arTimer=null;
 
-/* AR overlay data per step (0-indexed) */
 const AR_DATA=[
-  /* 0: 山門 */
+  
   {title:"山門 — 構造解析 / Gate Analysis",img:"1_山門.jpg",
    desc:"明治17年上棟の山門。額「碧雲関」の書体データをスキャン中… 木造組物の接合部を3D解析しています。",
    descEn:"Meiji-era Sanmon gate structural scan active. Detecting wooden joint geometry and calligraphy pattern.",
    emoji:"⛩️🔬"},
-  /* 1: 三重塔 */
+  
   {title:"三重塔 第一層 — 招き猫ロックオン！",img:"2_三重塔の猫.jpg",
    desc:"十二支の「子（ネズミ）」の横に隠された木彫りの招き猫をロックオン！🐱 スマホ画面の中で招き猫がピョコピョコと動き出し、周囲へ福を振りまいています！",
    descEn:"Beckoning cat LOCKED behind the Zodiac Rat carving! 🐱 The hidden neko is waving luck your way!",
    emoji:"🐱✨🎊"},
-  /* 2: 仏殿 */
+  
   {title:"仏殿 — 香煙浄化エフェクト",img:"3_仏殿.jpg",
    desc:"香炉から立ち上る煙のパーティクルを検出。仏殿正面の篆額「弐世仏」の文字認識が完了しました。心身が浄化されていきます…",
    descEn:"Incense particle flow detected. Kanji seal '弐世仏' recognized — representing Past, Present & Future.",
    emoji:"🪔🌿"},
-  /* 3: 招福殿 */
+  
   {title:"招福殿 — 万体招き猫 同期完了！",img:"4_招福殿の招き猫1.jpg",
    desc:"奉納された数千体の白磁の招き猫たちが一斉に手招きを始め、画面いっぱいに黄金の福気が舞い上がっています！満願成就の光があなたを包みます。🌸🔮",
    descEn:"Thousands of beckoning cats SYNCHRONIZED! Golden fortune energy fills your screen! Wishes fulfilled! 🌸🔮",
    emoji:"🌸🔮🐱💛"},
-  /* 4: 井伊家墓所 */
+  
   {title:"井伊家墓所 — 国史跡データ解析",img:"5_井伊家墓所.jpg",
    desc:"国史跡認定（平成20年）の石碑を認識。大老・井伊直弼の墓誌銘を解析中… 幕末開国の歴史データがAR空間に展開されます。",
    descEn:"National Historic Site stone detected. Decoding the epitaph of Grand Councilor Ii Naosuke — gateway to Japan's modernisation.",
    emoji:"⚔️📜"},
-  /* 5: 法堂 */
+  
   {title:"法堂 — 寺宝肖像画 認識",img:"6_本殿.jpg",
    desc:"寺宝「井伊直亮肖像画」の輪郭データを検出しました。昭和42年落慶の法堂内部、聖観世音菩薩像の立体スキャンが進行中です。",
    descEn:"Treasure portrait of Ii Naoaki detected. 3D scan of Kannon bodhisattva statue active inside the Lecture Hall.",
    emoji:"🏛️✨"},
-  /* 6: 開祖堂 */
+  
   {title:"開祖堂 — 歴代高僧 位牌認識",img:"7_開祖堂.jpg",
    desc:"平成11年落慶の開祖堂。門菴宗関像・天極秀道像など歴代高僧の位牌データを認識中。千年を超える法系の系譜がAR空間に浮かび上がります。",
    descEn:"Patriarchs' Hall detected. Ancestral tablet lineage spanning centuries overlaid in AR — the living roots of Goutokuji.",
    emoji:"🕯️📿"},
-  /* 7: 赤門 */
+  
   {title:"赤門 — 朱漆構造スキャン",img:"8_赤門.jpg",
    desc:"明治18年寄進の朱塗りの門を検出。弁柄朱の顔料成分を分光解析中… 漆の塗り重ね層数は推定12層と計測されました。",
    descEn:"Vermilion Akamon gate lacquer scan: 12 estimated layers of urushi detected. Pigment spectral analysis complete.",
    emoji:"🏮🔴"},
-  /* 8: 梵鐘 */
+  
   {title:"梵鐘 — 延宝7年 音響解析",img:"9_鐘楼.jpg",
    desc:"延宝7年(1679年)鋳造の区内最古の梵鐘。青銅合金成分を解析中… 推定固有振動数: 65Hz。除夜の鐘の音波を再現します🔔",
    descEn:"Oldest bronze bell in Setagaya (1679) — resonance frequency estimated 65Hz. New Year's Eve soundwave recreated.",
    emoji:"🔔🎵"},
-  /* 9: 地蔵堂 */
+  
   {title:"地蔵堂 — 令和2年落慶 守護認証",img:"10_地蔵堂.jpg",
    desc:"令和2年(2020年)に落慶した地蔵堂の最新建築データを取得。地蔵菩薩半跏像の守護オーラが検出されました。旅人・子供・すべての魂を見守る光が広がっています。🌸",
    descEn:"Jizo bodhisattva statue (2020) protective aura detected. Guardian light extends to travellers, children, and all souls.",
@@ -3218,20 +3096,18 @@ function openAR(){
   const detected=document.getElementById('arDetected');
   const scanLine=document.getElementById('arScanLine');
 
-  /* reset to scanning state */
   detected.classList.remove('show');
   scanZone.style.display='flex';
   scanLine.style.display='block';
   modal.classList.add('open');
 
-  /* pick data for current step */
   const step=Math.min(state.currentStep, AR_DATA.length-1);
   const d=AR_DATA[step];
   const isJa=state.lang!=='en';
 
   clearTimeout(arTimer);
   arTimer=setTimeout(()=>{
-    /* transition to detected */
+    
     scanZone.style.display='none';
     scanLine.style.display='none';
 
@@ -3248,14 +3124,13 @@ function closeAR(){
   clearTimeout(arTimer);
   const modal=document.getElementById('arModal');
   modal.classList.remove('open');
-  /* reset */
+  
   document.getElementById('arDetected').classList.remove('show');
   document.getElementById('arScanningZone').style.display='flex';
   document.getElementById('arScanLine').style.display='block';
 }
 
 
-/* ════════ TOAST ════════ */
 let toastTimer=null;
 function showToast(title,body){
   document.getElementById('toastTitle').textContent=title;
@@ -3265,16 +3140,14 @@ function showToast(title,body){
   toastTimer=setTimeout(()=>document.getElementById('toast').classList.remove('show'),3600);
 }
 
-/* ════════ RESTART ════════ */
 function restartTour(){
-  /* FEAT7: bulletproof full reset */
+  
   try{_stopRealAudio();}catch(e){}
   try{_stopWmAudio();}catch(e){}
   try{_stopQuestSlides();}catch(e){}
   try{_stopCheckoutSlides();}catch(e){}
   try{_stopWmSlides();}catch(e){}
 
-  /* Clear state */
   state.lang=null;
   state.group=null;
   state.visit=null;
@@ -3284,10 +3157,8 @@ function restartTour(){
   state.omikujiGroupSize=1;
   state.visitedSpots=new Set();
 
-  /* Clear localStorage */
   try{localStorage.clear();}catch(e){}
 
-  /* Reset UI elements safely */
   const res=document.getElementById('omikujiResultArea');
   if(res)res.style.display='none';
   const usedBox=document.getElementById('omikujiUsedBox');
@@ -3296,12 +3167,12 @@ function restartTour(){
   if(omBtn){const _d3=CONFIG_LANG[state.lang||'ja'];omBtn.disabled=false;omBtn.innerHTML='🔮 &nbsp;<span id="lblOmiBtnText">'+((_d3&&_d3.omiBtnText)||'Draw Fortune')+'</span>';}
   document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
   try{rateStars(0);}catch(e){}
-  /* Reset manners btn */
+  
   const mb=document.getElementById('mannersAgreeBtn');
   if(mb){mb.disabled=true;mb.style.opacity='.45';mb.style.cursor='not-allowed';mb.style.pointerEvents='none';}
-  /* Reset checkboxes */
+  
   document.querySelectorAll('.manner-check').forEach(c=>c.checked=false);
-  /* Navigate to start */
+  
   showPage('page-lang-select');
 }
 
