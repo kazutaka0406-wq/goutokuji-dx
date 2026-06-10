@@ -471,15 +471,25 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   color:var(--gold);opacity:.65;text-transform:uppercase;
   width:100%;margin-bottom:6px}
 .stamp-cell{
-  width:28px;height:28px;border:1px solid rgba(201,168,76,.25);border-radius:50%;
+  width:32px;height:32px;
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-size:1rem;line-height:1;color:var(--parchment);
-  font-family:"Segoe UI Emoji","Noto Color Emoji","Apple Color Emoji",var(--font-body);
+  font-size:.875rem;line-height:1;
+  color:var(--parchment);
+  font-family:"Apple Color Emoji","Segoe UI Emoji",
+    "Noto Color Emoji","Twemoji Mozilla",sans-serif;
   transition:all .3s var(--ease-spring);
-  background:rgba(255,255,255,.02);position:relative}
+  background:rgba(255,255,255,.02);
+  position:relative;
+  overflow:visible;
+}
 .stamp-cell.stamped{
-  background:rgba(155,35,53,.18);border-color:var(--red);
-  box-shadow:0 0 8px rgba(155,35,53,.35)}
+  background:rgba(155,35,53,.18);
+  border-color:var(--red);
+  box-shadow:0 0 8px rgba(155,35,53,.35);
+  font-size:.875rem;
+}
 .stamp-cell.current{
   background:rgba(201,168,76,.15);border-color:var(--gold);
   box-shadow:0 0 10px rgba(201,168,76,.4);animation:stampPulse 1.5s ease-in-out infinite}
@@ -505,6 +515,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background:rgba(155,35,53,.2);border:2px solid var(--red);
   display:flex;align-items:center;justify-content:center;
   font-size:.875rem;
+  font-family:"Apple Color Emoji","Segoe UI Emoji",
+    "Noto Color Emoji",sans-serif;
   box-shadow:0 0 10px rgba(155,35,53,.3);
   animation:stampIn .4s var(--ease-spring) both}
 .manganjouju-seal{
@@ -2613,7 +2625,12 @@ function updateStampRail_clear(){
     div.className='mangan-stamp';
     div.style.animationDelay=i*0.07+'s';
     if(!done){div.style.opacity='.3';div.style.filter='grayscale(1)';}
-    div.textContent=done?e:'○';
+    const span=document.createElement('span');
+    span.textContent=done?e:'○';
+    span.style.cssText=
+      'font-family:"Apple Color Emoji","Segoe UI Emoji",'+
+      '"Noto Color Emoji",sans-serif;';
+    div.appendChild(span);
     ms.appendChild(div);
   });
   
@@ -3049,7 +3066,14 @@ function updateStampRail(){
     const isCurrent=i===state.currentStep;
     cell.className='stamp-cell'+(isStamped?' stamped':isCurrent?' current':'');
     if(isStamped){
-      cell.textContent=icon;
+      cell.textContent='';
+      const span=document.createElement('span');
+      span.textContent=icon;
+      span.style.cssText=
+        'font-size:.875rem;line-height:1;display:block;'+
+        'font-family:"Apple Color Emoji","Segoe UI Emoji",'+
+        '"Noto Color Emoji",sans-serif;';
+      cell.appendChild(span);
     }else{
       cell.textContent=String(i+1);
       cell.style.fontSize='.625rem';
