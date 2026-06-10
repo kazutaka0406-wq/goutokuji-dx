@@ -1661,7 +1661,7 @@ const CONFIG_LANG = {
     startQuestBtn:"Launch Premium Quest ➔",mapHeader:"GOUTOKUJI ROUTE MAP",
     narrationLabel:"🎙 AI Narration — ElevenLabs",playVoiceBtn:"▶ Play AI Audio Guide",
     quizLabel:"Architectural History Quiz",
-    clearTitle:"<em>All Sanctuary Paths Cleared</em>Well Done!",
+    clearTitle:"<em>All 10 Spots Completed!</em>Congratulations!",
     omiBoxTitle:"Lucky Cat Oracle",omiBoxDesc:"Unveil your fortune card. 100% FREE.",
     omiBtnText:"🔮 Draw Free Fortune ➔",omiProcessing:"Syncing with Oracle Matrix…",
     omiResults:[
@@ -1806,7 +1806,7 @@ const CONFIG_LANG = {
     startQuestBtn:"开始高级探索 ➔",mapHeader:"豪德寺境内路线进度图",
     narrationLabel:"🎙 AI 解说 — ElevenLabs",playVoiceBtn:"▶ 播放 AI 语音导览",
     quizLabel:"历史建筑知识问答",
-    clearTitle:"<em>境内10大景点全部通关</em>恭喜您！",
+    clearTitle:"<em>完成全部10大景点！</em>恭喜您！",
     omiBoxTitle:"豪德寺DX 招财猫御签",omiBoxDesc:"【通行证特典】无需追加费用！抽取涵盖恋爱·搬迁·健康的御签。",
     omiBtnText:"抽取御签（免费特典）",omiProcessing:"正在抽签中…",
     omiResults:[
@@ -1893,7 +1893,7 @@ const CONFIG_LANG = {
     startQuestBtn:"프리미엄 순례 시작 ➔",mapHeader:"고토쿠지 경내 순로 진행 현황",
     narrationLabel:"🎙 AI 내레이션 — ElevenLabs",playVoiceBtn:"▶ AI 음성 가이드 재생",
     quizLabel:"경내 역사 퀴즈",
-    clearTitle:"<em>경내 10대 명소 완전 정복</em>축하합니다！",
+    clearTitle:"<em>10대 스팟 완전 정복!</em>축하합니다!",
     omiBoxTitle:"고토쿠지 DX 행운 고양이 오미쿠지",omiBoxDesc:"【패스 특전】추가 요금 없이！연애·이사·건강 신탁이 등장합니다.",
     omiBtnText:"오미쿠지 뽑기（무료 특전）",omiProcessing:"추첨 중…",
     omiResults:[
@@ -1977,7 +1977,7 @@ const CONFIG_LANG = {
     startQuestBtn:"Iniciar Peregrinación ➔",mapHeader:"MAPA DE RUTA GOUTOKUJI",
     narrationLabel:"🎙 Narración IA — ElevenLabs",playVoiceBtn:"▶ Reproducir guía de voz",
     quizLabel:"Quiz de Historia",
-    clearTitle:"<em>¡10 lugares completados!</em>¡Bien hecho!",
+    clearTitle:"<em>¡10 Lugares Completados!</em>¡Felicitaciones!",
     omiBoxTitle:"Oráculo del Gato de la Fortuna",omiBoxDesc:"Desbloquea tu carta de la fortuna. 100% GRATIS.",
     omiBtnText:"🔮 Sacar la suerte (GRATIS)",omiProcessing:"Consultando el oráculo…",
     omiResults:[
@@ -2050,7 +2050,7 @@ const CONFIG_LANG = {
     startQuestBtn:"Démarrer le Pèlerinage ➔",mapHeader:"CARTE D'ITINÉRAIRE GOUTOKUJI",
     narrationLabel:"🎙 Narration IA — ElevenLabs",playVoiceBtn:"▶ Lire le guide audio",
     quizLabel:"Quiz Historique",
-    clearTitle:"<em>10 sites complétés !</em>Bravo !",
+    clearTitle:"<em>10 Sites Complétés!</em>Félicitations!",
     omiBoxTitle:"Oracle du Chat Porte-Bonheur",omiBoxDesc:"Révélez votre carte de fortune. 100% GRATUIT.",
     omiBtnText:"🔮 Tirer la fortune (GRATUIT)",omiProcessing:"Consultation de l'oracle…",
     omiResults:[
@@ -2206,7 +2206,7 @@ function _mannersHintClick(){
 }
 
 function checkAllManners(){
-  playClickSound(); 
+  playCheckSound();
   const checks=document.querySelectorAll('#mannersBox .manner-check');
   const allChecked=Array.from(checks).every(c=>c.checked);
   const btn=document.getElementById('mannersAgreeBtn');
@@ -2544,6 +2544,7 @@ function answerQuiz(btn,isCorrect){
       });
     /* 1回目の正解のみスタンプ付与 */
     if(!quizAnswered){
+      playCoinSound();
       stampSpot(state.currentStep);
     }
     quizAnswered=true;
@@ -2650,13 +2651,59 @@ function buildClearContent(){
     </div></div>`).join('');
 
   const _sc=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  _sc('manganTitle',isJa?'🎉 10大スポット満願成就！':'🎉 10 Spots Sanctuary Completed!');
+  const _sh=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
+
+  const totalStamps=state.visitedSpots.size;
+  const allClear=totalStamps>=10;
+  const cb=CLEAR_BRANCH_I18N[state.lang]||CLEAR_BRANCH_I18N['en'];
+
+  _sh('lblClearTitle',allClear?d.clearTitle:cb.titlePartial(totalStamps));
+  _sc('manganTitle',allClear?cb.manganTitleAll:cb.manganTitlePartial(totalStamps));
   _sc('manganSub',isJa?'ALL SPOTS COMPLETED · 令和 GOUTOKUJI':'ALL SPOTS COMPLETED · REIWA ERA');
-  _sc('manganMsg',d.manganMsg);
+  _sh('manganMsg',allClear?d.manganMsg:cb.manganMsgPartial(totalStamps));
   const stamps=['⛩️','🏯','🪔','🐱','⚔️','🏛️','🕯️','🏮','🔔','🌸'];
-  
+
   updateStampRail_clear();
 }
+
+const CLEAR_BRANCH_I18N={
+  ja:{
+    manganTitleAll:'🎉 10大スポット満願成就！',
+    titlePartial:(n)=>`<em>巡礼お疲れ様でした</em>${n}/10スポット達成！`,
+    manganTitlePartial:(n)=>`📍 ${n}/10スポット達成`,
+    manganMsgPartial:(n)=>`今回は${n}箇所を巡りました。<br>残り${10-n}箇所のクイズに正解すると<br>満願成就スタンプが完成します。<br>ぜひまた豪徳寺へお越しください！`,
+  },
+  en:{
+    manganTitleAll:'🎉 10 Spots Sanctuary Completed!',
+    titlePartial:(n)=>`<em>Pilgrimage Complete</em>${n}/10 Spots Visited!`,
+    manganTitlePartial:(n)=>`📍 ${n}/10 Spots Achieved`,
+    manganMsgPartial:(n)=>`You visited ${n} spots this time.<br>Answer ${10-n} more quiz(zes) correctly<br>to complete your Goshuin stamp collection.<br>We hope to see you again at Goutokuji!`,
+  },
+  zh:{
+    manganTitleAll:'🎉 10大景点全部完成！',
+    titlePartial:(n)=>`<em>巡礼结束</em>完成了${n}/10个景点！`,
+    manganTitlePartial:(n)=>`📍 完成${n}/10个景点`,
+    manganMsgPartial:(n)=>`本次游览了${n}个景点。<br>再答对${10-n}道题即可集齐御朱印印章。<br>期待您再次光临豪德寺！`,
+  },
+  ko:{
+    manganTitleAll:'🎉 10대 스팟 만원성취！',
+    titlePartial:(n)=>`<em>순례 수고하셨습니다</em>${n}/10 스팟 달성!`,
+    manganTitlePartial:(n)=>`📍 ${n}/10 스팟 달성`,
+    manganMsgPartial:(n)=>`이번에 ${n}곳을 방문했습니다.<br>나머지 ${10-n}곳의 퀴즈에 정답을 맞히면<br>어주인 스탬프가 완성됩니다.<br>또 고토쿠지에 오세요！`,
+  },
+  es:{
+    manganTitleAll:'🎉 ¡10 Lugares del Santuario Completados!',
+    titlePartial:(n)=>`<em>Peregrinación Completa</em>¡${n}/10 Lugares Visitados!`,
+    manganTitlePartial:(n)=>`📍 ${n}/10 Lugares Logrados`,
+    manganMsgPartial:(n)=>`Visitaste ${n} lugares esta vez.<br>Responde correctamente ${10-n} quiz más<br>para completar tu colección de sellos Goshuin.<br>¡Esperamos verte de nuevo en Goutokuji!`,
+  },
+  fr:{
+    manganTitleAll:'🎉 10 Sites du Sanctuaire Complétés!',
+    titlePartial:(n)=>`<em>Pèlerinage Terminé</em>${n}/10 Sites Visités!`,
+    manganTitlePartial:(n)=>`📍 ${n}/10 Sites Accomplis`,
+    manganMsgPartial:(n)=>`Vous avez visité ${n} sites cette fois.<br>Répondez correctement à ${10-n} quiz de plus<br>pour compléter votre collection de tampons Goshuin.<br>Nous espérons vous revoir à Goutokuji!`,
+  },
+};
 
 function updateStampRail_clear(){
   const stamps=['⛩️','🏯','🪔','🐱','⚔️','🏛️','🕯️','🏮','🔔','🌸'];
@@ -2715,6 +2762,40 @@ function playClickSound(){
     gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.055);
     osc.start(ctx.currentTime);
     osc.stop(ctx.currentTime+0.06);
+  }catch(e){}
+}
+
+function playCoinSound(){
+  try{
+    if(!_audioCtx)_audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    const ctx=_audioCtx;
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.type='square';
+    gain.gain.setValueAtTime(0.3,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.18);
+    osc.frequency.setValueAtTime(1046,ctx.currentTime);
+    osc.frequency.setValueAtTime(1318,ctx.currentTime+0.09);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime+0.18);
+  }catch(e){}
+}
+
+function playCheckSound(){
+  try{
+    if(!_audioCtx)_audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    const ctx=_audioCtx;
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.type='sine';
+    osc.frequency.setValueAtTime(800,ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1000,ctx.currentTime+0.06);
+    gain.gain.setValueAtTime(0.06,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.08);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime+0.08);
   }catch(e){}
 }
 
