@@ -510,21 +510,20 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   color:var(--mist);opacity:.6;text-transform:uppercase;margin-bottom:16px}
 .manganjouju-stamps{
   display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
-.mangan-stamp{
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(155,35,53,.2);border:2px solid var(--red);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.875rem;
-  font-family:"Apple Color Emoji","Segoe UI Emoji",
-    "Noto Color Emoji",sans-serif;
-  box-shadow:0 0 10px rgba(155,35,53,.3);
-  animation:stampIn .4s var(--ease-spring) both}
 .manganjouju-seal{
-  display:inline-block;border:2px solid var(--red);border-radius:50%;
-  width:64px;height:64px;line-height:64px;
-  font-family:var(--font-body);font-size:1.2rem;font-weight:600;
-  color:var(--red);margin:0 auto 12px;
-  box-shadow:0 0 20px rgba(155,35,53,.4)}
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  width:64px;height:64px;
+  font-family:var(--font-body);
+  font-size:1.4rem;font-weight:600;
+  color:var(--gold);
+  background:rgba(201,168,76,.12);
+  box-shadow:0 0 20px rgba(201,168,76,.4);
+  margin:8px auto;
+}
 .manganjouju-msg{
   font-family:var(--font-display);font-size:.9375rem;
   color:var(--parchment);opacity:.85;line-height:1.7;font-style:italic;font-variant-numeric:lining-nums}
@@ -2657,51 +2656,50 @@ function buildClearContent(){
   const allClear=totalStamps>=10;
   const cb=CLEAR_BRANCH_I18N[state.lang]||CLEAR_BRANCH_I18N['en'];
 
-  _sh('lblClearTitle',allClear?d.clearTitle:cb.titlePartial(totalStamps));
-  _sc('manganTitle',allClear?cb.manganTitleAll:cb.manganTitlePartial(totalStamps));
+  _sh('lblClearTitle',cb.titleFixed);
+  _sc('manganTitle',cb.manganTitle(totalStamps));
   _sc('manganSub',isJa?'ALL SPOTS COMPLETED · 令和 GOUTOKUJI':'ALL SPOTS COMPLETED · REIWA ERA');
   _sh('manganMsg',allClear?d.manganMsg:cb.manganMsgPartial(totalStamps));
   const stamps=['⛩️','🏯','🪔','🐱','⚔️','🏛️','🕯️','🏮','🔔','🌸'];
+
+  const sealEl=document.querySelector('.manganjouju-seal');
+  if(sealEl){
+    sealEl.style.display=allClear?'inline-flex':'none';
+  }
 
   updateStampRail_clear();
 }
 
 const CLEAR_BRANCH_I18N={
   ja:{
-    manganTitleAll:'🎉 10大スポット満願成就！',
-    titlePartial:(n)=>`<em>巡礼お疲れ様でした</em>${n}/10スポット達成！`,
-    manganTitlePartial:(n)=>`📍 ${n}/10スポット達成`,
-    manganMsgPartial:(n)=>`今回は${n}箇所を巡りました。<br>残り${10-n}箇所のクイズに正解すると<br>満願成就スタンプが完成します。<br>ぜひまた豪徳寺へお越しください！`,
+    titleFixed:'<em>境内10大スポット達成</em>お疲れ様でした！',
+    manganTitle:(n)=>`💮 ${n}/10 御朱印スタンプを取得済み！`,
+    manganMsgPartial:(n)=>`今回は${n}個の御朱印を獲得しました。<br>未取得のスタンプ（数字部分）をタップすると<br>そのスポットの画面に直接移動できます。<br>クイズに正解して残り${10-n}個の御朱印を集めましょう！`,
   },
   en:{
-    manganTitleAll:'🎉 10 Spots Sanctuary Completed!',
-    titlePartial:(n)=>`<em>Pilgrimage Complete</em>${n}/10 Spots Visited!`,
-    manganTitlePartial:(n)=>`📍 ${n}/10 Spots Achieved`,
-    manganMsgPartial:(n)=>`You visited ${n} spots this time.<br>Answer ${10-n} more quiz(zes) correctly<br>to complete your Goshuin stamp collection.<br>We hope to see you again at Goutokuji!`,
+    titleFixed:'<em>10 Sanctuary Spots Complete</em>Well Done!',
+    manganTitle:(n)=>`💮 ${n}/10 Goshuin Stamps Collected!`,
+    manganMsgPartial:(n)=>`You collected ${n} Goshuin stamps this time.<br>Tap the numbered stamps to jump directly to that spot.<br>Answer the quiz correctly to collect the remaining ${10-n} stamps!`,
   },
   zh:{
-    manganTitleAll:'🎉 10大景点全部完成！',
-    titlePartial:(n)=>`<em>巡礼结束</em>完成了${n}/10个景点！`,
-    manganTitlePartial:(n)=>`📍 完成${n}/10个景点`,
-    manganMsgPartial:(n)=>`本次游览了${n}个景点。<br>再答对${10-n}道题即可集齐御朱印印章。<br>期待您再次光临豪德寺！`,
+    titleFixed:'<em>完成境内10大景点</em>辛苦了！',
+    manganTitle:(n)=>`💮 已获得 ${n}/10 御朱印印章！`,
+    manganMsgPartial:(n)=>`本次获得了${n}个御朱印印章。<br>点击数字印章可直接跳转到该景点。<br>答对剩余${10-n}道题，集齐所有印章吧！`,
   },
   ko:{
-    manganTitleAll:'🎉 10대 스팟 만원성취！',
-    titlePartial:(n)=>`<em>순례 수고하셨습니다</em>${n}/10 스팟 달성!`,
-    manganTitlePartial:(n)=>`📍 ${n}/10 스팟 달성`,
-    manganMsgPartial:(n)=>`이번에 ${n}곳을 방문했습니다.<br>나머지 ${10-n}곳의 퀴즈에 정답을 맞히면<br>어주인 스탬프가 완성됩니다.<br>또 고토쿠지에 오세요！`,
+    titleFixed:'<em>경내 10대 스팟 달성</em>수고하셨습니다!',
+    manganTitle:(n)=>`💮 ${n}/10 어주인 스탬프 획득 완료!`,
+    manganMsgPartial:(n)=>`이번에 ${n}개의 어주인 스탬프를 획득했습니다.<br>숫자 스탬프를 탭하면 해당 스팟으로 바로 이동할 수 있습니다.<br>나머지 ${10-n}개의 스탬프를 모아보세요！`,
   },
   es:{
-    manganTitleAll:'🎉 ¡10 Lugares del Santuario Completados!',
-    titlePartial:(n)=>`<em>Peregrinación Completa</em>¡${n}/10 Lugares Visitados!`,
-    manganTitlePartial:(n)=>`📍 ${n}/10 Lugares Logrados`,
-    manganMsgPartial:(n)=>`Visitaste ${n} lugares esta vez.<br>Responde correctamente ${10-n} quiz más<br>para completar tu colección de sellos Goshuin.<br>¡Esperamos verte de nuevo en Goutokuji!`,
+    titleFixed:'<em>10 Lugares del Santuario</em>¡Buen trabajo!',
+    manganTitle:(n)=>`💮 ¡${n}/10 Sellos Goshuin Obtenidos!`,
+    manganMsgPartial:(n)=>`Coleccionaste ${n} sellos Goshuin esta vez.<br>Toca los sellos numerados para ir directamente a ese lugar.<br>¡Responde correctamente para obtener los ${10-n} sellos restantes!`,
   },
   fr:{
-    manganTitleAll:'🎉 10 Sites du Sanctuaire Complétés!',
-    titlePartial:(n)=>`<em>Pèlerinage Terminé</em>${n}/10 Sites Visités!`,
-    manganTitlePartial:(n)=>`📍 ${n}/10 Sites Accomplis`,
-    manganMsgPartial:(n)=>`Vous avez visité ${n} sites cette fois.<br>Répondez correctement à ${10-n} quiz de plus<br>pour compléter votre collection de tampons Goshuin.<br>Nous espérons vous revoir à Goutokuji!`,
+    titleFixed:'<em>10 Sites du Sanctuaire</em>Bien joué!',
+    manganTitle:(n)=>`💮 ${n}/10 Tampons Goshuin Obtenus!`,
+    manganMsgPartial:(n)=>`Vous avez collecté ${n} tampons Goshuin cette fois.<br>Appuyez sur les tampons numérotés pour accéder directement à ce site.<br>Répondez correctement pour obtenir les ${10-n} tampons restants!`,
   },
 };
 
@@ -2713,18 +2711,42 @@ function updateStampRail_clear(){
   stamps.forEach((e,i)=>{
     const done=state.visitedSpots.has(i);
     const div=document.createElement('div');
-    div.className='mangan-stamp';
-    div.style.animationDelay=i*0.07+'s';
-    if(!done){div.style.opacity='.3';div.style.filter='grayscale(1)';}
-    const span=document.createElement('span');
-    span.textContent=done?e:'○';
-    span.style.cssText=
-      'font-family:"Apple Color Emoji","Segoe UI Emoji",'+
-      '"Noto Color Emoji",sans-serif;';
-    div.appendChild(span);
+
+    /* スタイル設定（既存のスタイルを維持） */
+    div.style.cssText=
+      'width:36px;height:36px;border-radius:50%;'+
+      'display:flex;align-items:center;justify-content:center;'+
+      'animation-delay:'+(i*0.07)+'s;'+
+      'font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;'+
+      'font-size:1.1rem;transition:transform .2s;'+
+      (done
+        ? 'background:rgba(155,35,53,.2);border:2px solid #9b2335;'+
+          'box-shadow:0 0 10px rgba(155,35,53,.3);cursor:default;'
+        : 'background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.3);'+
+          'opacity:.7;cursor:pointer;color:rgba(201,168,76,.7);'+
+          'font-size:.75rem;font-family:var(--font-mono);');
+    div.textContent=done?e:String(i+1);
+
+    /* 未達成のスタンプはクリックでそのスポットへ遷移 */
+    if(!done){
+      div.title=CONFIG_LANG[state.lang||'ja'].steps[i].title;
+      div.addEventListener('mouseenter',()=>{
+        div.style.transform='scale(1.2)';
+        div.style.borderColor='var(--gold)';
+      });
+      div.addEventListener('mouseleave',()=>{
+        div.style.transform='scale(1)';
+        div.style.borderColor='rgba(201,168,76,.3)';
+      });
+      div.addEventListener('click',()=>{
+        playClickSound();
+        state.currentStep=i;
+        showPage('page-quest');
+      });
+    }
     ms.appendChild(div);
   });
-  
+
   updateStampRail();
 }
 
