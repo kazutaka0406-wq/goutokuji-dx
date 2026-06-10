@@ -2165,11 +2165,25 @@ function _startCheckoutSlides(){
 }
 function _stopCheckoutSlides(){clearInterval(_coSlideTimer);}
 
-function doCheckout(){
-  showToast('STRIPE CHECKOUT',state.lang==='ja'
-    ?'Stripe決済デモ（¥1,000）。完了後、同行者同期へ進みます。'
-    :'Stripe Checkout Demo (¥1,000). Proceeding to companion sync.');
-  setTimeout(()=>showPage('page-sync'),1400);
+async function doCheckout(){
+  try{
+    const res = await fetch('/.netlify/functions/config');
+    const cfg = await res.json();
+    if(cfg.paymentMode === 'live'){
+      showToast('STRIPE',state.lang==='ja'
+        ?'課金システム準備中です。しばらくお待ちください。'
+        :'Payment system coming soon. Please wait.');
+    } else {
+      /* DEMOモード：無課金で次へ */
+      showToast('DEMO MODE',state.lang==='ja'
+        ?'【DEMOモード】無料で体験を開始します。'
+        :'[DEMO MODE] Starting free experience.');
+      setTimeout(()=>showPage('page-sync'),1400);
+    }
+  } catch(e){
+    /* フォールバック：エラー時はDEMOとして動作 */
+    setTimeout(()=>showPage('page-sync'),1400);
+  }
 }
 
 function _set(id,prop,val){
