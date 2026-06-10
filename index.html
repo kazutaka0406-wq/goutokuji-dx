@@ -1114,7 +1114,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
         <div class="appeal-feat-icon">💮</div>
         <div class="appeal-feat-body">
           <div class="appeal-feat-title" id="appealFeat3Title">10大スポット 満願成就スタンプラリー</div>
-          <div class="appeal-feat-desc" id="appealFeat3Desc">10大スポットをすべて巡った証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！</div>
+          <div class="appeal-feat-desc" id="appealFeat3Desc">10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！</div>
         </div>
       </div>
 
@@ -1454,7 +1454,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   <div class="quest-header"><div class="quest-badge" id="questBadge">Step 01 / 10</div><div class="quest-mission-num" id="questMissionNum">01</div></div>
   <div class="quest-body">
     <div class="stamp-rail fade-up" id="stampRail">
-      <div class="stamp-rail-label" id="stampRailLabel">🏯 STAMP RALLY · 御朱印スタンプラリー</div>
+      <div class="stamp-rail-label" id="stampRailLabel">🏯 御朱印スタンプラリー（クイズ正解でスタンプ獲得！）</div>
       
     </div>
     <div class="map-legend-box fade-up"><div class="map-header-label" id="lblMapHeader">GOUTOKUJI ROUTE MAP</div><div class="map-scroll-container" id="mapProgressBar"></div></div>
@@ -1532,7 +1532,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
       <div class="manganjouju-sub" id="manganSub">ALL SPOTS COMPLETED · 令和 GOUTOKUJI</div>
       <div class="manganjouju-stamps" id="manganStamps"></div>
       <div class="manganjouju-seal">満</div>
-      <div class="manganjouju-msg" id="manganMsg">招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。</div>
+      <div class="manganjouju-msg" id="manganMsg">招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。10のクイズすべてに正解し、御朱印を満願しました。</div>
     </div>
     <div class="omikuji-box-card fade-up">
       <div class="omikuji-title" id="lblOmiBoxTitle">Lucky Cat Oracle</div>
@@ -1599,6 +1599,8 @@ const CONFIG_LANG = {
     buyBtn:"🐱 &nbsp; Purchase Premium Pass &nbsp; ¥1,000",
     stripeNote:"🔒 Secured by Stripe · Progress auto-saves",
     checkoutPayLabel:"Start Premium Experience",
+    appealFeat3Desc:"Answer all 10 spot quizzes correctly to earn a glowing digital stamp sheet as proof of completion!",
+    manganMsg:"Under the blessing of the Beckoning Cat, you have completed all 10 Goutokuji landmarks. May this sacred journey bring great fortune to your life. You answered all 10 quizzes correctly and completed your Goshuin stamp collection.",
     sampleTitle:"✨ Experience Sample Preview",
     sampleDesc:"After purchase: detailed pagoda-cat close-ups, Ii Naosuke grave route map, and ElevenLabs AI narration all unlock.",
     features:["<strong>👥 Multi-Device Share</strong> — One purchase unlocks up to 4 companion devices via QR sync.","<strong>🔮 Free Fortune Slip</strong> — Multidimensional oracle (Romance/Health/Moving) 100% FREE.","<strong>🗺️ 10 Landmark Paths</strong> — Real on-site photography from Sanmon Gate to Jizo-do Hall."],
@@ -1670,6 +1672,8 @@ const CONFIG_LANG = {
     buyBtn:"🐱 &nbsp; プレミアムパスを購入する &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe安全決済 · ブラウザを閉じても進捗を自動復旧",
     checkoutPayLabel:"プレミアム体験を開始する",
+    appealFeat3Desc:"10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！",
+    manganMsg:"招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。10のクイズすべてに正解し、御朱印を満願しました。",
     sampleTitle:"✨ 体験プレビュー",
     sampleDesc:"パス購入後、三重塔の猫クローズアップ解説・井伊直弼墓所の詳細ルートマップ・ElevenLabs音声解説がすべてアンロックされます。",
     features:["<strong>👥 同行者スマホ無料同期</strong> — 1人購入でご家族・友人のスマホ最大4台を完全無料で同期できます。","<strong>🔮 本格おみくじが無料特典</strong> — 恋愛・転居・健康の分野別デジタルおみくじが何度でも無料で引けます。","<strong>🗺️ 現地撮影写真による10大箇所巡り</strong> — 山門から地蔵堂まで、リアルな現地写真をもとにした完璧なルート案内。"],
@@ -1789,7 +1793,7 @@ const CONFIG_LANG = {
     appealEyebrow:"体验价值 · Premium Experience",
     appealFeat1Title:"10大景点 AI 语音导览",appealFeat1Desc:"AI解说助您发现隐藏在三重塔中的3只招财猫！",
     appealFeat2Title:"WebAR 相机体验",appealFeat2Desc:"现地限定空间AR演出。点击照片，历史跃然三维展现！",
-    appealFeat3Title:"10大景点完成纪念印章集",appealFeat3Desc:"完成全部景点的证明，将发行朱红色数字印章册！",
+    appealFeat3Title:"10大景点完成纪念印章集",appealFeat3Desc:"在10大景点全部答题正确后，将获得朱红色数字御朱印印章表作为证明！",
     appealFeat4Title:"免费御签",appealFeat4Desc:"巡游全部10个景点后，可免费抽取专属运势御签！",
     appealNextBtn:"出发 ➔",
     checkoutEyebrow:"Premium Guide · 解锁",
@@ -1798,6 +1802,7 @@ const CONFIG_LANG = {
     checkoutInc1:"10大景点 AR 导航",checkoutInc2:"ElevenLabs AI 多语言解说",
     checkoutInc3:"完成纪念数字印章集",checkoutInc4:"免费数字御签（不限次数）",
     checkoutPayLabel:"开始高级体验",checkoutSkipLabel:"跳过进入演示 →",
+    manganMsg:"在招财猫的庇护下，您已圆满巡礼豪德寺十大景点。愿这段殊胜的缘分为您带来洪福。您答对了全部10道题，集齐了所有御朱印印章。",
     syncTitle:"同步同伴设备",syncSubtitle:"同伴设备同步",
     syncDesc:"请同伴用手机摄像头扫描二维码。最多4台设备可共享完整导览，无需额外付费。",
     syncNextBtn:"同步完成，继续 ➔",syncSkipNote:"跳过 →",
@@ -1875,7 +1880,7 @@ const CONFIG_LANG = {
     appealEyebrow:"체험 가치 · Premium Experience",
     appealFeat1Title:"10대 명소 AI 내레이션",appealFeat1Desc:"AI 내레이션이 삼중탑에 숨겨진 3마리의 마네키네코 발견을 완벽하게 도와드립니다!",
     appealFeat2Title:"WebAR 카메라 체험",appealFeat2Desc:"현지 한정 공간 AR 연출. 사진을 탭하면 역사가 입체적으로 펼쳐집니다!",
-    appealFeat3Title:"10대 명소 만원성취 스탬프 랠리",appealFeat3Desc:"모두 순례한 증거로 주홍빛 디지털 스탬프 시트가 발행됩니다!",
+    appealFeat3Title:"10대 명소 만원성취 스탬프 랠리",appealFeat3Desc:"10대 스팟 퀴즈를 모두 맞히면 빛나는 디지털 어주인 스탬프 시트가 발행됩니다！",
     appealFeat4Title:"무료 오미쿠지",appealFeat4Desc:"10개 스폿을 모두 순례한 후, 무료로 특별 운세 오미쿠지를 뽑을 수 있습니다!",
     appealNextBtn:"시작하기 ➔",
     checkoutEyebrow:"Premium Guide · 잠금 해제",
@@ -1884,6 +1889,7 @@ const CONFIG_LANG = {
     checkoutInc1:"10대 명소 AR 내비게이션",checkoutInc2:"ElevenLabs AI 다국어 내레이션",
     checkoutInc3:"만원성취 디지털 스탬프 랠리",checkoutInc4:"무료 디지털 오미쿠지 (무제한)",
     checkoutPayLabel:"프리미엄 체험 시작하기",checkoutSkipLabel:"데모로 건너뛰기 →",
+    manganMsg:"마네키네코의 가호 아래, 고토쿠지 10대 명소 순례를 모두 마쳤습니다. 이 인연이 당신에게 큰 복운을 가져다주기를 바랍니다. 10개의 퀴즈를 모두 맞히고 어주인을 만원성취했습니다.",
     syncTitle:"동행자 기기 동기화",syncSubtitle:"동행자 기기 동기화",
     syncDesc:"동행자의 스마트폰 카메라로 QR 코드를 스캔해 주세요. 추가 비용 없이 최대 4대까지 완전한 가이드를 공유할 수 있습니다.",
     syncNextBtn:"동기화 후 계속 ➔",syncSkipNote:"건너뛰기 →",
@@ -1946,13 +1952,14 @@ const CONFIG_LANG = {
     appealTitle:"<em>Una Experiencia de Peregrinación Premium</em>Premium Pilgrimage Experience",
     appealFeat1Title:"Guía de Audio IA para 10 Lugares",appealFeat1Desc:"¡La narración IA te ayuda a descubrir los 3 gatos ocultos en la Pagoda de Tres Pisos!",
     appealFeat2Title:"Experiencia de Cámara WebAR",appealFeat2Desc:"AR espacial en el lugar. ¡Toca la foto para ver la historia en tres dimensiones!",
-    appealFeat3Title:"Rally de Sellos de Finalización",appealFeat3Desc:"¡Se emite una hoja de sellos digitales como prueba de completar los 10 lugares sagrados!",
+    appealFeat3Title:"Rally de Sellos de Finalización",appealFeat3Desc:"¡Responde correctamente todos los cuestionarios de los 10 lugares para ganar una hoja de sellos digitales!",
     appealFeat4Title:"Omikuji Gratis",appealFeat4Desc:"¡Después de completar los 10 lugares, puedes sacar tu fortuna especial gratis!",
     appealNextBtn:"Continuar ➔",
     checkoutEyebrow:"Guía Premium · Desbloquear",checkoutTitle:"<em>Unlock Premium Guide</em>Desbloquear Guía Premium",
     checkoutPriceLabel:"Guía Digital Premium",checkoutPriceBadge:"🎁 ¡Omikuji<br>Gratis!",
     checkoutInc1:"Navegación AR 10 Lugares",checkoutInc2:"Narración IA ElevenLabs",checkoutInc3:"Rally de sellos de finalización",checkoutInc4:"Omikuji digital gratis (ilimitado)",
     checkoutPayLabel:"Iniciar Experiencia Premium",checkoutSkipLabel:"Saltar al Demo →",
+    manganMsg:"Bajo la bendición del Gato de la Fortuna, has completado los 10 lugares emblemáticos de Goutokuji. Que este sagrado vínculo te traiga una gran fortuna. Respondiste correctamente las 10 preguntas y completaste tu colección de sellos Goshuin.",
     syncTitle:"Sincronizar Dispositivos de Compañeros",syncSubtitle:"COMPANION DEVICE SYNC",
     syncDesc:"Abre la cámara de tu acompañante y escanea el código QR. El guía completo se despliega en hasta 4 dispositivos sin coste adicional.",
     syncNextBtn:"Sincronizado, continuar ➔",syncSkipNote:"Omitir →",
@@ -2018,13 +2025,14 @@ const CONFIG_LANG = {
     appealTitle:"<em>Une Expérience de Pèlerinage Premium</em>Premium Pilgrimage Experience",
     appealFeat1Title:"Guide Audio IA pour 10 Sites",appealFeat1Desc:"La narration IA vous aide à découvrir les 3 chats cachés dans la Pagode à Trois Étages !",
     appealFeat2Title:"Expérience Caméra WebAR",appealFeat2Desc:"AR spatiale sur place. Touchez la photo pour voir l'histoire en trois dimensions !",
-    appealFeat3Title:"Rally de Tampons de Complétion",appealFeat3Desc:"Une feuille de tampons numériques est émise comme preuve de complétion des 10 sites sacrés !",
+    appealFeat3Title:"Rally de Tampons de Complétion",appealFeat3Desc:"Répondez correctement à tous les quiz des 10 sites pour gagner une feuille de tampons numériques!",
     appealFeat4Title:"Omikuji Gratuit",appealFeat4Desc:"Après avoir complété les 10 sites, tirez votre fortune spéciale gratuitement !",
     appealNextBtn:"Continuer ➔",
     checkoutEyebrow:"Guide Premium · Déverrouiller",checkoutTitle:"<em>Unlock Premium Guide</em>Déverrouiller le Guide Premium",
     checkoutPriceLabel:"Guide Numérique Premium",checkoutPriceBadge:"🎁 Omikuji<br>Gratuit !",
     checkoutInc1:"Navigation AR 10 Sites",checkoutInc2:"Narration IA ElevenLabs",checkoutInc3:"Rally de tampons de complétion",checkoutInc4:"Omikuji numérique gratuit (illimité)",
     checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutSkipLabel:"Passer à la Démo →",
+    manganMsg:"Sous la bénédiction du Chat Porte-Bonheur, vous avez visité les 10 sites emblématiques de Goutokuji. Que ce lien sacré vous apporte une grande fortune. Vous avez répondu correctement aux 10 quiz et complété votre collection de tampons Goshuin.",
     syncTitle:"Synchroniser les Appareils Compagnons",syncSubtitle:"COMPANION DEVICE SYNC",
     syncDesc:"Ouvrez l'appareil photo de votre compagnon et scannez le code QR. Le guide complet se déploie sur jusqu'à 4 appareils sans frais supplémentaires.",
     syncNextBtn:"Synchronisé, continuer ➔",syncSkipNote:"Passer →",
@@ -2277,7 +2285,7 @@ function applyLangUI(lk){
   _set('appealFeat2Title','textContent',d.appealFeat2Title||(isJa?'WebAR カメラ体験':'WebAR Camera Experience'));
   _set('appealFeat2Desc','textContent',d.appealFeat2Desc||(isJa?'現地限定の空間AR演出。写真をタップするだけで歴史が三次元に浮かび上がります。':'On-site spatial AR. Tap the photo to see history emerge in three dimensions.'));
   _set('appealFeat3Title','textContent',d.appealFeat3Title||(isJa?'10大スポット 満願成就スタンプラリー':'10-Spot Completion Stamp Rally'));
-  _set('appealFeat3Desc','textContent',d.appealFeat3Desc||(isJa?'すべて巡った証として、朱色に輝くデジタル御朱印スタンプシートが発行されます！':'A glowing digital stamp sheet is issued as proof of completing all 10 sacred spots!'));
+  _set('appealFeat3Desc','textContent',d.appealFeat3Desc||(isJa?'10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！':'Answer all 10 spot quizzes correctly to earn a glowing digital stamp sheet as proof of completion!'));
   _set('appealFeat4Title','textContent',d.appealFeat4Title||(isJa?'無料おみくじ':'Free Fortune Omikuji'));
   _set('appealFeat4Desc','textContent',d.appealFeat4Desc||(isJa?'10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！':'After completing all 10 spots, draw your personalised fortune slip — 100% free!'));
   _set('appealNextBtn','textContent',d.appealNextBtn||(isJa?'さあ、始めよう ➔':'Proceed ➔'));
@@ -2554,6 +2562,7 @@ function executeOmikujiFlow(){
 
 function buildClearContent(){
   const isJa=state.lang==='ja';
+  const d=CONFIG_LANG[state.lang||'ja'];
 
   const spots=[
     {icon:'🕯',
@@ -2606,9 +2615,7 @@ function buildClearContent(){
   const _sc=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
   _sc('manganTitle',isJa?'🎉 10大スポット満願成就！':'🎉 10 Spots Sanctuary Completed!');
   _sc('manganSub',isJa?'ALL SPOTS COMPLETED · 令和 GOUTOKUJI':'ALL SPOTS COMPLETED · REIWA ERA');
-  _sc('manganMsg',isJa
-    ?'招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。'
-    :'Under the blessing of the Beckoning Cat, you have completed all 10 Goutokuji landmarks. May this sacred journey bring great fortune to your life.');
+  _sc('manganMsg',d.manganMsg);
   const stamps=['⛩️','🏯','🪔','🐱','⚔️','🏛️','🕯️','🏮','🔔','🌸'];
   
   updateStampRail_clear();
@@ -3055,9 +3062,16 @@ function toggleNarrClamp(btn){
 function updateStampRail(){
   const rail=document.getElementById('stampRail');
   if(!rail)return;
-  const isJa=state.lang!=='en';
   const lbl=document.getElementById('stampRailLabel');
-  if(lbl)lbl.textContent=isJa?'🏯 御朱印スタンプラリー':'🏯 STAMP RALLY';
+  const stampLabels={
+    ja:'🏯 御朱印スタンプラリー（クイズ正解でスタンプ獲得！）',
+    en:'🏯 STAMP RALLY — Answer correctly to earn stamps!',
+    zh:'🏯 御朱印集章活动（答题正确即可获得印章！）',
+    ko:'🏯 어주인 스탬프 랠리（퀴즈 정답 시 스탬프 획득！）',
+    es:'🏯 SELLO GOSHUIN — ¡Responde correctamente para ganar sellos!',
+    fr:'🏯 TAMPON GOSHUIN — Répondez correctement pour gagner des tampons!',
+  };
+  if(lbl)lbl.textContent=stampLabels[state.lang]||stampLabels['en'];
   const spots=['⛩️','🏯','🪔','🐱','⚔️','🏛','🕯️','🏮','🔔','🌸'];
   Array.from(rail.children).forEach(c=>{if(!c.id)c.remove();});
   spots.forEach((icon,i)=>{
