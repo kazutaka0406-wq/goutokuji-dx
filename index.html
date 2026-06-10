@@ -919,6 +919,53 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .hidden-cats-revealed{display:none}
 .hidden-cats-revealed.show{display:block;animation:fadeUp .5s ease both}
 
+.cat-find-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cat-find-card{position:relative;aspect-ratio:1;border-radius:4px;
+  border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;
+  justify-content:center;background:rgba(255,255,255,.02);overflow:hidden}
+.cat-find-card .cat-find-q{font-family:var(--font-display);font-size:1.6rem;
+  color:rgba(201,168,76,.35)}
+.cat-find-card.found{border:1px solid var(--sage);background:rgba(74,103,65,.1);
+  animation:stampIn .5s var(--ease-silk) both}
+.cat-find-card.found img{width:100%;height:100%;object-fit:cover;display:block}
+.cat-find-card-label{position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,.72);padding:3px 4px;font-family:var(--font-mono);
+  font-size:.5rem;letter-spacing:.08em;color:#a8d4a0;text-align:center}
+
+.cat-upload-btn{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);
+  border:none;border-radius:3px;font-family:var(--font-display);font-size:.95rem;
+  letter-spacing:.04em;padding:13px;cursor:pointer;text-align:center;width:100%;
+  box-shadow:0 4px 18px rgba(155,35,53,.4);transition:transform .15s}
+.cat-upload-btn:active{transform:scale(.97)}
+
+.cat-ai-loading{display:none;text-align:center;font-family:var(--font-mono);
+  font-size:.6875rem;letter-spacing:.14em;color:var(--gold);padding:8px;
+  animation:arBadgePulse 1.2s ease-in-out infinite}
+.cat-ai-loading.show{display:block}
+
+.cat-found-msg{display:none;text-align:center;font-family:var(--font-display);
+  font-size:1.05rem;color:var(--gold-light);background:rgba(201,168,76,.1);
+  border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:12px}
+.cat-found-msg.show{display:block;animation:stampIn .5s var(--ease-silk) both}
+
+.cat-mission-banner{display:none;text-align:center;font-family:var(--font-display);
+  font-size:1.15rem;font-weight:600;color:var(--white);
+  background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:4px;
+  padding:14px;box-shadow:0 4px 18px rgba(155,35,53,.4)}
+.cat-mission-banner.show{display:block;animation:stampIn .6s var(--ease-silk) both}
+
+.cat-hints{display:flex;flex-direction:column;gap:6px}
+.cat-hint-btn{background:transparent;border:1px solid rgba(201,168,76,.35);
+  border-radius:3px;color:var(--gold);font-family:var(--font-mono);font-size:.6875rem;
+  letter-spacing:.06em;padding:9px 12px;cursor:pointer;text-align:left;
+  transition:background .2s}
+.cat-hint-btn:hover{background:rgba(201,168,76,.08)}
+.cat-hint-content{display:none;font-size:.8125rem;color:var(--mist);line-height:1.7;
+  opacity:.9;background:rgba(201,168,76,.04);border-left:2px solid var(--gold);
+  border-radius:0 3px 3px 0;padding:10px 12px;margin:-2px 0 4px}
+.cat-hint-content.show{display:block;animation:fadeUp .35s ease both}
+
 .omikuji-redraw-btn{
   background:transparent;border:1px solid rgba(201,168,76,.4);border-radius:3px;
   color:var(--gold);font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.1em;
@@ -2057,7 +2104,7 @@ const CONFIG_LANG = {
 
 
 
-const state={lang:null,group:null,visit:null,currentStep:0,rating:0,omikujiDraws:0,omikujiGroupSize:1,visitedSpots:new Set()};
+const state={lang:null,group:null,visit:null,currentStep:0,rating:0,omikujiDraws:0,omikujiGroupSize:1,visitedSpots:new Set(),foundCats:[]};
 let quizAnswered=false,shortsInterval=null,shortsIdx=0;
 
 window.addEventListener('DOMContentLoaded',()=>{
@@ -2422,43 +2469,7 @@ function buildQuestContent(){
   if(hcs){
     if(state.currentStep===1){
       hcs.style.display='block';
-      hcs.innerHTML=`
-        <div class="hidden-cats-badge">${isJa?'🐱 特別ミッション':'🐱 SPECIAL MISSION'}</div>
-        <div class="hidden-cats-title">${isJa
-          ?'三重塔に隠された3匹の招き猫を探せ！'
-          :'Special Mission: Find the 3 Hidden Cats!'}</div>
-        <div class="hidden-cats-msg">${isJa
-          ?'この三重塔には、職人の遊び心によって彫られた「3匹の隠れ招き猫」がひっそりと息を潜めています。ぜひ現地で探してみてください！答えはタップで確認できます。'
-          :'This pagoda hides 3 secret beckoning cats carved by a playful craftsman. Try finding them on-site first! Tap below when you are ready for a hint.'}</div>
-        
-        <button class="hidden-cats-reveal-btn" id="hcRevealBtn" onclick="playClickSound();_revealHiddenCats()">
-          <div class="hidden-cats-reveal-icon">🐱</div>
-          <div class="hidden-cats-reveal-title">${isJa?'現地で探してみよう！':'Try to Find Them On-Site!'}</div>
-          <div class="hidden-cats-reveal-desc">${isJa
-            ?'まずは自分の目で探してみましょう。見つかったら、ARカメラを起動！'
-            :'First explore with your own eyes. Found them? Launch the AR camera!'}</div>
-          <div class="hidden-cats-reveal-cta">${isJa?'▼ 答え（手がかり）を表示する':'▼ Show Hints / Reveal Answers'}</div>
-        </button>
-        
-        <div class="hidden-cats-revealed" id="hcRevealedArea">
-          <div class="hidden-cats-grid">
-            <div class="hidden-cat-thumb" onclick="playClickSound();openARHiddenCat(0)">
-              <img src="images/2_三重塔の隠れ猫1.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat 1" loading="lazy">
-              <div class="hidden-cat-thumb-label">${isJa?'手がかり1':'Clue 1'}</div>
-            </div>
-            <div class="hidden-cat-thumb" onclick="playClickSound();openARHiddenCat(1)">
-              <img src="images/2_三重塔の隠れ猫2.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat 2" loading="lazy">
-              <div class="hidden-cat-thumb-label">${isJa?'手がかり2':'Clue 2'}</div>
-            </div>
-            <div class="hidden-cat-thumb" onclick="playClickSound();openARHiddenCat(2)">
-              <img src="images/2_三重塔の隠れ猫3.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat 3" loading="lazy">
-              <div class="hidden-cat-thumb-label">${isJa?'手がかり3':'Clue 3'}</div>
-            </div>
-          </div>
-          <button class="hidden-cats-ar-btn" onclick="playClickSound();openARHiddenCat(-1)">
-            📷 ${isJa?'ARカメラで全ての隠れ猫を探す！':'Launch WebAR — Hunt All 3 Hidden Cats!'}
-          </button>
-        </div>`;
+      _buildHiddenCatsSection(hcs);
     }else{
       hcs.style.display='none';
     }
@@ -2991,53 +3002,221 @@ function questSlidePrev(){questGoSlide((_qSlideIdx-1+_qSlideImages.length)%_qSli
 function questSlideNext(){questGoSlide((_qSlideIdx+1)%_qSlideImages.length);}
 function _stopQuestSlides(){clearInterval(_qSlideTimer);}
 
-const HIDDEN_CAT_DATA=[
-  {title:"隠れ猫1 ロックオン！ / Hidden Cat 1 Locked!",
-   desc:"屋根の下のシルエットに潜む招き猫を発見！職人がここに隠した奇跡の一匹です。",
-   descEn:"Hidden cat detected under the roof eave! A miraculous find by the master craftsman.",
-   emoji:"🐱✨🔍"},
-  {title:"隠れ猫2 発見！干支の真横に / Hidden Cat 2 Found!",
-   desc:"十二支の「子（ネズミ）」の真横にひっそりと佇む2匹目の隠れ招き猫！信じられないほど精巧な彫刻です。",
-   descEn:"The 2nd hidden cat sits right next to the Rat zodiac. Astonishing craftsmanship!",
-   emoji:"🐱🐾✨"},
-  {title:"隠れ猫3 奇跡の角度で発見！/ Hidden Cat 3 Miracle Angle!",
-   desc:"見上げる角度からしか見えない3匹目！まさに奇跡の瞬間。3匹コンプリートしました！",
-   descEn:"Only visible from below — the 3rd cat completes the set. A true pagoda miracle!",
-   emoji:"🐱🎊🌟"},
-];
+const HIDDEN_CATS_I18N={
+  ja:{
+    badge:'🐱 特別ミッション',
+    title:'🐱 三重塔に隠された3匹の招き猫を探せ！',
+    desc:['現地で実際に目視で探してみましょう！','見つけたら写真を撮ってアップロードしてください。','AIが招き猫かどうか自動で判定します。'],
+    uploadBtn:'📷 写真をアップロードして答え合わせ',
+    hint1Btn:'💡 ヒント① 招き猫の特徴を見る',
+    hint1Text:'一重目の屋根の下に、小さく手招きをしている木彫りの猫が3匹隠れています。十二支の彫刻の近くをよく探してみてください。',
+    hint2Btn:'🖼️ ヒント② 写真で場所を確認',
+    hint3Btn:'📍 ヒント③ 正確な場所を教えて',
+    hint3Text:['1匹目：北西側の軒下、ねずみの彫刻の右横','2匹目：南東側の軒下、うさぎの彫刻の左横','3匹目：正面軒下中央、龍の彫刻のすぐ下'],
+    aiJudging:'🔍 AIが判定中...',
+    notFound:'？',
+    foundLabel:'✅ 発見！',
+    foundMsg:['🐱 1匹目の隠れ招き猫を発見！！','🐱🐱 2匹目の隠れ招き猫を発見！！','🐱🐱🐱 3匹全員発見！満願成就！！'],
+    missionComplete:'🎉 ミッションコンプリート！',
+  },
+  en:{
+    badge:'🐱 SPECIAL MISSION',
+    title:'🐱 Find the 3 Hidden Cats in the Pagoda!',
+    desc:['Try to find them on-site with your own eyes!','When you find one, take a photo and upload it.',"AI will automatically verify if it's a hidden cat."],
+    uploadBtn:'📷 Upload Photo to Verify',
+    hint1Btn:'💡 Hint① What does the cat look like?',
+    hint1Text:'Three small hand-carved beckoning cats are hidden under the roof of the first tier. Look carefully near the zodiac animal carvings.',
+    hint2Btn:'🖼️ Hint② See photo clues',
+    hint3Btn:'📍 Hint③ Tell me the exact location',
+    hint3Text:['Cat 1: Under northwest eave, right of the Rat carving','Cat 2: Under southeast eave, left of the Rabbit carving','Cat 3: Under front center eave, just below the Dragon carving'],
+    aiJudging:'🔍 AI is verifying...',
+    notFound:'?',
+    foundLabel:'✅ Found!',
+    foundMsg:['🐱 Found Hidden Cat #1!!','🐱🐱 Found Hidden Cat #2!!','🐱🐱🐱 All 3 Cats Found! Mission Complete!!'],
+    missionComplete:'🎉 Mission Complete!',
+  },
+  zh:{
+    badge:'🐱 特别任务',
+    title:'🐱 寻找三重塔中隐藏的3只招财猫！',
+    desc:['请在现场亲眼寻找！','找到后拍照上传。','AI将自动判断是否为招财猫。'],
+    uploadBtn:'📷 上传照片进行验证',
+    hint1Btn:'💡 提示① 招财猫的特征',
+    hint1Text:'第一层屋檐下，藏着3只手招式的小型木雕招财猫。请仔细寻找十二生肖雕刻附近。',
+    hint2Btn:'🖼️ 提示② 通过照片确认位置',
+    hint3Btn:'📍 提示③ 告诉我准确位置',
+    hint3Text:['第1只：西北侧屋檐下，鼠雕刻右侧','第2只：东南侧屋檐下，兔雕刻左侧','第3只：正面屋檐中央，龙雕刻正下方'],
+    aiJudging:'🔍 AI判定中...',
+    notFound:'？',
+    foundLabel:'✅ 已发现！',
+    foundMsg:['🐱 发现第1只隐藏招财猫！！','🐱🐱 发现第2只隐藏招财猫！！','🐱🐱🐱 3只全部找到！圆满成就！！'],
+    missionComplete:'🎉 任务完成！',
+  },
+  ko:{
+    badge:'🐱 특별 미션',
+    title:'🐱 삼중탑에 숨겨진 3마리 고양이를 찾아라！',
+    desc:['현장에서 직접 눈으로 찾아보세요！','찾으면 사진을 찍어 업로드하세요.','AI가 자동으로 고양이인지 판별합니다。'],
+    uploadBtn:'📷 사진을 업로드하여 확인하기',
+    hint1Btn:'💡 힌트① 마네키네코의 특징 보기',
+    hint1Text:'1층 지붕 아래에 손짓하는 작은 목조 고양이 3마리가 숨겨져 있습니다. 십이지 조각 근처를 잘 찾아보세요.',
+    hint2Btn:'🖼️ 힌트② 사진으로 위치 확인',
+    hint3Btn:'📍 힌트③ 정확한 위치 알려주기',
+    hint3Text:['1번째: 북서쪽 처마 아래, 쥐 조각 오른쪽','2번째: 남동쪽 처마 아래, 토끼 조각 왼쪽','3번째: 정면 처마 중앙, 용 조각 바로 아래'],
+    aiJudging:'🔍 AI가 판정 중...',
+    notFound:'？',
+    foundLabel:'✅ 발견！',
+    foundMsg:['🐱 1번째 숨겨진 고양이 발견！！','🐱🐱 2번째 숨겨진 고양이 발견！！','🐱🐱🐱 3마리 모두 발견! 만원성취！！'],
+    missionComplete:'🎉 미션 컴플리트！',
+  },
+  es:{
+    badge:'🐱 MISIÓN ESPECIAL',
+    title:'🐱 ¡Encuentra los 3 Gatos Ocultos en la Pagoda!',
+    desc:['¡Intenta encontrarlos en el lugar con tus propios ojos!','Cuando encuentres uno, toma una foto y súbela.','La IA verificará automáticamente si es un gato oculto.'],
+    uploadBtn:'📷 Subir Foto para Verificar',
+    hint1Btn:'💡 Pista① ¿Cómo es el gato?',
+    hint1Text:'Tres pequeños gatos de la suerte tallados en madera están ocultos bajo el techo del primer nivel. Busca con cuidado cerca de las tallas del zodíaco.',
+    hint2Btn:'🖼️ Pista② Ver pistas fotográficas',
+    hint3Btn:'📍 Pista③ Dime la ubicación exacta',
+    hint3Text:['Gato 1: Bajo el alero noroeste, a la derecha de la talla de la Rata','Gato 2: Bajo el alero sureste, a la izquierda de la talla del Conejo','Gato 3: Bajo el alero frontal central, justo debajo de la talla del Dragón'],
+    aiJudging:'🔍 La IA está verificando...',
+    notFound:'?',
+    foundLabel:'✅ ¡Encontrado!',
+    foundMsg:['🐱 ¡Gato Oculto #1 Encontrado!!','🐱🐱 ¡Gato Oculto #2 Encontrado!!','🐱🐱🐱 ¡Los 3 Gatos Encontrados! ¡Misión Completa!!'],
+    missionComplete:'🎉 ¡Misión Completa!',
+  },
+  fr:{
+    badge:'🐱 MISSION SPÉCIALE',
+    title:'🐱 Trouvez les 3 Chats Cachés dans la Pagode!',
+    desc:['Essayez de les trouver sur place avec vos propres yeux!','Quand vous en trouvez un, prenez une photo et téléchargez-la.',"L'IA vérifiera automatiquement s'il s'agit d'un chat caché."],
+    uploadBtn:'📷 Télécharger une Photo pour Vérifier',
+    hint1Btn:'💡 Indice① À quoi ressemble le chat?',
+    hint1Text:'Trois petits chats porte-bonheur sculptés en bois sont cachés sous le toit du premier niveau. Cherchez attentivement près des sculptures du zodiaque.',
+    hint2Btn:'🖼️ Indice② Voir les indices photo',
+    hint3Btn:'📍 Indice③ Dites-moi l\'emplacement exact',
+    hint3Text:["Chat 1 : Sous l'avant-toit nord-ouest, à droite de la sculpture du Rat","Chat 2 : Sous l'avant-toit sud-est, à gauche de la sculpture du Lapin","Chat 3 : Sous l'avant-toit central avant, juste en dessous de la sculpture du Dragon"],
+    aiJudging:"🔍 L'IA vérifie...",
+    notFound:'?',
+    foundLabel:'✅ Trouvé!',
+    foundMsg:['🐱 Chat Caché n°1 Trouvé!!','🐱🐱 Chat Caché n°2 Trouvé!!','🐱🐱🐱 Les 3 Chats Trouvés! Mission Accomplie!!'],
+    missionComplete:'🎉 Mission Accomplie!',
+  },
+};
 
-function _revealHiddenCats(){
-  const btn=document.getElementById('hcRevealBtn');
-  const area=document.getElementById('hcRevealedArea');
-  if(btn)btn.style.display='none';
-  if(area)area.classList.add('show');
+function _buildHiddenCatsSection(hcs){
+  const t=HIDDEN_CATS_I18N[state.lang]||HIDDEN_CATS_I18N['en'];
+  hcs.innerHTML=`
+    <div class="hidden-cats-badge">${t.badge}</div>
+    <div class="hidden-cats-title">${t.title}</div>
+    <div class="hidden-cats-msg">${t.desc.join('<br>')}</div>
+
+    <div class="cat-find-cards" id="catFindCards"></div>
+
+    <label class="cat-upload-btn" for="catPhotoInput">${t.uploadBtn}</label>
+    <input type="file" accept="image/*" capture="environment" id="catPhotoInput" style="display:none" onchange="handleCatPhotoUpload(this)">
+
+    <div class="cat-ai-loading" id="catAiLoading">${t.aiJudging}</div>
+    <div class="cat-found-msg" id="catFoundMsg"></div>
+    <div class="cat-mission-banner" id="catMissionBanner">${t.missionComplete}</div>
+
+    <div class="cat-hints">
+      <button class="cat-hint-btn" onclick="toggleCatHint(1)">${t.hint1Btn}</button>
+      <div class="cat-hint-content" id="catHint1">${t.hint1Text}</div>
+
+      <button class="cat-hint-btn" onclick="toggleCatHint(2)">${t.hint2Btn}</button>
+      <div class="cat-hint-content" id="catHint2">
+        <div class="hidden-cats-grid">
+          <div class="hidden-cat-thumb">
+            <img src="images/2_三重塔の隠れ猫1.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat 1" loading="lazy">
+          </div>
+          <div class="hidden-cat-thumb">
+            <img src="images/2_三重塔の隠れ猫2.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat 2" loading="lazy">
+          </div>
+          <div class="hidden-cat-thumb">
+            <img src="images/2_三重塔の隠れ猫3.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat 3" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <button class="cat-hint-btn" onclick="toggleCatHint(3)">${t.hint3Btn}</button>
+      <div class="cat-hint-content" id="catHint3">${t.hint3Text.join('<br>')}</div>
+    </div>`;
+  _renderCatFindCards();
 }
 
-function openARHiddenCat(catIdx){
-  const modal=document.getElementById('arModal');
-  const scanZone=document.getElementById('arScanningZone');
-  const detected=document.getElementById('arDetected');
-  const scanLine=document.getElementById('arScanLine');
-  if(!modal)return;
-  detected.classList.remove('show');
-  scanZone.style.display='flex';
-  scanLine.style.display='block';
-  modal.classList.add('open');
-  const isJa=state.lang!=='en';
-  clearTimeout(arTimer);
-  arTimer=setTimeout(()=>{
-    scanZone.style.display='none';
-    scanLine.style.display='none';
-    const idx=(catIdx<0)?Math.floor(Math.random()*3):catIdx;
-    const c=HIDDEN_CAT_DATA[idx];
-    const img=document.getElementById('arDetectedImg');
-    img.src=`images/2_三重塔の隠れ猫${idx+1}.jpg`;
-    img.onerror=function(){this.src='images/2_三重塔の隠れ猫1.jpg';};
-    document.getElementById('arDetectedTitle').textContent=c.title;
-    document.getElementById('arDetectedDesc').textContent=isJa?c.desc:c.descEn;
-    document.getElementById('arDetectedEmoji').textContent=c.emoji;
-    detected.classList.add('show');
-  },2500);
+function _renderCatFindCards(){
+  const t=HIDDEN_CATS_I18N[state.lang]||HIDDEN_CATS_I18N['en'];
+  const wrap=document.getElementById('catFindCards');
+  if(!wrap)return;
+  wrap.innerHTML=[0,1,2].map(i=>{
+    if(state.foundCats.includes(i)){
+      return `<div class="cat-find-card found" id="catCard${i}">
+        <img src="images/2_三重塔の隠れ猫${i+1}.jpg" onerror="this.src='images/2_三重塔の隠れ猫1.jpg'" alt="Hidden Cat ${i+1}">
+        <div class="cat-find-card-label">${t.foundLabel}</div>
+      </div>`;
+    }
+    return `<div class="cat-find-card" id="catCard${i}"><div class="cat-find-q">${t.notFound}</div></div>`;
+  }).join('');
+}
+
+function toggleCatHint(n){
+  const el=document.getElementById('catHint'+n);
+  if(el)el.classList.toggle('show');
+}
+
+function handleCatPhotoUpload(input){
+  if(!input.files||!input.files.length)return;
+  const t=HIDDEN_CATS_I18N[state.lang]||HIDDEN_CATS_I18N['en'];
+  const loading=document.getElementById('catAiLoading');
+  const foundMsg=document.getElementById('catFoundMsg');
+  const banner=document.getElementById('catMissionBanner');
+  if(foundMsg)foundMsg.classList.remove('show');
+  if(banner)banner.classList.remove('show');
+  if(loading)loading.classList.add('show');
+
+  /* TODO: Claude API連携
+     将来的にここでアップロード画像を
+     Claude APIに送信して照合判定を行う
+     現在はダミーとして常に成功を返す */
+  setTimeout(()=>{
+    if(loading)loading.classList.remove('show');
+    input.value='';
+    if(state.foundCats.length>=3)return;
+
+    const idx=state.foundCats.length;
+    state.foundCats.push(idx);
+    _renderCatFindCards();
+
+    if(foundMsg){
+      foundMsg.textContent=t.foundMsg[idx];
+      foundMsg.classList.add('show');
+    }
+
+    if(state.foundCats.length===3){
+      _playMissionCompleteSound();
+      stampSpot(1);
+      if(banner)banner.classList.add('show');
+    }
+  },2000);
+}
+
+function _playMissionCompleteSound(){
+  try{
+    if(!_audioCtx)_audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    const ctx=_audioCtx;
+    const notes=[523.25,659.25,783.99,1046.5];
+    notes.forEach((freq,i)=>{
+      const osc=ctx.createOscillator();
+      const gain=ctx.createGain();
+      osc.connect(gain);gain.connect(ctx.destination);
+      osc.type='triangle';
+      const t0=ctx.currentTime+i*0.12;
+      osc.frequency.setValueAtTime(freq,t0);
+      gain.gain.setValueAtTime(0.0001,t0);
+      gain.gain.exponentialRampToValueAtTime(0.22,t0+0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001,t0+0.35);
+      osc.start(t0);
+      osc.stop(t0+0.36);
+    });
+  }catch(e){}
 }
 
 
@@ -3249,6 +3428,7 @@ function restartTour(){
   state.omikujiDraws=0;
   state.omikujiGroupSize=1;
   state.visitedSpots=new Set();
+  state.foundCats=[];
 
   try{localStorage.clear();}catch(e){}
 
