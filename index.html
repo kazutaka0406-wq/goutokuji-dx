@@ -1181,13 +1181,13 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     <div class="fade-up fade-up-3">
       <button class="btn-primary" id="btnCheckoutPay"
         onclick="playClickSound();doCheckout()">
-        🐱 &nbsp; <span id="checkoutPayLabel">無料で体験を開始する（デモ）</span>
+        🐱 &nbsp; <span id="checkoutPayLabel">プレミアム体験を開始する</span>
       </button>
     </div>
 
     <div class="checkout-free-note fade-up fade-up-3">
-      🔒 Secured by Stripe &nbsp;·&nbsp;
-      <span onclick="playClickSound();showPage('page-sync')" id="checkoutSkipLabel">スキップしてデモ体験 →</span>
+      🔒 Secured by Stripe
+      <span id="checkoutSkipWrap">&nbsp;·&nbsp;<span onclick="playClickSound();showPage('page-sync')" id="checkoutSkipLabel">スキップしてデモ体験 →</span></span>
     </div>
 
   </div>
@@ -1577,7 +1577,8 @@ const CONFIG_LANG = {
   en:{
     flag:'🇬🇧',code:'EN',
     introTitle:"Welcome to Goutokuji Premium DX",introNextBtn:"Proceed to Safety Etiquette →",
-    mannerTitle:"Sanctuary Regulations",mannerSubtitle:"Manners & Safety",
+    mannerTitle:"Sanctuary Rules & Manners",mannerSubtitle:"Manners & Safety",
+    mannersGuideText:"Please review and check all items below",
     mannerAgreeBtn:"I Agree &amp; Unlock Passport →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 Residential Silence</h4><p>Routes pass through quiet residential blocks. Please keep voices low at all times.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 Do Not Touch Statues or Cats</h4><p>Please do not touch the fortune cats or Buddhist statues. Help preserve these sacred cultural artefacts.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 Do Not Cross Fences</h4><p>Strictly forbidden to enter fences around the pagoda or cat shelves.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 Control Audio Volume</h4><p>Use headphones or minimum volume to protect the temple's serenity.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 No Walking Smartphone</h4><p>Stop completely before reading. Do not walk while viewing your screen.</p></div></div>`,
     heroTitle:"<em>Sanctuary of Beckoning Cats</em>GOUTOKUJI DX",
@@ -1585,6 +1586,7 @@ const CONFIG_LANG = {
     freeOmiBadge:"🎁 BONUS:<br>FREE FORTUNE!",
     buyBtn:"🐱 &nbsp; Purchase Premium Pass &nbsp; ¥1,000",
     stripeNote:"🔒 Secured by Stripe · Progress auto-saves",
+    checkoutPayLabel:"Start Premium Experience",
     sampleTitle:"✨ Experience Sample Preview",
     sampleDesc:"After purchase: detailed pagoda-cat close-ups, Ii Naosuke grave route map, and ElevenLabs AI narration all unlock.",
     features:["<strong>👥 Multi-Device Share</strong> — One purchase unlocks up to 4 companion devices via QR sync.","<strong>🔮 Free Fortune Slip</strong> — Multidimensional oracle (Romance/Health/Moving) 100% FREE.","<strong>🗺️ 10 Landmark Paths</strong> — Real on-site photography from Sanmon Gate to Jizo-do Hall."],
@@ -1646,7 +1648,8 @@ const CONFIG_LANG = {
   ja:{
     flag:'🇯🇵',code:'JA',
     introTitle:"豪徳寺プレミアムガイド DX",introNextBtn:"参拝マナー・安全確認へ →",
-    mannerTitle:"境内参拝規則",mannerSubtitle:"参拝マナーと安全上のご注意",
+    mannerTitle:"境内参拝規則・マナー",mannerSubtitle:"参拝マナーと安全上のご注意",
+    mannersGuideText:"以下を確認してチェックボックスをつけてください",
     mannerAgreeBtn:"ルールを守ってパスを有効化 →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 周辺住宅街での静粛性確保</h4><p>豪徳寺周辺は非常に閑静な住宅街です。参拝経路での大声での会話は絶対にお控えください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 仏像・招き猫への接触禁止</h4><p>招き猫や仏像などに決して手を触れないようにしてください。大切な文化財・奉納物の保護にご協力ください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 柵・ロープ内側への立入禁止</h4><p>三重塔の木造土台や招福殿の奉納棚の保護柵内に絶対に入らないでください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 音声ボリュームへの配慮</h4><p>音声ガイド再生時は必ずイヤホンを使用するか音量を最小限に絞ってください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 歩きスマホ禁止</h4><p>境内での転倒・衝突防止のため、スマホを見ながら歩く行為は禁止です。必ず立ち止まってからご覧ください。</p></div></div>`,
     heroTitle:"<em>招き猫の発祥聖地</em>豪徳寺プレミアムDX",
@@ -1654,6 +1657,7 @@ const CONFIG_LANG = {
     freeOmiBadge:"🎁 特典：<br>おみくじ無料！",
     buyBtn:"🐱 &nbsp; プレミアムパスを購入する &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe安全決済 · ブラウザを閉じても進捗を自動復旧",
+    checkoutPayLabel:"プレミアム体験を開始する",
     sampleTitle:"✨ 体験プレビュー",
     sampleDesc:"パス購入後、三重塔の猫クローズアップ解説・井伊直弼墓所の詳細ルートマップ・ElevenLabs音声解説がすべてアンロックされます。",
     features:["<strong>👥 同行者スマホ無料同期</strong> — 1人購入でご家族・友人のスマホ最大4台を完全無料で同期できます。","<strong>🔮 本格おみくじが無料特典</strong> — 恋愛・転居・健康の分野別デジタルおみくじが何度でも無料で引けます。","<strong>🗺️ 現地撮影写真による10大箇所巡り</strong> — 山門から地蔵堂まで、リアルな現地写真をもとにした完璧なルート案内。"],
@@ -1717,7 +1721,7 @@ const CONFIG_LANG = {
   zh:{
     flag:'🇨🇳',code:'ZH',
     introTitle:"豪德寺高级导览 DX",introNextBtn:"前往参拜礼仪指南 →",
-    mannerTitle:"境内参拜须知",mannerSubtitle:"礼仪与安全注意事项",
+    mannerTitle:"境内参拝规则・礼仪",mannerSubtitle:"礼仪与安全注意事项",
     mannerAgreeBtn:"我同意并解锁通行证 →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 请保持安静</h4><p>豪德寺周围是宁静的住宅区。参拜途中请避免大声交谈，保持肃静。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 禁止触摸招财猫或佛像</h4><p>严禁触摸招财猫或任何佛像。请协助保护珍贵的文化财产与奉纳品。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 禁止进入围栏内</h4><p>严禁跨越三重塔基座或招猫殿周围的保护围栏。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 请控制音量</h4><p>使用语音导览时，请佩戴耳机或将音量调至最低，以维护境内的宁静。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 禁止边走边看手机</h4><p>为防止碰撞或跌倒，请在安全的地方停下后再查看本导览。</p></div></div>`,
     mannersGuideText:"请确认以下所有事项并勾选",
@@ -1781,7 +1785,7 @@ const CONFIG_LANG = {
     checkoutPriceLabel:"数字高级导览手册",checkoutPriceBadge:"🎁 御签<br>免费特典！",
     checkoutInc1:"10大景点 AR 导航",checkoutInc2:"ElevenLabs AI 多语言解说",
     checkoutInc3:"完成纪念数字印章集",checkoutInc4:"免费数字御签（不限次数）",
-    checkoutPayLabel:"免费开始体验（演示）",checkoutSkipLabel:"跳过进入演示 →",
+    checkoutPayLabel:"开始高级体验",checkoutSkipLabel:"跳过进入演示 →",
     syncTitle:"同步同伴设备",syncSubtitle:"同伴设备同步",
     syncDesc:"请同伴用手机摄像头扫描二维码。最多4台设备可共享完整导览，无需额外付费。",
     syncNextBtn:"同步完成，继续 ➔",syncSkipNote:"跳过 →",
@@ -1803,7 +1807,7 @@ const CONFIG_LANG = {
   ko:{
     flag:'🇰🇷',code:'KO',
     introTitle:"고토쿠지 프리미엄 가이드 DX",introNextBtn:"참배 예절 안내로 이동 →",
-    mannerTitle:"경내 참배 규칙",mannerSubtitle:"예절 및 안전 주의사항",
+    mannerTitle:"경내 참배 규칙・매너",mannerSubtitle:"예절 및 안전 주의사항",
     mannerAgreeBtn:"규칙에 동의하고 패스 활성화 →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 조용한 분위기 유지</h4><p>고토쿠지 주변은 조용한 주택가입니다. 참배 중 큰 소리로 대화하지 마시기 바랍니다.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 불상·마네키네코 접촉 금지</h4><p>마네키네코나 불상에 절대 손을 대지 마십시오. 소중한 문화재 보호에 협조해 주십시오.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 울타리 내부 출입 금지</h4><p>삼중탑 기단부나 쇼후쿠덴 주위의 보호 울타리 안으로 절대 들어가지 마십시오.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 음량 조절</h4><p>음성 가이드 재생 시 이어폰을 사용하거나 음량을 최소로 줄여 주십시오.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 보행 중 스마트폰 사용 금지</h4><p>충돌 및 낙상 방지를 위해 안전한 곳에 멈춘 뒤 화면을 확인해 주십시오.</p></div></div>`,
     mannersGuideText:"아래 항목을 확인하고 체크박스를 표시해 주세요",
@@ -1867,7 +1871,7 @@ const CONFIG_LANG = {
     checkoutPriceLabel:"디지털 프리미엄 팜플렛",checkoutPriceBadge:"🎁 오미쿠지<br>무료 특전！",
     checkoutInc1:"10대 명소 AR 내비게이션",checkoutInc2:"ElevenLabs AI 다국어 내레이션",
     checkoutInc3:"만원성취 디지털 스탬프 랠리",checkoutInc4:"무료 디지털 오미쿠지 (무제한)",
-    checkoutPayLabel:"무료로 체험 시작하기（데모）",checkoutSkipLabel:"데모로 건너뛰기 →",
+    checkoutPayLabel:"프리미엄 체험 시작하기",checkoutSkipLabel:"데모로 건너뛰기 →",
     syncTitle:"동행자 기기 동기화",syncSubtitle:"동행자 기기 동기화",
     syncDesc:"동행자의 스마트폰 카메라로 QR 코드를 스캔해 주세요. 추가 비용 없이 최대 4대까지 완전한 가이드를 공유할 수 있습니다.",
     syncNextBtn:"동기화 후 계속 ➔",syncSkipNote:"건너뛰기 →",
@@ -1936,7 +1940,7 @@ const CONFIG_LANG = {
     checkoutEyebrow:"Guía Premium · Desbloquear",checkoutTitle:"<em>Unlock Premium Guide</em>Desbloquear Guía Premium",
     checkoutPriceLabel:"Guía Digital Premium",checkoutPriceBadge:"🎁 ¡Omikuji<br>Gratis!",
     checkoutInc1:"Navegación AR 10 Lugares",checkoutInc2:"Narración IA ElevenLabs",checkoutInc3:"Rally de sellos de finalización",checkoutInc4:"Omikuji digital gratis (ilimitado)",
-    checkoutPayLabel:"Iniciar Experiencia Gratuita (Demo)",checkoutSkipLabel:"Saltar al Demo →",
+    checkoutPayLabel:"Iniciar Experiencia Premium",checkoutSkipLabel:"Saltar al Demo →",
     syncTitle:"Sincronizar Dispositivos de Compañeros",syncSubtitle:"COMPANION DEVICE SYNC",
     syncDesc:"Abre la cámara de tu acompañante y escanea el código QR. El guía completo se despliega en hasta 4 dispositivos sin coste adicional.",
     syncNextBtn:"Sincronizado, continuar ➔",syncSkipNote:"Omitir →",
@@ -2008,7 +2012,7 @@ const CONFIG_LANG = {
     checkoutEyebrow:"Guide Premium · Déverrouiller",checkoutTitle:"<em>Unlock Premium Guide</em>Déverrouiller le Guide Premium",
     checkoutPriceLabel:"Guide Numérique Premium",checkoutPriceBadge:"🎁 Omikuji<br>Gratuit !",
     checkoutInc1:"Navigation AR 10 Sites",checkoutInc2:"Narration IA ElevenLabs",checkoutInc3:"Rally de tampons de complétion",checkoutInc4:"Omikuji numérique gratuit (illimité)",
-    checkoutPayLabel:"Démarrer l'Expérience Gratuite (Démo)",checkoutSkipLabel:"Passer à la Démo →",
+    checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutSkipLabel:"Passer à la Démo →",
     syncTitle:"Synchroniser les Appareils Compagnons",syncSubtitle:"COMPANION DEVICE SYNC",
     syncDesc:"Ouvrez l'appareil photo de votre compagnon et scannez le code QR. Le guide complet se déploie sur jusqu'à 4 appareils sans frais supplémentaires.",
     syncNextBtn:"Synchronisé, continuer ➔",syncSkipNote:"Passer →",
@@ -2070,7 +2074,7 @@ function showPage(id){
     if(mt&&d)mt.textContent=d.mannerTitle||'参拝マナーと安全確認';
   }
   
-  if(id==='page-checkout'){_startCheckoutSlides();}
+  if(id==='page-checkout'){_startCheckoutSlides();_updateCheckoutSkipVisibility();}
   else{_stopCheckoutSlides();}
   if(id==='page-full-map'){
     
@@ -2164,6 +2168,18 @@ function _startCheckoutSlides(){
   },3200);
 }
 function _stopCheckoutSlides(){clearInterval(_coSlideTimer);}
+
+async function _updateCheckoutSkipVisibility(){
+  const wrap=document.getElementById('checkoutSkipWrap');
+  if(!wrap)return;
+  try{
+    const res=await fetch('/.netlify/functions/config');
+    const cfg=await res.json();
+    wrap.style.display=cfg.paymentMode==='demo'?'':'none';
+  }catch(e){
+    wrap.style.display='';
+  }
+}
 
 async function doCheckout(){
   try{
@@ -2261,7 +2277,7 @@ function applyLangUI(lk){
   _set('checkoutInc2','textContent',d.checkoutInc2||(isJa?'ElevenLabs AI多言語ナレーション':'ElevenLabs AI Narration'));
   _set('checkoutInc3','textContent',d.checkoutInc3||(isJa?'満願成就デジタルスタンプラリー':'Digital Completion Stamp Rally'));
   _set('checkoutInc4','textContent',d.checkoutInc4||(isJa?'無料デジタルおみくじ（何度でも）':'Free Digital Omikuji (unlimited)'));
-  _set('checkoutPayLabel','textContent',d.checkoutPayLabel||(isJa?'無料で体験を開始する（デモ）':'Start Free Demo Experience'));
+  _set('checkoutPayLabel','textContent',d.checkoutPayLabel||(isJa?'プレミアム体験を開始する':'Start Premium Experience'));
   _set('checkoutSkipLabel','textContent',d.checkoutSkipLabel||(isJa?'スキップしてデモ体験 →':'Skip to Demo →'));
   _set('syncTitle','textContent',d.syncTitle||(isJa?'同行者デバイスを同期':'Sync Companion Devices'));
   _set('syncSubtitle','textContent',d.syncSubtitle||'COMPANION DEVICE SYNC');
@@ -3033,7 +3049,6 @@ function updateStampRail(){
     const isCurrent=i===state.currentStep;
     cell.className='stamp-cell'+(isStamped?' stamped':isCurrent?' current':'');
     if(isStamped){
-      
       cell.textContent=icon;
     }else{
       cell.textContent=String(i+1);
