@@ -2519,19 +2519,45 @@ function buildQuestContent(){
   _updateTopicBox(state.currentStep, isJa);
 }
 function answerQuiz(btn,isCorrect){
-  if(quizAnswered)return;quizAnswered=true;
   const d=CONFIG_LANG[state.lang||'ja'];
   const s=d.steps[state.currentStep];
-  document.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.correct==='true')b.classList.add('correct');});
-  if(!isCorrect)btn.classList.add('wrong');
-  if(isCorrect)stampSpot(state.currentStep); 
   const fb=document.getElementById('quizFeedback');
-  fb.innerHTML=isCorrect?s.correctFb:s.wrongFb;
-  fb.className=`quiz-feedback show ${isCorrect?'correct':'wrong'}`;
-  
-  setTimeout(()=>{
-    document.getElementById('quizFeedback').scrollIntoView({behavior:'smooth',block:'nearest'});
-  },320);
+
+  if(isCorrect){
+    /* 正解 */
+    /* 全選択肢をロック */
+    document.querySelectorAll('.quiz-option')
+      .forEach(b=>{
+        b.disabled=true;
+        if(b.dataset.correct==='true')b.classList.add('correct');
+      });
+    /* 1回目の正解のみスタンプ付与 */
+    if(!quizAnswered){
+      stampSpot(state.currentStep);
+    }
+    quizAnswered=true;
+    fb.innerHTML=s.correctFb;
+    fb.className='quiz-feedback show correct';
+    setTimeout(()=>{
+      fb.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },320);
+  } else {
+    /* 不正解：選んだボタンだけ赤くして再選択可能に */
+    btn.classList.add('wrong');
+    btn.disabled=true; /* この選択肢だけ無効化 */
+
+    /* 不正解メッセージを全言語対応で表示 */
+    const wrongMessages={
+      ja:'❌ 違います。もう一度選んでください。',
+      en:'❌ Incorrect. Please try again.',
+      zh:'❌ 错误。请再试一次。',
+      ko:'❌ 틀렸습니다. 다시 선택해 주세요.',
+      es:'❌ Incorrecto. Por favor, inténtalo de nuevo.',
+      fr:'❌ Incorrect. Veuillez réessayer.',
+    };
+    fb.innerHTML=wrongMessages[state.lang]||wrongMessages['en'];
+    fb.className='quiz-feedback show wrong';
+  }
 }
 
 function executeOmikujiFlow(){
