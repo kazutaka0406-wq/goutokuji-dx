@@ -1,170 +1,468 @@
-00_map（境内全体案内用）
-日本語（ファイル名推奨：map_ja.mp3）
-参拝の前に、この美しい古刹の全体像をご案内いたします。ここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。おすすめの順路は、まず正面の歴史ある山門をくぐり、綺麗に剪定された松並木の参道をまっすぐ進みます。突き当たりを左に折れると、右手に重厚な仏殿、その奥に数千の招き猫が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る、時計回りのルートが最も美しく、コストパフォーマンスの高い動線です。各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。さあ、スマホを片手に、心を落ち着かせて歩き始めましょう。
-
-英語（ファイル名推奨：map_en.mp3）
-Before we begin our journey, let us understand the master blueprint of this sacred space. Goutokuji is a sprawling spiritual ecosystem enveloped in lush greenery. Your optimized route starts at the grand Sanmon Gate. Walk straight along the stone pathway lined with beautifully manicured pine trees. Turn left at the end, and you will find the historic Buddha Hall on your right, with the famous Shofuku-den—the ocean of thousands of white porcelain cats—resting just behind it. After paying your respects at the samurai clan cemetery of Ii Naosuke at the absolute rear, we will loop clockwise through the Hondo, Kaiso-do, the vibrant Akamon, the bronze Bell Tower, and finally, the Jizo-do. Let this auditory and visual map guide your steps. Please silence your mind, and let the pilgrimage unfold.
-
-🏯 01_sanmon（山門用）
-日本語（ファイル名推奨：sanmon_ja.mp3）
-最初に出迎えるのは、どっしりとした木造の山門です。禅宗において、この門をまたぐことは、日常の悩みや邪念といった、俗世の汚れを完全に切り離し、仏の聖域へと心を清めて入場することを意味します。門の奥へと続く美しい参道の緑を見つめながら、まずは深く呼吸をしてみてください。
-
-英語（ファイル名推奨：sanmon_en.mp3）
-Your pilgrimage begins at the Sanmon Gate. In Zen Buddhism, crossing this wooden threshold is a powerful ritual of purification. It symbolizes leaving behind the noise, stress, and illusions of the secular world to enter a space of absolute mindfulness. Take a deep breath as you look at the lush path ahead; you are now walking on sacred ground.
-
-🌸 02_pagoda（三重塔用）
-日本語（ファイル名推奨：pagoda_ja.mp3）
-境内に美しくそびえ立つ木造の三重塔。通常、仏教の塔には神聖な仏像や十二支の動物だけが刻まれます。しかし、ここ豪徳寺の職人は、とんでもない遊び心を隠しました。一重目の屋根の下、干支のねずみのすぐ真横をよく見てください。なんと、ねずみを見つめるように手招きをする、木彫りの招き猫がひっそりと刻まれているのです。このアプリのARカメラをかざして、歴史的建造物にカモフラージュされた世界で唯一の、隠れ招き猫をロックオンしてみましょう！
-
-英語（ファイル名推奨：pagoda_en.mp3）
-Behold the magnificent wooden Three-Story Pagoda. While traditional Buddhist pagodas feature sacred deities and the Chinese zodiac, Goutokuji holds a delightful architectural secret. Look closely under the roof beams of the first tier, right next to the carving of the Rat. You will find a tiny, hand-carved Beckoning Cat hidden in plain sight. Open our built-in WebAR camera now, aim at the roof, and unlock the exact spatial silhouette of this legendary hidden feline.
-
-⛩️ 03_butsuden（仏殿用）
-日本語（ファイル名推奨：butsuden_ja.mp3）
-世田谷区の指定有形文化財でもある、圧倒的な存在感を放つ仏殿です。中には歴史ある仏像が安置されています。お参りをする前に、手前にある大きな黒い香炉に注目してください。立ち上るお線香の煙は、本堂の仏様に顔を合わせる前に、私たちの身体の不調を癒やし、精神の曇りを一瞬で洗い流してくれる浄化のパワーがあると信じされています。
-
-英語（ファイル名推奨：butsuden_en.mp3）
-Standing before you is the Butsuden, the Buddha Hall, officially designated as a cultural asset of Setagaya. Inside rest ancient, sacred statues that have watched over Tokyo for centuries. Before approaching the altar, look at the large incense burner. Worshippers bathe themselves in this rising smoke to cleanse their bodies of physical ailments and purify their spirits before facing the divine.
-
-🐱 04_shofukuden（招福殿用）
-日本語（ファイル名推奨：shofukuden_ja.mp3）
-ついに、世界中の旅人が息をのむ招福殿のエリアです。棚を埋め尽くす数千、数万体の真っ白な招き猫たち。ここで海外の観光客が最も驚くのは、全ての猫が、金色の小判を持っていないという事実です。豪徳寺の禅の教えはこうです。猫は、あなたに幸運のきっかけ、チャンスを運んでくれる。しかし、それを実らせて成果、小判に変えるのは、その後のあなた自身の努力次第である。この凛とした白い猫たちの視線を感じながら、あなた自身の新しい決意を心の中で奉納してください。
-
-英語（ファイル名推奨：shofukuden_en.mp3）
-Welcome to Shofuku-den, a sight that leaves travelers from around the globe utterly breathless—an ocean of thousands of white porcelain cats. But look closer: notice that none of these cats hold a gold coin. This reflects the deep wisdom of Zen. The beckoning cat does not hand you wealth directly; it merely grants you the opportunity or blessing. Transforming that opportunity into true success depends entirely on your own effort and hard work. Feel the silent gaze of these thousands of cats, and make your own vow today.
-
-05_graves（井伊家墓所用）
-日本語（ファイル名推奨：graves_ja.mp3）
-ここ井伊家墓所は、国指定の史跡であり、一歩足を踏み入れると空気が一変する特別な聖域です。一番奥にそびえる大きな墓石が、幕末の大老、井伊直弼公の眠る場所です。日本を植民地化の危機から守るため、一八五八年に日米修好通商条約を断行し、鎖国を終わらせて日本の未来を拓いた人物です。直弼公が命をかけて守り抜いた、近代日本の夜明けという歴史の重みに思いを馳せ、静かに手を合わせてみてください。
-
-英語（ファイル名推奨：graves_en.mp3）
-You are standing within the Ii Family Cemetery, a designated National Historic Site shrouded in absolute solemnity. Enshrined at the rear is Ii Naosuke, the Grand Councilor of the Tokugawa shogunate. In eighteen-fifty-eight, facing the imminent threat of Western colonization, he made the courageous decision to sign the historic treaty with the United States, effectively ending centuries of national isolation. Feel the profound echoes of samurai history here, where the man who opened Japan's gates to the modern world now rests in eternal peace.
-
-🏛️ 06_hondo（本殿用）
-日本語（ファイル名推奨：hondo_ja.mp3）
-昭和四十二年に落慶した本殿は、豪徳寺の信仰の核となる最も神聖な建築です。中には、あらゆる人々の苦しみや願いを優しく聞き届けてくれると信仰されている、聖観世音菩薩像が祀られています。ここでは、僧侶たちが毎日の祈りを捧げる伝統が今も息づいています。豪華絢爛でありながらも、どこか心がすっきりと落ち着く、禅寺ならではの調和のとれた美しい空間をお楽しみください。
-
-英語（ファイル名推奨：hondo_en.mp3）
-The Hondo, completed in nineteen-sixty-seven, serves as the spiritual and liturgical heart of Goutokuji. Enshrined within this grand hall is the sacred statue of Sho-Kannon Bodhisattva, revered for listening compassionate ears to the suffering and prayers of all living beings. This is where the temple’s lineage of monks performs daily services. Absorb the profound harmony of the interior, a perfect manifestation of Zen spatial balance.
-
-🕯️ 07_kaisodo（開祖堂用）
-日本語（ファイル名推奨：kaisodo_ja.mp3）
-本殿のすぐ近くに佇む開祖堂には、何世紀にもわたり、豪徳寺の教えを絶やすことなく受け継いできた歴代の高僧たちの魂、位牌が大切に祀られています。このお堂を眺めていると、豪徳寺がただの観光地ではなく、何世代もの人々が歴史のバトンを繋いできた、生きた祈りの場所であることが深く実感できます。千年の時を超えて紡がれる静かな絆に、そっと心を寄せてみましょう。
-
-英語（ファイル名推奨：kaisodo_en.mp3）
-Standing near the main hall is the Kaiso-do, the Patriarchs Hall. This sacred structure enshrines the ancestral tablets and eternal spirits of the high priests who kept the flame of Goutokuji’s teachings burning through the centuries. Looking closely at this pavilion reveals that Goutokuji is not just a scenic destination, but a living sanctuary where generations have protected a sacred legacy. Reflect quietly on the unseen threads connecting the past to your present moment.
-
-🔴 08_akamon（赤門用）
-日本語（ファイル名推奨：akamon_ja.mp3）
-緑豊かな境内に鮮やかなコントラストを描き出す、朱塗りの赤門です。明治十八年に、徳川幕府を支えた譜代大名、井伊家から直接寄進され、後に現在の位置へと移築されました。周囲の深い緑の木々と、日本の伝統的な弁柄朱の鮮やかな色彩が織りなす対比は、ため息が出るほど美しく、写真に収めるのに最もおすすめのスポットです。門の持つ気品に満ちた佇まいをぜひご覧ください。
-
-英語（ファイル名推奨：akamon_en.mp3）
-The vivid vermilion Akamon, or Red Gate, offers a striking visual contrast to the temple’s lush green foliage. Donated directly by the prestigious samurai clan of the Ii family in eighteen-eighty-five, it was later meticulously relocated to its current position. The vibrant red lacquer paired with the natural surroundings makes this gate one of the most picturesque landmarks in the entire sanctuary. Take a moment to capture this iconic symbol of aristocratic samurai architecture.
-
-🔔 09_belltower（鐘楼用）
-日本語（ファイル名推奨：belltower_ja.mp3）
-一六七九年に鋳造された、世田谷区最古の歴史を誇る青銅の梵鐘です。三百五十年以上もの間、この地で時を刻み続けてきました。大晦日の夜には、人間の持つ百八つの煩悩を一つずつ洗い流すかのように、深く重厚な音色が世田谷の夜空へと響き渡ります。長い歴史の風雪に耐えてきた青銅ならではの、深く味わい深い質感の美しさに注目してください。
-
-英語（ファイル名推奨：belltower_en.mp3）
-Before you hangs the historic bronze Bell Tower, holding the oldest temple bell in Setagaya Ward, cast in sixteen-seventy-nine. For over three hundred and fifty years, its resonant voice has shaped the local atmosphere. On New Year's Eve, its deep tones echo across Tokyo, theoretically washing away the one hundred and eight earthly illusions of humanity. Observe the beautiful green patina on the ancient bronze, shaped by the steady flow of time.
-
-🌸 10_jizodo（地蔵堂用）
-日本語（ファイル名推奨：jizodo_ja.mp3）
-十大スポットの最後を締めくくるのは、令和二年に新しく生まれ変わった地蔵堂です。ここには、旅人や子供たち、そしてすべての生命を優しく見守り、救いをもたらしてくれるお地蔵様が安置されています。ここまで無事に巡礼を終えられたことへの感謝の気持ちを込めて、ゆっくりとお参りしてください。招き猫の温かい加護とともに、あなたのこれからの旅路に、たくさんの福運が訪れることを心よりお祈りいたします。
-
-英語（ファイル名推奨：jizodo_en.mp3）
-Your ten-spot sanctuary pilgrimage culminates here at the Jizo-do Hall, beautifully reconstructed in the year twenty-twenty. Enshrined inside is the gentle figure of Jizo Bodhisattva, the compassionate guardian of travelers, children, and souls seeking peace. Offer your quiet gratitude for completing this journey safely. Under the lingering blessings of the beckoning cats, may your future paths unfold with absolute prosperity and joy.
-
-
-
-🇨🇳 中文（Chinese / zh）
-00_map: 在参拜之前，让我为您介绍这座美丽古刹的整体布局。豪德寺是一座被郁郁葱葱的绿意所环绕的广阔圣域。推荐的顺路是，首先穿过正面充满历史感的山门，沿着修剪整齐的松树参道直行。走到尽头左转，右侧是庄严的佛殿，其后方便是整齐排列着数千只招财猫的招福殿。在参拜完位于最深处的井伊家墓所后，依序游览本殿、开祖堂、朱红色的赤门、历史悠久的钟楼，最后到达地藏堂。这条顺时针的路线不仅沿途风景最为优美，也是性价比最高的动线。在每个景点，我们不仅为您准备了实地拍摄的珍贵照片，还设有揭秘隐藏历史的趣味问答。现在，请手持智能手机，静下心来，开始我们的朝圣之旅吧。
-
-01_sanmon: 首先迎接您的是一座稳重庄严的木造山门。在禅宗中，跨过这道门意味着将世俗的烦恼和杂念彻底隔绝，洗净心灵，步入佛的圣域。请凝视着向门内延伸的美丽绿荫参道，首先做一次深呼吸吧。
-
-02_pagoda: 寺院内高高耸立着美丽的木造三重塔。通常，佛教塔上只会雕刻神圣的佛像或十二生肖的动物。然而，豪德寺的匠人在这里隐藏了一个令人惊叹的玩心。请仔细观察第一层屋檐下，生肖“鼠”的紧右侧。令人惊奇的是，那里竟然悄悄雕刻着一只仿佛正盯着老鼠并招手的木雕招财猫。请举起本应用的AR相机，锁定这个巧妙伪装在历史建筑中、世界上独一无二的隐形招财猫吧！
-
-03_butsuden: 这座散发着压倒性存在感的佛殿，是世田谷区指定的有形文化财。殿内安放着历史悠久的佛像。在参拜之前，请注意前方的巨大黑色香炉。人们相信，升腾的线香烟雾具有神奇的净化力量，在与本堂的佛祖见面前，能治愈我们身体的不适，并瞬间洗净精神的阴霾。
-
-04_shofukuden: 这里终于到了让全世界旅人都屏息凝神、震撼不已的招福殿区域。供奉台填满了成千上万只纯白色的招财猫。最让外国游客感到惊奇的事实是，所有的猫咪都没有手持金色的“小判”金币。豪德寺的禅宗执教如是说：猫咪会为您带来幸运的契机与福气。然而，能否将其转化为真正的成果与金币，完全取决于您之后的自身努力。感受着这些凛然白猫的注视，请在心中奉纳您崭新的决心吧。
-
-05_graves: 这里的井伊家墓所是国家指定的史迹，是一处只要踏入一步，空气就会变得截然不同的特别圣域。最深处耸立的巨大墓碑，便是幕末大老——井伊直弼公的安息之地。为了保护日本免受殖民化危机，他在1858年毅然签署了《日美修好通商条约》，结束了锁国政策，拓宽了日本的未来。请在这里静静合十，追思直弼公冒死守护的近代日本黎明这份历史的厚重。
-
-06_hondo: 本殿于1967年落成，是豪德寺信仰的核心，也是最神圣的建筑。殿内供奉着圣观世音菩萨像，世人虔诚地信仰着祂能温柔地听取并救赎所有人的痛苦与愿望。在这里，僧侣们每日虔诚祈祷的传统延续至今。请尽情赏析这处既豪华绚丽、又让人心情平静，彰显禅寺独特和谐之美的神圣空间。
-
-07_kaisodo: 紧邻本殿的开祖堂内，悉心供奉着数世纪以来将豪德寺的法脉薪火相传、不曾间断的历代高僧的灵魂和神主牌位。瞻仰着这座殿堂，您能深刻地感受到，豪德寺不仅仅是一个观光景点，更是一处由世世代代的人们传递历史接力棒、至今仍在延续的生动祈祷之地。让我们向这跨越千年的静谧羁绊致以深深的敬意。
-
-08_akamon: 这一座是在绿意盎然的寺院内描绘出鲜明对比的朱漆赤门。它于1885年由支撑德川幕府的谱代大名——井伊家直接捐赠，后移至现址。周围浓郁的绿树与日本传统的本朱漆相互交织，其色彩对比美得令人叹息，是照相机拍照最值得推荐的绝佳位置。请务必欣赏这扇门所散发出的典雅气质。
-
-09_belltower: 这是一座铸造于1679年、拥有世田谷区最古老历史的青铜梵钟。在350多年的岁月里，它一直在这片土地上见证着时光流逝。每逢除夕之夜，深沉浑厚的钟声都会响彻世田谷的夜空，仿佛在逐一洗净人类所拥有的108种世俗烦恼。请注意欣赏历经漫长历史风霜的青铜器所特有的深邃与质感之美。
-
-10_jizodo: 为十大景点画上完美句号的是在2020年焕然一新的地藏堂。这里安放着温柔守护并救赎旅人、儿童以及所有生命的土地藏菩萨。请抱着对至今平安完成巡礼的感恩之心，在此至诚礼拜。衷心祝愿在招财猫的温暖庇护下，您的未来旅程充满无尽的福运与喜乐。
-
-🇰🇷 한국어（Korean / ko）
-00_map: 참배를 드리기 전에 이 아름다운 고찰의 전체적인 모습을 안내해 드리겠습니다. 이곳 고토쿠지는 푸른 숲에 둘러싸인 광활한 성역입니다. 추천하는 순로는 먼저 정면의 역사적인 산몬 Gate를 통과하여 아름답게 가꾸어진 소나무 가로수参道를 곧장 나아갑니다. 길 끝에서 왼쪽으로 꺾으면 오른편에 중후한 불전(Butsuden)이, 그 안쪽에는 수천 마리의 마네키네코가 줄지어 선 쇼후쿠덴이 자리하고 있습니다. 그리고 가장 깊숙한 곳에 있는 이이가 묘소를 참배한 후, 본전, 개조당, 주홍색 아카몬, 역사 깊은 종루, 마지막으로 지조도(지장당)를 둘러보는 시계 방향 루트가 가장 아름답고 효율적인 동선입니다. 각 스폿에서는 현장에서 촬영된 실제 사진과 함께, 어디에서도 밝혀지지 않은 역사적 복선 퀴즈가 준비되어 있습니다. 자, 스마트폰을 한 손에 들고 마음을 차분히 가라앉힌 후 발걸음을 옮겨보세요.
-
-01_sanmon: 가장 먼저 여러분을 맞이하는 것은 묵직한 목조 산몬 Gate입니다. 선종에서 이 문을 통과한다는 것은 일상의 고민이나 잡념과 같은 속세의 번뇌를 완전히 떨쳐내고, 부처님의 성역으로 마음을 정화하여 입장함을 의미합니다. 문 너머로 이어지는 아름다운 소나무 길의 푸르름을 바라보며, 먼저 깊게 숨을 쉬어보세요.
-
-02_pagoda: 경내에 아름답게 우뚝 솟은 목조 삼중탑. 보통 불교의 탑에는 신성한 불상이나 십이지 동물만이 새겨집니다. 하지만 이곳 고토쿠지의 장인은 엄청난 놀이심을 숨겨두었습니다. 1층 지붕 아래, 십이지 중 '쥐' 조각의 바로 옆을 잘 봐주세요. 놀랍게도 쥐를 바라보며 손짓을 하는 목조 마네키네코가 살포시 새겨져 있습니다. 이 앱의 AR 카메라를 비추어, 역사적 건축물에 카무플라주된 세계 유일의 '숨은 마네키네코'를 록온해 보세요!
-
-03_butsuden: 세타가야구의 지정 유형문화재이기도 한, 압도적인 존재감을 뿜어내는 불전입니다. 안에는 역사적인 불상들이 안치되어 있습니다. 참배를 하시기 전에 앞에 있는 커다란 검은 향로에 주목해 주세요. 피어오르는 선향의 연기는 본당의 부처님을 뵙기 전에 우리의 신체적인 불조화를 치유하고, 정신의 흐림을 단숨에 씻어내 주는 정화의 힘이 있다고 믿어지고 있습니다.
-
-04_shofukuden: 드디어 전 세계의 여행자들이 숨을 죽이는 쇼후쿠덴 구역입니다. 제단을 가득 채운 수천, 수만 마리의 새하얀 마네키네코들. 여기서 해외 관광객들이 가장 놀라는 사실은, 모든 고양이가 금색 동전(코반)을 들고 있지 않다는 점입니다. 고토쿠지 선종의 가르침은 이렇습니다. 고양이는 당신에게 행운의 계기, 즉 기회를 가져다준다. 하지만 그것을 결실로 이끌어 성과와 동전으로 바꾸는 것은 그 후 패스를 가진 당신 자신의 노력에 달렸다. 이 늠름한 흰 고양이들의 시선을 느끼며, 당신만의 새로운 결의를 마음속으로 봉납해 보세요.
-
-05_graves: 이곳 이이가 묘소는 국가 지정 사적이며, 한 발짝 발을 들여놓으면 공기가 완전히 바뀌는 특별한 성역입니다. 가장 안쪽에 솟아 있는 커다란 묘석이 막부 말기의 대로(Tairō), 이이 나오스케 공이 잠든 곳입니다. 일본을 식민지화의 위기에서 지키기 위해 1858년에 미일수호통상조약을 단행하고, 쇄국을 끝내어 일본의 미래를 개척한 인물입니다. 나오스케 공이 목숨을 걸고 지켜낸 근대 일본의 새벽이라는 역사의 무게를 느끼며, 조용히 두 손을 모아 참배해 보세요.
-
-06_hondo: 1967년에 낙성된 본전은 고토쿠지 신앙의 핵심이자 가장 신성한 건축물입니다. 안에는 모든 사람들의 고통과 소원을 다정하게 들어주고 구원해 준다고 신앙되는 성관세음보살상이 모셔져 있습니다. 이곳에서는 승려들이 매일 기도를 올리는 전통이 지금도 살아 숨 쉬고 있습니다. 화려하면서도 어딘지 모르게 마음이 차분해지는, 선종 사찰 특유의 조화롭고 아름다운 공간을 감상해 보세요.
-
-07_kaisodo: 본전 바로 옆에 자리한 개조당에는 수 세기에 걸쳐 고토쿠지의 가르침을 끊임없이 이어받아 온 역대 고승들의 영혼과 위패가 소중히 모셔져 있습니다. 이 어당을 바라보고 있으면 고토쿠지가 단순한 관광지가 아니라, 수많은 세대의 사람들이 역사의 바통을 이어온 '살아있는 기도의 장소'임을 깊이 실감할 수 있습니다. 천년의 시간을 넘어 자아내는 고요한 인연에 살포시 마음을 기대어 보세요.
-
-08_akamon: 푸르른 경내에 선명한 대비를 그려내는 주홍빛 아카몬입니다. 1885년에 도쿠가와 막부를 지탱한 후다이 다이묘, 이이가로부터 직접 기증받아 후에 현재의 위치로 이축되었습니다. 주변의 깊은 녹음과 일본 전통의 붉은 채색이 자아내는 대비는 한숨이 나올 정도로 아름다워, 사진에 담기에 가장 추천하는 스폿입니다. 문이 가진 기품 넘치는 자태를 꼭 확인해 보세요.
-
-09_belltower: 1679년에 주조된 세타가야구 최고(最古)의 역사를 자랑하는 청동 범종입니다. 350년 이상 동안 이 땅에서 시간을 새겨왔습니다. 대믐날 밤에는 인간이 가진 108가지 번뇌를 하나씩 씻어내듯, 깊고 중후한 음색이 세타가야의 밤하늘로 울려 퍼집니다. 긴 역사의 풍설을 견뎌온 청동 특유의 깊고 은은한 질감의 아름다움에 주목해 보세요.
-
-10_jizodo: 10대 스폿의 마지막을 장식하는 것은 2020년에 새롭게 중건된 지조도(지장당)입니다. 여기에는 여행자와 아이들, 그리고 모든 생명을 다정하게 보살피고 구원을 베풀어 주는 지장보살님이 안치되어 있습니다. 여기까지 무사히 순례를 마칠 수 있었음에 감사하는 마음을 담아 천천히 참배해 주세요. 마네키네코의 따스한 가호와 함께, 당신의 앞으로의 여정에 많은 복운이 깃들기를 진심으로 기원합니다.
-
-🇪🇸 Español（Spanish / es）
-00_map: Antes de comenzar nuestra visita, permítame guiarle a través del plano maestro de este hermoso y antiguo templo. Goutokuji es un vasto santuario espiritual rodeado de un exuberante bosque. La ruta recomendada comienza cruzando la histórica Puerta Sanmon en la entrada principal, avanzando recto por el sendero rodeado de pinos meticulosamente podados. Al final del sendero, gire a la izquierda; a su derecha verá el imponente Salón del Buda (Butsuden), y justo detrás se encuentra el Shofuku-den, donde se alinean miles de gatos de la fortuna (Maneki-neko). Tras presentar sus respetos en el Cementerio de la Familia Ii en la parte más profunda, continuaremos en sentido horario visitando el Hondo, el Kaiso-do, la vibrante Puerta Roja (Akamon), la histórica Torre de la Campana, y finalmente, el Salón Jizo. Este recorrido es el más hermoso y ofrece la línea de flujo más eficiente. En cada punto, encontrará fotos reales e interesantes acertijos históricos. ¡Comencemos a caminar con tranquilidad y con su teléfono en mano!
-
-01_sanmon: Lo primero que le da la bienvenida es la robusta Puerta Sanmon de madera. En el Budismo Zen, cruzar este umbral representa un ritual de purificación: significa dejar atrás las preocupaciones y los engaños del mundo secular para ingresar al espacio sagrado del Buda con la mente limpia. Mire los hermosos pinos que se extienden al fondo y respire profundamente.
-
-02_pagoda: Contemple la magnífica Pagoda de Tres Pisos. Normalmente, estas pagodas solo muestran motivos sagrados o los animales del zodíaco. Sin embargo, los artesanos de Goutokuji ocultaron un divertido secreto arquitectónico. Mire con atención debajo del techo del primer nivel, justo al lado del grabado de la Rata. Sorprendentemente, encontrará un pequeño Gato de la Fortuna tallado a mano que parece observar al roedor. ¡Use la cámara WebAR de nuestra app para fijar la silueta espacial de este felino legendario!
-
-03_butsuden: Este es el Salón del Buda (Butsuden), designado como bien cultural de Setagaya. Alberga estatuas budistas de gran valor histórico. Antes de acercarse al altar, observe el gran incensario negro. Se cree que el humo purificador del incienso alivia los males físicos y limpia las nubes del espíritu antes de presentarse ante la divinidad del templo.
-
-04_shofukuden: Bienvenidos al Shofuku-den, un lugar que deja sin aliento a los viajeros de todo el mundo: un océano de miles de gatos de porcelana blanca. Lo que más sorprende a los visitantes es que ninguno de ellos sostiene una moneda de oro. La profunda sabiduría Zen de Goutokuji nos enseña esto: el gato te otorga la oportunidad o la bendición, pero transformar esa oportunidad en verdadero éxito depende enteramente de tu propio esfuerzo y arduo trabajo. Sienta la mirada silenciosa de estos miles de gatos y realice su propio voto hoy.
-
-05_graves: El Cementerio de la Familia Ii es un Sitio Histórico Nacional protegido, un lugar sagrado donde el aire cambia por completo al entrar. Al fondo descansa Ii Naosuke, el Gran Consejero del shogunato. Para salvar a Japón de la colonización occidental, tomó la valiente decisión de firmar el tratado con los Estados Unidos en 1858, poniendo fin a siglos de aislamiento. Sienta el profundo eco de la historia samurai y ofrezca una oración en silencio.
-
-06_hondo locksmith: El Hondo, completado en 1967, es el corazón espiritual de Goutokuji. En este gran salón se consagra la estatua de Sho-Kannon Bodhisattva, venerada por escuchar con compasión las oraciones y sufrimientos de todos los seres vivos. Aquí, la línea de monjes realiza servicios diarios. Disfrute de la armonía perfecta y la paz de este espacio Zen.
-
-07_kaisodo: El Kaiso-do, o Salón de los Patriarcas, consagra las tablillas ancestrales de los sumos sacerdotes que mantuvieron viva la llama de las enseñanzas de Goutokuji a través de los siglos. Este pabellón nos recuerda que Goutokuji no es solo un destino turístico, sino un santuario vivo donde generaciones han protegido un legado sagrado. Reflexione sobre los hilos invisibles que conectan el pasado con su presente.
-
-08_akamon: La Puerta Roja (Akamon) ofrece un hermoso contraste vermellón con el verde follaje del templo. Donada directamente por el prestigioso clan samurai de la familia Ii en 1885, fue reubicada meticulosamente en su posición actual. La laca roja tradicional combinada con la naturaleza hace de esta puerta uno de los puntos más fotogénicos de todo el santuario.
-
-09_belltower: Ante usted cuelga la histórica campana de bronce de la Torre, la más antigua de Setagaya, fundida en 1679. Durante más de 350 años, su resonante voz ha marcado el tiempo aquí. En Nochevieja, sus profundos tonos resuenan en el cielo de Tokio, lavando las 108 ilusiones terrenales de la humanidad. Observe la hermosa pátina verde sobre el antiguo bronce moldeado por el tiempo.
-
-10_jizodo: Su peregrinación de diez puntos culmina aquí, en el Salón Jizo, hermosamente reconstruido en el año 2020. En su interior se venera la figura de Jizo Bodhisattva, el compasivo guardián de los viajeros, los niños y las almas que buscan la paz. Ofrezca su gratitud por completar este viaje de manera segura. Que la bendición de los gatos le acompañe siempre en sus futuros caminos llenos de prosperidad.
-
-🇫🇷 Français（French / fr）
-00_map: Avant de commencer notre visite, laissez-moi vous présenter le plan d'ensemble de ce magnifique et ancien temple. Goutokuji est un vaste sanctuaire spirituel enveloppé d'une végétation luxuriante. Le parcours recommandé commence par la traversée de la porte historique Sanmon. Marchez tout droit le long du chemin de pierre bordé de pins soigneusement taillés. Au bout du chemin, tournez à gauche : vous trouverez l'imposant Pavillon du Bouddha (Butsuden) sur votre droite, juste devant le célèbre Shofuku-den, qui abrite des milliers de chats de la fortune (Maneki-neko). Après vous être recueilli au cimetière de la famille Ii tout au fond, nous continuerons dans le sens des aiguilles d'une montre en visitant le Hondo, le Kaiso-do, la vibrante Porte Rouge (Akamon), le Beffroi historique, et enfin, le Salón Jizo. Cet itinéraire est le plus beau et le plus fluide. À chaque étape, des photos réelles et des énigmes historiques vous attendent. Commençons notre pèlerinage en toute sérénité, votre smartphone à la main !
-
-01_sanmon: C'est la robuste porte en bois Sanmon qui vous accueille en premier. Dans le Bouddhisme Zen, franchir ce seuil est un puissant rituel de purification : cela symbolise l'abandon des soucis et des illusions du monde séculier pour entrer l'esprit purifié dans l'espace sacré du Bouddha. Regardez la beauté de l'allée verte et respirez profondément.
-
-02_pagoda: Admirez la magnifique Pagode à Trois Étages en bois. Habituellement, les pagodes bouddhistes ne présentent que des motifs sacrés ou les animaux du zodiaque. Pourtant, les artisans de Goutokuji y ont caché un secret architectural plein d'esprit. Regardez attentivement sous le toit du premier niveau, juste à côté de la sculpture du Rat. Vous y découvrirez un petit Chat Porte-Bonheur sculpté à la main, semblant observer le rongeur. Utilisez l'appareil photo WebAR de notre application pour révéler la silhouette de ce félin légendaire !
-
-03_butsuden: Ce majestueux Pavillon du Bouddha (Butsuden) est désigné comme un bien culturel important de Setagaya. Il abrite des statues bouddhistes chargées d'histoire. Avant de vous approcher de l'autel, observez le grand incensier noir. On croit que la fumée de l'encens possède le pouvoir de guérir les maux physiques et de purifier l'esprit avant de faire face à la divinité.
-
-04_shofukuden: Vous voici enfin au Shofuku-den, un spectacle qui laisse les voyageurs du monde entier totalement sans voix : un océan de milliers de chats en porcelaine blanche. Ce qui surprend le plus les visiteurs, c'est qu'aucun chat ne tient de pièce d'or (koban). La sagesse Zen de Goutokuji enseigne ceci : le chat vous apporte l'opportunité ou la bénédiction, mais transformer cette opportunité en véritable succès dépend uniquement de votre propre effort et de votre travail. Sentez le regard silencieux de ces milliers de chats et faites votre propre vœu aujourd'hui.
-
-05_graves: Le cimetière de la famille Ii est un site historique national protégé, un lieu sacré où l'air change complètement dès que l'on y pose le pied. Tout au fond repose Ii Naosuke, le Grand Conseiller du shogunat. Pour protéger le Japon de la colonisation occidentale, il prit la courageuse décision de signer le traité avec les États-Unis en 1858, mettant fin à des siècles d'isolement. Sentez le lien profond avec l'histoire des samouraïs et offrez une prière silencieuse.
-
-06_hondo: Le Hondo, achevé en 1967, est le cœur spirituel de Goutokuji. Ce grand pavillon abrite la statue sacrée de Sho-Kannon Bodhisattva, vénérée pour écouter avec compassion les souffrances et les prières de tous les êtres vivants. C'est ici que les moines accomplissent les rituels quotidiens. Profitez de l'harmonie parfaite et de la sérénité de cet espace Zen.
-
-07_kaisodo: Situé juste à côté du Hondo, le Kaiso-do (Salle des Patriarches) abrite les tablettes ancestrales des grands prêtres qui ont maintenu vivante la flamme des enseignements de Goutokuji à travers les siècles. Ce pavillon rappelle que Goutokuji n'est pas seulement une destination touristique, mais un sanctuaire vivant où les générations ont protégé un héritage sacré. Réfléchissez aux fils invisibles reliant le passé à votre présent.
-
-08_akamon: L'Akamon, ou Porte Rouge, offre un contraste vermillon saisissant avec la végétation luxuriante du temple. Donnée directement par le prestigieux clan samouraï de la famille Ii en 1885, elle a été relocalisée avec soin à son emplacement actuel. La laque rouge traditionnelle associée à la nature environnante fait de cette porte l'un des points les plus photogéniques du sanctuaire.
-
-09_belltower: Devant vous se dresse le Beffroi historique en bronze, abritant la plus ancienne cloche de l'arrondissement de Setagaya, fondue en 1679. Depuis plus de 350 ans, sa voix résonnante marque le temps. Le soir du Nouvel An, ses tons profonds résonnent dans le ciel de Tokyo, effaçant les 108 illusions terrestres de l'humanité. Admirez la magnifique patine verte du bronze ancien façonnée par le temps.
-
-10_jizodo: Votre pèlerinage de dix sites s'achève ici, au Pavillon Jizo, magnifiquement reconstruit en 2020. À l'intérieur est préservée la douce figure de Jizo Bodhisattva, le gardien compatissant des voyageurs, des enfants et des âmes en quête de paix. Offrez votre gratitude pour avoir accompli ce voyage en toute sécurité. Que la bénédiction bienveillante des chats vous accompagne sur vos futurs chemins de prospérité et de joie.
+確定日本語テキスト
+山門ナレーション:
+最初に出迎えるのは、明治17年（1884年）に上棟された
+どっしりとした木造の山門です。
+関東大震災後に再建され、現在も堂々とした佇まいを保っています。
+額には「碧雲関」の文字が刻まれており、
+「青雲のかなたにある悟りへの関門」を意味しています。
+
+禅宗において、この門をくぐることは単なる通過ではありません。
+日常の悩みや邪念といった俗世の汚れを完全に切り離し、
+仏の聖域へと心を清めて入場する、魂の浄化の儀式です。
+
+一つ、参拝のマナーをご紹介します。
+門の敷居（下の木の部分）は踏まずに
+「またいで」入るのが礼儀とされています。
+敷居には神仏が宿るという考えから、
+踏みつけることは大変失礼とされているためです。
+外国人観光客の方もぜひ意識してみてください。
+
+門をくぐったら深呼吸をひとつ。
+緑豊かな参道の奥へ、ゆっくりと歩み始めましょう。
+お線香トピックボックス:
+仏殿の手前に大きな香炉があります。
+ぜひお線香体験に挑戦してみてください。
+
+立ち上るお線香の煙には、身体の不調を癒やし、
+心の曇りを洗い流す浄化のパワーがあると信じられています。
+煙を手で招き寄せ、頭や体に浴びることで
+仏様の御前にふさわしい清らかな気持ちになれます。
+
+なお、お線香とライターは香炉手前の左右に置いてあります。
+
+💡 現地マナー：
+お線香代（お気持ちの金額）は香炉の前ではなく
+「仏殿正面のお賽銭箱」に入れるのが
+豪徳寺ならではの粋な参拝作法です。
+三重塔ナレーション:
+平成18年（2006年）に落慶した、高さ22.5メートルの木造三重塔。
+その美しい姿は境内でもひときわ目を引きます。
+
+実はこの三重塔、よく見ると境内に隠された
+「3匹の招き猫」を探す特別なミッションの舞台になっています。
+
+職人たちが遊び心を込めて建物のどこかにひっそりと
+彫り込んだ3匹の招き猫を、ぜひ自分の目で探してみてください。
+
+このアプリには、見つけた猫を写真で撮影して
+答え合わせができる特別機能も用意しています。
+見つけられない場合はヒントも活用してみましょう。
+仏殿ナレーション:
+延宝5年（1677年）に建立された、
+世田谷区指定有形文化財の仏殿です。
+その荘厳な佇まいは、350年近い歴史の重みをそのまま伝えています。
+
+内陣には阿弥陀如来・釈迦如来・弥勒菩薩の三尊が安置され、
+過去・現在・未来の「三世」を司る諸仏として
+参拝者を静かに見守っています。
+
+仏様の前に立ったとき、境内の静寂と相まって
+日常とはまったく異なる時間の流れを感じるはずです。
+ゆっくりと手を合わせてみてください。
+招福殿ナレーション:
+ついに、世界中の旅人が息をのむ招福殿のエリアです。
+
+棚を埋め尽くす数千、数万体の真っ白な招き猫。
+ここで多くの外国人観光客が最も驚くのは、
+すべての猫が金色の小判を持っていないという事実です。
+
+豪徳寺の禅の教えはこう説きます。
+「猫はあなたに幸運のきっかけ、縁を運んでくれる。
+しかしそれを実らせ、成果へと変えるのは
+その後のあなた自身の努力次第である」と。
+
+この凛とした白い猫たちの静かな視線を全身で感じながら、
+あなた自身の新しい決意を、心の中でそっと奉納してください。
+招福殿トピックボックス:
+🛍️ 売店で招き猫をお求めいただけます。
+サイズは500円〜7,000円とさまざまです。
+ただし、招き猫はお一人様一体まで。
+ご自身の運気を高めるための大切な一体を
+どうか心を込めてお選びください。
+
+6言語翻訳
+English
+Sanmon narrative:
+The first to greet you is the sturdy wooden Sanmon Gate, erected in 1884 during the Meiji era.
+Rebuilt after the Great Kanto Earthquake, it continues to stand with quiet dignity to this day.
+The plaque above reads "Hekiunkan" — meaning "the gateway to enlightenment beyond the azure clouds."
+
+In Zen Buddhism, passing through this gate is far more than a simple act of entry.
+It is a ritual of purification — a moment to cast off the noise, worries, and illusions of the secular world,
+and enter the sacred realm of the Buddha with a cleansed heart and spirit.
+
+One important etiquette tip: step over — never step on — the threshold at the base of the gate.
+It is believed that the spirits of the gods and Buddha reside within the threshold,
+and treading upon it is considered deeply disrespectful.
+Please be mindful as you enter.
+
+Take one deep breath as you pass through.
+Then walk slowly down the lush, pine-lined path that stretches before you.
+Incense topic box:
+In front of the Buddha Hall, you will find a large incense burner.
+We encourage you to try the incense experience.
+
+The rising smoke is believed to carry healing power — cleansing physical ailments
+and purifying the spirit before standing before the sacred Buddha.
+Draw the smoke toward you with your hands and bathe your head and body in it
+to arrive before the deity with a pure and open heart.
+
+Incense sticks and a lighter are placed on the left and right sides in front of the burner.
+
+💡 Local etiquette:
+Place your incense donation in the offertory box at the front of the Buddha Hall —
+not in front of the incense burner itself.
+This is the refined, traditional etiquette at Goutokuji.
+Pagoda narrative:
+Completed in 2006, the wooden Three-Story Pagoda rises 22.5 meters into the sky —
+a breathtaking presence that commands attention from anywhere in the grounds.
+
+Hidden within this pagoda is the stage for a very special mission:
+finding 3 secret beckoning cats concealed somewhere within the structure.
+
+The craftsmen who built this tower playfully carved three tiny cats
+into the architecture — waiting quietly to be discovered.
+Can you find all three with your own eyes?
+
+This app includes a special feature: photograph the cat you find and check your answer.
+If you are having trouble, hints are available to guide you.
+Butsuden narrative:
+Built in 1677, the Butsuden — Buddha Hall — is a designated cultural asset of Setagaya Ward.
+Its solemn presence carries the weight of nearly 350 years of history.
+
+Enshrined within are three sacred statues: Amida Nyorai, Shakyamuni, and Miroku Bosatsu —
+the Buddhas of past, present, and future — watching over all who visit in quiet serenity.
+
+Standing before these ancient figures, enveloped by the stillness of the grounds,
+you may find yourself experiencing a sense of time unlike anything in your daily life.
+Please take a moment to press your palms together and offer a quiet prayer.
+Shofukuden narrative:
+At last — the Shofuku-den, a sight that leaves visitors from around the world utterly breathless.
+
+Thousands upon thousands of pure white beckoning cats line every shelf,
+their silent gaze fixed upon all who enter.
+What surprises most international visitors is the discovery that not a single cat holds a gold coin.
+
+The Zen teaching of Goutokuji explains it this way:
+"The cat brings you the opportunity — the encounter, the chance, the blessing.
+But whether that opportunity blossoms into true fortune
+depends entirely on your own effort and resolve."
+
+Feel the weight of those thousands of silent gazes upon you.
+And quietly, within your heart, make your own vow for the journey ahead.
+Shofukuden topic box:
+🛍️ Beckoning cats are available for purchase at the temple gift shop.
+Prices range from ¥500 to ¥7,000 depending on size.
+Please note: purchases are limited to one cat per person.
+Take your time, and choose with care — this is the cat that will accompany your fortune.
+
+繁体中文（zh）
+山門ナレーション:
+迎接您的第一个景点，是建于明治17年（1884年）的庄重木造山门。
+在关东大地震后经过重建，至今仍以沉稳的姿态巍然矗立。
+门额上刻有"碧云关"三字，意为"通往青云之上、觉悟彼岸的关门"。
+
+在禅宗中，跨过这道门绝不只是简单地迈步而入。
+这是一种净化心灵的仪式——将日常的烦恼、杂念
+与世俗的尘垢彻底隔绝，以清净之心踏入佛的圣域。
+
+在此为您介绍一项参拜礼仪：
+门槛（下方的横木）请务必"跨过"，而非踩踏。
+因为人们相信神佛居于门槛之中，踩踏门槛是极为失礼之举。
+外国游客朋友，请务必留意这一细节。
+
+穿过山门后，请深吸一口气。
+沿着绿意盎然的松树参道，缓缓向前迈步吧。
+お線香トピックボックス:
+在佛殿前方，设有一座大型香炉。
+诚邀您体验点香参拜的仪式。
+
+袅袅升腾的线香烟雾，被认为具有疗愈身体不适、
+洗净心灵阴霾的净化力量。
+请用双手将烟雾引向自己，让头部和身体沐浴在其中，
+以此净化身心，以最虔诚的状态面对佛祖。
+
+线香和打火机放置在香炉前方的左右两侧，请自行取用。
+
+💡 当地礼仪：
+线香的供奉金额（随心意即可），请投入佛殿正面的功德箱，
+而非放置在香炉前方。
+这是豪德寺独特而优雅的参拜礼仪。
+三重塔ナレーション:
+这座木造三重塔于平成18年（2006年）落成，高达22.5米，
+其优美的身姿在境内格外引人注目。
+
+事实上，这座三重塔正是一项特别任务的舞台——
+在塔的某处，隐藏着3只悄悄被工匠雕刻于建筑之中的招财猫。
+
+请用您自己的双眼，仔细寻找这3只充满工匠玩心的隐藏招财猫。
+
+本应用还配备了特别功能：拍下您找到的猫咪照片，即可进行答案核对。
+若实在难以找到，也可使用提示功能。
+仏殿ナレーション:
+佛殿建于延宝5年（1677年），是世田谷区指定有形文化财。
+其庄严肃穆的姿态，承载着近350年历史的厚重积淀。
+
+殿内供奉着阿弥陀如来、释迦如来、弥勒菩萨三尊，
+作为掌管过去、现在、未来"三世"的诸佛，
+静静守护着每一位到访的参拜者。
+
+当您伫立于佛祖面前，与境内的宁静相融，
+或许会感受到一种与日常截然不同的时间流淌。
+请在此静静合掌，许下您的心愿。
+招福殿ナレーション:
+终于来到了令全球旅人屏息凝神的招福殿。
+
+货架上摆满了数以千计、洁白如雪的招财猫，
+用沉默的目光凝视着每一位来访者。
+最令外国游客惊讶的，是所有猫咪都没有手持金色小判（金币）。
+
+豪德寺的禅学教诲如是说：
+"猫为你带来机缘——那份相遇、那个机会、那道福祉。
+但能否将这份机缘转化为真正的幸福，
+完全取决于你自己此后的努力与决心。"
+
+感受着这千只白猫无声凝视的重量，
+请在心中默默许下属于自己的誓言。
+招福殿トピックボックス:
+🛍️ 招财猫可在售品处购买。
+价格从500日元至7,000日元不等，尺寸丰富多样。
+请注意：每人限购一只。
+请花时间慢慢挑选——这将是陪伴您福运的那只特别的猫。
+
+한국어（ko）
+山門ナレーション:
+가장 먼저 여러분을 맞이하는 것은 메이지 17년（1884년）에 건립된 묵직한 목조 산몬입니다.
+관동대지진 이후 재건되어, 지금도 당당하고 고요한 자태를 유지하고 있습니다.
+현판에는 '벽운관（碧雲關）'이라는 글자가 새겨져 있으며,
+'푸른 구름 너머, 깨달음으로 향하는 관문'을 의미합니다.
+
+선종에서 이 문을 통과하는 것은 단순히 걸음을 내딛는 행위가 아닙니다.
+일상의 고민과 잡념, 속세의 번뇌를 완전히 내려놓고
+부처님의 성역으로 마음을 정화하여 입장하는, 영혼의 정화 의식입니다.
+
+한 가지 참배 예절을 안내드립니다.
+문 아래의 문지방（하단 가로목）은 절대 밟지 말고 '넘어서' 들어가는 것이 예의입니다.
+문지방에는 신불（神佛）이 깃들어 있다는 믿음에서,
+밟는 행위는 매우 실례가 된다고 여겨집니다.
+외국인 방문객 여러분도 꼭 염두에 두시기 바랍니다.
+
+문을 통과한 후 깊게 숨을 한 번 들이쉬세요.
+푸른 소나무 가로수가 이어지는 참도를 따라 천천히 발걸음을 옮겨보세요.
+お線香トピックボックス:
+불전 앞에 커다란 향로가 있습니다.
+선향 체험에 꼭 도전해 보세요.
+
+피어오르는 선향 연기에는 신체의 불편함을 치유하고
+마음의 흐림을 씻어내는 정화의 힘이 있다고 믿어지고 있습니다.
+연기를 두 손으로 끌어당겨 머리와 몸에 듬뿍 쐬어,
+부처님 앞에 서기에 걸맞은 맑고 깨끗한 마음을 갖추세요.
+
+선향과 라이터는 향로 앞쪽 좌우에 놓여 있으니 자유롭게 이용하세요.
+
+💡 현지 예절：
+선향 봉납금（마음껏 내시는 금액）은 향로 앞이 아닌
+'불전 정면의 헌금함'에 넣는 것이
+고토쿠지 고유의 멋스러운 참배 예절입니다.
+三重塔ナレーション:
+헤이세이 18년（2006년）에 낙성된 높이 22.5미터의 목조 삼중탑.
+그 아름다운 자태는 경내에서도 단연 눈길을 사로잡습니다.
+
+사실 이 삼중탑은 특별한 미션의 무대이기도 합니다.
+탑 어딘가에 장인들이 장난기 넘치게 새겨 넣은
+'숨겨진 고양이 3마리'를 찾는 것입니다.
+
+부디 자신의 눈으로 직접 3마리를 모두 찾아보세요.
+
+이 앱에는 찾은 고양이를 사진으로 촬영하여
+정답 확인을 할 수 있는 특별 기능도 마련되어 있습니다.
+찾기 어려운 경우에는 힌트 기능도 활용해 보세요.
+仏殿ナレーション:
+엔포 5년（1677년）에 건립된 불전은 세타가야구 지정 유형문화재입니다.
+장엄한 佇立（저립）은 350년에 가까운 역사의 무게를 고스란히 전하고 있습니다.
+
+내부에는 아미타여래・석가여래・미륵보살의 삼존이 안치되어 있으며,
+과거・현재・미래의 '삼세（三世）'를 관장하는 제불（諸佛）로서
+조용히 참배자들을 지켜보고 있습니다.
+
+부처님 앞에 섰을 때, 경내의 고요함과 어우러져
+일상과는 전혀 다른 시간의 흐름을 느낄 수 있을 것입니다.
+천천히 두 손을 모아 참배해 보세요.
+招福殿ナレーション:
+드디어, 전 세계 여행자들이 숨을 죽이는 쇼후쿠덴 구역입니다.
+
+선반을 가득 채운 수천, 수만 마리의 새하얀 마네키네코들이
+조용한 눈빛으로 방문자들을 바라보고 있습니다.
+많은 외국인 관광객이 가장 놀라는 것은
+모든 고양이가 황금 동전（소반）을 들고 있지 않다는 사실입니다.
+
+고토쿠지의 선종 가르침은 이렇게 말합니다.
+"고양이는 당신에게 행운의 계기, 인연, 기회를 가져다준다.
+하지만 그것을 결실로 이끌어 진정한 행복으로 바꾸는 것은
+그 이후의 당신 자신의 노력과 결의에 달려 있다."
+
+수천 마리 흰 고양이들의 고요한 시선을 온몸으로 느끼며
+마음속으로 자신만의 새로운 결의를 조용히 봉납해 보세요.
+招福殿トピックボックス:
+🛍️ 마네키네코는 매점에서 구입하실 수 있습니다.
+크기에 따라 500엔〜7,000엔으로 다양합니다.
+단, 마네키네코는 1인 1개로 한정됩니다.
+자신의 행운을 높여줄 소중한 한 마리를 정성껏 선택해 주세요.
+
+Español（es）
+山門ナレーション:
+El primero en darle la bienvenida es el imponente Sanmon de madera,
+erigido en 1884 durante la era Meiji.
+Reconstruido tras el Gran Terremoto de Kanto, sigue en pie con serena dignidad hasta hoy.
+La placa sobre la puerta reza "Hekiunkan" —
+que significa "la puerta hacia la iluminación más allá de las nubes azules."
+
+En el Budismo Zen, cruzar esta puerta es mucho más que un simple paso.
+Es un ritual de purificación — un momento para desprenderse del ruido,
+las preocupaciones y las ilusiones del mundo secular,
+y entrar en el espacio sagrado del Buda con un corazón y espíritu renovados.
+
+Un consejo de etiqueta importante: pase por encima — nunca pise — el umbral en la base de la puerta.
+Se cree que los espíritus de los dioses y el Buda residen en el umbral,
+y pisarlo se considera profundamente irrespetuoso.
+Por favor, tenga esto en mente al entrar.
+
+Respire profundamente al pasar.
+Luego camine despacio por el exuberante sendero bordeado de pinos que se extiende ante usted.
+お線香トピックボックス:
+Frente al Salón del Buda encontrará un gran quemador de incienso.
+Le invitamos a probar la experiencia del incienso.
+
+Se cree que el humo ascendente tiene el poder de sanar dolencias físicas
+y purificar el espíritu antes de presentarse ante el sagrado Buda.
+Atraiga el humo hacia usted con las manos y báñese la cabeza y el cuerpo en él
+para llegar ante la deidad con un corazón puro y abierto.
+
+Los palitos de incienso y un encendedor se encuentran a ambos lados frente al quemador.
+
+💡 Etiqueta local:
+Deposite su donación en la caja de ofrendas al frente del Salón del Buda —
+no frente al quemador de incienso.
+Esta es la etiqueta tradicional y refinada en Goutokuji.
+三重塔ナレーション:
+Completada en 2006, la Pagoda de Tres Pisos de madera se eleva 22,5 metros hacia el cielo —
+una presencia impresionante que atrae todas las miradas en el recinto.
+
+Dentro de esta pagoda se esconde el escenario de una misión muy especial:
+encontrar 3 gatos beckoning secretos ocultos en algún lugar de la estructura.
+
+Los artesanos que construyeron esta torre los tallaron con juguetona picardía
+en algún rincón de la arquitectura — esperando en silencio ser descubiertos.
+¿Puede encontrar los tres con sus propios ojos?
+
+Esta app incluye una función especial: fotografíe el gato que encuentre y verifique su respuesta.
+Si tiene dificultades, hay pistas disponibles para orientarle.
+仏殿ナレーション:
+Construido en 1677, el Butsuden —Salón del Buda— es un bien cultural designado del Barrio de Setagaya.
+Su solemne presencia porta el peso de casi 350 años de historia.
+
+En su interior se veneran tres estatuas sagradas: Amida Nyorai, Shakyamuni y Miroku Bosatsu —
+los Budas del pasado, presente y futuro — que velan en silenciosa serenidad por todos los visitantes.
+
+Al situarse frente a estas figuras ancestrales, envuelto por el silencio del recinto,
+puede que experimente una percepción del tiempo completamente distinta a la cotidiana.
+Tómese un momento para juntar las palmas y ofrecer una oración tranquila.
+招福殿ナレーション:
+Por fin — el Shofuku-den, un espectáculo que deja sin aliento a los visitantes de todo el mundo.
+
+Miles y miles de gatos beckoning blancos como la nieve llenan cada estante,
+con su silenciosa mirada fija en todos los que entran.
+Lo que más sorprende a los visitantes internacionales es descubrir
+que ninguno de los gatos sostiene una moneda de oro.
+
+La enseñanza Zen de Goutokuji lo explica así:
+"El gato te trae la oportunidad — el encuentro, la posibilidad, la bendición.
+Pero si esa oportunidad florece en verdadera fortuna
+depende enteramente de tu propio esfuerzo y determinación."
+
+Sienta el peso de miles de miradas silenciosas sobre usted.
+Y en silencio, dentro de su corazón, haga su propio voto para el camino que tiene por delante.
+招福殿トピックボックス:
+🛍️ Los gatos de la fortuna están disponibles para su compra en la tienda del templo.
+Los precios van desde ¥500 hasta ¥7,000 según el tamaño.
+Tenga en cuenta: las compras están limitadas a un gato por persona.
+Tómese su tiempo y elija con cuidado — este será el gato que acompañará su fortuna.
+
+Français（fr）
+山門ナレーション:
+Le premier à vous accueillir est le robuste Sanmon en bois,
+érigé en 1884 sous l'ère Meiji.
+Reconstruit après le Grand Séisme du Kanto, il se dresse encore aujourd'hui avec une sérénité digne.
+La plaque au-dessus de la porte porte l'inscription "Hekiunkan" —
+signifiant "la porte vers l'éveil au-delà des nuages azurés."
+
+Dans le Bouddhisme Zen, franchir cette porte est bien plus qu'un simple passage.
+C'est un rituel de purification — un moment pour se défaire du bruit,
+des soucis et des illusions du monde séculier,
+et entrer dans l'espace sacré du Bouddha avec un cœur et un esprit purifiés.
+
+Un conseil d'étiquette important : enjambez — ne marchez jamais sur — le seuil à la base de la porte.
+On croit que les esprits des dieux et du Bouddha résident dans le seuil,
+et le piétiner est considéré comme profondément irrespectueux.
+Veuillez en tenir compte en entrant.
+
+Respirez profondément en passant.
+Puis marchez lentement sur le chemin luxuriant bordé de pins qui s'étend devant vous.
+お線香トピックボックス:
+Devant le Pavillon du Bouddha, vous trouverez un grand brûle-encens.
+Nous vous invitons à essayer l'expérience de l'encens.
+
+On croit que la fumée montante possède le pouvoir de guérir les maux physiques
+et de purifier l'esprit avant de se présenter devant le sacré Bouddha.
+Attirez la fumée vers vous avec vos mains et baignez-en votre tête et votre corps
+pour arriver devant la divinité avec un cœur pur et ouvert.
+
+Les bâtons d'encens et un briquet sont placés des deux côtés devant le brûle-encens.
+
+💡 Étiquette locale :
+Déposez votre offrande dans la boîte à offrandes à l'avant du Pavillon du Bouddha —
+non pas devant le brûle-encens lui-même.
+C'est l'étiquette traditionnelle et raffinée à Goutokuji.
+三重塔ナレーション:
+Achevée en 2006, la Pagode à Trois Étages en bois s'élève à 22,5 mètres —
+une présence époustouflante qui capte tous les regards dans l'enceinte du temple.
+
+Cachée dans cette pagode se trouve la scène d'une mission très spéciale :
+trouver 3 chats porte-bonheur secrets dissimulés quelque part dans la structure.
+
+Les artisans qui ont bâti cette tour les ont joyeusement sculptés
+dans l'architecture — attendant silencieusement d'être découverts.
+Pouvez-vous les trouver tous les trois avec vos propres yeux ?
+
+Cette app inclut une fonction spéciale : photographiez le chat que vous trouvez et vérifiez votre réponse.
+Si vous avez des difficultés, des indices sont disponibles pour vous guider.
+仏殿ナレーション:
+Construit en 1677, le Butsuden — Pavillon du Bouddha — est un bien culturel désigné du Quartier de Setagaya.
+Sa présence solennelle porte le poids de près de 350 ans d'histoire.
+
+À l'intérieur sont vénérées trois statues sacrées : Amida Nyorai, Shakyamuni et Miroku Bosatsu —
+les Bouddhas du passé, du présent et du futur — veillant en silencieuse sérénité sur tous les visiteurs.
+
+En vous tenant devant ces figures ancestrales, enveloppé par le silence de l'enceinte,
+vous pourrez peut-être ressentir une perception du temps totalement différente de votre quotidien.
+Prenez un moment pour joindre les paumes et offrir une prière tranquille.
+招福殿ナレーション:
+Enfin — le Shofuku-den, un spectacle qui laisse sans voix les visiteurs du monde entier.
+
+Des milliers et des milliers de chats porte-bonheur blancs comme neige garnissent chaque étagère,
+leur regard silencieux fixé sur tous ceux qui entrent.
+Ce qui surprend le plus les visiteurs internationaux, c'est de découvrir
+qu'aucun des chats ne tient une pièce d'or.
+
+L'enseignement Zen de Goutokuji l'explique ainsi :
+"Le chat vous apporte l'opportunité — la rencontre, la chance, la bénédiction.
+Mais que cette opportunité s'épanouisse en véritable fortune
+dépend entièrement de votre propre effort et détermination."
+
+Ressentez le poids de milliers de regards silencieux posés sur vous.
+Et en silence, dans votre cœur, faites votre propre vœu pour le chemin qui s'étend devant vous.
+招福殿トピックボックス:
+🛍️ Les chats porte-bonheur sont disponibles à l'achat à la boutique du temple.
+Les prix vont de 500 ¥ à 7 000 ¥ selon la taille.
+Veuillez noter : les achats sont limités à un chat par personne.
+Prenez le temps de choisir avec soin — ce sera le chat qui accompagnera votre fortune.

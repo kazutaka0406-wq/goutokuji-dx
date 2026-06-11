@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>豪徳寺 GOUTOKUJI — Fortune Cat Premium Pass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Shippori+Mincho:wght@400;500;600&family=Cormorant:ital,wght@0,300;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
 :root {
@@ -19,9 +20,9 @@
   --mist:       #d6cfc4;
   --white:      #fdfaf5;
   --font-scale: 1.2;
-  --font-display: 'Cormorant Garamond','Noto Serif JP',serif;
-  --font-body:    'Noto Serif JP',serif;
-  --font-mono:    'Space Mono',monospace;
+  --font-display: 'Cormorant Garamond', 'Shippori Mincho', serif;
+  --font-body:    'Shippori Mincho', 'Cormorant Garamond', serif;
+  --font-mono:    'Space Mono', monospace;
   --ease-silk:   cubic-bezier(0.25,0.46,0.45,0.94);
   --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
 }
@@ -29,7 +30,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:calc(16px * var(--font-scale))}
 body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
-  font-family:var(--font-body);font-size:1rem;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  font-family:var(--font-body);font-size:1rem;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+p{line-height:1.85}
 
 .accessibility-bar{
   position:fixed;top:12px;right:12px;z-index:9999;
@@ -42,18 +44,18 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-mono);font-size:.6875rem;cursor:pointer;padding:2px 7px;border-radius:4px;transition:all .2s;line-height:1}
 .size-btn.active{border-color:var(--gold);color:var(--gold-light);background:rgba(201,168,76,0.15)}
 
-.page{display:none;min-height:100svh;position:relative}
-.page.active{display:flex;flex-direction:column}
+.page{display:none;min-height:100vh;padding:0;flex-direction:column;position:relative}
+.page.active{display:flex;animation:pageFadeIn .45s cubic-bezier(0.22,1,0.36,1) both}
 .grain-overlay{position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:200px}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes stampIn{from{transform:scale(.3) rotate(-20deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes scan{0%{top:15%}100%{top:80%}}
-.fade-up  {animation:fadeUp .65s var(--ease-silk) both}
+.fade-up  {animation:fadeUp .65s var(--ease-silk) both;margin-bottom:0}
 .fade-up-1{animation-delay:.10s}.fade-up-2{animation-delay:.22s}
 .fade-up-3{animation-delay:.36s}.fade-up-4{animation-delay:.50s}.fade-up-5{animation-delay:.64s}
 
@@ -62,12 +64,13 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .divider-wa span{color:var(--gold);font-size:.75rem;opacity:.65}
 
 .btn-primary{display:block;width:100%;background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);
-  color:var(--white);border:none;border-radius:2px;font-family:var(--font-display);font-size:1rem;
-  letter-spacing:.06em;padding:17px 28px;cursor:pointer;position:relative;overflow:hidden;
-  transition:transform .2s var(--ease-silk),box-shadow .2s;
+  color:var(--white);border:none;border-radius:2px;font-family:var(--font-display);font-size:1rem;font-weight:400;
+  letter-spacing:.14em;padding:16px 24px;cursor:pointer;position:relative;overflow:hidden;
+  transition:background .3s ease,transform .15s ease,box-shadow .3s ease;
   box-shadow:0 4px 20px rgba(155,35,53,.38);text-align:center}
 .btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07),transparent);pointer-events:none}
-.btn-primary:active{transform:scale(.98)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(155,35,53,.4)}
+.btn-primary:active{transform:translateY(0)}
 .btn-secondary{display:block;width:100%;background:transparent;color:var(--gold);border:1px solid var(--gold);
   border-radius:2px;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;padding:13px 20px;
   cursor:pointer;text-align:center;text-transform:uppercase;transition:background .2s,color .2s}
@@ -105,8 +108,21 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     radial-gradient(ellipse 80% 55% at 50% 0%,  rgba(201,168,76,.22), transparent 65%),
     radial-gradient(ellipse 60% 50% at 50% 100%, rgba(155,35,53,.20),  transparent 60%),
     #211a13;
+  position:relative;
+  overflow:hidden;
   align-items:center;justify-content:center}
-.lang-select-inner{display:flex;flex-direction:column;align-items:center;padding:40px 24px 52px;width:100%;max-width:420px}
+#page-lang-select::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url('images/4_招福殿の招き猫9.jpg');
+  background-size:cover;
+  background-position:center;
+  opacity:0.15;
+  pointer-events:none;
+  z-index:0;
+}
+.lang-select-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:40px 24px 52px;width:100%;max-width:420px}
 .lang-top-deco{display:flex;flex-direction:column;align-items:center;margin-bottom:28px}
 .lang-vert-line{width:1px;height:44px;background:linear-gradient(180deg,transparent,var(--gold));opacity:.6;margin-bottom:14px}
 .lang-temple-tag{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.35em;color:var(--gold);opacity:.85;text-transform:uppercase}
@@ -119,8 +135,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .lang-kanji{font-family:var(--font-display);font-size:3rem;font-weight:300;color:rgba(201,168,76,.16);
   letter-spacing:-.02em;display:block;line-height:1;margin-bottom:3px;user-select:none}
 .lang-roman{font-family:var(--font-display);font-size:clamp(1.75rem,7vw,2.5rem);font-weight:300;
-  color:var(--white);letter-spacing:.04em;display:block;line-height:1}
-.lang-roman em{font-style:italic;color:var(--gold-light);display:block;font-size:.52em;letter-spacing:.25em;margin-bottom:5px}
+  color:var(--white);letter-spacing:.06em;display:block;line-height:1}
+.lang-roman em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold-light);display:block;font-size:.52em;letter-spacing:.06em;margin-bottom:5px}
 .lang-sub{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.28em;color:var(--mist);opacity:.5;
   text-transform:uppercase;margin-bottom:36px;text-align:center}
 .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-bottom:28px}
@@ -134,7 +150,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 
 .lang-btn-name{
   font-family:var(--font-display);font-size:1.375rem;font-weight:300;
-  color:var(--white);line-height:1.15;letter-spacing:.02em;text-align:center}
+  color:var(--white);line-height:1.15;letter-spacing:.06em;text-align:center}
 .lang-btn-sub{
   font-family:var(--font-mono);font-size:.625rem;letter-spacing:.18em;
   color:var(--mist);opacity:.6;text-transform:uppercase;text-align:center}
@@ -181,8 +197,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .neko-frame::before{content:'';position:absolute;inset:-8px;border:1px solid rgba(201,168,76,.13);border-radius:50%}
 .neko-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .hero-title{font-family:var(--font-display);font-size:clamp(2rem,10vw,3.2rem);font-weight:300;
-  line-height:1;letter-spacing:-.01em;text-align:center;color:var(--white);position:relative;z-index:2}
-.hero-title em{font-style:italic;color:var(--gold-light);display:block;font-size:.52em;letter-spacing:.22em;margin-bottom:5px}
+  line-height:1;letter-spacing:.06em;text-align:center;color:var(--white);position:relative;z-index:2}
+.hero-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold-light);display:block;font-size:.52em;letter-spacing:.06em;margin-bottom:5px}
 .welcome-body{flex:1;padding:0 22px 40px;display:flex;flex-direction:column;gap:18px;max-width:480px;margin:0 auto;width:100%}
 .price-card{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.03));
   border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:20px 22px;
@@ -198,7 +214,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .feature-item{display:flex;align-items:flex-start;gap:11px}
 .feature-icon{width:26px;height:26px;flex-shrink:0;border:1px solid rgba(201,168,76,.28);border-radius:50%;
   display:flex;align-items:center;justify-content:center;font-size:.75rem;margin-top:1px}
-.feature-text{font-size:.8125rem;color:var(--mist);line-height:1.65;opacity:.88}
+.feature-text{font-size:.8125rem;color:var(--mist);line-height:1.65;opacity:.88;letter-spacing:.02em}
 .feature-text strong{color:var(--parchment);font-weight:400}
 .sample-box{border:1px dashed rgba(201,168,76,.3);padding:14px;background:rgba(255,255,255,.02);border-radius:4px;display:flex;flex-direction:column;gap:10px}
 .sample-box-title{font-family:var(--font-display);font-size:.875rem;color:var(--gold-light);font-style:italic}
@@ -247,8 +263,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   border:1px solid var(--red);padding:4px 11px;border-radius:2px;text-transform:uppercase}
 .quest-mission-num{font-family:var(--font-display);font-size:4.5rem;font-weight:300;
   color:rgba(201,168,76,.07);line-height:1;text-align:right}
-.quest-body{padding:0 22px 40px;display:flex;flex-direction:column;gap:20px;max-width:480px;margin:0 auto;width:100%}
-.quest-title{font-family:var(--font-display);font-size:clamp(1.5rem,6vw,2.2rem);font-weight:300;color:var(--white);line-height:1.2}
+.quest-body{padding:0 20px 80px;display:flex;flex-direction:column;gap:24px;max-width:480px;margin:0 auto;width:100%}
+.quest-title{font-family:var(--font-display);font-size:clamp(1.5rem,6vw,2.2rem);font-weight:300;color:var(--white);line-height:1.2;letter-spacing:.04em}
 .quest-title em{color:var(--gold);font-style:italic}
 .map-legend-box{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.15);padding:12px 14px;border-radius:4px}
 .map-header-label{font-family:var(--font-mono);font-size:.5625rem;font-weight:bold;color:var(--gold-light);
@@ -260,10 +276,10 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .sub-map-label{font-size:.625rem;color:var(--gold-light);font-family:var(--font-mono);margin-bottom:5px;letter-spacing:.12em}
 .sub-map-container img{width:100%;border-radius:2px}
 .narration-card{background:linear-gradient(135deg,rgba(201,168,76,.055),rgba(155,35,53,.055));
-  border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:12px}
+  border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:18px 16px;display:flex;flex-direction:column;gap:10px}
 .narration-label{font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.2em;color:var(--mist);opacity:.6;text-transform:uppercase}
-.narration-text{font-family:var(--font-display);font-size:.9375rem;font-style:italic;color:var(--parchment);line-height:1.85;opacity:.92}
-.quiz-card{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.18);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.narration-text{font-family:var(--font-display);font-size:.8125rem;font-style:italic;line-height:1.85;letter-spacing:.02em;color:var(--parchment);opacity:.92}
+.quiz-card{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.18);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:14px}
 .quiz-label{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;color:var(--red);
   text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .quiz-label::after{content:'';flex:1;height:1px;background:rgba(155,35,53,.3)}
@@ -291,8 +307,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   animation:stampIn .5s var(--ease-spring) both}
 .clear-stamp::after{content:'';position:absolute;inset:-6px;border:1px dashed rgba(201,168,76,.3);border-radius:50%;animation:spin 20s linear infinite}
 .clear-title{font-family:var(--font-display);font-size:clamp(1.75rem,8vw,2.8rem);font-weight:300;
-  color:var(--white);line-height:1.1;margin-bottom:6px}
-.clear-title em{font-style:italic;color:var(--gold-light);display:block;font-size:.55em;letter-spacing:.18em}
+  color:var(--white);line-height:1.1;letter-spacing:.06em;margin-bottom:6px}
+.clear-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold-light);display:block;font-size:.55em;letter-spacing:.06em}
 .clear-sub{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.2em;color:var(--mist);opacity:.55;text-transform:uppercase}
 .clear-body{padding:0 22px 48px;display:flex;flex-direction:column;gap:22px;max-width:480px;margin:0 auto;width:100%}
 .omikuji-box-card{background:linear-gradient(135deg,#2a2018 0%,#17120e 100%);
@@ -318,7 +334,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .spot-card-info{flex:1}
 .spot-card-name{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;color:var(--white);margin-bottom:3px}
 .spot-card-dist{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.1em;color:var(--gold);opacity:.7;margin-bottom:5px}
-.spot-card-desc{font-size:.8125rem;color:var(--mist);opacity:.78;line-height:1.65}
+.spot-card-desc{font-size:.8125rem;color:var(--mist);opacity:.78;line-height:1.65;letter-spacing:.02em}
 .feedback-card{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.18);padding:18px;border-radius:6px;display:flex;flex-direction:column;gap:12px}
 .feedback-title{font-family:var(--font-display);font-size:1.0625rem;color:var(--gold-light);font-style:italic}
 .survey-stars{display:flex;gap:10px;justify-content:center;margin:6px 0}
@@ -344,22 +360,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .toast-title{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;color:var(--gold);margin-bottom:3px}
 .toast-body{font-size:.8125rem;color:var(--white);line-height:1.55;white-space:pre-line}
 
-.ar-modal{display:none;position:fixed;inset:0;z-index:9000;background:#000;
-  flex-direction:column;align-items:center;justify-content:center}
-.ar-modal.open{display:flex}
-.ar-viewfinder{width:min(90vw,360px);aspect-ratio:9/16;background:#080808;
-  border:1px solid rgba(201,168,76,.3);border-radius:8px;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center}
-.ar-corners>div{position:absolute;width:28px;height:28px;border-color:var(--gold);border-style:solid}
-.ar-corner-tl{top:14px;left:14px;border-width:2px 0 0 2px}
-.ar-corner-tr{top:14px;right:14px;border-width:2px 2px 0 0}
-.ar-corner-bl{bottom:14px;left:14px;border-width:0 0 2px 2px}
-.ar-corner-br{bottom:14px;right:14px;border-width:0 2px 2px 0}
-.ar-scan-line{position:absolute;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan 2.2s linear infinite}
-.ar-info{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.18em;color:var(--gold);text-align:center;padding:28px}
-.ar-footer{margin-top:16px}
-
 @media(min-width:480px){
   .welcome-body,.survey-body,.quest-body,.clear-body{padding-left:32px;padding-right:32px}
 }
@@ -384,46 +384,12 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .fullmap-spot-num{min-width:24px;height:24px;background:var(--red);border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-mono);font-size:.625rem;color:var(--white);font-weight:700;flex-shrink:0;margin-top:1px}
-.fullmap-spot-text{font-size:.8125rem;color:var(--mist);line-height:1.65;opacity:.9}
+.fullmap-spot-text{font-size:.8125rem;color:var(--mist);line-height:1.65;opacity:.9;letter-spacing:.02em}
 .fullmap-spot-text strong{color:var(--parchment);font-weight:400}
 .fullmap-route-hint{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(155,35,53,.06));
   border:1px solid rgba(201,168,76,.22);border-radius:4px;padding:14px 16px;
   font-size:.8125rem;color:var(--mist);line-height:1.7;opacity:.92}
 .fullmap-route-hint strong{color:var(--gold-light);font-weight:400}
-
-.ar-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.97);
-  flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px}
-.ar-modal.open{display:flex}
-.ar-viewfinder{width:min(92vw,360px);aspect-ratio:9/16;background:#050505;
-  border:1px solid rgba(201,168,76,.3);border-radius:8px;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;flex-direction:column}
-.ar-corners>div{position:absolute;width:28px;height:28px;border-color:var(--gold);border-style:solid}
-.ar-corner-tl{top:14px;left:14px;border-width:2px 0 0 2px}
-.ar-corner-tr{top:14px;right:14px;border-width:2px 2px 0 0}
-.ar-corner-bl{bottom:14px;left:14px;border-width:0 0 2px 2px}
-.ar-corner-br{bottom:14px;right:14px;border-width:0 2px 2px 0}
-.ar-scan-line{position:absolute;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan 2.2s linear infinite}
-.ar-scanning-zone{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px;text-align:center}
-.ar-scanning-text{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.18em;color:var(--gold)}
-.ar-scanning-sub{font-family:var(--font-mono);font-size:.5625rem;color:var(--mist);opacity:.5;letter-spacing:.12em}
-
-.ar-detected{display:none;flex-direction:column;align-items:center;gap:0;width:100%;height:100%;position:relative;overflow:hidden}
-.ar-detected.show{display:flex}
-.ar-detected-img{width:100%;flex:1;object-fit:cover;opacity:.5}
-.ar-detected-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:20px;
-  background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.3) 55%,transparent 100%)}
-.ar-detected-badge{font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.2em;
-  color:var(--ink);background:var(--gold);padding:3px 10px;border-radius:100px;
-  align-self:flex-start;margin-bottom:10px;text-transform:uppercase;font-weight:700}
-.ar-detected-title{font-family:var(--font-display);font-size:1.15rem;color:var(--gold-light);
-  font-style:italic;line-height:1.2;margin-bottom:8px}
-.ar-detected-desc{font-size:.8125rem;color:var(--parchment);line-height:1.7;opacity:.92}
-.ar-detected-emoji{font-size:2rem;margin-top:10px;text-align:center}
-@keyframes arPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
-.ar-detected.show .ar-detected-img{animation:arPulse 2s ease-in-out infinite}
-.ar-footer{display:flex;gap:12px}
 
 #btnStartQuest{transition:background .35s var(--ease-silk),color .35s,opacity .35s,box-shadow .35s}
 #btnStartQuest:disabled{
@@ -528,36 +494,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-display);font-size:.9375rem;
   color:var(--parchment);opacity:.85;line-height:1.7;font-style:italic;font-variant-numeric:lining-nums}
 
-.ar-media-wrap{
-  position:relative;width:100%;border:1px solid rgba(201,168,76,.2);
-  background:#0a0a0a;border-radius:4px;overflow:hidden;cursor:pointer;
-  -webkit-tap-highlight-color:transparent}
-.ar-media-wrap img{width:100%;height:auto;display:block;
-  object-fit:cover;max-height:260px;transition:opacity .2s}
-.ar-media-wrap:active img{opacity:.85}
-
-.ar-tap-badge{
-  position:absolute;bottom:10px;right:10px;
-  display:flex;align-items:center;gap:6px;
-  background:rgba(0,0,0,.72);backdrop-filter:blur(6px);
-  border:1px solid rgba(201,168,76,.45);border-radius:4px;
-  padding:6px 12px;
-  font-family:var(--font-mono);font-size:.625rem;letter-spacing:.12em;
-  color:var(--gold);text-transform:uppercase;pointer-events:none;
-  animation:arBadgePulse 2.5s ease-in-out infinite}
-@keyframes arBadgePulse{
-  0%,100%{box-shadow:0 0 0 rgba(201,168,76,0)}
-  50%{box-shadow:0 0 12px rgba(201,168,76,.35)}}
-.ar-tap-badge .ar-badge-cam{font-size:.875rem}
-
-.ar-media-wrap::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);
-  opacity:0;pointer-events:none;transition:opacity .15s}
-.ar-media-wrap:active::after{opacity:1}
-
-
-
 .audio-player{
   display:none;flex-direction:column;gap:8px;
   background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.2);
@@ -589,10 +525,10 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   background-repeat:no-repeat;background-position:right 5px center}
 
 #page-welcome-map{background:var(--ink)}
-.wm-inner{max-width:480px;width:100%;margin:0 auto;padding:32px 22px 48px;display:flex;flex-direction:column;gap:18px}
+.wm-inner{max-width:480px;width:100%;margin:0 auto;padding:72px 28px 80px;display:flex;flex-direction:column;gap:28px}
 .wm-eyebrow{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.28em;color:var(--gold);opacity:.8;text-transform:uppercase;margin-bottom:4px}
 .wm-title{font-family:var(--font-display);font-size:clamp(1.6rem,6vw,2.4rem);font-weight:300;color:var(--white);line-height:1.15}
-.wm-title em{color:var(--gold-light);font-style:italic;display:block;font-size:.55em;letter-spacing:.2em;margin-bottom:4px}
+.wm-title em{font-family:'Cormorant Garamond',serif;color:var(--gold-light);font-style:italic;font-weight:300;display:block;font-size:.55em;letter-spacing:.06em;margin-bottom:4px}
 .wm-img-wrap{width:100%;border:1px solid rgba(201,168,76,.3);border-radius:6px;overflow:hidden;
   box-shadow:0 8px 32px rgba(0,0,0,.6)}
 .wm-img-wrap img{width:100%;height:auto;display:block;object-fit:cover;max-height:280px}
@@ -601,8 +537,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .wm-narr-label{font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.2em;color:var(--mist);opacity:.6;text-transform:uppercase}
 
 .narr-clamp{
-  font-family:var(--font-display);font-size:.9375rem;font-style:italic;
-  color:var(--parchment);line-height:1.85;opacity:.92;
+  font-family:var(--font-display);font-size:.8125rem;font-style:italic;
+  line-height:1.85;letter-spacing:.02em;color:var(--parchment);opacity:.92;
   display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;
   transition:max-height .4s var(--ease-silk)}
 .narr-clamp.expanded{display:block;overflow:visible}
@@ -620,10 +556,25 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
     radial-gradient(ellipse 70% 50% at 50% 0%,rgba(201,168,76,.12),transparent 60%),
     radial-gradient(ellipse 50% 60% at 50% 100%,rgba(155,35,53,.10),transparent 55%),
     var(--ink);
+  position:relative;
+  overflow:hidden;
   align-items:center;justify-content:center}
+#page-app-appeal::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url('images/4_招福殿の招き猫9.jpg');
+  background-size:cover;
+  background-position:center;
+  opacity:0.15;
+  pointer-events:none;
+  z-index:0;
+}
 .appeal-inner{
+  position:relative;
+  z-index:1;
   max-width:440px;width:100%;margin:0 auto;
-  padding:44px 24px 52px;
+  padding:72px 28px 80px;
   display:flex;flex-direction:column;align-items:center;gap:28px}
 .appeal-eyebrow{
   font-family:var(--font-mono);font-size:.625rem;letter-spacing:.3em;
@@ -632,8 +583,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   font-family:var(--font-display);font-size:clamp(1.6rem,6vw,2.4rem);
   font-weight:300;color:var(--white);text-align:center;line-height:1.2}
 .appeal-title em{
-  font-style:italic;color:var(--gold-light);
-  display:block;font-size:.55em;letter-spacing:.2em;margin-bottom:6px}
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--gold-light);
+  display:block;font-size:.55em;letter-spacing:.06em;margin-bottom:6px}
 .appeal-divider{
   width:60px;height:1px;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
@@ -663,15 +614,15 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 #page-checkout{background:var(--ink)}
 .checkout-inner{
   max-width:480px;width:100%;margin:0 auto;
-  padding:36px 22px 48px;
-  display:flex;flex-direction:column;gap:20px}
+  padding:72px 28px 80px;
+  display:flex;flex-direction:column;gap:28px}
 .checkout-eyebrow{
   font-family:var(--font-mono);font-size:.625rem;letter-spacing:.25em;
   color:var(--gold);opacity:.75;text-transform:uppercase;margin-bottom:4px}
 .checkout-title{
   font-family:var(--font-display);font-size:clamp(1.5rem,5vw,2rem);
   font-weight:300;color:var(--white);line-height:1.2;margin-bottom:2px}
-.checkout-title em{color:var(--gold-light);font-style:italic}
+.checkout-title em{font-family:'Cormorant Garamond',serif;color:var(--gold-light);font-style:italic;font-weight:300;letter-spacing:.06em}
 .checkout-hero-img{
   width:100%;border:1px solid rgba(201,168,76,.25);border-radius:6px;
   overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.55)}
@@ -705,7 +656,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 #page-sync{background:var(--ink)}
 .sync-inner{
   max-width:440px;width:100%;margin:0 auto;
-  padding:40px 22px 48px;display:flex;flex-direction:column;gap:20px}
+  padding:72px 28px 80px;display:flex;flex-direction:column;gap:28px}
 .sync-header{text-align:center}
 .sync-title{
   font-family:var(--font-display);font-size:1.5rem;font-weight:300;
@@ -733,7 +684,7 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 #page-manners{background:var(--ink)}
 .manners-inner{
   max-width:440px;width:100%;margin:0 auto;
-  padding:36px 22px 40px;display:flex;flex-direction:column;gap:20px}
+  padding:72px 28px 80px;display:flex;flex-direction:column;gap:28px}
 .manners-header{text-align:center}
 .manners-title{
   font-family:var(--font-display);font-size:1.5rem;font-weight:300;
@@ -753,9 +704,9 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .checkout-price-now sup{font-size:.85rem;vertical-align:super}
 
 .wm-slides-wrap{
-  width:100%;position:relative;overflow:hidden;
-  border:1px solid rgba(201,168,76,.3);border-radius:6px;
-  box-shadow:0 8px 32px rgba(0,0,0,.6);aspect-ratio:4/3;background:#050505}
+  width:100vw;margin-left:calc(-50vw + 50%);position:relative;overflow:hidden;
+  border:none;border-radius:0;
+  box-shadow:none;aspect-ratio:16/9;background:#050505}
 .wm-slide{
   position:absolute;inset:0;opacity:0;
   background-size:cover;background-position:center;
@@ -938,6 +889,10 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   box-shadow:0 4px 18px rgba(155,35,53,.4);transition:transform .15s}
 .cat-upload-btn:active{transform:scale(.97)}
 
+@keyframes arBadgePulse{
+  0%,100%{box-shadow:0 0 0 rgba(201,168,76,0)}
+  50%{box-shadow:0 0 12px rgba(201,168,76,.35)}}
+
 .cat-ai-loading{display:none;text-align:center;font-family:var(--font-mono);
   font-size:.6875rem;letter-spacing:.14em;color:var(--gold);padding:8px;
   animation:arBadgePulse 1.2s ease-in-out infinite}
@@ -972,9 +927,9 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .omikuji-redraw-btn:hover{background:rgba(201,168,76,.1)}
 
 .quest-slide-wrap{
-  position:relative;width:100%;overflow:hidden;
-  border:1px solid rgba(201,168,76,.2);border-radius:4px;
-  background:#050505;aspect-ratio:4/3;cursor:pointer}
+  position:relative;width:100vw;margin-left:calc(-50vw + 50%);overflow:hidden;
+  border:none;border-radius:0;
+  background:#050505;aspect-ratio:16/9;cursor:pointer}
 .quest-slide-wrap img.quest-slide{
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;opacity:0;transition:opacity 1s ease-in-out}
@@ -995,26 +950,35 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
 .quest-slide-prev{left:6px}
 .quest-slide-next{right:6px}
 
-.quest-slide-wrap .ar-tap-badge{z-index:4}
-
 .topic-box{
   background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(155,35,53,.05));
   border:1px solid rgba(201,168,76,.3);border-radius:5px;
-  padding:16px;margin-top:4px;display:flex;flex-direction:column;gap:10px}
+  padding:20px;margin-top:4px;display:flex;flex-direction:column;gap:10px}
 .topic-box-icon{font-size:1.5rem}
 .topic-box-title{
   font-family:var(--font-display);font-size:1rem;
   color:var(--gold-light);font-style:italic;line-height:1.3}
 .topic-box-body{
-  font-size:.8125rem;color:var(--mist);line-height:1.75;opacity:.92;white-space:pre-line}
+  font-size:.8125rem;color:var(--mist);line-height:1.75;opacity:.92;white-space:pre-line;letter-spacing:.02em}
 .topic-box-note{
   font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.15em;
   color:var(--red);text-transform:uppercase;opacity:.8}
 
 .checkout-slides-wrap{
-  width:100%;position:relative;overflow:hidden;
-  border:1px solid rgba(201,168,76,.25);border-radius:6px;
-  box-shadow:0 8px 32px rgba(0,0,0,.55);aspect-ratio:4/3;background:#050505}
+  width:100vw;margin-left:calc(-50vw + 50%);position:relative;overflow:hidden;
+  border:none;border-radius:0;
+  box-shadow:none;aspect-ratio:16/9;background:#050505}
+.quest-slide-wrap::after,
+.wm-slides-wrap::after,
+.checkout-slides-wrap::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:60%;
+  background:linear-gradient(to bottom,transparent,rgba(5,3,2,.85));
+  pointer-events:none;
+  z-index:1;
+}
 .checkout-slide{
   position:absolute;inset:0;opacity:0;
   background-size:cover;background-position:center;
@@ -1151,8 +1115,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
       <div class="appeal-feat">
         <div class="appeal-feat-icon">📷</div>
         <div class="appeal-feat-body">
-          <div class="appeal-feat-title" id="appealFeat2Title">WebAR カメラ体験</div>
-          <div class="appeal-feat-desc" id="appealFeat2Desc">現地限定の空間AR演出。写真をタップするだけで、歴史が三次元に浮かび上がる没入体験を提供します。</div>
+          <div class="appeal-feat-title" id="appealFeat2Title">📷 写真をアップロードして隠れ猫の答え合わせ</div>
+          <div class="appeal-feat-desc" id="appealFeat2Desc">現地で見つけた招き猫を写真に撮ってアップロード。AIが正解かどうか判定します。</div>
         </div>
       </div>
 
@@ -1516,13 +1480,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
       <button class="quest-slide-nav quest-slide-prev" onclick="playClickSound();questSlidePrev()" id="qSlidePrev">‹</button>
       <button class="quest-slide-nav quest-slide-next" onclick="playClickSound();questSlideNext()" id="qSlideNext">›</button>
       <div class="quest-slide-dots" id="questSlideDots"></div>
-      <div class="ar-tap-badge" onclick="playClickSound();openAR()" style="cursor:pointer">
-        <span class="ar-badge-cam">📷</span>
-        <span id="arBadgeText">TAP FOR WebAR</span>
-      </div>
     </div>
     
-    <div class="topic-box" id="questTopicBox" style="display:none"></div>
     <div class="sub-map-container" id="subMapContainer"><div class="sub-map-label">📍 SUB-MAP / 墓所内詳細案内図</div><img src="images/5_井伊家墓所地図.jpg" alt="Map" loading="lazy"></div>
     <div class="narration-card fade-up fade-up-2">
       <div class="narration-label" id="lblNarrationLabel">🎙 AI Narration — ElevenLabs</div>
@@ -1563,7 +1522,8 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
         </select>
       </div>
     </div>
-    
+
+    <div class="topic-box" id="questTopicBox" style="display:none"></div>
     <div id="hiddenCatsSection" style="display:none" class="hidden-cats-card fade-up fade-up-2"></div>
     <div class="quiz-card fade-up fade-up-3">
       <div class="quiz-label" id="lblQuizLabel">Quiz Challenge</div>
@@ -1606,35 +1566,6 @@ body{width:100%;min-height:100%;background:var(--ink);color:var(--parchment);
   </div>
   <div class="corporate-footer" id="postPayFooter"></div>
 </section>
-
-<div class="ar-modal" id="arModal">
-  <div class="ar-viewfinder">
-    <div class="ar-corners">
-      <div class="ar-corner-tl"></div><div class="ar-corner-tr"></div>
-      <div class="ar-corner-bl"></div><div class="ar-corner-br"></div>
-    </div>
-    <div class="ar-scan-line" id="arScanLine"></div>
-    
-    <div class="ar-scanning-zone" id="arScanningZone">
-      <div style="font-size:2.5rem;animation:float 2s ease-in-out infinite">🔍</div>
-      <div class="ar-scanning-text">SCANNING FOR MARKERS…</div>
-      <div class="ar-scanning-sub">Point at the landmark · マーカーを認識中</div>
-    </div>
-    
-    <div class="ar-detected" id="arDetected">
-      <img id="arDetectedImg" src="" alt="AR Overlay" class="ar-detected-img" loading="lazy">
-      <div class="ar-detected-overlay">
-        <div class="ar-detected-badge">✓ MARKER DETECTED</div>
-        <div class="ar-detected-title" id="arDetectedTitle">Three-Story Pagoda</div>
-        <div class="ar-detected-desc" id="arDetectedDesc">Hidden cat found!</div>
-        <div class="ar-detected-emoji" id="arDetectedEmoji">🐱✨</div>
-      </div>
-    </div>
-  </div>
-  <div class="ar-footer">
-    <button class="btn-secondary" style="width:auto;padding:11px 28px" onclick="closeAR()">✕ Close AR</button>
-  </div>
-</div>
 
 <script>
 
@@ -1683,7 +1614,7 @@ const CONFIG_LANG = {
     mapDescTitle:"📍 10 Key Landmarks",
     mapRouteHint:"<strong>📍 Recommended Route:</strong><br>Main Gate (1) → Three-Story Pagoda (2) → Buddha Hall (3) → Shofukuden (4) → Ii Family Tombs (5) → Lecture Hall (6) → Patriarchs Hall (7) → Red Gate (8) → Bell Tower (9) → Jizo Hall (10)",
     mapStartBtn:"Start Sanctuary Pilgrimage ➔",
-    welcomeNarr:"Before we begin our journey, let us understand the master blueprint of this sacred space. Goutokuji is a sprawling spiritual ecosystem enveloped in lush greenery. Your optimized route starts at the grand Sanmon Gate. Walk straight along the stone pathway lined with beautifully manicured pine trees. Turn left at the end, and you will find the historic Buddha Hall on your right, with the famous Shofuku-den—the ocean of thousands of white porcelain cats—resting just behind it. After paying your respects at the samurai clan cemetery of Ii Naosuke at the absolute rear, we will loop clockwise through the Hondo, Kaiso-do, the vibrant Akamon, the bronze Bell Tower, and finally, the Jizo-do. Let this auditory and visual map guide your steps. Please silence your mind, and let the pilgrimage unfold.",
+    welcomeNarr:"Welcome to Goutokuji. Before we begin our journey, let us understand the full picture of this beautiful ancient temple.\\n\\nGoutokuji is a sprawling sacred sanctuary enveloped in lush, verdant greenery.\\n\\nThe temple's official name is Daikei-zan Goutokuji, founded in 1480 during the Muromachi period. In 1633, when the Setagaya area came under the domain of the Hikone feudal clan, Lord Ii Naotaka developed deep devotion to the temple and established it as the Ii family's principal place of worship in Edo. The temple's name derives from Naotaka's posthumous Buddhist name.\\n\\nGoutokuji is also widely known as the birthplace of the beckoning cat. According to legend, Lord Naotaka was returning from a falconry excursion when he was beckoned by a white cat at the temple gate. He stopped to visit, and moments later, a fierce thunderstorm broke out. Thanks to the cat's invitation, he was spared from the storm and enjoyed a memorable conversation with the temple's abbot. Deeply moved by this fortunate encounter, the cat was honored as a bringer of good fortune and named Maneki-neko.\\n\\nHere is your recommended route. Walk straight along the pine-lined path and pass through the historic Sanmon Gate. Once inside the grounds, you will see the Three-Story Pagoda on your left — somewhere within it, three hidden cats are quietly waiting to be found. Ahead of you stands the Buddha Hall, and beyond it to the left, the Shofuku-den, home to thousands of beckoning cats. After paying your respects at the Ii Family Cemetery at the far end, continue clockwise through the Main Hall, the Patriarchs Hall, the vermilion Red Gate, the historic Bell Tower, and finally the Jizo Hall.\\n\\nAt each spot, you will find real photographs taken on location, along with exclusive historical quiz questions. Answer all quizzes correctly and a special fortune slip awaits you.\\n\\nNow, smartphone in hand, take a deep breath and begin your pilgrimage.",
     wmTitle:"<em>Welcome to Goutokuji</em>豪徳寺へようこそ",
     readMoreLabel:"▼ Read More",showLessLabel:"▲ Show Less",
     wmNextBtn:"Start the Pilgrimage ➜",
@@ -1701,16 +1632,16 @@ const CONFIG_LANG = {
     ],
     staticInfo:`<strong>[Hours]</strong> 6:00 AM – 5:00 PM | Office: 8:00 AM – 4:30 PM<br><strong>[Support]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     steps:[
-      {title:"The Sanmon Gate",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"Your pilgrimage begins at the Sanmon Gate. In Zen Buddhism, crossing this wooden threshold is a powerful ritual of purification. It symbolizes leaving behind the noise, stress, and illusions of the secular world to enter a space of absolute mindfulness. Take a deep breath as you look at the lush path ahead; you are now walking on sacred ground.",question:"What Zen sect does Goutokuji belong to?",options:[{text:"Sōtō Zen Sect",correct:true},{text:"Rinzai Sect",correct:false}],correctFb:"🎯 Correct! Sōtō Zen — emphasising zazen (seated meditation).",wrongFb:"❌ Incorrect. Goutokuji belongs to Sōtō Zen."},
-      {title:"Three-Story Pagoda",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Behold the magnificent wooden Three-Story Pagoda. While traditional Buddhist pagodas feature sacred deities and the Chinese zodiac, Goutokuji holds a delightful architectural secret. Look closely under the roof beams of the first tier, right next to the carving of the Rat. You will find a tiny, hand-carved Beckoning Cat hidden in plain sight. Open our built-in WebAR camera now, aim at the roof, and unlock the exact spatial silhouette of this legendary hidden feline.",question:"What is hidden alongside the zodiac carvings?",options:[{text:"A carved Beckoning Cat",correct:true},{text:"A gold dragon crest",correct:false}],correctFb:"🐱 Perfect! Visible in the close-up photograph.",wrongFb:"❌ Look more closely at the corner of the eaves."},
-      {title:"The Buddha Hall",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Standing before you is the Butsuden, the Buddha Hall, officially designated as a cultural asset of Setagaya. Inside rest ancient, sacred statues that have watched over Tokyo for centuries. Before approaching the altar, look at the large incense burner. Worshippers bathe themselves in this rising smoke to cleanse their bodies of physical ailments and purify their spirits before facing the divine.",question:"What cultural asset rank does the Buddha Hall hold?",options:[{text:"Setagaya Ward Designated Cultural Property",correct:true},{text:"National Treasure Level 1",correct:false}],correctFb:"⛩ Correct!",wrongFb:"❌ Incorrect."},
+      {title:"The Sanmon Gate",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"The first to greet you is the sturdy wooden Sanmon Gate, erected in 1884 during the Meiji era.\nRebuilt after the Great Kanto Earthquake, it continues to stand with quiet dignity to this day.\nThe plaque above reads Hekiunkan — meaning the gateway to enlightenment beyond the azure clouds.\n\nIn Zen Buddhism, passing through this gate is far more than a simple act of entry.\nIt is a ritual of purification — a moment to cast off the noise, worries, and illusions of the secular world,\nand enter the sacred realm of the Buddha with a cleansed heart and spirit.\n\nOne important etiquette tip: step over — never step on — the threshold at the base of the gate.\nIt is believed that the spirits of the gods and Buddha reside within the threshold,\nand treading upon it is considered deeply disrespectful.\nPlease be mindful as you enter.\n\nTake one deep breath as you pass through.\nThen walk slowly down the lush, pine-lined path that stretches before you.",question:"What Zen sect does Goutokuji belong to?",options:[{text:"Sōtō Zen Sect",correct:true},{text:"Rinzai Sect",correct:false}],correctFb:"🎯 Correct! Sōtō Zen — emphasising zazen (seated meditation).",wrongFb:"❌ Incorrect. Goutokuji belongs to Sōtō Zen."},
+      {title:"Three-Story Pagoda",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completed in 2006, the wooden Three-Story Pagoda rises 22.5 meters into the sky — a breathtaking presence that commands attention.\n\nHidden within this pagoda is the stage for a very special mission: finding 3 secret beckoning cats concealed somewhere within the structure.\n\nThe craftsmen who built this tower playfully carved three tiny cats into the architecture — waiting quietly to be discovered. Can you find all three with your own eyes?\n\nThis app includes a special feature: photograph the cat you find and check your answer. If you are having trouble, hints are available to guide you.",question:"What is hidden alongside the zodiac carvings?",options:[{text:"A carved Beckoning Cat",correct:true},{text:"A gold dragon crest",correct:false}],correctFb:"🐱 Perfect! Visible in the close-up photograph.",wrongFb:"❌ Look more closely at the corner of the eaves."},
+      {title:"The Buddha Hall",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Built in 1677, the Butsuden — Buddha Hall — is a designated cultural asset of Setagaya Ward. Its solemn presence carries the weight of nearly 350 years of history.\n\nEnshrined within are three sacred statues: Amida Nyorai, Shakyamuni, and Miroku Bosatsu — the Buddhas of past, present, and future — watching over all who visit in quiet serenity.\n\nStanding before these ancient figures, enveloped by the stillness of the grounds, you may find yourself experiencing a sense of time unlike anything in your daily life. Please take a moment to press your palms together and offer a quiet prayer.",question:"What cultural asset rank does the Buddha Hall hold?",options:[{text:"Setagaya Ward Designated Cultural Property",correct:true},{text:"National Treasure Level 1",correct:false}],correctFb:"⛩ Correct!",wrongFb:"❌ Incorrect."},
       {title:"The Shōfuku-den Hall",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"Welcome to Shofuku-den, a sight that leaves travelers from around the globe utterly breathless—an ocean of thousands of white porcelain cats. But look closer: notice that none of these cats hold a gold coin. This reflects the deep wisdom of Zen. The beckoning cat does not hand you wealth directly; it merely grants you the opportunity or blessing. Transforming that opportunity into true success depends entirely on your own effort and hard work. Feel the silent gaze of these thousands of cats, and make your own vow today.",question:"Why do the Shōfuku-den cats hold no gold coin?",options:[{text:"Results depend on one's own effort",correct:true},{text:"Due to Edo-era budget limits",correct:false}],correctFb:"✨ Correct philosophical answer!",wrongFb:"❌ Incorrect."},
-      {title:"Grave of Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"You are standing within the Ii Family Cemetery, a designated National Historic Site shrouded in absolute solemnity. Enshrined at the rear is Ii Naosuke, the Grand Councilor of the Tokugawa shogunate. In eighteen-fifty-eight, facing the imminent threat of Western colonization, he made the courageous decision to sign the historic treaty with the United States, effectively ending centuries of national isolation. Feel the profound echoes of samurai history here, where the man who opened Japan\'s gates to the modern world now rests in eternal peace.",question:"What was Ii Naosuke's government title?",options:[{text:"Tairō (Grand Councilor)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ Correct! A pivotal figure in Japan's modernisation.",wrongFb:"❌ Incorrect."},
-      {title:"The Main Hall (Hondo)",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"The Hondo, completed in nineteen-sixty-seven, serves as the spiritual and liturgical heart of Goutokuji. Enshrined within this grand hall is the sacred statue of Sho-Kannon Bodhisattva, revered for listening compassionate ears to the suffering and prayers of all living beings. This is where the temple\'s lineage of monks performs daily services. Absorb the profound harmony of the interior, a perfect manifestation of Zen spatial balance.",question:"What daily practice is central to the Hondo?",options:[{text:"Zazen Meditation",correct:true},{text:"Fire ceremony",correct:false}],correctFb:"🎯 Correct!",wrongFb:"❌ Incorrect."},
-      {title:"The Kaiso-do Hall",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"Standing near the main hall is the Kaiso-do, the Patriarchs Hall. This sacred structure enshrines the ancestral tablets and eternal spirits of the high priests who kept the flame of Goutokuji\'s teachings burning through the centuries. Looking closely at this pavilion reveals that Goutokuji is not just a scenic destination, but a living sanctuary where generations have protected a sacred legacy. Reflect quietly on the unseen threads connecting the past to your present moment.",question:"Whose spirit is enshrined in the Kaiso-do?",options:[{text:"The founding master monks",correct:true},{text:"Feudal soldiers",correct:false}],correctFb:"🎯 Perfect!",wrongFb:"❌ Incorrect."},
-      {title:"The Red Gate (Akamon)",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"The vivid vermilion Akamon, or Red Gate, offers a striking visual contrast to the temple\'s lush green foliage. Donated directly by the prestigious samurai clan of the Ii family in eighteen-eighty-five, it was later meticulously relocated to its current position. The vibrant red lacquer paired with the natural surroundings makes this gate one of the most picturesque landmarks in the entire sanctuary. Take a moment to capture this iconic symbol of aristocratic samurai architecture.",question:"What is the defining colour of the Akamon gate?",options:[{text:"Vivid vermilion red",correct:true},{text:"Pitch-black charcoal",correct:false}],correctFb:"🎯 Correct!",wrongFb:"❌ Incorrect."},
-      {title:"The Bell Tower",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"Before you hangs the historic bronze Bell Tower, holding the oldest temple bell in Setagaya Ward, cast in sixteen-seventy-nine. For over three hundred and fifty years, its resonant voice has shaped the local atmosphere. On New Year\'s Eve, its deep tones echo across Tokyo, theoretically washing away the one hundred and eight earthly illusions of humanity. Observe the beautiful green patina on the ancient bronze, shaped by the steady flow of time.",question:"What material is the hanging temple bell made from?",options:[{text:"Cast bronze",correct:true},{text:"Carved granite",correct:false}],correctFb:"🎯 Correct!",wrongFb:"❌ Incorrect."},
-      {title:"The Jizo-do Hall",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"Your ten-spot sanctuary pilgrimage culminates here at the Jizo-do Hall, beautifully reconstructed in the year twenty-twenty. Enshrined inside is the gentle figure of Jizo Bodhisattva, the compassionate guardian of travelers, children, and souls seeking peace. Offer your quiet gratitude for completing this journey safely. Under the lingering blessings of the beckoning cats, may your future paths unfold with absolute prosperity and joy.",question:"Who do the Jizo statues spiritually protect?",options:[{text:"Travellers, children, and souls",correct:true},{text:"Samurai warriors",correct:false}],correctFb:"🌸 Perfect! All 10 sanctuary spots completed.",wrongFb:"❌ Incorrect."}
+      {title:"Grave of Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"The Ii Family Cemetery is a nationally designated historic site — a special sanctuary where the air itself seems to change the moment you step inside.\n\nAt the far end stands the great tombstone of Ii Naosuke, the Grand Councilor of the late Edo period.\n\nFacing the imminent threat of Western colonization, Naosuke courageously concluded the Treaty of Amity and Commerce with the United States in 1858, bringing an end to more than 250 years of national isolation. His decision drew fierce opposition, and he ultimately lost his life in the Sakuradamon Incident — yet his historic courage in opening Japan\'s gates to the modern world continues to breathe quietly in this very ground.\n\nPlease take a moment to reflect on the weight of this history and offer a quiet prayer.",question:"What was Ii Naosuke's government title?",options:[{text:"Tairō (Grand Councilor)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ Correct! A pivotal figure in Japan's modernisation.",wrongFb:"❌ Incorrect."},
+      {title:"The Main Hall (Hondo)",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"Completed in 1967, the Hondo — Main Hall — is the most sacred structure at Goutokuji, serving as the very heart of its faith.\n\nEnshrined within is the statue of Sho-Kannon Bodhisattva, revered for compassionately hearing the suffering and wishes of all people.\n\nEven today, monks continue the tradition of offering daily prayers here, carrying forward the flame of this temple\'s teachings.\n\nGrand and resplendent, yet somehow serene and calming — please take your time to fully absorb the exquisite harmony unique to a Zen temple.",question:"What daily practice is central to the Hondo?",options:[{text:"Zazen Meditation",correct:true},{text:"Fire ceremony",correct:false}],correctFb:"🎯 Correct!",wrongFb:"❌ Incorrect."},
+      {title:"The Kaiso-do Hall",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"Standing quietly beside the Main Hall is the Kaiso-do, the Patriarchs Hall.\n\nEnshrined here are the spirits and ancestral tablets of the successive high priests who kept the flame of Goutokuji\'s teachings burning without interruption across the centuries.\n\nGazing upon this hall, you come to feel deeply that Goutokuji is no mere tourist destination — it is a living place of prayer where generations have passed the baton of faith.\n\nAllow yourself a quiet moment to draw close in heart to the silent, timeless bonds woven across the ages.",question:"Whose spirit is enshrined in the Kaiso-do?",options:[{text:"The founding master monks",correct:true},{text:"Feudal soldiers",correct:false}],correctFb:"🎯 Perfect!",wrongFb:"❌ Incorrect."},
+      {title:"The Red Gate (Akamon)",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"The Akamon — Red Gate — paints a vivid vermilion contrast against the lush greenery of the temple grounds.\n\nDonated directly by the Ii family, the loyal retainer clan of the Tokugawa shogunate, in 1885, it was originally located at the east gate before being relocated to its current position.\n\nThe striking contrast between the surrounding deep green foliage and the traditional Japanese red lacquer is breathtaking — making this the most recommended photography spot in the entire grounds.\n\nPlease capture a commemorative photograph before this gate of noble, dignified beauty.",question:"What is the defining colour of the Akamon gate?",options:[{text:"Vivid vermilion red",correct:true},{text:"Pitch-black charcoal",correct:false}],correctFb:"🎯 Correct!",wrongFb:"❌ Incorrect."},
+      {title:"The Bell Tower",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"Cast in 1679, this bronze temple bell is the oldest in Setagaya Ward — a remarkable feat of craftsmanship that has been marking time here for over 350 years.\n\nOn New Year\'s Eve, its deep, resonant tones ring out across the night sky of Setagaya, as if washing away one by one the 108 earthly desires that are said to trouble humankind.\n\nPlease take a moment to admire the deep, dignified beauty of the ancient bronze — weathered by centuries of history and now wearing a distinctive patina of green.",question:"What material is the hanging temple bell made from?",options:[{text:"Cast bronze",correct:true},{text:"Carved granite",correct:false}],correctFb:"🎯 Correct!",wrongFb:"❌ Incorrect."},
+      {title:"The Jizo-do Hall",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"The final of the ten sacred spots is the Jizo-do — Jizo Hall — beautifully reborn in 2020.\n\nEnshrined here is the figure of Jizo Bodhisattva, a compassionate guardian who watches over travelers, children, and all living beings, offering them comfort and salvation.\n\nPlease offer your prayers here with gratitude for completing this pilgrimage safely.\n\nUnder the warm protection of the beckoning cats, may your future journey be filled with boundless fortune and joy.",question:"Who do the Jizo statues spiritually protect?",options:[{text:"Travellers, children, and souls",correct:true},{text:"Samurai warriors",correct:false}],correctFb:"🌸 Perfect! All 10 sanctuary spots completed.",wrongFb:"❌ Incorrect."}
     ]
   },
   ja:{
@@ -1757,9 +1688,8 @@ const CONFIG_LANG = {
     mapDescTitle:"📍 境内10大スポット案内",
     mapRouteHint:"<strong>📍 おすすめ順路：</strong><br>山門 (1) → 三重塔 (2) → 仏殿 (3) → 招福殿 (4) → 井伊家墓所 (5) → 法堂 (6) → 開祖堂 (7) → 赤門 (8) → 鐘楼 (9) → 地蔵堂 (10)",
     mapStartBtn:"理解して巡礼を開始する ➔",
-    welcomeNarr:"参拝の前に、この美しい古刹の全体像をご案内いたします。ここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。おすすめの順路は、まず正面の歴史ある山門をくぐり、綺麗に剪定された松並木の参道をまっすぐ進みます。突き当たりを左に折れると、右手に重厚な仏殿、その奥に数千の招き猫が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る、時計回りのルートが最も美しく、コストパフォーマンスの高い動線です。各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。さあ、スマホを片手に、心を落ち着かせて歩き始めましょう。",
+    welcomeNarr:"豪徳寺へようこそ。参拝の前に、この美しい寺院の全体像をご案内いたします。\\n\\nここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。\\n\\n正式名称を「大谿山 豪徳寺」といい、室町時代の文明12年（1480年）に創建されました。江戸時代の寛永10年（1633年）、世田谷が彦根藩の所領となると、藩主・井伊直孝公が深く帰依し、井伊家の江戸における菩提寺として整備されました。寺号は直孝公の戒名「久昌院殿豪徳天英大居士」に由来しています。\\n\\nまた豪徳寺は、招き猫発祥の地としても広く知られています。ある日、鷹狩りの帰りにこの地を通りかかった直孝公が、門前の白猫に手招きされてお寺に立ち寄ったところ、まもなく激しい雷雨が降り始めました。猫のおかげで雷雨を避けられ、和尚との法談も楽しめた直孝公は、この縁に深く感動したと伝えられています。その後、福を招いたこの猫は「招福猫児（まねきねこ）」と呼ばれ、招福殿にお祀りされるようになりました。\\n\\nおすすめの順路をご案内します。まず、綺麗に剪定された松並木の参道をまっすぐ進み、正面の歴史ある山門をくぐります。境内に入ると左手に三重塔が見えてきます。実は塔のどこかに3匹の隠し猫がひっそりと潜んでいます。ぜひ探してみてください。まっすぐ進むと正面に仏殿、その左手奥には数千の招福猫児が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る時計回りのルートが、最も美しい動線です。\\n\\n各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。クイズを全問正解されると、特別なおみくじを引くことができます。\\n\\nさあ、スマホを片手に、心を落ち着かせて歩き始めましょう。",
     wmTitle:"<em>豪徳寺へようこそ</em>Welcome to Goutokuji",
-    arBadgeLabel:"タップしてAR起動",
     mannersCheckToast:"チェックボックスをすべてつけてから進んでください",
     wmNextBtn:"プレミアム巡礼を開始する ➔",
     readMoreLabel:"▼ 続きを読む",showLessLabel:"▲ 閉じる",
@@ -1777,16 +1707,16 @@ const CONFIG_LANG = {
     ],
     staticInfo:`<strong>【豪徳寺 拝観時間】</strong> 6:00 〜 17:00 ｜ 寺務所: 8:00 〜 16:30<br><strong>【お問い合わせ】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     steps:[
-      {title:"山門",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"最初に出迎えるのは、どっしりとした木造の山門です。禅宗において、この門をまたぐことは、日常の悩みや邪念といった、俗世の汚れを完全に切り離し、仏の聖域へと心を清めて入場することを意味します。門の奥へと続く美しい参道の緑を見つめながら、まずは深く呼吸をしてみてください。",question:"豪徳寺の仏教の宗派はどれでしょう？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"臨済宗",correct:false}],correctFb:"🎯 正解！座禅を大切にする曹洞宗のお寺です。",wrongFb:"❌ 違います。曹洞宗です。"},
-      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"境内に美しくそびえ立つ木造の三重塔。通常、仏教の塔には神聖な仏像や十二支の動物だけが刻まれます。しかし、ここ豪徳寺の職人は、とんでもない遊び心を隠しました。一重目の屋根の下、干支のねずみのすぐ真横をよく見てください。なんと、ねずみを見つめるように手招きをする、木彫りの招き猫がひっそりと刻まれているのです。このアプリのARカメラをかざして、歴史的建造物にカモフラージュされた世界で唯一の、隠れ招き猫をロックオンしてみましょう！",question:"三重塔の彫刻に十二支と一緒に隠されている動物は？",options:[{text:"招き猫",correct:true},{text:"龍",correct:false}],correctFb:"🐱 大正解！クローズアップ写真でその姿が確認できます。",wrongFb:"❌ もう一度、軒下の彫刻を確認してみましょう。"},
-      {title:"仏殿",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"世田谷区の指定有形文化財でもある、圧倒的な存在感を放つ仏殿です。中には歴史ある仏像が安置されています。お参りをする前に、手前にある大きな黒い香炉に注目してください。立ち上るお線香の煙は、本堂の仏様に顔を合わせる前に、私たちの身体の不調を癒やし、精神の曇りを一瞬で洗い流してくれる浄化のパワーがあると信じされています。",question:"仏殿はどの行政区分の指定文化財でしょう？",options:[{text:"世田谷区指定有形文化財",correct:true},{text:"国宝第一号",correct:false}],correctFb:"⛩ 正解！非常に歴史的価値の高い木造建築です。",wrongFb:"❌ 違います。"},
+      {title:"山門",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"最初に出迎えるのは、明治17年（1884年）に上棟されたどっしりとした木造の山門です。\n関東大震災後に再建され、現在も堂々とした佇まいを保っています。\n額には「碧雲関」の文字が刻まれており、「青雲のかなたにある悟りへの関門」を意味しています。\n\n禅宗において、この門をくぐることは単なる通過ではありません。\n日常の悩みや邪念といった俗世の汚れを完全に切り離し、仏の聖域へと心を清めて入場する、魂の浄化の儀式です。\n\n一つ、参拝のマナーをご紹介します。\n門の敷居（下の木の部分）は踏まずに「またいで」入るのが礼儀とされています。\n敷居には神仏が宿るという考えから、踏みつけることは大変失礼とされているためです。\n外国人観光客の方もぜひ意識してみてください。\n\n門をくぐったら深呼吸をひとつ。\n緑豊かな参道の奥へ、ゆっくりと歩み始めましょう。",question:"豪徳寺の仏教の宗派はどれでしょう？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"臨済宗",correct:false}],correctFb:"🎯 正解！座禅を大切にする曹洞宗のお寺です。",wrongFb:"❌ 違います。曹洞宗です。"},
+      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"平成18年（2006年）に落慶した、高さ22.5メートルの木造三重塔。\nその美しい姿は境内でもひときわ目を引きます。\n\n実はこの三重塔、よく見ると境内に隠された「3匹の招き猫」を探す特別なミッションの舞台になっています。\n\n職人たちが遊び心を込めて建物のどこかにひっそりと彫り込んだ3匹の招き猫を、ぜひ自分の目で探してみてください。\n\nこのアプリには、見つけた猫を写真で撮影して答え合わせができる特別機能も用意しています。見つけられない場合はヒントも活用してみましょう。",question:"三重塔の彫刻に十二支と一緒に隠されている動物は？",options:[{text:"招き猫",correct:true},{text:"龍",correct:false}],correctFb:"🐱 大正解！クローズアップ写真でその姿が確認できます。",wrongFb:"❌ もう一度、軒下の彫刻を確認してみましょう。"},
+      {title:"仏殿",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"延宝5年（1677年）に建立された、世田谷区指定有形文化財の仏殿です。\nその荘厳な佇まいは、350年近い歴史の重みをそのまま伝えています。\n\n内陣には阿弥陀如来・釈迦如来・弥勒菩薩の三尊が安置され、過去・現在・未来の「三世」を司る諸仏として参拝者を静かに見守っています。\n\n仏様の前に立ったとき、境内の静寂と相まって日常とはまったく異なる時間の流れを感じるはずです。ゆっくりと手を合わせてみてください。",question:"仏殿はどの行政区分の指定文化財でしょう？",options:[{text:"世田谷区指定有形文化財",correct:true},{text:"国宝第一号",correct:false}],correctFb:"⛩ 正解！非常に歴史的価値の高い木造建築です。",wrongFb:"❌ 違います。"},
       {title:"招福殿",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"ついに、世界中の旅人が息をのむ招福殿のエリアです。棚を埋め尽くす数千、数万体の真っ白な招き猫たち。ここで海外の観光客が最も驚くのは、全ての猫が、金色の小判を持っていないという事実です。豪徳寺の禅の教えはこうです。猫は、あなたに幸運のきっかけ、チャンスを運んでくれる。しかし、それを実らせて成果、小判に変えるのは、その後のあなた自身の努力次第である。この凛とした白い猫たちの視線を感じながら、あなた自身の新しい決意を心の中で奉納してください。",question:"ここの招き猫が持っていないものは何でしょう？",options:[{text:"金色の小判",correct:true},{text:"右手の鈴",correct:false}],correctFb:"✨ 正解！チャンスを活かすのは自分自身の努力という教えです。",wrongFb:"❌ 違います。"},
-      {title:"井伊家墓所",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"ここ井伊家墓所は、国指定の史跡であり、一歩足を踏み入れると空気が一変する特別な聖域です。一番奥にそびえる大きな墓石が、幕末の大老、井伊直弼公の眠る場所です。日本を植民地化の危機から守るため、一八五八年に日米修好通商条約を断行し、鎖国を終わらせて日本の未来を拓いた人物です。直弼公が命をかけて守り抜いた、近代日本の夜明けという歴史の重みに思いを馳せ、静かに手を合わせてみてください。",question:"井伊直弼が幕府で就いていた最高職は何でしょう？",options:[{text:"大老",correct:true},{text:"征夷大将軍",correct:false}],correctFb:"⛩ 大正解！日本の近代化を拓いた人物の墓所です。",wrongFb:"❌ 違います。"},
-      {title:"本殿",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"昭和四十二年に落慶した本殿は、豪徳寺の信仰の核となる最も神聖な建築です。中には、あらゆる人々の苦しみや願いを優しく聞き届けてくれると信仰されている、聖観世音菩薩像が祀られています。ここでは、僧侶たちが毎日の祈りを捧げる伝統が今も息づいています。豪華絢爛でありながらも、どこか心がすっきりと落ち着く、禅寺ならではの調和のとれた美しい空間をお楽しみください。",question:"本殿で毎日中心的に行われる修行は何でしょう？",options:[{text:"坐禅",correct:true},{text:"護摩焚き",correct:false}],correctFb:"🎯 正解！",wrongFb:"❌ 違います。"},
-      {title:"開祖堂",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"本殿のすぐ近くに佇む開祖堂には、何世紀にもわたり、豪徳寺の教えを絶やすことなく受け継いできた歴代の高僧たちの魂、位牌が大切に祀られています。このお堂を眺めていると、豪徳寺がただの観光地ではなく、何世代もの人々が歴史のバトンを繋いできた、生きた祈りの場所であることが深く実感できます。千年の時を超えて紡がれる静かな絆に、そっと心を寄せてみましょう。",question:"開祖堂に祀られているのは誰でしょう？",options:[{text:"豪徳寺を開いた歴代の高僧たち",correct:true},{text:"彦根藩の武士たち",correct:false}],correctFb:"🎯 正解！",wrongFb:"❌ 違います。"},
-      {title:"赤門",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"緑豊かな境内に鮮やかなコントラストを描き出す、朱塗りの赤門です。明治十八年に、徳川幕府を支えた譜代大名、井伊家から直接寄進され、後に現在の位置へと移築されました。周囲の深い緑の木々と、日本の伝統的な弁柄朱の鮮やかな色彩が織りなす対比は、ため息が出るほど美しく、写真に収めるのに最もおすすめのスポットです。門の持つ気品に満ちた佇まいをぜひご覧ください。",question:"この歴史的な門の最大の特徴は何でしょう？",options:[{text:"鮮やかな朱赤色",correct:true},{text:"漆黒の炭色",correct:false}],correctFb:"🎯 正解！美しい赤が境内の緑に映えます。",wrongFb:"❌ 違います。"},
-      {title:"鐘楼",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"一六七九年に鋳造された、世田谷区最古の歴史を誇る青銅の梵鐘です。三百五十年以上もの間、この地で時を刻み続けてきました。大晦日の夜には、人間の持つ百八つの煩悩を一つずつ洗い流すかのように、深く重厚な音色が世田谷の夜空へと響き渡ります。長い歴史の風雪に耐えてきた青銅ならではの、深く味わい深い質感の美しさに注目してください。",question:"吊るされている鐘の材質は何でしょう？",options:[{text:"青銅（ブロンズ）",correct:true},{text:"御影石",correct:false}],correctFb:"🎯 正解！",wrongFb:"❌ 違います。"},
-      {title:"地蔵堂",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"十大スポットの最後を締めくくるのは、令和二年に新しく生まれ変わった地蔵堂です。ここには、旅人や子供たち、そしてすべての生命を優しく見守り、救いをもたらしてくれるお地蔵様が安置されています。ここまで無事に巡礼を終えられたことへの感謝の気持ちを込めて、ゆっくりとお参りしてください。招き猫の温かい加護とともに、あなたのこれからの旅路に、たくさんの福運が訪れることを心よりお祈りいたします。",question:"地蔵堂が守護すると信じられているのは誰でしょう？",options:[{text:"子供・旅人・人々の魂",correct:true},{text:"戦国時代の弓矢部隊",correct:false}],correctFb:"🌸 素晴らしい！全10スポット制覇です！",wrongFb:"❌ 違います。"}
+      {title:"井伊家墓所",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"ここ井伊家墓所は国指定の史跡であり、一歩足を踏み入れると空気が一変する、深い静寂に包まれた特別な聖域です。\n\n最奥にそびえる大きな墓石が、幕末の大老・井伊直弼公の永眠の地です。\n\n直弼公は、西洋列強による植民地化の脅威が迫る中、安政5年（1858年）に日米修好通商条約の締結を断行し、250年以上続いた鎖国に終止符を打った人物です。その決断は多くの反発を招き、最終的に桜田門外の変で命を落とすこととなりましたが、近代日本の扉を開いたその歴史的な勇気は、今もこの地に静かに息づいています。\n\n直弼公が命をかけて守り抜いた歴史の重みに思いを馳せ、静かに手を合わせてみてください。",question:"井伊直弼が幕府で就いていた最高職は何でしょう？",options:[{text:"大老",correct:true},{text:"征夷大将軍",correct:false}],correctFb:"⛩ 大正解！日本の近代化を拓いた人物の墓所です。",wrongFb:"❌ 違います。"},
+      {title:"本殿",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"昭和42年（1967年）に落慶した本殿は、豪徳寺の信仰の核となる最も神聖な建築です。\n\n内陣には、あらゆる人々の苦しみや願いを慈悲深く聞き届けてくださると信仰される聖観世音菩薩像が厳かに祀られています。\n\nここでは今もなお、僧侶たちが日々の祈りを捧げ、その伝統の灯火を受け継いでいます。\n\n豪華絢爛でありながら、どこか静謐で心が落ち着く、禅寺ならではの凛とした美しい空間をどうぞ心ゆくまでご堪能ください。",question:"本殿で毎日中心的に行われる修行は何でしょう？",options:[{text:"坐禅",correct:true},{text:"護摩焚き",correct:false}],correctFb:"🎯 正解！",wrongFb:"❌ 違います。"},
+      {title:"開祖堂",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"本殿のすぐ傍らに静かに佇む開祖堂。\n\nここには、何世紀にもわたり豪徳寺の教えを絶やすことなく受け継いできた歴代高僧たちの魂と位牌が、大切に祀られています。\n\nこのお堂を眺めていると、豪徳寺がただの観光地ではなく、何世代もの人々が信仰のバトンを繋いできた「生きた祈りの聖地」であることが深く実感できます。\n\n時を超えて紡がれてきた、その静かで深い絆にそっと心を寄せてみてください。",question:"開祖堂に祀られているのは誰でしょう？",options:[{text:"豪徳寺を開いた歴代の高僧たち",correct:true},{text:"彦根藩の武士たち",correct:false}],correctFb:"🎯 正解！",wrongFb:"❌ 違います。"},
+      {title:"赤門",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"緑豊かな境内に、鮮やかな朱色のコントラストを描き出す赤門。\n\n明治18年（1885年）に、徳川幕府を支えた譜代大名・井伊家から直接寄進された歴史ある門です。もともとは東門に位置していましたが、後に現在の場所へと移築されました。\n\n周囲の深い緑と、日本伝統の弁柄朱が織りなす色彩の対比は思わず息をのむほどの美しさで、境内随一の撮影スポットです。\n\n格調高い佇まいをまとったこの門の前で、ぜひ一枚、記念の写真を収めてください。",question:"この歴史的な門の最大の特徴は何でしょう？",options:[{text:"鮮やかな朱赤色",correct:true},{text:"漆黒の炭色",correct:false}],correctFb:"🎯 正解！美しい赤が境内の緑に映えます。",wrongFb:"❌ 違います。"},
+      {title:"鐘楼",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"延宝7年（1679年）に鋳造された、世田谷区最古の歴史を誇る青銅の梵鐘です。\n\n実に350年以上もの間、この地で時を刻み続けてきました。\n\n大晦日の夜には、人間が持つとされる百八つの煩悩を一つひとつ洗い流すかのように、深く重厚な音色が世田谷の夜空へと響き渡ります。\n\n長い歴史の風雪に耐え、独特の緑青をまとった青銅の梵鐘ならではの、深みのある風格の美しさをどうぞじっくりとご覧ください。",question:"吊るされている鐘の材質は何でしょう？",options:[{text:"青銅（ブロンズ）",correct:true},{text:"御影石",correct:false}],correctFb:"🎯 正解！",wrongFb:"❌ 違います。"},
+      {title:"地蔵堂",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"十大スポットの最後を締めくくるのは、令和2年（2020年）に美しく生まれ変わった地蔵堂です。\n\nここには、旅人や子供たち、そしてすべての生きとし生けるものを慈しみ深く見守り、安らぎをもたらしてくださるお地蔵様が静かに安置されています。\n\nここまで無事に巡礼を終えられたことへの感謝の気持ちを込めて、ゆっくりとお参りください。\n\n招き猫の温かな加護のもと、あなたのこれからの旅路に数えきれないほどの福運が訪れることを心よりお祈りいたします。",question:"地蔵堂が守護すると信じられているのは誰でしょう？",options:[{text:"子供・旅人・人々の魂",correct:true},{text:"戦国時代の弓矢部隊",correct:false}],correctFb:"🌸 素晴らしい！全10スポット制覇です！",wrongFb:"❌ 違います。"}
     ]
   },
   zh:{
@@ -1827,7 +1757,7 @@ const CONFIG_LANG = {
     staticInfo:`<strong>【开放时间】</strong> 6:00〜17:00 ｜ 寺务所: 8:00〜16:30<br><strong>【联系方式】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     wmTitle:"<em>欢迎来到豪德寺</em>Welcome to Goutokuji",wmNextBtn:"开始高级巡礼 ➔",
     readMoreLabel:"▼ 查看更多",showLessLabel:"▲ 收起",
-    welcomeNarr:"在开始旅程之前，让我们先了解这片神圣空间的整体布局。豪德寺是一片被郁郁葱葱的树木所环绕的广阔圣域。建议路线从雄伟的山门开始，沿着参道笔直前行。到达尽头后左转，右手边即可看到庄严的佛殿，其后方便是供奉着数千招财猫的招福殿。在参拜最深处的井伊家墓所后，按顺时针方向依次游览本殿、开祖堂、朱红色的赤门、历史悠久的钟楼，最后抵达地藏堂。",
+    welcomeNarr:"欢迎来到豪德寺。在参拜之前，让我为您介绍这座美丽古刹的全貌。\\n\\n这里，豪德寺，是一片被郁郁葱葱的绿意所环抱的广阔圣域。\\n\\n寺院正式名称为「大谿山 豪德寺」，创建于室町时代的文明12年（1480年）。江户时代寛永10年（1633年），世田谷成为彦根藩领地后，藩主·井伊直孝公将其定为井伊家在江户的菩提寺。寺名源于直孝公的戒名「久昌院殿豪德天英大居士」。\\n\\n豪德寺同时也以招财猫发祥地而广为人知。相传某日，直孝公在鹰猎归途中被寺门前的一只白猫招手引入寺内。不久，一场猛烈的雷雨骤然而降。正是因为猫咪的指引，直孝公才得以躲避雷雨。深受感动的直孝公将此视为奇缘，此后这只带来福气的猫被尊称为「招福猫児」，供奉于招福殿之中。\\n\\n推荐参拜路线：首先沿着修剪整齐的松树参道径直前行，穿过正面历史悠久的山门。进入境内后，左手边可见三重塔——塔的某处，静静隐藏着3只招财猫，请务必一探究竟。径直前行，正面即为佛殿，其左后方便是排列着数千只招福猫児的招福殿。在最深处参拜完井伊家墓所后，依次游览本殿、开祖堂、朱红色的赤门、历史悠久的钟楼，最后到达地藏堂。\\n\\n每个景点都备有现场拍摄的真实照片，以及其他地方从未公开过的历史趣味问答。全部答对后，您将可以抽取特别御签。\\n\\n现在，请手持智能手机，静下心来，踏上这段朝圣之旅吧。",
     mapEyebrow:"境内导览",mapTitle:"<em>境内全体地图</em>豪德寺",
     mapDescTitle:"📍 境内10大景点导览",
     mapRouteHint:"<strong>📍 推荐路线：</strong><br>山门 (1) → 三重塔 (2) → 佛殿 (3) → 招福殿 (4) → 井伊家墓所 (5) → 法堂 (6) → 开祖堂 (7) → 赤门 (8) → 钟楼 (9) → 地藏堂 (10)",
@@ -1847,7 +1777,7 @@ const CONFIG_LANG = {
     appealTitle:"<em>为您带来极致参拜体验</em>Premium Pilgrimage Experience",
     appealEyebrow:"体验价值 · Premium Experience",
     appealFeat1Title:"10大景点 AI 语音导览",appealFeat1Desc:"AI解说助您发现隐藏在三重塔中的3只招财猫！",
-    appealFeat2Title:"WebAR 相机体验",appealFeat2Desc:"现地限定空间AR演出。点击照片，历史跃然三维展现！",
+    appealFeat2Title:"📷 上传照片验证隐藏招财猫",appealFeat2Desc:"在现场拍下找到的招财猫并上传，AI将自动判断是否正确。",
     appealFeat3Title:"10大景点完成纪念印章集",appealFeat3Desc:"在10大景点全部答题正确后，将获得朱红色数字御朱印印章表作为证明！",
     appealFeat4Title:"免费御签",appealFeat4Desc:"集齐全部10个御朱印印章后可解锁特别御签！",
     appealNextBtn:"出发 ➔",
@@ -1864,16 +1794,16 @@ const CONFIG_LANG = {
     mannersTitle:"境内参拜规则・礼仪",mannersSubtitle:"礼仪与安全规则",
     mannersAgreeBtn:"确认礼仪并继续 ➔",
     steps:[
-      {title:"山门",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"首先迎接您的是一座稳重庄严的木造山门。在禅宗中，跨过这道门意味着将世俗的烦恼和杂念彻底隔绝，洗净心灵，步入佛的圣域。请凝视着向门内延伸的美丽绿荫参道，首先做一次深呼吸吧。",question:"豪德寺属于哪个佛教宗派？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"临济宗",correct:false}],correctFb:"🎯 正确！这是注重坐禅的曹洞宗寺院。",wrongFb:"❌ 错误。"},
-      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"寺院内高高耸立着美丽的木造三重塔。通常，佛教塔上只会雕刻神圣的佛像或十二生肖的动物。然而，豪德寺的匠人在这里隐藏了一个令人惊叹的玩心。请仔细观察第一层屋檐下，生肖“鼠”的紧右侧。令人惊奇的是，那里竟然悄悄雕刻着一只仿佛正盯着老鼠并招手的木雕招财猫。请举起本应用的AR相机，锁定这个巧妙伪装在历史建筑中、世界上独一无二的隐形招财猫吧！",question:"塔内雕刻中与十二生肖一起隐藏的是什么？",options:[{text:"招财猫",correct:true},{text:"金龙纹章",correct:false}],correctFb:"🐱 完全正确！特写照片中可以清晰看到。",wrongFb:"❌ 再仔细看看屋檐角落。"},
-      {title:"佛殿",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"这座散发着压倒性存在感的佛殿，是世田谷区指定的有形文化财。殿内安放着历史悠久的佛像。在参拜之前，请注意前方的巨大黑色香炉。人们相信，升腾的线香烟雾具有神奇的净化力量，在与本堂的佛祖见面前，能治愈我们身体的不适，并瞬间洗净精神的阴霾。",question:"佛殿属于哪个级别的文化遗产？",options:[{text:"世田谷区指定有形文化财",correct:true},{text:"国家级重要文化财",correct:false}],correctFb:"⛩ 正确！",wrongFb:"❌ 错误。"},
+      {title:"山门",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"迎接您的第一个景点，是建于明治17年（1884年）的庄重木造山门。\n在关东大地震后经过重建，至今仍以沉稳的姿态巍然矗立。\n门额上刻有「碧云关」三字，意为「通往青云之上、觉悟彼岸的关门」。\n\n在禅宗中，跨过这道门绝不只是简单地迈步而入。\n这是一种净化心灵的仪式——将日常的烦恼、杂念与世俗的尘垢彻底隔绝，以清净之心踏入佛的圣域。\n\n在此为您介绍一项参拜礼仪：门槛（下方的横木）请务必跨过，而非踩踏。\n因为人们相信神佛居于门槛之中，踩踏门槛是极为失礼之举。\n\n穿过山门后，请深吸一口气。\n沿着绿意盎然的松树参道，缓缓向前迈步吧。",question:"豪德寺属于哪个佛教宗派？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"临济宗",correct:false}],correctFb:"🎯 正确！这是注重坐禅的曹洞宗寺院。",wrongFb:"❌ 错误。"},
+      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"这座木造三重塔于平成18年（2006年）落成，高达22.5米，其优美的身姿在境内格外引人注目。\n\n事实上，这座三重塔正是一项特别任务的舞台——在塔的某处，隐藏着3只悄悄被工匠雕刻于建筑之中的招财猫。\n\n请用您自己的双眼，仔细寻找这3只充满工匠玩心的隐藏招财猫。\n\n本应用还配备了特别功能：拍下您找到的猫咪照片，即可进行答案核对。若实在难以找到，也可使用提示功能。",question:"塔内雕刻中与十二生肖一起隐藏的是什么？",options:[{text:"招财猫",correct:true},{text:"金龙纹章",correct:false}],correctFb:"🐱 完全正确！特写照片中可以清晰看到。",wrongFb:"❌ 再仔细看看屋檐角落。"},
+      {title:"佛殿",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"佛殿建于延宝5年（1677年），是世田谷区指定有形文化财。其庄严肃穆的姿态，承载着近350年历史的厚重积淀。\n\n殿内供奉着阿弥陀如来、释迦如来、弥勒菩萨三尊，作为掌管过去、现在、未来「三世」的诸佛，静静守护着每一位到访的参拜者。\n\n当您伫立于佛祖面前，与境内的宁静相融，或许会感受到一种与日常截然不同的时间流淌。请在此静静合掌，许下您的心愿。",question:"佛殿属于哪个级别的文化遗产？",options:[{text:"世田谷区指定有形文化财",correct:true},{text:"国家级重要文化财",correct:false}],correctFb:"⛩ 正确！",wrongFb:"❌ 错误。"},
       {title:"招福殿",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"这里终于到了让全世界旅人都屏息凝神、震撼不已的招福殿区域。供奉台填满了成千上万只纯白色的招财猫。最让外国游客感到惊奇的事实是，所有的猫咪都没有手持金色的“小判”金币。豪德寺的禅宗执教如是说：猫咪会为您带来幸运的契机与福气。然而，能否将其转化为真正的成果与金币，完全取决于您之后的自身努力。感受着这些凛然白猫的注视，请在心中奉纳您崭新的决心吧。",question:"为什么这里的招财猫没有金币？",options:[{text:"结果取决于自身努力",correct:true},{text:"江户时代财政原因",correct:false}],correctFb:"✨ 哲理性回答正确！",wrongFb:"❌ 错误。"},
-      {title:"井伊家墓所",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"这里的井伊家墓所是国家指定的史迹，是一处只要踏入一步，空气就会变得截然不同的特别圣域。最深处耸立的巨大墓碑，便是幕末大老——井伊直弼公的安息之地。为了保护日本免受殖民化危机，他在1858年毅然签署了《日美修好通商条约》，结束了锁国政策，拓宽了日本的未来。请在这里静静合十，追思直弼公冒死守护的近代日本黎明这份历史的厚重。",question:"井伊直弼在幕府担任的最高职位是什么？",options:[{text:"大老",correct:true},{text:"征夷大将军",correct:false}],correctFb:"⛩ 正确！",wrongFb:"❌ 错误。"},
-      {title:"本殿",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"本殿于1967年落成，是豪德寺信仰的核心，也是最神圣的建筑。殿内供奉着圣观世音菩萨像，世人虔诚地信仰着祂能温柔地听取并救赎所有人的痛苦与愿望。在这里，僧侣们每日虔诚祈祷的传统延续至今。请尽情赏析这处既豪华绚丽、又让人心情平静，彰显禅寺独特和谐之美的神圣空间。",question:"本殿每日最重要的修行是什么？",options:[{text:"坐禅",correct:true},{text:"护摩法会",correct:false}],correctFb:"🎯 正确！",wrongFb:"❌ 错误。"},
-      {title:"开祖堂",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"紧邻本殿的开祖堂内，悉心供奉着数世纪以来将豪德寺的法脉薪火相传、不曾间断的历代高僧的灵魂和神主牌位。瞻仰着这座殿堂，您能深刻地感受到，豪德寺不仅仅是一个观光景点，更是一处由世世代代的人们传递历史接力棒、至今仍在延续的生动祈祷之地。让我们向这跨越千年的静谧羁绊致以深深的敬意。",question:"开祖堂供奉的是谁的精神？",options:[{text:"历代开山高僧",correct:true},{text:"彦根藩武士",correct:false}],correctFb:"🎯 完美！",wrongFb:"❌ 错误。"},
-      {title:"赤门",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"这一座是在绿意盎然的寺院内描绘出鲜明对比的朱漆赤门。它于1885年由支撑德川幕府的谱代大名——井伊家直接捐赠，后移至现址。周围浓郁的绿树与日本传统的本朱漆相互交织，其色彩对比美得令人叹息，是照相机拍照最值得推荐的绝佳位置。请务必欣赏这扇门所散发出的典雅气质。",question:"赤门最大的视觉特征是什么？",options:[{text:"鲜艳的朱红色",correct:true},{text:"漆黑的炭色",correct:false}],correctFb:"🎯 正确！",wrongFb:"❌ 错误。"},
-      {title:"钟楼",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"这是一座铸造于1679年、拥有世田谷区最古老历史的青铜梵钟。在350多年的岁月里，它一直在这片土地上见证着时光流逝。每逢除夕之夜，深沉浑厚的钟声都会响彻世田谷的夜空，仿佛在逐一洗净人类所拥有的108种世俗烦恼。请注意欣赏历经漫长历史风霜的青铜器所特有的深邃与质感之美。",question:"寺院悬挂的大钟是什么材质？",options:[{text:"铸造青铜",correct:true},{text:"花岗岩",correct:false}],correctFb:"🎯 正确！",wrongFb:"❌ 错误。"},
-      {title:"地藏堂",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"为十大景点画上完美句号的是在2020年焕然一新的地藏堂。这里安放着温柔守护并救赎旅人、儿童以及所有生命的土地藏菩萨。请抱着对至今平安完成巡礼的感恩之心，在此至诚礼拜。衷心祝愿在招财猫的温暖庇护下，您的未来旅程充满无尽的福运与喜乐。",question:"地藏菩萨守护的是哪些人？",options:[{text:"旅人、孩子和亡灵",correct:true},{text:"武士和战士",correct:false}],correctFb:"🌸 精彩！10大景点全部完成！",wrongFb:"❌ 错误。"}
+      {title:"井伊家墓所",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"这里的井伊家墓所是国家指定的史迹，是一处只要踏入一步，空气就会变得截然不同的特别圣域。\n\n最深处耸立的巨大墓碑，便是幕末大老——井伊直弼公的安息之地。\n\n面对西方列强殖民化的威胁，他在安政5年（1858年）毅然签署了《日美修好通商条约》，结束了长达250年以上的锁国政策。这一决断招来众多反对，最终他在樱田门外之变中英勇捐躯——但他开启近代日本大门的历史性勇气，至今仍静静地在这片土地上呼吸着。\n\n请在这里静静合十，追思这份历史的厚重。",question:"井伊直弼在幕府担任的最高职位是什么？",options:[{text:"大老",correct:true},{text:"征夷大将军",correct:false}],correctFb:"⛩ 正确！",wrongFb:"❌ 错误。"},
+      {title:"本殿",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"本殿于昭和42年（1967年）落成，是豪德寺信仰的核心，也是最神圣的建筑。\n\n殿内供奉着圣观世音菩萨像，世人虔诚地信仰着祂能慈悲地聆听并救赎所有人的痛苦与愿望。\n\n在这里，僧侣们每日虔诚祈祷的传统延续至今。\n\n请尽情赏析这处既豪华绚丽、又令人心情平静，彰显禅寺独特和谐之美的神圣空间。",question:"本殿每日最重要的修行是什么？",options:[{text:"坐禅",correct:true},{text:"护摩法会",correct:false}],correctFb:"🎯 正确！",wrongFb:"❌ 错误。"},
+      {title:"开祖堂",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"紧邻本殿静静矗立的开祖堂。\n\n这里悉心供奉着数世纪以来将豪德寺的法脉薪火相传、不曾间断的历代高僧的灵魂和神主牌位。\n\n瞻仰着这座殿堂，您能深刻地感受到，豪德寺不仅仅是一个观光景点，更是一处由世世代代的人们传递信仰接力棒的「活着的祈祷圣地」。\n\n让我们向这跨越时空、静谧深邃的羁绊致以深深的敬意。",question:"开祖堂供奉的是谁的精神？",options:[{text:"历代开山高僧",correct:true},{text:"彦根藩武士",correct:false}],correctFb:"🎯 完美！",wrongFb:"❌ 错误。"},
+      {title:"赤门",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"这一座是在绿意盎然的寺院内描绘出鲜明对比的朱漆赤门。\n\n它于明治18年（1885年）由支撑德川幕府的谱代大名——井伊家直接捐赠，原位于东门，后移至现址。\n\n周围浓郁的绿树与日本传统的本朱漆相互交织，其色彩对比美得令人叹息，是整个境内最值得拍照留念的绝佳位置。\n\n请务必在这扇气质典雅的门前留下一张纪念照。",question:"赤门最大的视觉特征是什么？",options:[{text:"鲜艳的朱红色",correct:true},{text:"漆黑的炭色",correct:false}],correctFb:"🎯 正确！",wrongFb:"❌ 错误。"},
+      {title:"钟楼",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"这是一座铸造于延宝7年（1679年）、拥有世田谷区最古老历史的青铜梵钟。\n\n在350多年的岁月里，它一直在这片土地上见证着时光流逝。\n\n每逢除夕之夜，深沉浑厚的钟声都会响彻世田谷的夜空，仿佛在逐一洗净人类所拥有的108种世俗烦恼。\n\n请注意欣赏历经漫长历史风霜、蒙上独特绿锈的青铜梵钟所特有的深邃与风格之美。",question:"寺院悬挂的大钟是什么材质？",options:[{text:"铸造青铜",correct:true},{text:"花岗岩",correct:false}],correctFb:"🎯 正确！",wrongFb:"❌ 错误。"},
+      {title:"地藏堂",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"为十大景点画上完美句号的是在令和2年（2020年）焕然一新的地藏堂。\n\n这里安放着温柔守护并救赎旅人、儿童以及所有生命的地藏菩萨。\n\n请抱着对至今平安完成巡礼的感恩之心，在此至诚礼拜。\n\n衷心祝愿在招财猫的温暖庇护下，您的未来旅程充满无尽的福运与喜乐。",question:"地藏菩萨守护的是哪些人？",options:[{text:"旅人、孩子和亡灵",correct:true},{text:"武士和战士",correct:false}],correctFb:"🌸 精彩！10大景点全部完成！",wrongFb:"❌ 错误。"}
     ]
   },
   ko:{
@@ -1914,7 +1844,7 @@ const CONFIG_LANG = {
     staticInfo:`<strong>【관람 시간】</strong> 6:00〜17:00 ｜ 사무소: 8:00〜16:30<br><strong>【문의】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     wmTitle:"<em>고토쿠지에 오신 것을 환영합니다</em>Welcome to Goutokuji",wmNextBtn:"프리미엄 순례 시작 ➔",
     readMoreLabel:"▼ 더 보기",showLessLabel:"▲ 접기",
-    welcomeNarr:"여정을 시작하기 전에 이 신성한 공간의 전체 구조를 이해해 보겠습니다. 고토쿠지는 울창한 녹음으로 둘러싸인 광활한 성역입니다. 추천 경로는 먼저 웅장한 산몬을 통과하여 참도를 따라 직진합니다. 끝에서 왼쪽으로 돌면 장엄한 불전이 보이고, 그 뒤에 수천 마리의 마네키네코가 늘어선 쇼후쿠덴이 있습니다. 이이가 묘소를 참배한 후 시계 방향으로 본전, 개조당, 아카몬, 종루를 거쳐 마지막 지조도까지 순례합니다.",
+    welcomeNarr:"고토쿠지에 오신 것을 환영합니다. 참배를 시작하기 전에, 이 아름다운 고찰의 전체적인 모습을 안내해 드리겠습니다.\\n\\n이곳 고토쿠지는 푸른 숲에 둘러싸인 광활한 성역입니다.\\n\\n정식 명칭은 「대계산 고토쿠지（大谿山 豪德寺）」이며, 무로마치 시대인 1480년에 창건되었습니다. 에도 시대인 1633년, 세타가야가 히코네 번의 영지가 되면서 번주 이이 나오타카 공이 이이 가문의 에도 보리사로 정비하였습니다. 절 이름은 나오타카 공의 법호에서 유래합니다.\\n\\n고토쿠지는 또한 마네키네코의 발상지로도 널리 알려져 있습니다. 어느 날 매 사냥을 마치고 귀환하던 나오타카 공이 절 문 앞의 흰 고양이에게 이끌려 절에 들렀는데, 곧이어 거센 뇌우가 쏟아졌습니다. 고양이 덕분에 비를 피한 나오타카 공은 이 인연에 깊이 감동하였고, 이후 이 고양이는 「쇼후쿠네코（招福猫児）」로 불리며 쇼후쿠덴에 모셔지게 되었습니다.\\n\\n추천 참배 순로：먼저 잘 다듬어진 소나무 가로수 참도를 따라 산몬을 통과합니다. 경내에 들어서면 왼쪽에 삼중탑이 보입니다. 탑 어딘가에 3마리의 숨은 고양이가 조용히 기다리고 있습니다. 앞으로 나아가면 불전이, 그 왼편 안쪽에는 쇼후쿠덴이 자리하고 있습니다. 이이 가 묘소를 참배한 후, 본전, 개조당, 아카몬, 종루, 마지막으로 지조도를 둘러보는 시계 방향 루트가 가장 아름답습니다.\\n\\n각 스폿에는 현장 사진과 역사 퀴즈가 준비되어 있습니다. 퀴즈를 전부 맞히면 특별한 오미쿠지를 뽑을 수 있습니다.\\n\\n자, 스마트폰을 손에 들고 마음을 차분히 가라앉혀 발걸음을 내딛어 보세요.",
     mapEyebrow:"경내 안내",mapTitle:"<em>경내 전체 지도</em>고토쿠지",
     mapDescTitle:"📍 경내 10대 명소 안내",
     mapRouteHint:"<strong>📍 추천 경로：</strong><br>산몬 (1) → 삼중탑 (2) → 불전 (3) → 쇼후쿠덴 (4) → 이이가 묘소 (5) → 법당 (6) → 개조당 (7) → 아카몬 (8) → 종루 (9) → 지조도 (10)",
@@ -1934,7 +1864,7 @@ const CONFIG_LANG = {
     appealTitle:"<em>당신에게 프리미엄 참배 체험을</em>Premium Pilgrimage Experience",
     appealEyebrow:"체험 가치 · Premium Experience",
     appealFeat1Title:"10대 명소 AI 내레이션",appealFeat1Desc:"AI 내레이션이 삼중탑에 숨겨진 3마리의 마네키네코 발견을 완벽하게 도와드립니다!",
-    appealFeat2Title:"WebAR 카메라 체험",appealFeat2Desc:"현지 한정 공간 AR 연출. 사진을 탭하면 역사가 입체적으로 펼쳐집니다!",
+    appealFeat2Title:"📷 사진 업로드 & 숨은 고양이 확인",appealFeat2Desc:"현장에서 찾은 고양이를 촬영하여 업로드하면 AI가 정답 여부를 판별합니다。",
     appealFeat3Title:"10대 명소 만원성취 스탬프 랠리",appealFeat3Desc:"10대 스팟 퀴즈를 모두 맞히면 빛나는 디지털 어주인 스탬프 시트가 발행됩니다！",
     appealFeat4Title:"무료 오미쿠지",appealFeat4Desc:"10개의 어주인 스탬프를 모두 모으면 특별한 오미쿠지가 해방됩니다！",
     appealNextBtn:"시작하기 ➔",
@@ -1951,16 +1881,16 @@ const CONFIG_LANG = {
     mannersTitle:"경내 참배 규칙・매너",mannersSubtitle:"매너 및 안전 규칙",
     mannersAgreeBtn:"매너 확인 후 진행 ➔",
     steps:[
-      {title:"산몬",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"가장 먼저 여러분을 맞이하는 것은 묵직한 목조 산몬 Gate입니다. 선종에서 이 문을 통과한다는 것은 일상의 고민이나 잡념과 같은 속세의 번뇌를 완전히 떨쳐내고, 부처님의 성역으로 마음을 정화하여 입장함을 의미합니다. 문 너머로 이어지는 아름다운 소나무 길의 푸르름을 바라보며, 먼저 깊게 숨을 쉬어보세요.",question:"고토쿠지의 불교 종파는 무엇입니까？",options:[{text:"소토 선종（曹洞宗）",correct:true},{text:"린자이 선종",correct:false}],correctFb:"🎯 정답！좌선을 중시하는 소토 선종 사원입니다.",wrongFb:"❌ 틀렸습니다."},
-      {title:"삼중탑",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"경내에 아름답게 우뚝 솟은 목조 삼중탑. 보통 불교의 탑에는 신성한 불상이나 십이지 동물만이 새겨집니다. 하지만 이곳 고토쿠지의 장인은 엄청난 놀이심을 숨겨두었습니다. 1층 지붕 아래, 십이지 중 \'쥐\' 조각의 바로 옆을 잘 봐주세요. 놀랍게도 쥐를 바라보며 손짓을 하는 목조 마네키네코가 살포시 새겨져 있습니다. 이 앱의 AR 카메라를 비추어, 역사적 건축물에 카무플라주된 세계 유일의 \'숨은 마네키네코\'를 록온해 보세요!",question:"탑의 조각 중 십이지와 함께 숨겨진 것은？",options:[{text:"마네키네코",correct:true},{text:"황금 용",correct:false}],correctFb:"🐱 정답！클로즈업 사진에서 확인할 수 있습니다.",wrongFb:"❌ 틀렸습니다."},
-      {title:"불전",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"세타가야구의 지정 유형문화재이기도 한, 압도적인 존재감을 뿜어내는 불전입니다. 안에는 역사적인 불상들이 안치되어 있습니다. 참배를 하시기 전에 앞에 있는 커다란 검은 향로에 주목해 주세요. 피어오르는 선향의 연기는 본당의 부처님을 뵙기 전에 우리의 신체적인 불조화를 치유하고, 정신의 흐림을 단숨에 씻어내 주는 정화의 힘이 있다고 믿어지고 있습니다.",question:"불전은 어느 행정구역의 지정문화재입니까？",options:[{text:"세타가야구 지정 유형문화재",correct:true},{text:"국보 제1호",correct:false}],correctFb:"⛩ 정답！",wrongFb:"❌ 틀렸습니다."},
+      {title:"산몬",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"가장 먼저 여러분을 맞이하는 것은 메이지 17년（1884년）에 건립된 묵직한 목조 산몬입니다.\n관동대지진 이후 재건되어, 지금도 당당하고 고요한 자태를 유지하고 있습니다.\n현판에는 「벽운관（碧雲關）」이라는 글자가 새겨져 있으며, 「푸른 구름 너머, 깨달음으로 향하는 관문」을 의미합니다.\n\n선종에서 이 문을 통과하는 것은 단순히 걸음을 내딛는 행위가 아닙니다.\n일상의 고민과 잡념, 속세의 번뇌를 완전히 내려놓고 부처님의 성역으로 마음을 정화하여 입장하는, 영혼의 정화 의식입니다.\n\n한 가지 참배 예절을 안내드립니다.\n문 아래의 문지방은 절대 밟지 말고 「넘어서」 들어가는 것이 예의입니다.\n문지방에는 신불이 깃들어 있다는 믿음에서, 밟는 행위는 매우 실례가 된다고 여겨집니다.\n\n문을 통과한 후 깊게 숨을 한 번 들이쉬세요.\n푸른 소나무 가로수가 이어지는 참도를 따라 천천히 발걸음을 옮겨보세요.",question:"고토쿠지의 불교 종파는 무엇입니까？",options:[{text:"소토 선종（曹洞宗）",correct:true},{text:"린자이 선종",correct:false}],correctFb:"🎯 정답！좌선을 중시하는 소토 선종 사원입니다.",wrongFb:"❌ 틀렸습니다."},
+      {title:"삼중탑",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"헤이세이 18년（2006년）에 낙성된 높이 22.5미터의 목조 삼중탑.\n그 아름다운 자태는 경내에서도 단연 눈길을 사로잡습니다.\n\n사실 이 삼중탑은 특별한 미션의 무대이기도 합니다. 탑 어딘가에 장인들이 장난기 넘치게 새겨 넣은 「숨겨진 고양이 3마리」를 찾는 것입니다.\n\n부디 자신의 눈으로 직접 3마리를 모두 찾아보세요.\n\n이 앱에는 찾은 고양이를 사진으로 촬영하여 정답 확인을 할 수 있는 특별 기능도 마련되어 있습니다. 찾기 어려운 경우에는 힌트 기능도 활용해 보세요.",question:"탑의 조각 중 십이지와 함께 숨겨진 것은？",options:[{text:"마네키네코",correct:true},{text:"황금 용",correct:false}],correctFb:"🐱 정답！클로즈업 사진에서 확인할 수 있습니다.",wrongFb:"❌ 틀렸습니다."},
+      {title:"불전",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"엔포 5년（1677년）에 건립된 불전은 세타가야구 지정 유형문화재입니다. 장엄한 佇立은 350년에 가까운 역사의 무게를 고스란히 전하고 있습니다.\n\n내부에는 아미타여래・석가여래・미륵보살의 삼존이 안치되어 있으며, 과거・현재・미래의 「삼세」를 관장하는 제불로서 조용히 참배자들을 지켜보고 있습니다.\n\n부처님 앞에 섰을 때, 경내의 고요함과 어우러져 일상과는 전혀 다른 시간의 흐름을 느낄 수 있을 것입니다. 천천히 두 손을 모아 참배해 보세요.",question:"불전은 어느 행정구역의 지정문화재입니까？",options:[{text:"세타가야구 지정 유형문화재",correct:true},{text:"국보 제1호",correct:false}],correctFb:"⛩ 정답！",wrongFb:"❌ 틀렸습니다."},
       {title:"쇼후쿠덴",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"드디어 전 세계의 여행자들이 숨을 죽이는 쇼후쿠덴 구역입니다. 제단을 가득 채운 수천, 수만 마리의 새하얀 마네키네코들. 여기서 해외 관광객들이 가장 놀라는 사실은, 모든 고양이가 금색 동전을 들고 있지 않다는 점입니다. 고토쿠지 선종의 가르침은 이렇습니다. 고양이는 당신에게 행운의 계기, 즉 기회를 가져다준다. 하지만 그것을 결실로 이끌어 성과와 동전으로 바꾸는 것은 그 후 당신 자신의 노력에 달렸다. 이 늠름한 흰 고양이들의 시선을 느끼며, 당신만의 새로운 결의를 마음속으로 봉납해 보세요.",question:"이곳 고양이들이 들고 있지 않은 것은？",options:[{text:"황금 금화",correct:true},{text:"오른손 방울",correct:false}],correctFb:"✨ 정답！기회를 살리는 것은 본인의 노력입니다.",wrongFb:"❌ 틀렸습니다."},
-      {title:"이이가 묘소",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"이곳 이이가 묘소는 국가 지정 사적이며, 한 발짝 발을 들여놓으면 공기가 완전히 바뀌는 특별한 성역입니다. 가장 안쪽에 솟아 있는 커다란 묘석이 막부 말기의 대로, 이이 나오스케 공이 잠든 곳입니다. 일본을 식민지화의 위기에서 지키기 위해 1858년에 미일수호통상조약을 단행하고, 쇄국을 끝내어 일본의 미래를 개척한 인물입니다. 나오스케 공이 목숨을 걸고 지켜낸 근대 일본의 새벽이라는 역사의 무게를 느끼며, 조용히 두 손을 모아 참배해 보세요.",question:"이이 나오스케가 맡았던 최고 직위는？",options:[{text:"다이로（大老）",correct:true},{text:"쇼군",correct:false}],correctFb:"⛩ 정답！일본 근대화의 중요 인물입니다.",wrongFb:"❌ 틀렸습니다."},
-      {title:"본전",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"1967년에 낙성된 본전은 고토쿠지 신앙의 핵심이자 가장 신성한 건축물입니다. 안에는 모든 사람들의 고통과 소원을 다정하게 들어주고 구원해 준다고 신앙되는 성관세음보살상이 모셔져 있습니다. 이곳에서는 승려들이 매일 기도를 올리는 전통이 지금도 살아 숨 쉬고 있습니다. 화려하면서도 어딘지 모르게 마음이 차분해지는, 선종 사찰 특유의 조화롭고 아름다운 공간을 감상해 보세요.",question:"본전에서 매일 중심적으로 행해지는 수행은？",options:[{text:"좌선",correct:true},{text:"불의 의식",correct:false}],correctFb:"🎯 정답！",wrongFb:"❌ 틀렸습니다."},
-      {title:"개조당",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"본전 바로 옆에 자리한 개조당에는 수 세기에 걸쳐 고토쿠지의 가르침을 끊임없이 이어받아 온 역대 고승들의 영혼과 위패가 소중히 모셔져 있습니다. 이 어당을 바라보고 있으면 고토쿠지가 단순한 관광지가 아니라, 수많은 세대의 사람들이 역사의 바통을 이어온 \'살아있는 기도의 장소\'임을 깊이 실감할 수 있습니다. 천년의 시간을 넘어 자아내는 고요한 인연에 살포시 마음을 기대어 보세요.",question:"개조당에 모셔진 분들은 누구입니까？",options:[{text:"고토쿠지를 개창한 역대 고승들",correct:true},{text:"히코네 번의 무사들",correct:false}],correctFb:"🎯 정답！",wrongFb:"❌ 틀렸습니다."},
-      {title:"아카몬",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"푸르른 경내에 선명한 대비를 그려내는 주홍빛 아카몬입니다. 1885년에 도쿠가와 막부를 지탱한 후다이 다이묘, 이이가로부터 직접 기증받아 후에 현재의 위치로 이축되었습니다. 주변의 깊은 녹음과 일본 전통의 붉은 채색이 자아내는 대비는 한숨이 나올 정도로 아름다워, 사진에 담기에 가장 추천하는 스폿입니다. 문이 가진 기품 넘치는 자태를 꼭 확인해 보세요.",question:"이 문의 가장 큰 특징인 색깔은？",options:[{text:"선명한 주홍색",correct:true},{text:"칠흑의 숯색",correct:false}],correctFb:"🎯 정답！녹음 속에 아름답게 빛납니다.",wrongFb:"❌ 틀렸습니다."},
-      {title:"종루",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"1679년에 주조된 세타가야구 최고의 역사를 자랑하는 청동 범종입니다. 350년 이상 동안 이 땅에서 시간을 새겨왔습니다. 대믐날 밤에는 인간이 가진 108가지 번뇌를 하나씩 씻어내듯, 깊고 중후한 음색이 세타가야의 밤하늘로 울려 퍼집니다. 긴 역사의 풍설을 견뎌온 청동 특유의 깊고 은은한 질감의 아름다움에 주목해 보세요.",question:"매달린 거대한 종의 재질은？",options:[{text:"청동",correct:true},{text:"화강암",correct:false}],correctFb:"🎯 정답！",wrongFb:"❌ 틀렸습니다."},
-      {title:"지조도",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"10대 스폿의 마지막을 장식하는 것은 2020년에 새롭게 중건된 지조도입니다. 여기에는 여행자와 아이들, 그리고 모든 생명을 다정하게 보살피고 구원을 베풀어 주는 지장보살님이 안치되어 있습니다. 여기까지 무사히 순례를 마칠 수 있었음에 감사하는 마음을 담아 천천히 참배해 주세요. 마네키네코의 따스한 가호와 함께, 당신의 앞으로의 여정에 많은 복운이 깃들기를 진심으로 기원합니다.",question:"지장당이 수호한다고 믿어지는 대상은？",options:[{text:"아이·여행자·영혼",correct:true},{text:"전국시대 무사들",correct:false}],correctFb:"🌸 훌륭합니다！10대 명소를 모두 완주했습니다！",wrongFb:"❌ 틀렸습니다."}
+      {title:"이이가 묘소",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"이곳 이이가 묘소는 국가 지정 사적이며, 한 발짝 발을 들여놓으면 공기가 완전히 바뀌는 특별한 성역입니다.\n\n가장 안쪽에 솟아 있는 커다란 묘석이 막부 말기의 대로, 이이 나오스케 공이 잠든 곳입니다.\n\n서양 열강의 식민지화 위협에 맞서 안세이 5년（1858년）에 미일수호통상조약을 단행하고, 250년 이상 계속된 쇄국에 종지부를 찍은 인물입니다. 이 결단은 많은 반발을 초래했고 결국 사쿠라다몬 밖의 변에서 목숨을 잃었지만, 근대 일본의 문을 연 그의 역사적 용기는 지금도 이 땅에 조용히 숨 쉬고 있습니다.\n\n나오스케 공이 목숨을 걸고 지켜낸 역사의 무게를 느끼며, 조용히 두 손을 모아 참배해 보세요.",question:"이이 나오스케가 맡았던 최고 직위는？",options:[{text:"다이로（大老）",correct:true},{text:"쇼군",correct:false}],correctFb:"⛩ 정답！일본 근대화의 중요 인물입니다.",wrongFb:"❌ 틀렸습니다."},
+      {title:"본전",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"쇼와 42년（1967년）에 낙성된 본전은 고토쿠지 신앙의 핵심이자 가장 신성한 건축물입니다.\n\n안에는 모든 사람들의 고통과 소원을 자비롭게 들어주고 구원해 준다고 신앙되는 성관세음보살상이 엄숙하게 모셔져 있습니다.\n\n이곳에서는 승려들이 매일 기도를 올리는 전통이 지금도 살아 숨 쉬며 이어지고 있습니다.\n\n화려하면서도 어딘지 모르게 마음이 차분해지는, 선종 사찰 특유의 조화롭고 아름다운 공간을 감상해 보세요.",question:"본전에서 매일 중심적으로 행해지는 수행은？",options:[{text:"좌선",correct:true},{text:"불의 의식",correct:false}],correctFb:"🎯 정답！",wrongFb:"❌ 틀렸습니다."},
+      {title:"개조당",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"본전 바로 옆에 고요히 자리한 개조당.\n\n여기에는 수 세기에 걸쳐 고토쿠지의 가르침을 끊임없이 이어받아 온 역대 고승들의 영혼과 위패가 소중히 모셔져 있습니다.\n\n이 어당을 바라보고 있으면 고토쿠지가 단순한 관광지가 아니라, 수많은 세대의 사람들이 신앙의 바통을 이어온 「살아있는 기도의 성지」임을 깊이 실감할 수 있습니다.\n\n시간을 넘어 자아내는 고요하고 깊은 인연에 살포시 마음을 기대어 보세요.",question:"개조당에 모셔진 분들은 누구입니까？",options:[{text:"고토쿠지를 개창한 역대 고승들",correct:true},{text:"히코네 번의 무사들",correct:false}],correctFb:"🎯 정답！",wrongFb:"❌ 틀렸습니다."},
+      {title:"아카몬",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"푸르른 경내에 선명한 대비를 그려내는 주홍빛 아카몬.\n\n메이지 18년（1885년）에 도쿠가와 막부를 지탱한 후다이 다이묘, 이이가로부터 직접 기증받은 유서 깊은 문입니다. 원래 동문에 위치하였으나 후에 현재의 위치로 이축되었습니다.\n\n주변의 깊은 녹음과 일본 전통의 붉은 채색이 자아내는 대비는 한숨이 나올 정도로 아름다워, 경내 최고의 촬영 스폿입니다.\n\n기품 넘치는 자태를 갖춘 이 문 앞에서 꼭 기념사진 한 장을 남겨보세요.",question:"이 문의 가장 큰 특징인 색깔은？",options:[{text:"선명한 주홍색",correct:true},{text:"칠흑의 숯색",correct:false}],correctFb:"🎯 정답！녹음 속에 아름답게 빛납니다.",wrongFb:"❌ 틀렸습니다."},
+      {title:"종루",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"엔포 7년（1679년）에 주조된 세타가야구 최고（最古）의 역사를 자랑하는 청동 범종입니다.\n\n실로 350년 이상 동안 이 땅에서 시간을 새겨왔습니다.\n\n대믐날 밤에는 인간이 가진 108가지 번뇌를 하나씩 씻어내듯, 깊고 중후한 음색이 세타가야의 밤하늘로 울려 퍼집니다.\n\n긴 역사의 풍설을 견뎌내며 독특한 녹청을 두른 청동 범종 특유의 깊고 은은한 질감의 아름다움에 주목해 보세요.",question:"매달린 거대한 종의 재질은？",options:[{text:"청동",correct:true},{text:"화강암",correct:false}],correctFb:"🎯 정답！",wrongFb:"❌ 틀렸습니다."},
+      {title:"지조도",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"10대 스폿의 마지막을 장식하는 것은 레이와 2년（2020년）에 새롭게 중건된 지조도입니다.\n\n여기에는 여행자와 아이들, 그리고 모든 생명을 다정하게 보살피고 구원을 베풀어 주는 지장보살님이 안치되어 있습니다.\n\n여기까지 무사히 순례를 마칠 수 있었음에 감사하는 마음을 담아 천천히 참배해 주세요.\n\n마네키네코의 따스한 가호와 함께, 당신의 앞으로의 여정에 많은 복운이 깃들기를 진심으로 기원합니다.",question:"지장당이 수호한다고 믿어지는 대상은？",options:[{text:"아이·여행자·영혼",correct:true},{text:"전국시대 무사들",correct:false}],correctFb:"🌸 훌륭합니다！10대 명소를 모두 완주했습니다！",wrongFb:"❌ 틀렸습니다."}
     ]
   },
   es:{
@@ -1995,7 +1925,7 @@ const CONFIG_LANG = {
     ],
     nextSpots:"Rutas cercanas recomendadas",restartBtn:"↺ Reiniciar Tour",
     surveyFormTitle:"Encuesta de satisfacción",surveyStarLabel:"Satisfacción:",surveyTextLabel:"Comentarios:",surveySubmitBtn:"Enviar",
-    welcomeNarr:"Antes de comenzar nuestro viaje, comprendamos el plano maestro de este espacio sagrado. Goutokuji es un vasto ecosistema espiritual envuelto en exuberante vegetación. Tu ruta optimizada comienza en la gran Puerta Sanmon. Camina recto por el sendero de piedra bordeado de pinos meticulosamente podados. Gira a la izquierda al final, y encontrarás el histórico Salón del Buda a tu derecha, con el famoso Shofuku-den justo detrás. Después de rendir tus respetos en el cementerio del clan samurái de Ii Naosuke, recorreremos en sentido horario el Hondo, Kaiso-do, el vibrante Akamon, la Torre de la Campana de bronce y, finalmente, el Jizo-do.",
+    welcomeNarr:"Bienvenido a Goutokuji. Antes de comenzar nuestra visita, permítame presentarle la imagen completa de este hermoso y antiguo templo.\\n\\nGoutokuji es un vasto santuario sagrado envuelto en una exuberante vegetación verde.\\n\\nEl nombre oficial del templo es Daikei-zan Goutokuji, fundado en 1480 durante el período Muromachi. En 1633, el señor Ii Naotaka estableció este templo como el lugar de culto principal de la familia Ii en Edo. El nombre del templo deriva del nombre budista póstumo de Naotaka.\\n\\nGoutokuji es también conocido como el lugar de nacimiento del gato de la fortuna. Según la leyenda, el señor Naotaka fue invitado por un gato blanco a entrar al templo. Se detuvo y momentos después estalló una tormenta. Gracias al gato fue protegido, y el gato fue honrado como portador de buena fortuna con el nombre de Maneki-neko.\\n\\nRuta recomendada: Camine recto por el sendero bordeado de pinos y pase por la Puerta Sanmon. Verá la Pagoda de Tres Pisos a su izquierda — en algún lugar, tres gatos ocultos esperan ser descubiertos. Frente a usted está el Salón del Buda, y más allá el Shofuku-den. Tras el Cementerio de la Familia Ii, continúe por el Salón Principal, el Salón de los Patriarcas, la Puerta Roja, la Torre de la Campana y el Salón Jizo.\\n\\nEn cada lugar encontrará fotografías reales y preguntas de quiz históricas exclusivas. Responda todos correctamente y le esperará un oráculo especial.\\n\\nAhora, smartphone en mano, respire profundamente y comience su peregrinación.",
     wmTitle:"<em>Bienvenido a Goutokuji</em>豪徳寺へようこそ",wmNextBtn:"Iniciar la Peregrinación ➔",
     staticInfo:`<strong>[Horario]</strong> 6:00〜17:00 | Oficina: 8:00〜16:30<br><strong>[Contacto]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     mapEyebrow:"Descripción del Santuario",mapTitle:"<em>Mapa General</em>Goutokuji",
@@ -2006,7 +1936,7 @@ const CONFIG_LANG = {
     appealEyebrow:"Experiencia Premium",
     appealTitle:"<em>Una Experiencia de Peregrinación Premium</em>Premium Pilgrimage Experience",
     appealFeat1Title:"Guía de Audio IA para 10 Lugares",appealFeat1Desc:"¡La narración IA te ayuda a descubrir los 3 gatos ocultos en la Pagoda de Tres Pisos!",
-    appealFeat2Title:"Experiencia de Cámara WebAR",appealFeat2Desc:"AR espacial en el lugar. ¡Toca la foto para ver la historia en tres dimensiones!",
+    appealFeat2Title:"📷 Subir Foto y Verificar Gato Oculto",appealFeat2Desc:"Fotografíe el gato que encuentre y súbalo. La IA verificará si es correcto.",
     appealFeat3Title:"Rally de Sellos de Finalización",appealFeat3Desc:"¡Responde correctamente todos los cuestionarios de los 10 lugares para ganar una hoja de sellos digitales!",
     appealFeat4Title:"Omikuji Gratis",appealFeat4Desc:"¡Colecciona los 10 sellos para desbloquear un oráculo especial!",
     appealNextBtn:"Continuar ➔",
@@ -2023,16 +1953,16 @@ const CONFIG_LANG = {
     mannersGuideText:"Por favor revise y marque todos los elementos a continuación",
     wmNextBtn:"Iniciar la Peregrinación ➔",
     steps:[
-      {title:"La Puerta Sanmon",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"Tu peregrinación comienza en la Puerta Sanmon. En el Budismo Zen, cruzar este umbral es un poderoso ritual de purificación. Simboliza dejar atrás el ruido, el estrés y las ilusiones del mundo secular para entrar en un espacio de plena conciencia. Respira profundamente mientras contemplas el exuberante camino que tienes por delante; ahora estás caminando en tierra sagrada.",question:"¿A qué secta Zen pertenece Goutokuji?",options:[{text:"Secta Sōtō Zen",correct:true},{text:"Secta Rinzai",correct:false}],correctFb:"🎯 ¡Correcto! Sōtō Zen — énfasis en zazen.",wrongFb:"❌ Incorrecto."},
-      {title:"Pagoda de Tres Pisos",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Contempla la magnífica Pagoda de Tres Pisos en madera. Mientras que las pagodas budistas tradicionales presentan deidades sagradas y el zodiaco chino, Goutokuji guarda un delicioso secreto arquitectónico. Observa detenidamente bajo las vigas del primer nivel, justo al lado de la talla de la Rata. Encontrarás un pequeño Gato de la Fortuna tallado a mano, oculto a plena vista. Abre la cámara WebAR integrada de nuestra app, apunta al techo y desbloquea la silueta espacial exacta de este legendario felino.",question:"¿Qué está oculto junto a las tallas del zodíaco?",options:[{text:"Un Gato de la Fortuna tallado",correct:true},{text:"Un escudo de dragón dorado",correct:false}],correctFb:"🐱 ¡Perfecto! Visible en la fotografía de cerca.",wrongFb:"❌ Incorrecto."},
-      {title:"El Salón del Buda",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Ante ti se encuentra el Butsuden, el Salón del Buda, oficialmente designado como bien cultural de Setagaya. En su interior descansan estatuas antiguas y sagradas que han vigilado Tokio durante siglos. Antes de acercarte al altar, observa el gran incensario. Los fieles se bañan en este humo ascendente para limpiar sus dolencias físicas y purificar su espíritu antes de enfrentarse a lo divino.",question:"¿Qué rango de bien cultural tiene el Salón del Buda?",options:[{text:"Bien Cultural Designado de Setagaya",correct:true},{text:"Tesoro Nacional Nivel 1",correct:false}],correctFb:"⛩ ¡Correcto!",wrongFb:"❌ Incorrecto."},
+      {title:"La Puerta Sanmon",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"El primero en darle la bienvenida es el imponente Sanmon de madera, erigido en 1884 durante la era Meiji.\nReconstruido tras el Gran Terremoto de Kanto, sigue en pie con serena dignidad hasta hoy.\nLa placa reza Hekiunkan — que significa la puerta hacia la iluminación más allá de las nubes azules.\n\nEn el Budismo Zen, cruzar esta puerta es mucho más que un simple paso.\nEs un ritual de purificación — un momento para desprenderse del ruido, las preocupaciones y las ilusiones,\ny entrar en el espacio sagrado del Buda con un corazón renovado.\n\nUn consejo de etiqueta importante: pase por encima — nunca pise — el umbral en la base de la puerta.\nSe cree que los espíritus de los dioses y el Buda residen en el umbral,\ny pisarlo se considera profundamente irrespetuoso.\n\nRespire profundamente al pasar.\nLuego camine despacio por el exuberante sendero bordeado de pinos.",question:"¿A qué secta Zen pertenece Goutokuji?",options:[{text:"Secta Sōtō Zen",correct:true},{text:"Secta Rinzai",correct:false}],correctFb:"🎯 ¡Correcto! Sōtō Zen — énfasis en zazen.",wrongFb:"❌ Incorrecto."},
+      {title:"Pagoda de Tres Pisos",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completada en 2006, la Pagoda de Tres Pisos de madera se eleva 22,5 metros — una presencia impresionante.\n\nDentro de esta pagoda se esconde el escenario de una misión muy especial: encontrar 3 gatos beckoning secretos ocultos en algún lugar de la estructura.\n\nLos artesanos los tallaron con juguetona picardía en algún rincón. ¿Puede encontrar los tres con sus propios ojos?\n\nEsta app incluye una función especial: fotografíe el gato que encuentre y verifique su respuesta. Si tiene dificultades, hay pistas disponibles.",question:"¿Qué está oculto junto a las tallas del zodíaco?",options:[{text:"Un Gato de la Fortuna tallado",correct:true},{text:"Un escudo de dragón dorado",correct:false}],correctFb:"🐱 ¡Perfecto! Visible en la fotografía de cerca.",wrongFb:"❌ Incorrecto."},
+      {title:"El Salón del Buda",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Construido en 1677, el Butsuden es un bien cultural designado del Barrio de Setagaya. Su solemne presencia porta el peso de casi 350 años de historia.\n\nEn su interior se veneran tres estatuas sagradas: Amida Nyorai, Shakyamuni y Miroku Bosatsu — los Budas del pasado, presente y futuro.\n\nAl situarse frente a estas figuras ancestrales, envuelto por el silencio del recinto, puede que experimente una percepción del tiempo completamente distinta. Tómese un momento para juntar las palmas y ofrecer una oración.",question:"¿Qué rango de bien cultural tiene el Salón del Buda?",options:[{text:"Bien Cultural Designado de Setagaya",correct:true},{text:"Tesoro Nacional Nivel 1",correct:false}],correctFb:"⛩ ¡Correcto!",wrongFb:"❌ Incorrecto."},
       {title:"El Salón Shōfuku-den",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"Bienvenido al Shofuku-den, un espectáculo que deja sin aliento a los viajeros de todo el mundo: un océano de miles de gatos de porcelana blanca. Pero mira más de cerca: ninguno de estos gatos sostiene una moneda de oro. Esto refleja la profunda sabiduría del Zen. El gato beckoning no te entrega riqueza directamente; simplemente te otorga la oportunidad o la bendición. Transformar esa oportunidad en verdadero éxito depende enteramente de tu propio esfuerzo. Siente la mirada silenciosa de estos miles de gatos y haz tu propio voto hoy.",question:"¿Por qué los gatos del Shōfuku-den no llevan moneda de oro?",options:[{text:"Los resultados dependen del propio esfuerzo",correct:true},{text:"Por límites del presupuesto Edo",correct:false}],correctFb:"✨ ¡Respuesta filosófica correcta!",wrongFb:"❌ Incorrecto."},
-      {title:"Tumba de Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"Estás dentro del Cementerio de la Familia Ii, un Sitio Histórico Nacional envuelto en absoluta solemnidad. Al fondo descansa Ii Naosuke, el Gran Consejero del shogunato Tokugawa. En 1858, ante la amenaza inminente de la colonización occidental, tomó la valiente decisión de firmar el tratado histórico con los Estados Unidos, poniendo fin a siglos de aislamiento nacional. Siente los profundos ecos de la historia samurái aquí, donde el hombre que abrió las puertas de Japón al mundo moderno descansa en paz eterna.",question:"¿Cuál era el título gubernamental de Ii Naosuke?",options:[{text:"Tairō (Gran Consejero)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ ¡Correcto! Una figura clave en la modernización de Japón.",wrongFb:"❌ Incorrecto."},
-      {title:"El Salón Principal (Hondo)",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"El Hondo, completado en 1967, sirve como el corazón espiritual y litúrgico de Goutokuji. En este gran salón se venera la estatua sagrada de Sho-Kannon Bodhisattva, reverenciada por escuchar con oídos compasivos el sufrimiento y las oraciones de todos los seres vivos. Aquí es donde la estirpe de monjes del templo realiza los servicios diarios. Absorbe la profunda armonía del interior, una perfecta manifestación del equilibrio espacial Zen.",question:"¿Qué práctica diaria es central en el Hondo?",options:[{text:"Meditación Zazen",correct:true},{text:"Ceremonia de fuego",correct:false}],correctFb:"🎯 ¡Correcto!",wrongFb:"❌ Incorrecto."},
-      {title:"El Salón Kaiso-do",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"Cerca del salón principal se encuentra el Kaiso-do, el Salón de los Patriarcas. Esta sagrada estructura alberga las tablillas ancestrales y los espíritus eternos de los grandes sacerdotes que mantuvieron viva la llama de las enseñanzas de Goutokuji a través de los siglos. Observar este pabellón revela que Goutokuji no es solo un destino escénico, sino un santuario vivo donde generaciones han protegido un legado sagrado.",question:"¿Cuyo espíritu está consagrado en el Kaiso-do?",options:[{text:"Los monjes maestros fundadores",correct:true},{text:"Soldados feudales",correct:false}],correctFb:"🎯 ¡Perfecto!",wrongFb:"❌ Incorrecto."},
-      {title:"La Puerta Roja (Akamon)",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"La vibrante Akamon de bermellón, o Puerta Roja, ofrece un llamativo contraste visual con el frondoso follaje verde del templo. Donada directamente por el prestigioso clan samurái de la familia Ii en 1885, fue posteriormente reubicada con esmero en su posición actual. La brillante laca roja combinada con el entorno natural convierte esta puerta en uno de los hitos más pintorescos del santuario.",question:"¿Cuál es el color definitorio de la puerta Akamon?",options:[{text:"Rojo bermellón vivo",correct:true},{text:"Carbón negro",correct:false}],correctFb:"🎯 ¡Correcto!",wrongFb:"❌ Incorrecto."},
-      {title:"La Torre de la Campana",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"Ante ti cuelga el histórico Campanario de bronce, que alberga la campana de templo más antigua del Barrio de Setagaya, fundida en 1679. Durante más de trescientos cincuenta años, su resonante voz ha dado forma a la atmósfera local. En Nochevieja, sus profundos tonos resuenan por todo Tokio, lavando teóricamente las ciento ocho ilusiones terrenales de la humanidad.",question:"¿De qué material está hecha la campana del templo?",options:[{text:"Bronce fundido",correct:true},{text:"Granito tallado",correct:false}],correctFb:"🎯 ¡Correcto!",wrongFb:"❌ Incorrecto."},
-      {title:"El Salón Jizo-do",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"Tu peregrinación de diez puntos culmina aquí en el Salón Jizo-do, hermosamente reconstruido en el año 2020. En su interior descansa la gentil figura de Jizo Bodhisattva, el compasivo guardián de los viajeros, los niños y las almas que buscan paz. Ofrece tu tranquila gratitud por completar este viaje con seguridad. Bajo las bendiciones persistentes de los gatos beckoning, que tus futuros caminos se desplieguen con absoluta prosperidad y alegría.",question:"¿A quiénes protegen espiritualmente las estatuas Jizo?",options:[{text:"Viajeros, niños y almas",correct:true},{text:"Guerreros samurái",correct:false}],correctFb:"🌸 ¡Perfecto! Los 10 lugares del santuario completados.",wrongFb:"❌ Incorrecto."}
+      {title:"Tumba de Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"El Cementerio de la Familia Ii es un Sitio Histórico Nacional — un santuario especial donde el aire mismo parece cambiar al entrar.\n\nAl fondo descansa Ii Naosuke, el Gran Consejero del período Edo tardío.\n\nFrente a la amenaza de colonización occidental, tomó la valiente decisión de firmar el Tratado con los Estados Unidos en 1858, poniendo fin a más de 250 años de aislamiento. Su decisión atrajo una feroz oposición y finalmente perdió la vida en el Incidente de Sakuradamon — pero su coraje histórico continúa respirando en este suelo.\n\nPor favor, reflexione sobre el peso de esta historia y ofrezca una oración silenciosa.",question:"¿Cuál era el título gubernamental de Ii Naosuke?",options:[{text:"Tairō (Gran Consejero)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ ¡Correcto! Una figura clave en la modernización de Japón.",wrongFb:"❌ Incorrecto."},
+      {title:"El Salón Principal (Hondo)",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"Completado en 1967, el Hondo es la estructura más sagrada de Goutokuji, el corazón de su fe.\n\nEnshrined dentro está la estatua de Sho-Kannon Bodhisattva, venerada por escuchar compasivamente el sufrimiento y los deseos de todas las personas.\n\nIncluso hoy, los monjes continúan la tradición de ofrecer oraciones diarias aquí.\n\nGrandioso y esplendoroso, pero sereno y tranquilizador — por favor, tómese el tiempo para absorber la armonía de un templo Zen.",question:"¿Qué práctica diaria es central en el Hondo?",options:[{text:"Meditación Zazen",correct:true},{text:"Ceremonia de fuego",correct:false}],correctFb:"🎯 ¡Correcto!",wrongFb:"❌ Incorrecto."},
+      {title:"El Salón Kaiso-do",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"De pie silenciosamente al lado del Salón Principal está el Kaiso-do, el Salón de los Patriarcas.\n\nAquí están consagradas las tablillas ancestrales de los sucesivos sumos sacerdotes que mantuvieron viva la llama de las enseñanzas de Goutokuji a lo largo de los siglos.\n\nGazing upon this hall, you come to feel deeply that Goutokuji is no mere tourist destination — it is a living place of prayer where generations have passed the baton of faith.\n\nPermítase un momento tranquilo para acercarse en corazón a los vínculos silenciosos e intemporales.",question:"¿Cuyo espíritu está consagrado en el Kaiso-do?",options:[{text:"Los monjes maestros fundadores",correct:true},{text:"Soldados feudales",correct:false}],correctFb:"🎯 ¡Perfecto!",wrongFb:"❌ Incorrecto."},
+      {title:"La Puerta Roja (Akamon)",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"La Akamon pinta un vívido contraste bermellón contra la exuberante vegetación del templo.\n\nDonada directamente por la familia Ii en 1885, fue originalmente ubicada en la puerta este antes de ser trasladada a su posición actual.\n\nEl impresionante contraste entre el follaje verde y la laca roja japonesa tradicional es impresionante — haciendo de este el lugar de fotografía más recomendado en todo el recinto.\n\nCapture una fotografía conmemorativa ante esta puerta de noble y digna belleza.",question:"¿Cuál es el color definitorio de la puerta Akamon?",options:[{text:"Rojo bermellón vivo",correct:true},{text:"Carbón negro",correct:false}],correctFb:"🎯 ¡Correcto!",wrongFb:"❌ Incorrecto."},
+      {title:"La Torre de la Campana",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"Fundida en 1679, esta campana de bronce es la más antigua del Barrio de Setagaya — marcando el tiempo aquí durante más de 350 años.\n\nEn Nochevieja, sus profundos y resonantes tonos resuenan por el cielo nocturno de Setagaya, como si lavaran uno por uno los 108 deseos terrenales que afligen a la humanidad.\n\nAdmire la belleza profunda y digna del antiguo bronce — envejecido por siglos de historia y ahora luciendo una pátina verde característica.",question:"¿De qué material está hecha la campana del templo?",options:[{text:"Bronce fundido",correct:true},{text:"Granito tallado",correct:false}],correctFb:"🎯 ¡Correcto!",wrongFb:"❌ Incorrecto."},
+      {title:"El Salón Jizo-do",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"El último de los diez lugares sagrados es el Jizo-do, hermosamente renacido en 2020.\n\nAquí está consagrada la figura de Jizo Bodhisattva, un guardián compasivo que vela por los viajeros, los niños y todos los seres vivos.\n\nPor favor, ofrezca sus oraciones aquí con gratitud por completar este peregrinaje de forma segura.\n\nBajo la cálida protección de los gatos de la fortuna, que su camino futuro esté lleno de fortuna y alegría sin límites.",question:"¿A quiénes protegen espiritualmente las estatuas Jizo?",options:[{text:"Viajeros, niños y almas",correct:true},{text:"Guerreros samurái",correct:false}],correctFb:"🌸 ¡Perfecto! Los 10 lugares del santuario completados.",wrongFb:"❌ Incorrecto."}
     ]
   }
 ,
@@ -2068,7 +1998,7 @@ const CONFIG_LANG = {
     ],
     nextSpots:"Itinéraires recommandés à proximité",restartBtn:"↺ Recommencer",
     surveyFormTitle:"Enquête de satisfaction",surveyStarLabel:"Satisfaction :",surveyTextLabel:"Commentaires :",surveySubmitBtn:"Envoyer",
-    welcomeNarr:"Avant de commencer notre voyage, comprenons le plan directeur de cet espace sacré. Goutokuji est un vaste écosystème spirituel enveloppé d'une végétation luxuriante. Votre itinéraire optimisé commence à la grande Porte Sanmon. Marchez tout droit le long du chemin de pierre bordé de pins soigneusement taillés. Tournez à gauche au bout, et vous trouverez le Pavillon du Bouddha sur votre droite, avec le célèbre Shofuku-den juste derrière. Après vous être recueilli au cimetière du clan samouraï d'Ii Naosuke, nous continuerons dans le sens des aiguilles d'une montre par le Hondo, le Kaiso-do, l'Akamon vibrant, le Beffroi de bronze et, enfin, le Jizo-do.",
+    welcomeNarr:"Bienvenue à Goutokuji. Avant de commencer notre visite, laissez-moi vous présenter le portrait complet de ce magnifique et ancien temple.\\n\\nGoutokuji est un vaste sanctuaire sacré enveloppé d'une végétation luxuriante.\\n\\nLe nom officiel du temple est Daikei-zan Goutokuji, fondé en 1480 sous la période Muromachi. En 1633, le seigneur Ii Naotaka a établi ce temple comme lieu de culte principal de la famille Ii à Edo. Le nom du temple est dérivé du nom bouddhiste posthume de Naotaka.\\n\\nGoutokuji est également connu comme le lieu de naissance du chat porte-bonheur. Selon la légende, le seigneur Naotaka fut invité par un chat blanc à entrer dans le temple. Il s'arrêta et peu après une violente tempête éclata. Protégé grâce au chat, il honora l'animal comme porteur de bonne fortune, le nommant Maneki-neko.\\n\\nItinéraire recommandé : Marchez tout droit le long de l'allée de pins et passez par la Porte Sanmon. Vous verrez la Pagode à Trois Étages sur votre gauche — quelque part en elle, trois chats cachés attendent d'être découverts. Devant vous se trouve le Pavillon du Bouddha, et plus loin le Shofuku-den. Après le Cimetière de la Famille Ii, continuez par le Hall Principal, la Salle des Patriarches, la Porte Rouge, la Tour de la Cloche et enfin le Hall Jizo.\\n\\nÀ chaque endroit, vous trouverez de vraies photos et des questions de quiz historiques exclusives. Répondez correctement à tous et un oracle spécial vous attend.\\n\\nMaintenant, smartphone en main, respirez profondément et commencez votre pèlerinage.",
     wmTitle:"<em>Bienvenue à Goutokuji</em>豪徳寺へようこそ",wmNextBtn:"Commencer le Pèlerinage ➔",
     staticInfo:`<strong>[Horaires]</strong> 6:00〜17:00 | Bureau : 8:00〜16:30<br><strong>[Contact]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     mapEyebrow:"Présentation du Sanctuaire",mapTitle:"<em>Plan Général</em>Goutokuji",
@@ -2079,7 +2009,7 @@ const CONFIG_LANG = {
     appealEyebrow:"Expérience Premium",
     appealTitle:"<em>Une Expérience de Pèlerinage Premium</em>Premium Pilgrimage Experience",
     appealFeat1Title:"Guide Audio IA pour 10 Sites",appealFeat1Desc:"La narration IA vous aide à découvrir les 3 chats cachés dans la Pagode à Trois Étages !",
-    appealFeat2Title:"Expérience Caméra WebAR",appealFeat2Desc:"AR spatiale sur place. Touchez la photo pour voir l'histoire en trois dimensions !",
+    appealFeat2Title:"📷 Télécharger une Photo et Vérifier le Chat Caché",appealFeat2Desc:"Photographiez le chat que vous trouvez et téléchargez-le. L'IA vérifiera s'il est correct.",
     appealFeat3Title:"Rally de Tampons de Complétion",appealFeat3Desc:"Répondez correctement à tous les quiz des 10 sites pour gagner une feuille de tampons numériques!",
     appealFeat4Title:"Omikuji Gratuit",appealFeat4Desc:"Collectez les 10 tampons pour débloquer un oracle spécial!",
     appealNextBtn:"Continuer ➔",
@@ -2096,16 +2026,16 @@ const CONFIG_LANG = {
     mannersGuideText:"Veuillez vérifier et cocher tous les éléments ci-dessous",
     wmNextBtn:"Commencer le Pèlerinage ➔",
     steps:[
-      {title:"La Porte Sanmon",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"Votre pèlerinage commence à la Porte Sanmon. Dans le Bouddhisme Zen, franchir ce seuil est un puissant rituel de purification. Il symbolise l'abandon du bruit, du stress et des illusions du monde séculier pour entrer dans un espace de pleine conscience absolue. Respirez profondément en regardant le chemin luxuriant devant vous ; vous marchez maintenant sur une terre sacrée.",question:"À quelle secte Zen appartient Goutokuji ?",options:[{text:"Secte Sōtō Zen",correct:true},{text:"Secte Rinzai",correct:false}],correctFb:"🎯 Correct ! Sōtō Zen — avec accent sur le zazen.",wrongFb:"❌ Incorrect."},
-      {title:"Pagode à Trois Étages",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Admirez la magnifique Pagode à Trois Étages en bois. Alors que les pagodes bouddhistes traditionnelles présentent des divinités sacrées et le zodiaque chinois, Goutokuji cache un délicieux secret architectural. Regardez attentivement sous les poutres du premier niveau, juste à côté de la sculpture du Rat. Vous y trouverez un petit Chat Porte-Bonheur sculpté à la main, caché à la vue de tous. Ouvrez maintenant l'appareil photo WebAR intégré de notre application et déverrouillez la silhouette spatiale exacte de ce félin légendaire.",question:"Qu'est-ce qui est caché avec les sculptures du zodiaque ?",options:[{text:"Un Chat Porte-Bonheur sculpté",correct:true},{text:"Un blason de dragon doré",correct:false}],correctFb:"🐱 Parfait ! Visible sur la photographie en gros plan.",wrongFb:"❌ Incorrect."},
-      {title:"Le Pavillon du Bouddha",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Devant vous se trouve le Butsuden, le Pavillon du Bouddha, officiellement désigné comme un bien culturel de Setagaya. À l'intérieur reposent des statues anciennes et sacrées qui veillent sur Tokyo depuis des siècles. Avant de vous approcher de l'autel, regardez le grand brûle-encens. Les fidèles se baignent dans cette fumée montante pour purifier leurs corps de leurs maux physiques et purifier leur esprit avant de faire face au divin.",question:"Quel rang de bien culturel possède le Pavillon du Bouddha ?",options:[{text:"Bien Culturel Désigné de Setagaya",correct:true},{text:"Trésor National Niveau 1",correct:false}],correctFb:"⛩ Correct !",wrongFb:"❌ Incorrect."},
+      {title:"La Porte Sanmon",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"Le premier à vous accueillir est le robuste Sanmon en bois, érigé en 1884 sous l'ère Meiji.\nReconstruit après le Grand Séisme du Kanto, il se dresse encore aujourd'hui avec une sérénité digne.\nLa plaque porte l'inscription Hekiunkan — signifiant la porte vers l'éveil au-delà des nuages azurés.\n\nDans le Bouddhisme Zen, franchir cette porte est bien plus qu'un simple passage.\nC'est un rituel de purification — un moment pour se défaire du bruit, des soucis et des illusions,\net entrer dans l'espace sacré du Bouddha avec un cœur purifié.\n\nUn conseil d'étiquette important : enjambez — ne marchez jamais sur — le seuil à la base de la porte.\nOn croit que les esprits des dieux et du Bouddha résident dans le seuil,\net le piétiner est considéré comme profondément irrespectueux.\n\nRespirez profondément en passant.\nPuis marchez lentement sur le chemin luxuriant bordé de pins.",question:"À quelle secte Zen appartient Goutokuji ?",options:[{text:"Secte Sōtō Zen",correct:true},{text:"Secte Rinzai",correct:false}],correctFb:"🎯 Correct ! Sōtō Zen — avec accent sur le zazen.",wrongFb:"❌ Incorrect."},
+      {title:"Pagode à Trois Étages",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Achevée en 2006, la Pagode à Trois Étages en bois s'élève à 22,5 mètres — une présence époustouflante.\n\nCachée dans cette pagode se trouve la scène d'une mission très spéciale : trouver 3 chats porte-bonheur secrets dissimulés quelque part dans la structure.\n\nLes artisans les ont joyeusement sculptés dans l'architecture. Pouvez-vous les trouver tous les trois ?\n\nCette app inclut une fonction spéciale : photographiez le chat que vous trouvez et vérifiez votre réponse. Des indices sont disponibles si nécessaire.",question:"Qu'est-ce qui est caché avec les sculptures du zodiaque ?",options:[{text:"Un Chat Porte-Bonheur sculpté",correct:true},{text:"Un blason de dragon doré",correct:false}],correctFb:"🐱 Parfait ! Visible sur la photographie en gros plan.",wrongFb:"❌ Incorrect."},
+      {title:"Le Pavillon du Bouddha",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Construit en 1677, le Butsuden est un bien culturel désigné du Quartier de Setagaya. Sa présence solennelle porte le poids de près de 350 ans d'histoire.\n\nÀ l'intérieur sont vénérées trois statues sacrées : Amida Nyorai, Shakyamuni et Miroku Bosatsu — les Bouddhas du passé, du présent et du futur.\n\nEn vous tenant devant ces figures ancestrales, enveloppé par le silence, vous pourrez ressentir une perception du temps différente. Prenez un moment pour joindre les paumes et offrir une prière.",question:"Quel rang de bien culturel possède le Pavillon du Bouddha ?",options:[{text:"Bien Culturel Désigné de Setagaya",correct:true},{text:"Trésor National Niveau 1",correct:false}],correctFb:"⛩ Correct !",wrongFb:"❌ Incorrect."},
       {title:"Le Pavillon Shōfuku-den",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"Bienvenue au Shofuku-den, un spectacle qui laisse les voyageurs du monde entier totalement sans voix : un océan de milliers de chats en porcelaine blanche. Mais regardez de plus près : aucun de ces chats ne tient une pièce d'or. Cela reflète la profonde sagesse du Zen. Le chat beckoning ne vous remet pas directement de la richesse ; il vous accorde simplement l'opportunité ou la bénédiction. Transformer cette opportunité en véritable succès dépend entièrement de votre propre effort. Sentez le regard silencieux de ces milliers de chats et faites votre propre vœu aujourd'hui.",question:"Pourquoi les chats du Shōfuku-den ne tiennent-ils pas de pièce d'or ?",options:[{text:"Les résultats dépendent du propre effort",correct:true},{text:"À cause des budgets de l'ère Edo",correct:false}],correctFb:"✨ Réponse philosophique correcte !",wrongFb:"❌ Incorrect."},
-      {title:"Tombe d'Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"Vous vous trouvez dans le Cimetière de la Famille Ii, un Site Historique National enveloppé d'une solennité absolue. À l'arrière repose Ii Naosuke, le Grand Conseiller du shogunat Tokugawa. En 1858, face à la menace imminente de la colonisation occidentale, il prit la courageuse décision de signer le traité historique avec les États-Unis, mettant ainsi fin à des siècles d'isolement national. Ressentez les profonds échos de l'histoire samouraï ici, où l'homme qui a ouvert les portes du Japon au monde moderne repose en paix éternelle.",question:"Quel était le titre gouvernemental d'Ii Naosuke ?",options:[{text:"Tairō (Grand Conseiller)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ Correct ! Une figure clé dans la modernisation du Japon.",wrongFb:"❌ Incorrect."},
-      {title:"Le Hall Principal (Hondo)",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"Le Hondo, achevé en 1967, est le cœur spirituel et liturgique de Goutokuji. Dans ce grand pavillon est vénérée la statue sacrée de Sho-Kannon Bodhisattva, révérée pour écouter avec des oreilles compatissantes les souffrances et les prières de tous les êtres vivants. C'est ici que la lignée des moines du temple accomplit les offices quotidiens. Absorbez la profonde harmonie de l'intérieur, une parfaite manifestation de l'équilibre spatial Zen.",question:"Quelle pratique quotidienne est centrale au Hondo ?",options:[{text:"Méditation Zazen",correct:true},{text:"Cérémonie du feu",correct:false}],correctFb:"🎯 Correct !",wrongFb:"❌ Incorrect."},
-      {title:"Le Pavillon Kaiso-do",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"Près du hall principal se trouve le Kaiso-do, le Pavillon des Patriarches. Cette structure sacrée abrite les tablettes ancestrales et les esprits éternels des grands prêtres qui ont maintenu vivante la flamme des enseignements de Goutokuji à travers les siècles. Observer ce pavillon révèle que Goutokuji n'est pas seulement une destination pittoresque, mais un sanctuaire vivant où des générations ont protégé un héritage sacré.",question:"Dont l'esprit est consacré dans le Kaiso-do ?",options:[{text:"Les moines maîtres fondateurs",correct:true},{text:"Soldats féodaux",correct:false}],correctFb:"🎯 Parfait !",wrongFb:"❌ Incorrect."},
-      {title:"La Porte Rouge (Akamon)",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"La vibrante Akamon vermillon, ou Porte Rouge, offre un contraste visuel saisissant avec le feuillage vert luxuriant du temple. Donnée directement par le prestigieux clan samouraï de la famille Ii en 1885, elle a ensuite été soigneusement déplacée à sa position actuelle. La brillante laque rouge associée au cadre naturel fait de cette porte l'un des points de repère les plus pittoresques de tout le sanctuaire.",question:"Quelle est la couleur caractéristique de la porte Akamon ?",options:[{text:"Rouge vermillon vif",correct:true},{text:"Charbon noir",correct:false}],correctFb:"🎯 Correct !",wrongFb:"❌ Incorrect."},
-      {title:"La Tour de la Cloche",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"Devant vous se trouve l'historique Beffroi en bronze, abritant la plus ancienne cloche de temple du District de Setagaya, fondue en 1679. Pendant plus de trois cent cinquante ans, sa voix résonnante a façonné l'atmosphère locale. Le soir du Nouvel An, ses tons profonds résonnent dans tout Tokyo, effaçant théoriquement les cent huit illusions terrestres de l'humanité.",question:"De quel matériau est faite la cloche du temple ?",options:[{text:"Bronze fondu",correct:true},{text:"Granit sculpté",correct:false}],correctFb:"🎯 Correct !",wrongFb:"❌ Incorrect."},
-      {title:"Le Jizo-do",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"Votre pèlerinage de dix points culmine ici au Jizo-do, magnifiquement reconstruit en l'an 2020. À l'intérieur repose la douce figure de Jizo Bodhisattva, le gardien compatissant des voyageurs, des enfants et des âmes en quête de paix. Offrez votre gratitude tranquille pour avoir accompli ce voyage en toute sécurité. Sous les bénédictions persistantes des chats beckoning, que vos futurs chemins se déploient avec une prospérité et une joie absolues.",question:"Qui les statues Jizo protègent-elles spirituellement ?",options:[{text:"Voyageurs, enfants et âmes",correct:true},{text:"Guerriers samouraïs",correct:false}],correctFb:"🌸 Parfait ! Les 10 spots du sanctuaire complétés.",wrongFb:"❌ Incorrect."}
+      {title:"Tombe d'Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"Le Cimetière de la Famille Ii est un Site Historique National — un sanctuaire spécial où l'air semble changer dès que l'on y entre.\n\nAu fond repose Ii Naosuke, le Grand Conseiller de la fin de la période Edo.\n\nFace à la menace de colonisation occidentale, il prit la courageuse décision de signer le traité avec les États-Unis en 1858, mettant fin à plus de 250 ans d'isolement national. Sa décision attira une vive opposition et il perdit finalement la vie lors de l'Incident de Sakuradamon — mais son courage historique continue de respirer dans cette terre.\n\nVeuillez réfléchir sur le poids de cette histoire et offrir une prière silencieuse.",question:"Quel était le titre gouvernemental d'Ii Naosuke ?",options:[{text:"Tairō (Grand Conseiller)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ Correct ! Une figure clé dans la modernisation du Japon.",wrongFb:"❌ Incorrect."},
+      {title:"Le Hall Principal (Hondo)",img:"images/6_本殿.jpg",images:["images/6_本殿2.jpg","images/6_本殿3.jpg"],narrative:"Achevé en 1967, le Hondo est la structure la plus sacrée de Goutokuji, le cœur de sa foi.\n\nÀ l'intérieur est vénérée la statue de Sho-Kannon Bodhisattva, révérée pour écouter avec compassion les souffrances et les souhaits de toutes les personnes.\n\nMême aujourd'hui, les moines continuent la tradition d'offrir des prières quotidiennes ici.\n\nGrand et resplendissant, mais serein — veuillez prendre le temps d'absorber l'harmonie d'un temple Zen.",question:"Quelle pratique quotidienne est centrale au Hondo ?",options:[{text:"Méditation Zazen",correct:true},{text:"Cérémonie du feu",correct:false}],correctFb:"🎯 Correct !",wrongFb:"❌ Incorrect."},
+      {title:"Le Pavillon Kaiso-do",img:"images/7_開祖堂.jpg",images:["images/7_開祖堂2.jpg","images/7_開祖堂.jpg"],narrative:"Se tenant tranquillement à côté du Hall Principal est le Kaiso-do, la Salle des Patriarches.\n\nIci sont consacrées les tablettes ancestrales des grands prêtres successifs qui ont maintenu vivante la flamme des enseignements de Goutokuji à travers les siècles.\n\nEn contemplant cette salle, vous ressentez profondément que Goutokuji n'est pas qu'une destination touristique — c'est un lieu de prière vivant où les générations ont passé le flambeau de la foi.\n\nAccordez-vous un moment tranquille pour vous rapprocher des liens silencieux et intemporels.",question:"Dont l'esprit est consacré dans le Kaiso-do ?",options:[{text:"Les moines maîtres fondateurs",correct:true},{text:"Soldats féodaux",correct:false}],correctFb:"🎯 Parfait !",wrongFb:"❌ Incorrect."},
+      {title:"La Porte Rouge (Akamon)",img:"images/8_赤門.jpg",images:["images/8_赤門2.jpg","images/8_赤門3.jpg"],narrative:"L'Akamon peint un vif contraste vermillon contre la végétation luxuriante du temple.\n\nDonnée directement par la famille Ii en 1885, elle fut d'abord située à la porte est avant d'être déplacée à sa position actuelle.\n\nLe contraste frappant entre le feuillage vert et la laque rouge japonaise traditionnelle est à couper le souffle — faisant de ceci le lieu de photographie le plus recommandé.\n\nCapturez une photo commémorative devant cette porte d'une beauté noble et digne.",question:"Quelle est la couleur caractéristique de la porte Akamon ?",options:[{text:"Rouge vermillon vif",correct:true},{text:"Charbon noir",correct:false}],correctFb:"🎯 Correct !",wrongFb:"❌ Incorrect."},
+      {title:"La Tour de la Cloche",img:"images/9_鐘楼.jpg",images:["images/9_鐘楼3.jpg","images/9_鐘楼4.jpg"],narrative:"Fondue en 1679, cette cloche de bronze est la plus ancienne du Quartier de Setagaya — marquant le temps ici depuis plus de 350 ans.\n\nLe soir du Nouvel An, ses tons profonds et résonnants retentissent dans le ciel nocturne de Setagaya, comme s'ils lavaient un à un les 108 désirs terrestres.\n\nAdmirez la beauté profonde et digne de l'ancien bronze — vieilli par des siècles d'histoire et portant maintenant une patine verte caractéristique.",question:"De quel matériau est faite la cloche du temple ?",options:[{text:"Bronze fondu",correct:true},{text:"Granit sculpté",correct:false}],correctFb:"🎯 Correct !",wrongFb:"❌ Incorrect."},
+      {title:"Le Jizo-do",img:"images/10_地蔵堂.jpg",images:["images/10_地蔵堂1.jpg","images/10_地蔵堂2.jpg","images/10_地蔵堂3.jpg","images/10_地蔵堂4.jpg"],narrative:"Le dernier des dix lieux sacrés est le Jizo-do, magnifiquement renouvelé en 2020.\n\nIci est consacrée la figure de Jizo Bodhisattva, un gardien compatissant qui veille sur les voyageurs, les enfants et tous les êtres vivants.\n\nVeuillez offrir vos prières ici avec gratitude pour avoir complété ce pèlerinage en toute sécurité.\n\nSous la chaude protection des chats porte-bonheur, que votre chemin futur soit rempli de fortune et de joie sans limites.",question:"Qui les statues Jizo protègent-elles spirituellement ?",options:[{text:"Voyageurs, enfants et âmes",correct:true},{text:"Guerriers samouraïs",correct:false}],correctFb:"🌸 Parfait ! Les 10 spots du sanctuaire complétés.",wrongFb:"❌ Incorrect."}
     ]
   }
 };
@@ -2130,51 +2060,76 @@ function changeFontSize(size,btn){
 
 const PAGE_ORDER=['page-lang-select','page-app-appeal','page-checkout','page-sync','page-manners','page-welcome-map','page-full-map','page-quest','page-clear'];
 function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-  document.getElementById('navBack').classList.toggle('visible',id!=='page-lang-select');
-  if(id==='page-visual-intro')startShortsEngine();else stopShortsEngine();
-  if(id==='page-manners'){
-    const mb=document.getElementById('mannersBox');
-    
+  const current=document.querySelector('.page.active');
+  const next=document.getElementById(id);
+  if(!next)return;
+
+  const applyPageLogic=()=>{
+    document.getElementById('navBack').classList.toggle('visible',id!=='page-lang-select');
+    if(id==='page-visual-intro')startShortsEngine();else stopShortsEngine();
+    if(id==='page-manners'){
+      const mb=document.getElementById('mannersBox');
+
+      setTimeout(()=>{
+        const btn=document.getElementById('mannersAgreeBtn');
+        if(btn){btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='not-allowed';}
+        document.querySelectorAll('#mannersBox .manner-check').forEach(c=>{c.checked=false;});
+      },50);
+      const d=CONFIG_LANG[state.lang||'ja'];
+      if(mb&&d)mb.innerHTML=d.mannerItems||'';
+      const mt=document.getElementById('mannersTitle');
+      if(mt&&d)mt.textContent=d.mannerTitle||'参拝マナーと安全確認';
+    }
+
+    if(id==='page-checkout'){_startCheckoutSlides();_updateCheckoutSkipVisibility();}
+    else{_stopCheckoutSlides();}
+    if(id==='page-full-map'){
+
+      state.currentStep=0;
+      localStorage.setItem('goutokuji_dx_page','page-full-map');
+    }
+    if(id==='page-welcome-map'){
+      state.currentStep=0;
+      _stopWmAudio();
+      _startWmSlides();
+
+      const wmp=document.getElementById('wmAudioPlayer');
+      if(wmp){wmp.classList.add('show');}
+
+      const nt=document.getElementById('wmNarrText');
+      if(nt)nt.classList.remove('expanded');
+      const rb=document.getElementById('wmReadMoreBtn');
+      if(rb)rb.style.display='block';
+    }
+    if(id!=='page-quest'&&id!=='page-full-map'&&id!=='page-welcome-map')_stopRealAudio();
+    if(id!=='page-welcome-map'){_stopWmAudio();_stopWmSlides();}
+
+    if(id==='page-quest'){localStorage.setItem('goutokuji_dx_step',state.currentStep);localStorage.setItem('goutokuji_dx_page','page-quest');buildQuestContent();}
+    if(id==='page-clear'){setTimeout(()=>{buildClearContent();updateStampRail_clear();},20);}
+    else{clearInterval(_shopSlideTimer);}
+  };
+
+  if(current && current!==next){
+    current.style.opacity='0';
+    current.style.transform='translateY(-8px)';
+    current.style.transition='opacity 0.25s ease,transform 0.25s ease';
+
     setTimeout(()=>{
-      const btn=document.getElementById('mannersAgreeBtn');
-      if(btn){btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='not-allowed';}
-      document.querySelectorAll('#mannersBox .manner-check').forEach(c=>{c.checked=false;});
-    },50);
-    const d=CONFIG_LANG[state.lang||'ja'];
-    if(mb&&d)mb.innerHTML=d.mannerItems||'';
-    const mt=document.getElementById('mannersTitle');
-    if(mt&&d)mt.textContent=d.mannerTitle||'参拝マナーと安全確認';
+      current.classList.remove('active');
+      current.style.opacity='';
+      current.style.transform='';
+      current.style.transition='';
+
+      next.classList.add('active');
+      window.scrollTo({top:0,behavior:'instant'});
+
+      applyPageLogic();
+    },250);
+  } else {
+    next.classList.add('active');
+    window.scrollTo({top:0,behavior:'instant'});
+    applyPageLogic();
   }
-  
-  if(id==='page-checkout'){_startCheckoutSlides();_updateCheckoutSkipVisibility();}
-  else{_stopCheckoutSlides();}
-  if(id==='page-full-map'){
-    
-    state.currentStep=0;
-    localStorage.setItem('goutokuji_dx_page','page-full-map');
-  }
-  if(id==='page-welcome-map'){
-    state.currentStep=0;
-    _stopWmAudio();
-    _startWmSlides();
-    
-    const wmp=document.getElementById('wmAudioPlayer');
-    if(wmp){wmp.classList.add('show');}
-    
-    const nt=document.getElementById('wmNarrText');
-    if(nt)nt.classList.remove('expanded');
-    const rb=document.getElementById('wmReadMoreBtn');
-    if(rb)rb.style.display='block';
-  }
-  if(id!=='page-quest'&&id!=='page-full-map'&&id!=='page-welcome-map')_stopRealAudio();
-  if(id!=='page-welcome-map'){_stopWmAudio();_stopWmSlides();}
-  
-  if(id==='page-quest'){localStorage.setItem('goutokuji_dx_step',state.currentStep);localStorage.setItem('goutokuji_dx_page','page-quest');buildQuestContent();}
-  if(id==='page-clear'){setTimeout(()=>{buildClearContent();updateStampRail_clear();},20);}
-  else{clearInterval(_shopSlideTimer);}
 }
 {const _nb=document.getElementById('navBack');
 if(_nb)_nb.addEventListener('click',()=>{
@@ -2338,8 +2293,8 @@ function applyLangUI(lk){
   _set('appealTitle','innerHTML',d.appealTitle||(isJa?'<em>プレミアムな参拝体験をあなたに</em>Premium Pilgrimage Experience':'<em>Premium Pilgrimage Experience</em>プレミアムな参拝体験をあなたに'));
   _set('appealFeat1Title','textContent',d.appealFeat1Title||(isJa?'豪徳寺10大スポット AIナレーション':'10-Spot AI Audio Guide'));
   _set('appealFeat1Desc','textContent',d.appealFeat1Desc||(isJa?'三重塔に隠された「3匹の隠れ招き猫」の発見を、AIナレーションが完璧にお手伝いします！':'AI narration guides you to discover the 3 hidden cats in the Three-Story Pagoda!'));
-  _set('appealFeat2Title','textContent',d.appealFeat2Title||(isJa?'WebAR カメラ体験':'WebAR Camera Experience'));
-  _set('appealFeat2Desc','textContent',d.appealFeat2Desc||(isJa?'現地限定の空間AR演出。写真をタップするだけで歴史が三次元に浮かび上がります。':'On-site spatial AR. Tap the photo to see history emerge in three dimensions.'));
+  _set('appealFeat2Title','textContent',d.appealFeat2Title||(isJa?'📷 写真をアップロードして隠れ猫の答え合わせ':'📷 Photo Upload & Hidden Cat Verification'));
+  _set('appealFeat2Desc','textContent',d.appealFeat2Desc||(isJa?'現地で見つけた招き猫を写真に撮ってアップロード。AIが正解かどうか判定します。':'Photograph the cat you find on-site and upload it. AI will verify if it is correct.'));
   _set('appealFeat3Title','textContent',d.appealFeat3Title||(isJa?'10大スポット 満願成就スタンプラリー':'10-Spot Completion Stamp Rally'));
   _set('appealFeat3Desc','textContent',d.appealFeat3Desc||(isJa?'10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！':'Answer all 10 spot quizzes correctly to earn a glowing digital stamp sheet as proof of completion!'));
   _set('appealFeat4Title','textContent',d.appealFeat4Title||(isJa?'無料おみくじ':'Free Fortune Omikuji'));
@@ -2373,10 +2328,12 @@ function applyLangUI(lk){
   const _wmNt=document.getElementById('wmNarrText');
   if(_wmNt&&d.welcomeNarr){
     const _wn=d.welcomeNarr
-      .replace(/。(?=\S)/g,'。<br>')
-      .replace(/\. (?=[A-ZÀ-ɏ\u4E00-\u9FFF])/g,'.<br>')
-      .replace(/！(?=\S)/g,'！<br>')
-      .replace(/\\n/g,'<br>');
+      .replace(/\\n\\n/g,'<br>')
+      .replace(/\\n/g,' ')
+      .replace(/。\s*/g,'。<br>')
+      .replace(/\. (?=[A-ZÀ-ɏ])/g,'. <br>')
+      .replace(/！\s*/g,'！<br>')
+      .replace(/？\s*/g,'？<br>');
     _wmNt.innerHTML=_wn;
   }
   _set('wmReadMoreLabel','textContent',d.readMoreLabel||'▼ Read More');
@@ -2447,10 +2404,7 @@ function buildQuestContent(){
   if(_qnt)_qnt.classList.remove('expanded');
   const _qrb=document.getElementById('questReadMoreBtn');
   if(_qrb){const _d2=CONFIG_LANG[state.lang||'ja'];_qrb.textContent=_d2.readMoreLabel||'▼ Read More';}
-  
-  const _badge=document.getElementById('arBadgeText');
-  if(_badge){const _d4=CONFIG_LANG[state.lang||'ja'];_badge.textContent=_d4.arBadgeLabel||'TAP FOR WebAR';}
-  
+
   document.getElementById('quizFeedback').className='quiz-feedback';
   document.getElementById('quizFeedback').textContent='';
   document.getElementById('questBadge').textContent=`Step ${String(n).padStart(2,'0')} / 10`;
@@ -2467,10 +2421,12 @@ function buildQuestContent(){
   
   const _narr=s.narrative;
   const _narrHtml=_narr
-    .replace(/。(?=\S)/g,'。<br>')
-    .replace(/\. (?=[A-ZÀ-ɏ])/g,'.<br>')
-    .replace(/！(?=\S)/g,'！<br>')
-    .replace(/\n/g,'<br>');
+    .replace(/\n\n/g,'<br>')
+    .replace(/\n/g,' ')
+    .replace(/。\s*/g,'。<br>')
+    .replace(/\. (?=[A-ZÀ-ɏ])/g,'. <br>')
+    .replace(/！\s*/g,'！<br>')
+    .replace(/？\s*/g,'？<br>');
   document.getElementById('narrationText').innerHTML=_narrHtml;
   document.getElementById('subMapContainer').style.display=state.currentStep===4?'block':'none';
   
@@ -2929,7 +2885,7 @@ function playCheckSound(){
 
 document.addEventListener('click',function(e){
   const t=e.target;
-  if(t.matches('button,select,.option-btn,.lang-btn,.quiz-option,.star-btn,.share-btn,.shop-card,.spot-card,.ar-media-wrap')){
+  if(t.matches('button,select,.option-btn,.lang-btn,.quiz-option,.star-btn,.share-btn,.shop-card,.spot-card')){
     playClickSound();
   }
 },true);
@@ -3434,44 +3390,88 @@ const TOPIC_DATA={
     ja:{
       icon:'🪔',
       title:'お線香体験のすすめ',
-      body:'山門をくぐった先に香炉があります。\nお線香を立てて身を清めてからお参りしましょう。\nお線香代（お気持ちの金額）は香炉の前ではなく\n「仏殿正面のお賽銭箱」に入れるのが現地のマナーです。',
+      body:'仏殿の手前に大きな香炉があります。ぜひお線香体験に挑戦してみてください。\n\n立ち上るお線香の煙には、身体の不調を癒やし、心の曇りを洗い流す浄化のパワーがあると信じられています。煙を手で招き寄せ、頭や体に浴びることで仏様の御前にふさわしい清らかな気持ちになれます。\n\nなお、お線香とライターは香炉手前の左右に置いてあります。\n\n💡 現地マナー：お線香代（お気持ちの金額）は香炉の前ではなく「仏殿正面のお賽銭箱」に入れるのが豪徳寺ならではの粋な参拝作法です。',
       note:'📸 お線香体験の様子',
       images:['images/3_仏殿前の焼香3.jpg','images/3_仏殿前の焼香4.jpg'],
     },
     en:{
       icon:'🪔',
       title:'Try the Incense Experience',
-      body:'After passing through the Sanmon Gate, you will find an incense burner.\nLight incense to purify yourself before worshipping.\nPlace your donation in the offertory box at the front of the Buddha Hall,\nnot in front of the incense burner — this is the local etiquette.',
+      body:'In front of the Buddha Hall, you will find a large incense burner. We encourage you to try the incense experience.\n\nThe rising smoke is believed to carry healing power — cleansing physical ailments and purifying the spirit before standing before the sacred Buddha. Draw the smoke toward you with your hands and bathe your head and body in it.\n\nIncense sticks and a lighter are placed on the left and right sides in front of the burner.\n\n💡 Local etiquette: Place your donation in the offertory box at the front of the Buddha Hall — not in front of the incense burner. This is the refined traditional etiquette at Goutokuji.',
       note:'📸 Incense experience',
       images:['images/3_仏殿前の焼香3.jpg','images/3_仏殿前の焼香4.jpg'],
     },
     zh:{
       icon:'🪔',
       title:'体验线香仪式',
-      body:'穿过山门后，您会看到一个香炉。\n点燃线香净化身心后再参拜。\n线香费请投入佛殿正面的功德箱，\n而非香炉前——这是当地的礼仪。',
+      body:'在佛殿前方，设有一座大型香炉。诚邀您体验点香参拜的仪式。\n\n袅袅升腾的线香烟雾，被认为具有疗愈身体不适、洗净心灵阴霾的净化力量。请用双手将烟雾引向自己，让头部和身体沐浴在其中。\n\n线香和打火机放置在香炉前方的左右两侧，请自行取用。\n\n💡 当地礼仪：线香的供奉金额请投入佛殿正面的功德箱，而非放置在香炉前方。这是豪德寺独特而优雅的参拜礼仪。',
       note:'📸 线香体验',
       images:['images/3_仏殿前の焼香3.jpg','images/3_仏殿前の焼香4.jpg'],
     },
     ko:{
       icon:'🪔',
       title:'향 체험 안내',
-      body:'산몬을 통과하면 향로가 있습니다.\n향을 피워 몸과 마음을 정화한 후 참배하세요.\n향 봉납금은 향로 앞이 아닌\n불전 정면의 헌금함에 넣는 것이 현지 예절입니다.',
+      body:'불전 앞에 커다란 향로가 있습니다. 선향 체험에 꼭 도전해 보세요.\n\n피어오르는 선향 연기에는 신체의 불편함을 치유하고 마음의 흐림을 씻어내는 정화의 힘이 있다고 믿어지고 있습니다. 연기를 두 손으로 끌어당겨 머리와 몸에 듬뿍 쐬어 보세요.\n\n선향과 라이터는 향로 앞쪽 좌우에 놓여 있으니 자유롭게 이용하세요.\n\n💡 현지 예절：선향 봉납금은 향로 앞이 아닌 「불전 정면의 헌금함」에 넣는 것이 고토쿠지의 멋스러운 참배 예절입니다。',
       note:'📸 향 체험 모습',
       images:['images/3_仏殿前の焼香3.jpg','images/3_仏殿前の焼香4.jpg'],
     },
     es:{
       icon:'🪔',
       title:'Experiencia de Incienso',
-      body:'Después de pasar por la Puerta Sanmon, encontrarás un quemador de incienso.\nEnciende incienso para purificarte antes de adorar.\nColoca tu donación en la caja de ofrendas al frente del Salón del Buda,\nno frente al quemador — esta es la etiqueta local.',
+      body:'Frente al Salón del Buda encontrará un gran quemador de incienso. Le invitamos a probar la experiencia del incienso.\n\nSe cree que el humo ascendente tiene el poder de sanar dolencias físicas y purificar el espíritu. Atraiga el humo hacia usted con las manos y báñese la cabeza y el cuerpo en él.\n\nLos palitos de incienso y un encendedor se encuentran a ambos lados frente al quemador.\n\n💡 Etiqueta local: Deposite su donación en la caja de ofrendas al frente del Salón del Buda — no frente al quemador. Esta es la etiqueta tradicional en Goutokuji.',
       note:'📸 Experiencia de incienso',
       images:['images/3_仏殿前の焼香3.jpg','images/3_仏殿前の焼香4.jpg'],
     },
     fr:{
       icon:'🪔',
       title:'Expérience de l\'Encens',
-      body:'Après avoir franchi la Porte Sanmon, vous trouverez un brûle-encens.\nAllumez de l\'encens pour vous purifier avant de prier.\nPlacez votre offrande dans la boîte à offrandes devant le Pavillon du Bouddha,\npas devant le brûle-encens — c\'est l\'étiquette locale.',
+      body:"Devant le Pavillon du Bouddha, vous trouverez un grand brûle-encens. Nous vous invitons à essayer l'expérience de l'encens.\n\nOn croit que la fumée montante possède le pouvoir de guérir les maux physiques et de purifier l'esprit. Attirez la fumée vers vous et baignez-en votre tête et votre corps.\n\nLes bâtons d'encens et un briquet sont placés des deux côtés devant le brûle-encens.\n\n💡 Étiquette locale : Déposez votre offrande dans la boîte à offrandes à l'avant du Pavillon du Bouddha — non devant le brûle-encens. C'est l'étiquette traditionnelle à Goutokuji.",
       note:'📸 Expérience d\'encens',
       images:['images/3_仏殿前の焼香3.jpg','images/3_仏殿前の焼香4.jpg'],
+    },
+  },
+  3:{
+    ja:{
+      icon:'🛍️',
+      title:'招き猫は売店でお求めいただけます',
+      body:'招き猫（招福猫児）は境内の売店でご購入いただけます。\nサイズは500円〜7,000円とさまざまです。\n\nただし、招き猫はお一人様一体まで。\nご自身の運気を高めるための大切な一体をどうか心を込めてお選びください。',
+      note:'🏪 売店は境内出口付近にあります',
+      images:[],
+    },
+    en:{
+      icon:'🛍️',
+      title:'Beckoning Cats Available at the Gift Shop',
+      body:'Beckoning cats (Maneki-neko) are available for purchase at the temple gift shop.\nPrices range from ¥500 to ¥7,000 depending on size.\n\nPlease note: purchases are limited to one cat per person.\nTake your time and choose with care — this is the cat that will accompany your fortune.',
+      note:'🏪 The gift shop is located near the temple exit',
+      images:[],
+    },
+    zh:{
+      icon:'🛍️',
+      title:'招财猫可在售品处购买',
+      body:'招财猫（招福猫児）可在境内的售品处购买。\n价格从500日元至7,000日元不等。\n\n请注意：每人限购一只。\n请花时间慢慢挑选——这将是陪伴您福运的那只特别的猫。',
+      note:'🏪 售品处位于境内出口附近',
+      images:[],
+    },
+    ko:{
+      icon:'🛍️',
+      title:'마네키네코는 매점에서 구입 가능합니다',
+      body:'마네키네코（招福猫児）는 경내 매점에서 구입하실 수 있습니다.\n크기에 따라 500엔〜7,000엔으로 다양합니다.\n\n단, 마네키네코는 1인 1개로 한정됩니다.\n자신의 행운을 높여줄 소중한 한 마리를 정성껏 선택해 주세요.',
+      note:'🏪 매점은 경내 출구 근처에 있습니다',
+      images:[],
+    },
+    es:{
+      icon:'🛍️',
+      title:'Gatos de la Fortuna en la Tienda del Templo',
+      body:'Los gatos de la fortuna (Maneki-neko) están disponibles en la tienda del templo.\nLos precios van desde ¥500 hasta ¥7,000 según el tamaño.\n\nTenga en cuenta: limitado a un gato por persona.\nElija con cuidado — este será el gato que acompañará su fortuna.',
+      note:'🏪 La tienda está cerca de la salida del templo',
+      images:[],
+    },
+    fr:{
+      icon:'🛍️',
+      title:'Chats Porte-Bonheur à la Boutique du Temple',
+      body:"Les chats porte-bonheur (Maneki-neko) sont disponibles à la boutique du temple.\nLes prix vont de 500 ¥ à 7 000 ¥ selon la taille.\n\nLimité à un chat par personne.\nPrenez le temps de choisir avec soin.",
+      note:'🏪 La boutique est près de la sortie du temple',
+      images:[],
     },
   },
   9:{
@@ -3699,101 +3699,6 @@ function _showClearPopup(){
   `;
 
   document.body.appendChild(popup);
-}
-
-let arTimer=null;
-
-const AR_DATA=[
-  
-  {title:"山門 — 構造解析 / Gate Analysis",img:"images/1_山門.jpg",
-   desc:"明治17年上棟の山門。額「碧雲関」の書体データをスキャン中… 木造組物の接合部を3D解析しています。",
-   descEn:"Meiji-era Sanmon gate structural scan active. Detecting wooden joint geometry and calligraphy pattern.",
-   emoji:"⛩️🔬"},
-  
-  {title:"三重塔 第一層 — 招き猫ロックオン！",img:"images/2_三重塔の隠れ猫1.jpg",
-   desc:"十二支の「子（ネズミ）」の横に隠された木彫りの招き猫をロックオン！🐱 スマホ画面の中で招き猫がピョコピョコと動き出し、周囲へ福を振りまいています！",
-   descEn:"Beckoning cat LOCKED behind the Zodiac Rat carving! 🐱 The hidden neko is waving luck your way!",
-   emoji:"🐱✨🎊"},
-  
-  {title:"仏殿 — 香煙浄化エフェクト",img:"images/3_仏殿.jpg",
-   desc:"香炉から立ち上る煙のパーティクルを検出。仏殿正面の篆額「弐世仏」の文字認識が完了しました。心身が浄化されていきます…",
-   descEn:"Incense particle flow detected. Kanji seal '弐世仏' recognized — representing Past, Present & Future.",
-   emoji:"🪔🌿"},
-  
-  {title:"招福殿 — 万体招き猫 同期完了！",img:"images/4_招福殿の招き猫1.jpg",
-   desc:"奉納された数千体の白磁の招き猫たちが一斉に手招きを始め、画面いっぱいに黄金の福気が舞い上がっています！満願成就の光があなたを包みます。🌸🔮",
-   descEn:"Thousands of beckoning cats SYNCHRONIZED! Golden fortune energy fills your screen! Wishes fulfilled! 🌸🔮",
-   emoji:"🌸🔮🐱💛"},
-  
-  {title:"井伊家墓所 — 国史跡データ解析",img:"images/5_井伊家墓所.jpg",
-   desc:"国史跡認定（平成20年）の石碑を認識。大老・井伊直弼の墓誌銘を解析中… 幕末開国の歴史データがAR空間に展開されます。",
-   descEn:"National Historic Site stone detected. Decoding the epitaph of Grand Councilor Ii Naosuke — gateway to Japan's modernisation.",
-   emoji:"⚔️📜"},
-  
-  {title:"法堂 — 寺宝肖像画 認識",img:"images/6_本殿.jpg",
-   desc:"寺宝「井伊直亮肖像画」の輪郭データを検出しました。昭和42年落慶の法堂内部、聖観世音菩薩像の立体スキャンが進行中です。",
-   descEn:"Treasure portrait of Ii Naoaki detected. 3D scan of Kannon bodhisattva statue active inside the Lecture Hall.",
-   emoji:"🏛️✨"},
-  
-  {title:"開祖堂 — 歴代高僧 位牌認識",img:"images/7_開祖堂.jpg",
-   desc:"平成11年落慶の開祖堂。門菴宗関像・天極秀道像など歴代高僧の位牌データを認識中。千年を超える法系の系譜がAR空間に浮かび上がります。",
-   descEn:"Patriarchs' Hall detected. Ancestral tablet lineage spanning centuries overlaid in AR — the living roots of Goutokuji.",
-   emoji:"🕯️📿"},
-  
-  {title:"赤門 — 朱漆構造スキャン",img:"images/8_赤門.jpg",
-   desc:"明治18年寄進の朱塗りの門を検出。弁柄朱の顔料成分を分光解析中… 漆の塗り重ね層数は推定12層と計測されました。",
-   descEn:"Vermilion Akamon gate lacquer scan: 12 estimated layers of urushi detected. Pigment spectral analysis complete.",
-   emoji:"🏮🔴"},
-  
-  {title:"梵鐘 — 延宝7年 音響解析",img:"images/9_鐘楼.jpg",
-   desc:"延宝7年(1679年)鋳造の区内最古の梵鐘。青銅合金成分を解析中… 推定固有振動数: 65Hz。除夜の鐘の音波を再現します🔔",
-   descEn:"Oldest bronze bell in Setagaya (1679) — resonance frequency estimated 65Hz. New Year's Eve soundwave recreated.",
-   emoji:"🔔🎵"},
-  
-  {title:"地蔵堂 — 令和2年落慶 守護認証",img:"images/10_地蔵堂.jpg",
-   desc:"令和2年(2020年)に落慶した地蔵堂の最新建築データを取得。地蔵菩薩半跏像の守護オーラが検出されました。旅人・子供・すべての魂を見守る光が広がっています。🌸",
-   descEn:"Jizo bodhisattva statue (2020) protective aura detected. Guardian light extends to travellers, children, and all souls.",
-   emoji:"🌸🙏"}
-];
-
-function openAR(){
-  const modal=document.getElementById('arModal');
-  const scanZone=document.getElementById('arScanningZone');
-  const detected=document.getElementById('arDetected');
-  const scanLine=document.getElementById('arScanLine');
-
-  detected.classList.remove('show');
-  scanZone.style.display='flex';
-  scanLine.style.display='block';
-  modal.classList.add('open');
-
-  const step=Math.min(state.currentStep, AR_DATA.length-1);
-  const d=AR_DATA[step];
-  const isJa=state.lang!=='en';
-
-  clearTimeout(arTimer);
-  arTimer=setTimeout(()=>{
-    
-    scanZone.style.display='none';
-    scanLine.style.display='none';
-
-    document.getElementById('arDetectedImg').src=d.img;
-    document.getElementById('arDetectedTitle').textContent=d.title;
-    document.getElementById('arDetectedDesc').textContent=isJa?d.desc:d.descEn;
-    document.getElementById('arDetectedEmoji').textContent=d.emoji;
-
-    detected.classList.add('show');
-  },2500);
-}
-
-function closeAR(){
-  clearTimeout(arTimer);
-  const modal=document.getElementById('arModal');
-  modal.classList.remove('open');
-  
-  document.getElementById('arDetected').classList.remove('show');
-  document.getElementById('arScanningZone').style.display='flex';
-  document.getElementById('arScanLine').style.display='block';
 }
 
 
