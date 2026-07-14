@@ -8,7 +8,7 @@ git pull origin main
 Write-Host "[2/2] netlify dev を起動します..."
 Write-Host "    ブラウザは http://localhost:8888 を使ってください" -ForegroundColor Cyan
 Write-Host "    （/.netlify/functions/config を呼び出すため netlify dev で起動しています）" -ForegroundColor DarkGray
-Start-Job -ScriptBlock { Start-Sleep 8; Start-Process "http://localhost:8888" } | Out-Null
+Write-Host "    （netlify dev が自動でブラウザを開きます）" -ForegroundColor DarkGray
 
 netlify dev
 

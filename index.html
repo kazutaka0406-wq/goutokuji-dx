@@ -1043,6 +1043,7 @@ p{line-height:1.85}
   font-size:1.05rem;color:var(--gold-light);background:rgba(201,168,76,.1);
   border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:12px}
 .cat-found-msg.show{display:block;animation:stampIn .5s var(--ease-silk) both}
+.cat-found-msg.warn{color:var(--mist);background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2)}
 
 .cat-mission-banner{display:none;text-align:center;font-family:var(--font-display);
   font-size:1.15rem;font-weight:600;color:var(--white);
@@ -1351,7 +1352,7 @@ p{line-height:1.85}
         <div class="appeal-feat-icon">🐱</div>
         <div class="appeal-feat-body">
           <div class="appeal-feat-title" id="appealFeat1Title">豪徳寺10大スポット AIナレーション＆参拝ガイド</div>
-          <div class="appeal-feat-desc" id="appealFeat1Desc">各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。三重塔に隠された「3匹の隠れ招き猫」探しもサポートします！</div>
+          <div class="appeal-feat-desc" id="appealFeat1Desc">各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。三重塔に隠された「隠れ招き猫」探しもサポートします！</div>
         </div>
       </div>
 
@@ -1889,7 +1890,7 @@ const CONFIG_LANG = {
     mapDescTitle:"📍 10 Key Landmarks",
     mapRouteHint:"<strong>📍 Recommended Route:</strong><br>Main Gate (1) → Three-Story Pagoda (2) → Buddha Hall (3) → Shofukuden (4) → Ii Family Tombs (5) → Lecture Hall (6) → Patriarchs Hall (7) → Red Gate (8) → Bell Tower (9) → Jizo Hall (10)",
     mapStartBtn:"Start Sanctuary Pilgrimage ➔",
-    welcomeNarr:"Before we begin our journey, let us understand the full picture of this beautiful ancient temple.\\n\\nGoutokuji is a sprawling sacred sanctuary enveloped in lush, verdant greenery.\\n\\nThe temple's official name is Daikei-zan Goutokuji, founded in 1480 during the Muromachi period. In 1633, when the Setagaya area came under the domain of the Hikone feudal clan, Lord Ii Naotaka developed deep devotion to the temple and established it as the Ii family's principal place of worship in Edo. The temple's name derives from Naotaka's posthumous Buddhist name.\\n\\nGoutokuji is also widely known as the birthplace of the beckoning cat. According to legend, Lord Naotaka was returning from a falconry excursion when he was beckoned by a white cat at the temple gate. He stopped to visit, and moments later, a fierce thunderstorm broke out. Thanks to the cat's invitation, he was spared from the storm and enjoyed a memorable conversation with the temple's abbot. Deeply moved by this fortunate encounter, the cat was honored as a bringer of good fortune and named Maneki-neko.\\n\\nHere is your recommended route. Walk straight along the pine-lined path and pass through the historic Sanmon Gate. Once inside the grounds, you will see the Three-Story Pagoda on your left — somewhere within it, three hidden cats are quietly waiting to be found. Ahead of you stands the Buddha Hall, and beyond it to the left, the Shofuku-den, home to thousands of beckoning cats. After paying your respects at the Ii Family Cemetery at the far end, continue clockwise through the Main Hall, the Patriarchs Hall, the vermilion Red Gate, the historic Bell Tower, and finally the Jizo Hall.\\n\\nAt each spot, you will find real photographs taken on location, along with exclusive historical quiz questions. Answer all quizzes correctly and a special fortune slip awaits you.\\n\\nNow, smartphone in hand, take a deep breath and begin your pilgrimage.",
+    welcomeNarr:"Before we begin our journey, let us understand the full picture of this beautiful ancient temple.\\n\\nGoutokuji is a sprawling sacred sanctuary enveloped in lush, verdant greenery.\\n\\nThe temple's official name is Daikei-zan Goutokuji, founded in 1480 during the Muromachi period. In 1633, when the Setagaya area came under the domain of the Hikone feudal clan, Lord Ii Naotaka developed deep devotion to the temple and established it as the Ii family's principal place of worship in Edo. The temple's name derives from Naotaka's posthumous Buddhist name.\\n\\nGoutokuji is also widely known as the birthplace of the beckoning cat. According to legend, Lord Naotaka was returning from a falconry excursion when he was beckoned by a white cat at the temple gate. He stopped to visit, and moments later, a fierce thunderstorm broke out. Thanks to the cat's invitation, he was spared from the storm and enjoyed a memorable conversation with the temple's abbot. Deeply moved by this fortunate encounter, the cat was honored as a bringer of good fortune and named Maneki-neko.\\n\\nHere is your recommended route. Walk straight along the pine-lined path and pass through the historic Sanmon Gate. Once inside the grounds, you will see the Three-Story Pagoda on your left — somewhere within it, hidden beckoning cats are quietly waiting to be found. Ahead of you stands the Buddha Hall, and beyond it to the left, the Shofuku-den, home to thousands of beckoning cats. After paying your respects at the Ii Family Cemetery at the far end, continue clockwise through the Main Hall, the Patriarchs Hall, the vermilion Red Gate, the historic Bell Tower, and finally the Jizo Hall.\\n\\nAt each spot, you will find real photographs taken on location, along with exclusive historical quiz questions. Answer all quizzes correctly and a special fortune slip awaits you.\\n\\nNow, smartphone in hand, take a deep breath and begin your pilgrimage.",
     wmTitle:"Welcome to Goutokuji",
     wmNarrLabel:"🎙 Audio Guide — Sanctuary Narration",
     wmPlayLabel:"Play Audio Guide",
@@ -1915,7 +1916,7 @@ const CONFIG_LANG = {
     staticInfo:`<strong>[Hours]</strong> 6:00 AM – 5:00 PM | Office: 8:00 AM – 4:30 PM<br><strong>[Support]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     steps:[
       {title:"The Sanmon Gate",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"The first to greet you is the sturdy wooden Sanmon Gate, erected in 1884 during the Meiji era.\nRebuilt after the Great Kanto Earthquake, it continues to stand with quiet dignity to this day.\nThe plaque above reads Hekiunkan — meaning the gateway to enlightenment beyond the azure clouds.\n\nIn Zen Buddhism, passing through this gate is far more than a simple act of entry.\nIt is a ritual of purification — a moment to cast off the noise, worries, and illusions of the secular world,\nand enter the sacred realm of the Buddha with a cleansed heart and spirit.\n\nOne important etiquette tip: step over — never step on — the threshold at the base of the gate.\nIt is believed that the spirits of the gods and Buddha reside within the threshold,\nand treading upon it is considered deeply disrespectful.\nPlease be mindful as you enter.\n\nTake one deep breath as you pass through.\nThen walk slowly down the lush, pine-lined path that stretches before you.",question:"What Zen sect does Goutokuji belong to?",options:[{text:"Sōtō Zen Sect",correct:true},{text:"Rinzai Sect",correct:false}],correctFb:"🎯 Correct! Sōtō Zen — emphasising zazen (seated meditation).",wrongFb:"❌ Incorrect. Goutokuji belongs to Sōtō Zen."},
-      {title:"Three-Story Pagoda",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completed in 2006, the wooden Three-Story Pagoda rises 22.5 meters into the sky — a breathtaking presence that commands attention.\n\nHidden within this pagoda is the stage for a very special mission: finding 3 secret beckoning cats concealed somewhere within the structure.\n\nThe craftsmen who built this tower playfully carved three tiny cats into the architecture — waiting quietly to be discovered. Can you find all three with your own eyes?\n\nThis app includes a special feature: photograph the cat you find and check your answer. If you are having trouble, hints are available to guide you.",question:"What is hidden alongside the zodiac carvings?",options:[{text:"A carved Beckoning Cat",correct:true},{text:"A gold dragon crest",correct:false}],correctFb:"🐱 Perfect! Visible in the close-up photograph.",wrongFb:"❌ Look more closely at the corner of the eaves."},
+      {title:"Three-Story Pagoda",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completed in 2006, the wooden Three-Story Pagoda rises 22.5 meters into the sky — a breathtaking presence that commands attention.\n\nHidden within this pagoda is the stage for a very special mission: finding secret beckoning cats concealed somewhere within the structure.\n\nThe craftsmen who built this tower playfully carved tiny cats into the architecture — waiting quietly to be discovered. Can you find them with your own eyes?\n\nThis app includes a special feature: photograph the cat you find and check your answer. If you are having trouble, hints are available to guide you.",question:"What is hidden alongside the zodiac carvings?",options:[{text:"A carved Beckoning Cat",correct:true},{text:"A gold dragon crest",correct:false}],correctFb:"🐱 Perfect! Visible in the close-up photograph.",wrongFb:"❌ Look more closely at the corner of the eaves."},
       {title:"The Buddha Hall",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Built in 1677, the Butsuden — Buddha Hall — is a designated cultural asset of Setagaya Ward. Its solemn presence carries the weight of nearly 350 years of history.\n\nEnshrined within are three sacred statues: Amida Nyorai, Shakyamuni, and Miroku Bosatsu — the Buddhas of past, present, and future — watching over all who visit in quiet serenity.\n\nStanding before these ancient figures, enveloped by the stillness of the grounds, you may find yourself experiencing a sense of time unlike anything in your daily life. Please take a moment to press your palms together and offer a quiet prayer.",question:"What cultural asset rank does the Buddha Hall hold?",options:[{text:"Setagaya Ward Designated Cultural Property",correct:true},{text:"National Treasure Level 1",correct:false}],correctFb:"⛩ Correct!",wrongFb:"❌ Incorrect."},
       {title:"The Shōfuku-den Hall",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"Welcome to Shofuku-den, a sight that leaves travelers from around the globe utterly breathless—an ocean of thousands of white porcelain cats. But look closer: notice that none of these cats hold a gold coin. This reflects the deep wisdom of Zen. The beckoning cat does not hand you wealth directly; it merely grants you the opportunity or blessing. Transforming that opportunity into true success depends entirely on your own effort and hard work. Feel the silent gaze of these thousands of cats, and make your own vow today.",question:"Why do the Shōfuku-den cats hold no gold coin?",options:[{text:"Results depend on one's own effort",correct:true},{text:"Due to Edo-era budget limits",correct:false}],correctFb:"✨ Correct philosophical answer!",wrongFb:"❌ Incorrect."},
       {title:"Grave of Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"The Ii Family Cemetery is a nationally designated historic site — a special sanctuary where the air itself seems to change the moment you step inside.\n\nAt the far end stands the great tombstone of Ii Naosuke, the Grand Councilor of the late Edo period.\n\nFacing the imminent threat of Western colonization, Naosuke courageously concluded the Treaty of Amity and Commerce with the United States in 1858, bringing an end to more than 250 years of national isolation. His decision drew fierce opposition, and he ultimately lost his life in the Sakuradamon Incident — yet his historic courage in opening Japan\'s gates to the modern world continues to breathe quietly in this very ground.\n\nPlease take a moment to reflect on the weight of this history and offer a quiet prayer.",question:"What was Ii Naosuke's government title?",options:[{text:"Tairō (Grand Councilor)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ Correct! A pivotal figure in Japan's modernisation.",wrongFb:"❌ Incorrect."},
@@ -1971,7 +1972,7 @@ const CONFIG_LANG = {
     mapDescTitle:"📍 境内10大スポット案内",
     mapRouteHint:"<strong>📍 おすすめ順路：</strong><br>山門 (1) → 三重塔 (2) → 仏殿 (3) → 招福殿 (4) → 井伊家墓所 (5) → 法堂 (6) → 開祖堂 (7) → 赤門 (8) → 鐘楼 (9) → 地蔵堂 (10)",
     mapStartBtn:"理解して巡礼を開始する ➔",
-    welcomeNarr:"参拝の前に、この美しい寺院の全体像をご案内いたします。\\n\\nここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。\\n\\n正式名称を「大谿山 豪徳寺」といい、室町時代の文明12年（1480年）に創建されました。江戸時代の寛永10年（1633年）、世田谷が彦根藩の所領となると、藩主・井伊直孝公が深く帰依し、井伊家の江戸における菩提寺として整備されました。寺号は直孝公の戒名「久昌院殿豪徳天英大居士」に由来しています。\\n\\nまた豪徳寺は、招き猫発祥の地としても広く知られています。ある日、鷹狩りの帰りにこの地を通りかかった直孝公が、門前の白猫に手招きされてお寺に立ち寄ったところ、まもなく激しい雷雨が降り始めました。猫のおかげで雷雨を避けられ、和尚との法談も楽しめた直孝公は、この縁に深く感動したと伝えられています。その後、福を招いたこの猫は「招福猫児（まねきねこ）」と呼ばれ、招福殿にお祀りされるようになりました。\\n\\nおすすめの順路をご案内します。まず、綺麗に剪定された松並木の参道をまっすぐ進み、正面の歴史ある山門をくぐります。境内に入ると左手に三重塔が見えてきます。実は塔のどこかに3匹の隠し猫がひっそりと潜んでいます。ぜひ探してみてください。まっすぐ進むと正面に仏殿、その左手奥には数千の招福猫児が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る時計回りのルートが、最も美しい動線です。\\n\\n各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。クイズを全問正解されると、特別なおみくじを引くことができます。\\n\\nさあ、スマホを片手に、心を落ち着かせて歩き始めましょう。",
+    welcomeNarr:"参拝の前に、この美しい寺院の全体像をご案内いたします。\\n\\nここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。\\n\\n正式名称を「大谿山 豪徳寺」といい、室町時代の文明12年（1480年）に創建されました。江戸時代の寛永10年（1633年）、世田谷が彦根藩の所領となると、藩主・井伊直孝公が深く帰依し、井伊家の江戸における菩提寺として整備されました。寺号は直孝公の戒名「久昌院殿豪徳天英大居士」に由来しています。\\n\\nまた豪徳寺は、招き猫発祥の地としても広く知られています。ある日、鷹狩りの帰りにこの地を通りかかった直孝公が、門前の白猫に手招きされてお寺に立ち寄ったところ、まもなく激しい雷雨が降り始めました。猫のおかげで雷雨を避けられ、和尚との法談も楽しめた直孝公は、この縁に深く感動したと伝えられています。その後、福を招いたこの猫は「招福猫児（まねきねこ）」と呼ばれ、招福殿にお祀りされるようになりました。\\n\\nおすすめの順路をご案内します。まず、綺麗に剪定された松並木の参道をまっすぐ進み、正面の歴史ある山門をくぐります。境内に入ると左手に三重塔が見えてきます。実は塔のどこかに隠れ招き猫がひっそりと潜んでいます。ぜひ探してみてください。まっすぐ進むと正面に仏殿、その左手奥には数千の招福猫児が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る時計回りのルートが、最も美しい動線です。\\n\\n各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。クイズを全問正解されると、特別なおみくじを引くことができます。\\n\\nさあ、スマホを片手に、心を落ち着かせて歩き始めましょう。",
     wmTitle:"<em>豪徳寺へようこそ</em>Welcome to Goutokuji",
     wmNarrLabel:"🎙 音声ガイド — 境内全体ナレーション",wmPlayLabel:"音声ガイドを再生",
     mannersCheckToast:"チェックボックスをすべてつけてから進んでください",
@@ -1992,7 +1993,7 @@ const CONFIG_LANG = {
     staticInfo:`<strong>【豪徳寺 拝観時間】</strong> 6:00 〜 17:00 ｜ 寺務所: 8:00 〜 16:30<br><strong>【お問い合わせ】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     steps:[
       {title:"山門",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"最初に出迎えるのは、明治17年（1884年）に上棟されたどっしりとした木造の山門です。\n関東大震災後に再建され、現在も堂々とした佇まいを保っています。\n額には「碧雲関」の文字が刻まれており、「青雲のかなたにある悟りへの関門」を意味しています。\n\n禅宗において、この門をくぐることは単なる通過ではありません。\n日常の悩みや邪念といった俗世の汚れを完全に切り離し、仏の聖域へと心を清めて入場する、魂の浄化の儀式です。\n\n一つ、参拝のマナーをご紹介します。\n門の敷居（下の木の部分）は踏まずに「またいで」入るのが礼儀とされています。\n敷居には神仏が宿るという考えから、踏みつけることは大変失礼とされているためです。\n外国人観光客の方もぜひ意識してみてください。\n\n門をくぐったら深呼吸をひとつ。\n緑豊かな参道の奥へ、ゆっくりと歩み始めましょう。",question:"豪徳寺の仏教の宗派はどれでしょう？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"臨済宗",correct:false}],correctFb:"🎯 正解！座禅を大切にする曹洞宗のお寺です。",wrongFb:"❌ 違います。曹洞宗です。"},
-      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"平成18年（2006年）に落慶した、高さ22.5メートルの木造三重塔。\nその美しい姿は境内でもひときわ目を引きます。\n\n実はこの三重塔、よく見ると境内に隠された「3匹の招き猫」を探す特別なミッションの舞台になっています。\n\n職人たちが遊び心を込めて建物のどこかにひっそりと彫り込んだ3匹の招き猫を、ぜひ自分の目で探してみてください。\n\nこのアプリには、見つけた猫を写真で撮影して答え合わせができる特別機能も用意しています。見つけられない場合はヒントも活用してみましょう。",question:"三重塔の彫刻に十二支と一緒に隠されている動物は？",options:[{text:"招き猫",correct:true},{text:"龍",correct:false}],correctFb:"🐱 大正解！クローズアップ写真でその姿が確認できます。",wrongFb:"❌ もう一度、軒下の彫刻を確認してみましょう。"},
+      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"平成18年（2006年）に落慶した、高さ22.5メートルの木造三重塔。\nその美しい姿は境内でもひときわ目を引きます。\n\n実はこの三重塔、よく見ると境内に隠された「招き猫」を探す特別なミッションの舞台になっています。\n\n職人たちが遊び心を込めて建物のどこかにひっそりと彫り込んだ招き猫を、ぜひ自分の目で探してみてください。\n\nこのアプリには、見つけた猫を写真で撮影して答え合わせができる特別機能も用意しています。見つけられない場合はヒントも活用してみましょう。",question:"三重塔の彫刻に十二支と一緒に隠されている動物は？",options:[{text:"招き猫",correct:true},{text:"龍",correct:false}],correctFb:"🐱 大正解！クローズアップ写真でその姿が確認できます。",wrongFb:"❌ もう一度、軒下の彫刻を確認してみましょう。"},
       {title:"仏殿",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"延宝5年（1677年）に建立された、世田谷区指定有形文化財の仏殿です。\nその荘厳な佇まいは、350年近い歴史の重みをそのまま伝えています。\n\n内陣には阿弥陀如来・釈迦如来・弥勒菩薩の三尊が安置され、過去・現在・未来の「三世」を司る諸仏として参拝者を静かに見守っています。\n\n仏様の前に立ったとき、境内の静寂と相まって日常とはまったく異なる時間の流れを感じるはずです。ゆっくりと手を合わせてみてください。",question:"仏殿はどの行政区分の指定文化財でしょう？",options:[{text:"世田谷区指定有形文化財",correct:true},{text:"国宝第一号",correct:false}],correctFb:"⛩ 正解！非常に歴史的価値の高い木造建築です。",wrongFb:"❌ 違います。"},
       {title:"招福殿",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"ついに、世界中の旅人が息をのむ招福殿のエリアです。棚を埋め尽くす数千、数万体の真っ白な招き猫たち。ここで海外の観光客が最も驚くのは、全ての猫が、金色の小判を持っていないという事実です。豪徳寺の禅の教えはこうです。猫は、あなたに幸運のきっかけ、チャンスを運んでくれる。しかし、それを実らせて成果、小判に変えるのは、その後のあなた自身の努力次第である。この凛とした白い猫たちの視線を感じながら、あなた自身の新しい決意を心の中で奉納してください。",question:"ここの招き猫が持っていないものは何でしょう？",options:[{text:"金色の小判",correct:true},{text:"右手の鈴",correct:false}],correctFb:"✨ 正解！チャンスを活かすのは自分自身の努力という教えです。",wrongFb:"❌ 違います。"},
       {title:"井伊家墓所",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"ここ井伊家墓所は国指定の史跡であり、一歩足を踏み入れると空気が一変する、深い静寂に包まれた特別な聖域です。\n\n最奥にそびえる大きな墓石が、幕末の大老・井伊直弼公の永眠の地です。\n\n直弼公は、西洋列強による植民地化の脅威が迫る中、安政5年（1858年）に日米修好通商条約の締結を断行し、250年以上続いた鎖国に終止符を打った人物です。その決断は多くの反発を招き、最終的に桜田門外の変で命を落とすこととなりましたが、近代日本の扉を開いたその歴史的な勇気は、今もこの地に静かに息づいています。\n\n直弼公が命をかけて守り抜いた歴史の重みに思いを馳せ、静かに手を合わせてみてください。",question:"井伊直弼が幕府で就いていた最高職は何でしょう？",options:[{text:"大老",correct:true},{text:"征夷大将軍",correct:false}],correctFb:"⛩ 大正解！日本の近代化を拓いた人物の墓所です。",wrongFb:"❌ 違います。"},
@@ -2042,7 +2043,7 @@ const CONFIG_LANG = {
     wmTitle:"<em>欢迎来到豪德寺</em>Welcome to Goutokuji",wmNextBtn:"继续 ➔",
     wmNarrLabel:"🎙 语音导览 — 境内全体解说",wmPlayLabel:"播放语音导览",
     readMoreLabel:"▼ 查看更多",showLessLabel:"▲ 收起",
-    welcomeNarr:"在参拜之前，让我为您介绍这座美丽古刹的全貌。\\n\\n这里，豪德寺，是一片被郁郁葱葱的绿意所环抱的广阔圣域。\\n\\n寺院正式名称为「大谿山 豪德寺」，创建于室町时代的文明12年（1480年）。江户时代寛永10年（1633年），世田谷成为彦根藩领地后，藩主·井伊直孝公将其定为井伊家在江户的菩提寺。寺名源于直孝公的戒名「久昌院殿豪德天英大居士」。\\n\\n豪德寺同时也以招财猫发祥地而广为人知。相传某日，直孝公在鹰猎归途中被寺门前的一只白猫招手引入寺内。不久，一场猛烈的雷雨骤然而降。正是因为猫咪的指引，直孝公才得以躲避雷雨。深受感动的直孝公将此视为奇缘，此后这只带来福气的猫被尊称为「招福猫児」，供奉于招福殿之中。\\n\\n推荐参拜路线：首先沿着修剪整齐的松树参道径直前行，穿过正面历史悠久的山门。进入境内后，左手边可见三重塔——塔的某处，静静隐藏着3只招财猫，请务必一探究竟。径直前行，正面即为佛殿，其左后方便是排列着数千只招福猫児的招福殿。在最深处参拜完井伊家墓所后，依次游览本殿、开祖堂、朱红色的赤门、历史悠久的钟楼，最后到达地藏堂。\\n\\n每个景点都备有现场拍摄的真实照片，以及其他地方从未公开过的历史趣味问答。全部答对后，您将可以抽取特别御签。\\n\\n现在，请手持智能手机，静下心来，踏上这段朝圣之旅吧。",
+    welcomeNarr:"在参拜之前，让我为您介绍这座美丽古刹的全貌。\\n\\n这里，豪德寺，是一片被郁郁葱葱的绿意所环抱的广阔圣域。\\n\\n寺院正式名称为「大谿山 豪德寺」，创建于室町时代的文明12年（1480年）。江户时代寛永10年（1633年），世田谷成为彦根藩领地后，藩主·井伊直孝公将其定为井伊家在江户的菩提寺。寺名源于直孝公的戒名「久昌院殿豪德天英大居士」。\\n\\n豪德寺同时也以招财猫发祥地而广为人知。相传某日，直孝公在鹰猎归途中被寺门前的一只白猫招手引入寺内。不久，一场猛烈的雷雨骤然而降。正是因为猫咪的指引，直孝公才得以躲避雷雨。深受感动的直孝公将此视为奇缘，此后这只带来福气的猫被尊称为「招福猫児」，供奉于招福殿之中。\\n\\n推荐参拜路线：首先沿着修剪整齐的松树参道径直前行，穿过正面历史悠久的山门。进入境内后，左手边可见三重塔——塔的某处，静静隐藏着招财猫，请务必一探究竟。径直前行，正面即为佛殿，其左后方便是排列着数千只招福猫児的招福殿。在最深处参拜完井伊家墓所后，依次游览本殿、开祖堂、朱红色的赤门、历史悠久的钟楼，最后到达地藏堂。\\n\\n每个景点都备有现场拍摄的真实照片，以及其他地方从未公开过的历史趣味问答。全部答对后，您将可以抽取特别御签。\\n\\n现在，请手持智能手机，静下心来，踏上这段朝圣之旅吧。",
     mapEyebrow:"境内导览",mapTitle:"<em>境内全体地图</em>豪德寺",
     mapDescTitle:"📍 境内10大景点导览",
     mapRouteHint:"<strong>📍 推荐路线：</strong><br>山门 (1) → 三重塔 (2) → 佛殿 (3) → 招福殿 (4) → 井伊家墓所 (5) → 法堂 (6) → 开祖堂 (7) → 赤门 (8) → 钟楼 (9) → 地藏堂 (10)",
@@ -2061,7 +2062,7 @@ const CONFIG_LANG = {
     ],
     appealTitle:"<em>为您带来极致参拜体验</em>Premium Pilgrimage Experience",
     appealEyebrow:"体验价值 · Premium Experience",
-    appealFeat1Title:"10大景点 AI 语音导览＆参拜礼仪指南",appealFeat1Desc:"AI解说将带您了解各景点的由来、看点及正确的参拜礼仪，还能帮您找到隐藏在三重塔中的3只招财猫！",
+    appealFeat1Title:"10大景点 AI 语音导览＆参拜礼仪指南",appealFeat1Desc:"AI解说将带您了解各景点的由来、看点及正确的参拜礼仪，还能帮您找到隐藏在三重塔中的招财猫！",
     appealFeat2Title:"📷 寻找隐藏招财猫游戏",appealFeat2Desc:"在境内拍下您找到的招财猫并上传，AI会立即判断是否正确，让参拜变成一场有趣的寻宝游戏！",
     appealFeat3Title:"10大景点完成纪念印章集",appealFeat3Desc:"在10大景点全部答题正确后，将获得朱红色数字御朱印印章表作为证明！",
     appealFeat4Title:"免费御签＆社交分享",appealFeat4Desc:"走完10大景点后，可免费抽取专属御签占卜运势！结果还能直接分享到社交媒体，与朋友分享好运。",
@@ -2081,7 +2082,7 @@ const CONFIG_LANG = {
     mannersAgreeBtn:"确认礼仪并继续 ➔",
     steps:[
       {title:"山门",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"迎接您的第一个景点，是建于明治17年（1884年）的庄重木造山门。\n在关东大地震后经过重建，至今仍以沉稳的姿态巍然矗立。\n门额上刻有「碧云关」三字，意为「通往青云之上、觉悟彼岸的关门」。\n\n在禅宗中，跨过这道门绝不只是简单地迈步而入。\n这是一种净化心灵的仪式——将日常的烦恼、杂念与世俗的尘垢彻底隔绝，以清净之心踏入佛的圣域。\n\n在此为您介绍一项参拜礼仪：门槛（下方的横木）请务必跨过，而非踩踏。\n因为人们相信神佛居于门槛之中，踩踏门槛是极为失礼之举。\n\n穿过山门后，请深吸一口气。\n沿着绿意盎然的松树参道，缓缓向前迈步吧。",question:"豪德寺属于哪个佛教宗派？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"临济宗",correct:false}],correctFb:"🎯 正确！这是注重坐禅的曹洞宗寺院。",wrongFb:"❌ 错误。"},
-      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"这座木造三重塔于平成18年（2006年）落成，高达22.5米，其优美的身姿在境内格外引人注目。\n\n事实上，这座三重塔正是一项特别任务的舞台——在塔的某处，隐藏着3只悄悄被工匠雕刻于建筑之中的招财猫。\n\n请用您自己的双眼，仔细寻找这3只充满工匠玩心的隐藏招财猫。\n\n本应用还配备了特别功能：拍下您找到的猫咪照片，即可进行答案核对。若实在难以找到，也可使用提示功能。",question:"塔内雕刻中与十二生肖一起隐藏的是什么？",options:[{text:"招财猫",correct:true},{text:"金龙纹章",correct:false}],correctFb:"🐱 完全正确！特写照片中可以清晰看到。",wrongFb:"❌ 再仔细看看屋檐角落。"},
+      {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"这座木造三重塔于平成18年（2006年）落成，高达22.5米，其优美的身姿在境内格外引人注目。\n\n事实上，这座三重塔正是一项特别任务的舞台——在塔的某处，隐藏着悄悄被工匠雕刻于建筑之中的招财猫。\n\n请用您自己的双眼，仔细寻找这些充满工匠玩心的隐藏招财猫。\n\n本应用还配备了特别功能：拍下您找到的猫咪照片，即可进行答案核对。若实在难以找到，也可使用提示功能。",question:"塔内雕刻中与十二生肖一起隐藏的是什么？",options:[{text:"招财猫",correct:true},{text:"金龙纹章",correct:false}],correctFb:"🐱 完全正确！特写照片中可以清晰看到。",wrongFb:"❌ 再仔细看看屋檐角落。"},
       {title:"佛殿",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"佛殿建于延宝5年（1677年），是世田谷区指定有形文化财。其庄严肃穆的姿态，承载着近350年历史的厚重积淀。\n\n殿内供奉着阿弥陀如来、释迦如来、弥勒菩萨三尊，作为掌管过去、现在、未来「三世」的诸佛，静静守护着每一位到访的参拜者。\n\n当您伫立于佛祖面前，与境内的宁静相融，或许会感受到一种与日常截然不同的时间流淌。请在此静静合掌，许下您的心愿。",question:"佛殿属于哪个级别的文化遗产？",options:[{text:"世田谷区指定有形文化财",correct:true},{text:"国家级重要文化财",correct:false}],correctFb:"⛩ 正确！",wrongFb:"❌ 错误。"},
       {title:"招福殿",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"这里终于到了让全世界旅人都屏息凝神、震撼不已的招福殿区域。供奉台填满了成千上万只纯白色的招财猫。最让外国游客感到惊奇的事实是，所有的猫咪都没有手持金色的“小判”金币。豪德寺的禅宗执教如是说：猫咪会为您带来幸运的契机与福气。然而，能否将其转化为真正的成果与金币，完全取决于您之后的自身努力。感受着这些凛然白猫的注视，请在心中奉纳您崭新的决心吧。",question:"为什么这里的招财猫没有金币？",options:[{text:"结果取决于自身努力",correct:true},{text:"江户时代财政原因",correct:false}],correctFb:"✨ 哲理性回答正确！",wrongFb:"❌ 错误。"},
       {title:"井伊家墓所",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"这里的井伊家墓所是国家指定的史迹，是一处只要踏入一步，空气就会变得截然不同的特别圣域。\n\n最深处耸立的巨大墓碑，便是幕末大老——井伊直弼公的安息之地。\n\n面对西方列强殖民化的威胁，他在安政5年（1858年）毅然签署了《日美修好通商条约》，结束了长达250年以上的锁国政策。这一决断招来众多反对，最终他在樱田门外之变中英勇捐躯——但他开启近代日本大门的历史性勇气，至今仍静静地在这片土地上呼吸着。\n\n请在这里静静合十，追思这份历史的厚重。",question:"井伊直弼在幕府担任的最高职位是什么？",options:[{text:"大老",correct:true},{text:"征夷大将军",correct:false}],correctFb:"⛩ 正确！",wrongFb:"❌ 错误。"},
@@ -2131,7 +2132,7 @@ const CONFIG_LANG = {
     wmTitle:"<em>고토쿠지에 오신 것을 환영합니다</em>Welcome to Goutokuji",wmNextBtn:"다음으로 ➔",
     wmNarrLabel:"🎙 오디오 가이드 — 경내 전체 내레이션",wmPlayLabel:"오디오 가이드 재생",
     readMoreLabel:"▼ 더 보기",showLessLabel:"▲ 접기",
-    welcomeNarr:"참배를 시작하기 전에, 이 아름다운 고찰의 전체적인 모습을 안내해 드리겠습니다.\\n\\n이곳 고토쿠지는 푸른 숲에 둘러싸인 광활한 성역입니다.\\n\\n정식 명칭은 「대계산 고토쿠지（大谿山 豪德寺）」이며, 무로마치 시대인 1480년에 창건되었습니다. 에도 시대인 1633년, 세타가야가 히코네 번의 영지가 되면서 번주 이이 나오타카 공이 이이 가문의 에도 보리사로 정비하였습니다. 절 이름은 나오타카 공의 법호에서 유래합니다.\\n\\n고토쿠지는 또한 마네키네코의 발상지로도 널리 알려져 있습니다. 어느 날 매 사냥을 마치고 귀환하던 나오타카 공이 절 문 앞의 흰 고양이에게 이끌려 절에 들렀는데, 곧이어 거센 뇌우가 쏟아졌습니다. 고양이 덕분에 비를 피한 나오타카 공은 이 인연에 깊이 감동하였고, 이후 이 고양이는 「쇼후쿠네코（招福猫児）」로 불리며 쇼후쿠덴에 모셔지게 되었습니다.\\n\\n추천 참배 순로：먼저 잘 다듬어진 소나무 가로수 참도를 따라 산몬을 통과합니다. 경내에 들어서면 왼쪽에 삼중탑이 보입니다. 탑 어딘가에 3마리의 숨은 고양이가 조용히 기다리고 있습니다. 앞으로 나아가면 불전이, 그 왼편 안쪽에는 쇼후쿠덴이 자리하고 있습니다. 이이 가 묘소를 참배한 후, 본전, 개조당, 아카몬, 종루, 마지막으로 지조도를 둘러보는 시계 방향 루트가 가장 아름답습니다.\\n\\n각 스폿에는 현장 사진과 역사 퀴즈가 준비되어 있습니다. 퀴즈를 전부 맞히면 특별한 오미쿠지를 뽑을 수 있습니다.\\n\\n자, 스마트폰을 손에 들고 마음을 차분히 가라앉혀 발걸음을 내딛어 보세요.",
+    welcomeNarr:"참배를 시작하기 전에, 이 아름다운 고찰의 전체적인 모습을 안내해 드리겠습니다.\\n\\n이곳 고토쿠지는 푸른 숲에 둘러싸인 광활한 성역입니다.\\n\\n정식 명칭은 「대계산 고토쿠지（大谿山 豪德寺）」이며, 무로마치 시대인 1480년에 창건되었습니다. 에도 시대인 1633년, 세타가야가 히코네 번의 영지가 되면서 번주 이이 나오타카 공이 이이 가문의 에도 보리사로 정비하였습니다. 절 이름은 나오타카 공의 법호에서 유래합니다.\\n\\n고토쿠지는 또한 마네키네코의 발상지로도 널리 알려져 있습니다. 어느 날 매 사냥을 마치고 귀환하던 나오타카 공이 절 문 앞의 흰 고양이에게 이끌려 절에 들렀는데, 곧이어 거센 뇌우가 쏟아졌습니다. 고양이 덕분에 비를 피한 나오타카 공은 이 인연에 깊이 감동하였고, 이후 이 고양이는 「쇼후쿠네코（招福猫児）」로 불리며 쇼후쿠덴에 모셔지게 되었습니다.\\n\\n추천 참배 순로：먼저 잘 다듬어진 소나무 가로수 참도를 따라 산몬을 통과합니다. 경내에 들어서면 왼쪽에 삼중탑이 보입니다. 탑 어딘가에 숨은 마네키네코가 조용히 기다리고 있습니다. 앞으로 나아가면 불전이, 그 왼편 안쪽에는 쇼후쿠덴이 자리하고 있습니다. 이이 가 묘소를 참배한 후, 본전, 개조당, 아카몬, 종루, 마지막으로 지조도를 둘러보는 시계 방향 루트가 가장 아름답습니다.\\n\\n각 스폿에는 현장 사진과 역사 퀴즈가 준비되어 있습니다. 퀴즈를 전부 맞히면 특별한 오미쿠지를 뽑을 수 있습니다.\\n\\n자, 스마트폰을 손에 들고 마음을 차분히 가라앉혀 발걸음을 내딛어 보세요.",
     mapEyebrow:"경내 안내",mapTitle:"<em>경내 전체 지도</em>고토쿠지",
     mapDescTitle:"📍 경내 10대 명소 안내",
     mapRouteHint:"<strong>📍 추천 경로：</strong><br>산몬 (1) → 삼중탑 (2) → 불전 (3) → 쇼후쿠덴 (4) → 이이가 묘소 (5) → 법당 (6) → 개조당 (7) → 아카몬 (8) → 종루 (9) → 지조도 (10)",
@@ -2150,7 +2151,7 @@ const CONFIG_LANG = {
     ],
     appealTitle:"<em>당신에게 프리미엄 참배 체험을</em>Premium Pilgrimage Experience",
     appealEyebrow:"체험 가치 · Premium Experience",
-    appealFeat1Title:"10대 명소 AI 내레이션＆참배 예절 가이드",appealFeat1Desc:"AI 내레이션이 각 명소의 유래와 볼거리는 물론, 올바른 참배 예절까지 알려드립니다. 삼중탑에 숨겨진 3마리의 마네키네코 찾기도 도와드려요!",
+    appealFeat1Title:"10대 명소 AI 내레이션＆참배 예절 가이드",appealFeat1Desc:"AI 내레이션이 각 명소의 유래와 볼거리는 물론, 올바른 참배 예절까지 알려드립니다. 삼중탑에 숨겨진 마네키네코 찾기도 도와드려요!",
     appealFeat2Title:"📷 숨은 마네키네코 찾기 게임",appealFeat2Desc:"경내에서 찾은 마네키네코를 촬영해 업로드하면 AI가 정답 여부를 바로 판별합니다. 참배가 즐거운 보물찾기 게임이 됩니다!",
     appealFeat3Title:"10대 명소 만원성취 스탬프 랠리",appealFeat3Desc:"10대 스팟 퀴즈를 모두 맞히면 빛나는 디지털 어주인 스탬프 시트가 발행됩니다！",
     appealFeat4Title:"무료 오미쿠지＆SNS 공유",appealFeat4Desc:"10개 스팟을 모두 순회한 후 특별한 오미쿠지로 운세를 무료로 확인하세요! 결과는 그대로 SNS에 공유해 친구에게 자랑할 수 있습니다.",
@@ -2170,7 +2171,7 @@ const CONFIG_LANG = {
     mannersAgreeBtn:"매너 확인 후 진행 ➔",
     steps:[
       {title:"산몬",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"가장 먼저 여러분을 맞이하는 것은 메이지 17년（1884년）에 건립된 묵직한 목조 산몬입니다.\n관동대지진 이후 재건되어, 지금도 당당하고 고요한 자태를 유지하고 있습니다.\n현판에는 「벽운관（碧雲關）」이라는 글자가 새겨져 있으며, 「푸른 구름 너머, 깨달음으로 향하는 관문」을 의미합니다.\n\n선종에서 이 문을 통과하는 것은 단순히 걸음을 내딛는 행위가 아닙니다.\n일상의 고민과 잡념, 속세의 번뇌를 완전히 내려놓고 부처님의 성역으로 마음을 정화하여 입장하는, 영혼의 정화 의식입니다.\n\n한 가지 참배 예절을 안내드립니다.\n문 아래의 문지방은 절대 밟지 말고 「넘어서」 들어가는 것이 예의입니다.\n문지방에는 신불이 깃들어 있다는 믿음에서, 밟는 행위는 매우 실례가 된다고 여겨집니다.\n\n문을 통과한 후 깊게 숨을 한 번 들이쉬세요.\n푸른 소나무 가로수가 이어지는 참도를 따라 천천히 발걸음을 옮겨보세요.",question:"고토쿠지의 불교 종파는 무엇입니까？",options:[{text:"소토 선종（曹洞宗）",correct:true},{text:"린자이 선종",correct:false}],correctFb:"🎯 정답！좌선을 중시하는 소토 선종 사원입니다.",wrongFb:"❌ 틀렸습니다."},
-      {title:"삼중탑",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"헤이세이 18년（2006년）에 낙성된 높이 22.5미터의 목조 삼중탑.\n그 아름다운 자태는 경내에서도 단연 눈길을 사로잡습니다.\n\n사실 이 삼중탑은 특별한 미션의 무대이기도 합니다. 탑 어딘가에 장인들이 장난기 넘치게 새겨 넣은 「숨겨진 고양이 3마리」를 찾는 것입니다.\n\n부디 자신의 눈으로 직접 3마리를 모두 찾아보세요.\n\n이 앱에는 찾은 고양이를 사진으로 촬영하여 정답 확인을 할 수 있는 특별 기능도 마련되어 있습니다. 찾기 어려운 경우에는 힌트 기능도 활용해 보세요.",question:"탑의 조각 중 십이지와 함께 숨겨진 것은？",options:[{text:"마네키네코",correct:true},{text:"황금 용",correct:false}],correctFb:"🐱 정답！클로즈업 사진에서 확인할 수 있습니다.",wrongFb:"❌ 틀렸습니다."},
+      {title:"삼중탑",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"헤이세이 18년（2006년）에 낙성된 높이 22.5미터의 목조 삼중탑.\n그 아름다운 자태는 경내에서도 단연 눈길을 사로잡습니다.\n\n사실 이 삼중탑은 특별한 미션의 무대이기도 합니다. 탑 어딘가에 장인들이 장난기 넘치게 새겨 넣은 「숨겨진 마네키네코」를 찾는 것입니다.\n\n부디 자신의 눈으로 직접 찾아보세요.\n\n이 앱에는 찾은 고양이를 사진으로 촬영하여 정답 확인을 할 수 있는 특별 기능도 마련되어 있습니다. 찾기 어려운 경우에는 힌트 기능도 활용해 보세요.",question:"탑의 조각 중 십이지와 함께 숨겨진 것은？",options:[{text:"마네키네코",correct:true},{text:"황금 용",correct:false}],correctFb:"🐱 정답！클로즈업 사진에서 확인할 수 있습니다.",wrongFb:"❌ 틀렸습니다."},
       {title:"불전",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"엔포 5년（1677년）에 건립된 불전은 세타가야구 지정 유형문화재입니다. 장엄한 佇立은 350년에 가까운 역사의 무게를 고스란히 전하고 있습니다.\n\n내부에는 아미타여래・석가여래・미륵보살의 삼존이 안치되어 있으며, 과거・현재・미래의 「삼세」를 관장하는 제불로서 조용히 참배자들을 지켜보고 있습니다.\n\n부처님 앞에 섰을 때, 경내의 고요함과 어우러져 일상과는 전혀 다른 시간의 흐름을 느낄 수 있을 것입니다. 천천히 두 손을 모아 참배해 보세요.",question:"불전은 어느 행정구역의 지정문화재입니까？",options:[{text:"세타가야구 지정 유형문화재",correct:true},{text:"국보 제1호",correct:false}],correctFb:"⛩ 정답！",wrongFb:"❌ 틀렸습니다."},
       {title:"쇼후쿠덴",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"드디어 전 세계의 여행자들이 숨을 죽이는 쇼후쿠덴 구역입니다. 제단을 가득 채운 수천, 수만 마리의 새하얀 마네키네코들. 여기서 해외 관광객들이 가장 놀라는 사실은, 모든 고양이가 금색 동전을 들고 있지 않다는 점입니다. 고토쿠지 선종의 가르침은 이렇습니다. 고양이는 당신에게 행운의 계기, 즉 기회를 가져다준다. 하지만 그것을 결실로 이끌어 성과와 동전으로 바꾸는 것은 그 후 당신 자신의 노력에 달렸다. 이 늠름한 흰 고양이들의 시선을 느끼며, 당신만의 새로운 결의를 마음속으로 봉납해 보세요.",question:"이곳 고양이들이 들고 있지 않은 것은？",options:[{text:"황금 금화",correct:true},{text:"오른손 방울",correct:false}],correctFb:"✨ 정답！기회를 살리는 것은 본인의 노력입니다.",wrongFb:"❌ 틀렸습니다."},
       {title:"이이가 묘소",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"이곳 이이가 묘소는 국가 지정 사적이며, 한 발짝 발을 들여놓으면 공기가 완전히 바뀌는 특별한 성역입니다.\n\n가장 안쪽에 솟아 있는 커다란 묘석이 막부 말기의 대로, 이이 나오스케 공이 잠든 곳입니다.\n\n서양 열강의 식민지화 위협에 맞서 안세이 5년（1858년）에 미일수호통상조약을 단행하고, 250년 이상 계속된 쇄국에 종지부를 찍은 인물입니다. 이 결단은 많은 반발을 초래했고 결국 사쿠라다몬 밖의 변에서 목숨을 잃었지만, 근대 일본의 문을 연 그의 역사적 용기는 지금도 이 땅에 조용히 숨 쉬고 있습니다.\n\n나오스케 공이 목숨을 걸고 지켜낸 역사의 무게를 느끼며, 조용히 두 손을 모아 참배해 보세요.",question:"이이 나오스케가 맡았던 최고 직위는？",options:[{text:"다이로（大老）",correct:true},{text:"쇼군",correct:false}],correctFb:"⛩ 정답！일본 근대화의 중요 인물입니다.",wrongFb:"❌ 틀렸습니다."},
@@ -2213,7 +2214,7 @@ const CONFIG_LANG = {
     ],
     nextSpots:"Rutas cercanas recomendadas",restartBtn:"↺ Reiniciar Tour",
     surveyFormTitle:"Encuesta de satisfacción",surveyStarLabel:"Satisfacción:",surveyTextLabel:"Comentarios:",surveySubmitBtn:"Enviar",
-    welcomeNarr:"Antes de comenzar nuestra visita, permítame presentarle la imagen completa de este hermoso y antiguo templo.\\n\\nGoutokuji es un vasto santuario sagrado envuelto en una exuberante vegetación verde.\\n\\nEl nombre oficial del templo es Daikei-zan Goutokuji, fundado en 1480 durante el período Muromachi. En 1633, el señor Ii Naotaka estableció este templo como el lugar de culto principal de la familia Ii en Edo. El nombre del templo deriva del nombre budista póstumo de Naotaka.\\n\\nGoutokuji es también conocido como el lugar de nacimiento del gato de la fortuna. Según la leyenda, el señor Naotaka fue invitado por un gato blanco a entrar al templo. Se detuvo y momentos después estalló una tormenta. Gracias al gato fue protegido, y el gato fue honrado como portador de buena fortuna con el nombre de Maneki-neko.\\n\\nRuta recomendada: Camine recto por el sendero bordeado de pinos y pase por la Puerta Sanmon. Verá la Pagoda de Tres Pisos a su izquierda — en algún lugar, tres gatos ocultos esperan ser descubiertos. Frente a usted está el Salón del Buda, y más allá el Shofuku-den. Tras el Cementerio de la Familia Ii, continúe por el Salón Principal, el Salón de los Patriarcas, la Puerta Roja, la Torre de la Campana y el Salón Jizo.\\n\\nEn cada lugar encontrará fotografías reales y preguntas de quiz históricas exclusivas. Responda todos correctamente y le esperará un oráculo especial.\\n\\nAhora, smartphone en mano, respire profundamente y comience su peregrinación.",
+    welcomeNarr:"Antes de comenzar nuestra visita, permítame presentarle la imagen completa de este hermoso y antiguo templo.\\n\\nGoutokuji es un vasto santuario sagrado envuelto en una exuberante vegetación verde.\\n\\nEl nombre oficial del templo es Daikei-zan Goutokuji, fundado en 1480 durante el período Muromachi. En 1633, el señor Ii Naotaka estableció este templo como el lugar de culto principal de la familia Ii en Edo. El nombre del templo deriva del nombre budista póstumo de Naotaka.\\n\\nGoutokuji es también conocido como el lugar de nacimiento del gato de la fortuna. Según la leyenda, el señor Naotaka fue invitado por un gato blanco a entrar al templo. Se detuvo y momentos después estalló una tormenta. Gracias al gato fue protegido, y el gato fue honrado como portador de buena fortuna con el nombre de Maneki-neko.\\n\\nRuta recomendada: Camine recto por el sendero bordeado de pinos y pase por la Puerta Sanmon. Verá la Pagoda de Tres Pisos a su izquierda — en algún lugar, gatos de la fortuna ocultos esperan ser descubiertos. Frente a usted está el Salón del Buda, y más allá el Shofuku-den. Tras el Cementerio de la Familia Ii, continúe por el Salón Principal, el Salón de los Patriarcas, la Puerta Roja, la Torre de la Campana y el Salón Jizo.\\n\\nEn cada lugar encontrará fotografías reales y preguntas de quiz históricas exclusivas. Responda todos correctamente y le esperará un oráculo especial.\\n\\nAhora, smartphone en mano, respire profundamente y comience su peregrinación.",
     wmTitle:"<em>Bienvenido a Goutokuji</em>Welcome to Goutokuji",wmNextBtn:"Continuar ➔",
     wmNarrLabel:"🎙 Audioguía — Narración del Recinto",wmPlayLabel:"Reproducir Audioguía",
     staticInfo:`<strong>[Horario]</strong> 6:00〜17:00 | Oficina: 8:00〜16:30<br><strong>[Contacto]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
@@ -2224,7 +2225,7 @@ const CONFIG_LANG = {
     mapSpots:[{n:"Puerta Sanmon",d:"Reconstruida tras el terremoto de 1923."},{n:"Pagoda 3 pisos",d:"22.5m. Gato oculto en el zodíaco."},{n:"Salón del Buda",d:"Bien cultural de Setagaya."},{n:"Shofukuden",d:"Origen del Maneki Neko."},{n:"Tumba Ii",d:"Monumento histórico nacional."},{n:"Gran Salón",d:"Corazón espiritual del templo."},{n:"Patriarcas",d:"Tablillas ancestrales de abades."},{n:"Puerta Roja",d:"Donada por el clan Ii en 1885."},{n:"Torre Campana",d:"La más antigua de Setagaya (1679)."},{n:"Salón Jizo",d:"Completado en 2020."}],
     appealEyebrow:"Experiencia Premium",
     appealTitle:"<em>Una Experiencia de Peregrinación Premium</em>Premium Pilgrimage Experience",
-    appealFeat1Title:"Guía de Audio IA y Etiqueta de Oración para 10 Lugares",appealFeat1Desc:"La narración IA explica la historia, los puntos destacados y la etiqueta correcta de oración en cada lugar, ¡y te ayuda a encontrar los 3 gatos ocultos en la Pagoda de Tres Pisos!",
+    appealFeat1Title:"Guía de Audio IA y Etiqueta de Oración para 10 Lugares",appealFeat1Desc:"La narración IA explica la historia, los puntos destacados y la etiqueta correcta de oración en cada lugar, ¡y te ayuda a encontrar los gatos ocultos en la Pagoda de Tres Pisos!",
     appealFeat2Title:"📷 Juego de Búsqueda del Gato Oculto",appealFeat2Desc:"Fotografía el gato de la fortuna que encuentres en el templo y súbelo: la IA verificará al instante si es correcto. ¡Convierte tu visita en una divertida búsqueda del tesoro!",
     appealFeat3Title:"Rally de Sellos de Finalización",appealFeat3Desc:"¡Responde correctamente todos los cuestionarios de los 10 lugares para ganar una hoja de sellos digitales!",
     appealFeat4Title:"Omikuji Gratis y Compartir en Redes",appealFeat4Desc:"¡Después de completar los 10 lugares, obtén tu oráculo personalizado totalmente gratis! Comparte tu resultado directamente en redes sociales con tus amigos.",
@@ -2244,7 +2245,7 @@ const CONFIG_LANG = {
     wmNextBtn:"Continuar ➔",
     steps:[
       {title:"La Puerta Sanmon",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"El primero en darle la bienvenida es el imponente Sanmon de madera, erigido en 1884 durante la era Meiji.\nReconstruido tras el Gran Terremoto de Kanto, sigue en pie con serena dignidad hasta hoy.\nLa placa reza Hekiunkan — que significa la puerta hacia la iluminación más allá de las nubes azules.\n\nEn el Budismo Zen, cruzar esta puerta es mucho más que un simple paso.\nEs un ritual de purificación — un momento para desprenderse del ruido, las preocupaciones y las ilusiones,\ny entrar en el espacio sagrado del Buda con un corazón renovado.\n\nUn consejo de etiqueta importante: pase por encima — nunca pise — el umbral en la base de la puerta.\nSe cree que los espíritus de los dioses y el Buda residen en el umbral,\ny pisarlo se considera profundamente irrespetuoso.\n\nRespire profundamente al pasar.\nLuego camine despacio por el exuberante sendero bordeado de pinos.",question:"¿A qué secta Zen pertenece Goutokuji?",options:[{text:"Secta Sōtō Zen",correct:true},{text:"Secta Rinzai",correct:false}],correctFb:"🎯 ¡Correcto! Sōtō Zen — énfasis en zazen.",wrongFb:"❌ Incorrecto."},
-      {title:"Pagoda de Tres Pisos",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completada en 2006, la Pagoda de Tres Pisos de madera se eleva 22,5 metros — una presencia impresionante.\n\nDentro de esta pagoda se esconde el escenario de una misión muy especial: encontrar 3 gatos beckoning secretos ocultos en algún lugar de la estructura.\n\nLos artesanos los tallaron con juguetona picardía en algún rincón. ¿Puede encontrar los tres con sus propios ojos?\n\nEsta app incluye una función especial: fotografíe el gato que encuentre y verifique su respuesta. Si tiene dificultades, hay pistas disponibles.",question:"¿Qué está oculto junto a las tallas del zodíaco?",options:[{text:"Un Gato de la Fortuna tallado",correct:true},{text:"Un escudo de dragón dorado",correct:false}],correctFb:"🐱 ¡Perfecto! Visible en la fotografía de cerca.",wrongFb:"❌ Incorrecto."},
+      {title:"Pagoda de Tres Pisos",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completada en 2006, la Pagoda de Tres Pisos de madera se eleva 22,5 metros — una presencia impresionante.\n\nDentro de esta pagoda se esconde el escenario de una misión muy especial: encontrar gatos de la fortuna secretos ocultos en algún lugar de la estructura.\n\nLos artesanos los tallaron con juguetona picardía en algún rincón. ¿Puede encontrarlos con sus propios ojos?\n\nEsta app incluye una función especial: fotografíe el gato que encuentre y verifique su respuesta. Si tiene dificultades, hay pistas disponibles.",question:"¿Qué está oculto junto a las tallas del zodíaco?",options:[{text:"Un Gato de la Fortuna tallado",correct:true},{text:"Un escudo de dragón dorado",correct:false}],correctFb:"🐱 ¡Perfecto! Visible en la fotografía de cerca.",wrongFb:"❌ Incorrecto."},
       {title:"El Salón del Buda",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Construido en 1677, el Butsuden es un bien cultural designado del Barrio de Setagaya. Su solemne presencia porta el peso de casi 350 años de historia.\n\nEn su interior se veneran tres estatuas sagradas: Amida Nyorai, Shakyamuni y Miroku Bosatsu — los Budas del pasado, presente y futuro.\n\nAl situarse frente a estas figuras ancestrales, envuelto por el silencio del recinto, puede que experimente una percepción del tiempo completamente distinta. Tómese un momento para juntar las palmas y ofrecer una oración.",question:"¿Qué rango de bien cultural tiene el Salón del Buda?",options:[{text:"Bien Cultural Designado de Setagaya",correct:true},{text:"Tesoro Nacional Nivel 1",correct:false}],correctFb:"⛩ ¡Correcto!",wrongFb:"❌ Incorrecto."},
       {title:"El Salón Shōfuku-den",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"Bienvenido al Shofuku-den, un espectáculo que deja sin aliento a los viajeros de todo el mundo: un océano de miles de gatos de porcelana blanca. Pero mira más de cerca: ninguno de estos gatos sostiene una moneda de oro. Esto refleja la profunda sabiduría del Zen. El gato beckoning no te entrega riqueza directamente; simplemente te otorga la oportunidad o la bendición. Transformar esa oportunidad en verdadero éxito depende enteramente de tu propio esfuerzo. Siente la mirada silenciosa de estos miles de gatos y haz tu propio voto hoy.",question:"¿Por qué los gatos del Shōfuku-den no llevan moneda de oro?",options:[{text:"Los resultados dependen del propio esfuerzo",correct:true},{text:"Por límites del presupuesto Edo",correct:false}],correctFb:"✨ ¡Respuesta filosófica correcta!",wrongFb:"❌ Incorrecto."},
       {title:"Tumba de Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"El Cementerio de la Familia Ii es un Sitio Histórico Nacional — un santuario especial donde el aire mismo parece cambiar al entrar.\n\nAl fondo descansa Ii Naosuke, el Gran Consejero del período Edo tardío.\n\nFrente a la amenaza de colonización occidental, tomó la valiente decisión de firmar el Tratado con los Estados Unidos en 1858, poniendo fin a más de 250 años de aislamiento. Su decisión atrajo una feroz oposición y finalmente perdió la vida en el Incidente de Sakuradamon — pero su coraje histórico continúa respirando en este suelo.\n\nPor favor, reflexione sobre el peso de esta historia y ofrezca una oración silenciosa.",question:"¿Cuál era el título gubernamental de Ii Naosuke?",options:[{text:"Tairō (Gran Consejero)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ ¡Correcto! Una figura clave en la modernización de Japón.",wrongFb:"❌ Incorrecto."},
@@ -2288,7 +2289,7 @@ const CONFIG_LANG = {
     ],
     nextSpots:"Itinéraires recommandés à proximité",restartBtn:"↺ Recommencer",
     surveyFormTitle:"Enquête de satisfaction",surveyStarLabel:"Satisfaction :",surveyTextLabel:"Commentaires :",surveySubmitBtn:"Envoyer",
-    welcomeNarr:"Avant de commencer notre visite, laissez-moi vous présenter le portrait complet de ce magnifique et ancien temple.\\n\\nGoutokuji est un vaste sanctuaire sacré enveloppé d'une végétation luxuriante.\\n\\nLe nom officiel du temple est Daikei-zan Goutokuji, fondé en 1480 sous la période Muromachi. En 1633, le seigneur Ii Naotaka a établi ce temple comme lieu de culte principal de la famille Ii à Edo. Le nom du temple est dérivé du nom bouddhiste posthume de Naotaka.\\n\\nGoutokuji est également connu comme le lieu de naissance du chat porte-bonheur. Selon la légende, le seigneur Naotaka fut invité par un chat blanc à entrer dans le temple. Il s'arrêta et peu après une violente tempête éclata. Protégé grâce au chat, il honora l'animal comme porteur de bonne fortune, le nommant Maneki-neko.\\n\\nItinéraire recommandé : Marchez tout droit le long de l'allée de pins et passez par la Porte Sanmon. Vous verrez la Pagode à Trois Étages sur votre gauche — quelque part en elle, trois chats cachés attendent d'être découverts. Devant vous se trouve le Pavillon du Bouddha, et plus loin le Shofuku-den. Après le Cimetière de la Famille Ii, continuez par le Hall Principal, la Salle des Patriarches, la Porte Rouge, la Tour de la Cloche et enfin le Hall Jizo.\\n\\nÀ chaque endroit, vous trouverez de vraies photos et des questions de quiz historiques exclusives. Répondez correctement à tous et un oracle spécial vous attend.\\n\\nMaintenant, smartphone en main, respirez profondément et commencez votre pèlerinage.",
+    welcomeNarr:"Avant de commencer notre visite, laissez-moi vous présenter le portrait complet de ce magnifique et ancien temple.\\n\\nGoutokuji est un vaste sanctuaire sacré enveloppé d'une végétation luxuriante.\\n\\nLe nom officiel du temple est Daikei-zan Goutokuji, fondé en 1480 sous la période Muromachi. En 1633, le seigneur Ii Naotaka a établi ce temple comme lieu de culte principal de la famille Ii à Edo. Le nom du temple est dérivé du nom bouddhiste posthume de Naotaka.\\n\\nGoutokuji est également connu comme le lieu de naissance du chat porte-bonheur. Selon la légende, le seigneur Naotaka fut invité par un chat blanc à entrer dans le temple. Il s'arrêta et peu après une violente tempête éclata. Protégé grâce au chat, il honora l'animal comme porteur de bonne fortune, le nommant Maneki-neko.\\n\\nItinéraire recommandé : Marchez tout droit le long de l'allée de pins et passez par la Porte Sanmon. Vous verrez la Pagode à Trois Étages sur votre gauche — quelque part en elle, des chats porte-bonheur cachés attendent d'être découverts. Devant vous se trouve le Pavillon du Bouddha, et plus loin le Shofuku-den. Après le Cimetière de la Famille Ii, continuez par le Hall Principal, la Salle des Patriarches, la Porte Rouge, la Tour de la Cloche et enfin le Hall Jizo.\\n\\nÀ chaque endroit, vous trouverez de vraies photos et des questions de quiz historiques exclusives. Répondez correctement à tous et un oracle spécial vous attend.\\n\\nMaintenant, smartphone en main, respirez profondément et commencez votre pèlerinage.",
     wmTitle:"<em>Bienvenue à Goutokuji</em>Welcome to Goutokuji",wmNextBtn:"Continuer ➔",
     wmNarrLabel:"🎙 Audioguide — Narration du Sanctuaire",wmPlayLabel:"Lire l'Audioguide",
     staticInfo:`<strong>[Horaires]</strong> 6:00〜17:00 | Bureau : 8:00〜16:30<br><strong>[Contact]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
@@ -2299,7 +2300,7 @@ const CONFIG_LANG = {
     mapSpots:[{n:"Porte Sanmon",d:"Reconstruite après le tremblement de terre de 1923."},{n:"Pagode 3 étages",d:"22,5m. Chat caché dans le zodiaque."},{n:"Pavillon du Bouddha",d:"Bien culturel de Setagaya."},{n:"Shofukuden",d:"Origine du Maneki Neko."},{n:"Tombeaux Ii",d:"Monument historique national."},{n:"Grand Hall",d:"Cœur spirituel du temple."},{n:"Patriarches",d:"Tablettes ancestrales des abbés."},{n:"Porte Rouge",d:"Donnée par le clan Ii en 1885."},{n:"Beffroi",d:"Le plus ancien de Setagaya (1679)."},{n:"Jizo-do",d:"Achevé en 2020."}],
     appealEyebrow:"Expérience Premium",
     appealTitle:"<em>Une Expérience de Pèlerinage Premium</em>Premium Pilgrimage Experience",
-    appealFeat1Title:"Guide Audio IA et Étiquette de Prière pour 10 Sites",appealFeat1Desc:"La narration IA vous explique l'histoire, les points forts et l'étiquette de prière appropriée pour chaque site, et vous aide à trouver les 3 chats cachés dans la Pagode à Trois Étages !",
+    appealFeat1Title:"Guide Audio IA et Étiquette de Prière pour 10 Sites",appealFeat1Desc:"La narration IA vous explique l'histoire, les points forts et l'étiquette de prière appropriée pour chaque site, et vous aide à trouver les chats cachés dans la Pagode à Trois Étages !",
     appealFeat2Title:"📷 Jeu de Chasse au Chat Caché",appealFeat2Desc:"Photographiez le chat porte-bonheur que vous trouvez sur le site et téléchargez-le : l'IA vérifie instantanément si c'est correct. Transformez votre visite en une chasse au trésor amusante !",
     appealFeat3Title:"Rally de Tampons de Complétion",appealFeat3Desc:"Répondez correctement à tous les quiz des 10 sites pour gagner une feuille de tampons numériques!",
     appealFeat4Title:"Omikuji Gratuit et Partage Social",appealFeat4Desc:"Après avoir terminé les 10 sites, tirez votre oracle personnalisé entièrement gratuit ! Partagez votre résultat directement sur les réseaux sociaux avec vos amis.",
@@ -2319,7 +2320,7 @@ const CONFIG_LANG = {
     wmNextBtn:"Continuer ➔",
     steps:[
       {title:"La Porte Sanmon",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"Le premier à vous accueillir est le robuste Sanmon en bois, érigé en 1884 sous l'ère Meiji.\nReconstruit après le Grand Séisme du Kanto, il se dresse encore aujourd'hui avec une sérénité digne.\nLa plaque porte l'inscription Hekiunkan — signifiant la porte vers l'éveil au-delà des nuages azurés.\n\nDans le Bouddhisme Zen, franchir cette porte est bien plus qu'un simple passage.\nC'est un rituel de purification — un moment pour se défaire du bruit, des soucis et des illusions,\net entrer dans l'espace sacré du Bouddha avec un cœur purifié.\n\nUn conseil d'étiquette important : enjambez — ne marchez jamais sur — le seuil à la base de la porte.\nOn croit que les esprits des dieux et du Bouddha résident dans le seuil,\net le piétiner est considéré comme profondément irrespectueux.\n\nRespirez profondément en passant.\nPuis marchez lentement sur le chemin luxuriant bordé de pins.",question:"À quelle secte Zen appartient Goutokuji ?",options:[{text:"Secte Sōtō Zen",correct:true},{text:"Secte Rinzai",correct:false}],correctFb:"🎯 Correct ! Sōtō Zen — avec accent sur le zazen.",wrongFb:"❌ Incorrect."},
-      {title:"Pagode à Trois Étages",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Achevée en 2006, la Pagode à Trois Étages en bois s'élève à 22,5 mètres — une présence époustouflante.\n\nCachée dans cette pagode se trouve la scène d'une mission très spéciale : trouver 3 chats porte-bonheur secrets dissimulés quelque part dans la structure.\n\nLes artisans les ont joyeusement sculptés dans l'architecture. Pouvez-vous les trouver tous les trois ?\n\nCette app inclut une fonction spéciale : photographiez le chat que vous trouvez et vérifiez votre réponse. Des indices sont disponibles si nécessaire.",question:"Qu'est-ce qui est caché avec les sculptures du zodiaque ?",options:[{text:"Un Chat Porte-Bonheur sculpté",correct:true},{text:"Un blason de dragon doré",correct:false}],correctFb:"🐱 Parfait ! Visible sur la photographie en gros plan.",wrongFb:"❌ Incorrect."},
+      {title:"Pagode à Trois Étages",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Achevée en 2006, la Pagode à Trois Étages en bois s'élève à 22,5 mètres — une présence époustouflante.\n\nCachée dans cette pagode se trouve la scène d'une mission très spéciale : trouver des chats porte-bonheur secrets dissimulés quelque part dans la structure.\n\nLes artisans les ont joyeusement sculptés dans l'architecture. Pouvez-vous tous les trouver ?\n\nCette app inclut une fonction spéciale : photographiez le chat que vous trouvez et vérifiez votre réponse. Des indices sont disponibles si nécessaire.",question:"Qu'est-ce qui est caché avec les sculptures du zodiaque ?",options:[{text:"Un Chat Porte-Bonheur sculpté",correct:true},{text:"Un blason de dragon doré",correct:false}],correctFb:"🐱 Parfait ! Visible sur la photographie en gros plan.",wrongFb:"❌ Incorrect."},
       {title:"Le Pavillon du Bouddha",img:"images/3_仏殿前の焼香.jpg",images:["images/3_仏殿2.jpg"],narrative:"Construit en 1677, le Butsuden est un bien culturel désigné du Quartier de Setagaya. Sa présence solennelle porte le poids de près de 350 ans d'histoire.\n\nÀ l'intérieur sont vénérées trois statues sacrées : Amida Nyorai, Shakyamuni et Miroku Bosatsu — les Bouddhas du passé, du présent et du futur.\n\nEn vous tenant devant ces figures ancestrales, enveloppé par le silence, vous pourrez ressentir une perception du temps différente. Prenez un moment pour joindre les paumes et offrir une prière.",question:"Quel rang de bien culturel possède le Pavillon du Bouddha ?",options:[{text:"Bien Culturel Désigné de Setagaya",correct:true},{text:"Trésor National Niveau 1",correct:false}],correctFb:"⛩ Correct !",wrongFb:"❌ Incorrect."},
       {title:"Le Pavillon Shōfuku-den",img:"images/4_招福殿入口招き猫.jpg",images:["images/4_招福殿の門.jpg","images/4_招福殿入口招き猫2.jpg","images/4_招福殿の招き猫2.jpg","images/4_招福殿の招き猫13.jpg","images/4_招福殿の招き猫6.jpg"],narrative:"Bienvenue au Shofuku-den, un spectacle qui laisse les voyageurs du monde entier totalement sans voix : un océan de milliers de chats en porcelaine blanche. Mais regardez de plus près : aucun de ces chats ne tient une pièce d'or. Cela reflète la profonde sagesse du Zen. Le chat beckoning ne vous remet pas directement de la richesse ; il vous accorde simplement l'opportunité ou la bénédiction. Transformer cette opportunité en véritable succès dépend entièrement de votre propre effort. Sentez le regard silencieux de ces milliers de chats et faites votre propre vœu aujourd'hui.",question:"Pourquoi les chats du Shōfuku-den ne tiennent-ils pas de pièce d'or ?",options:[{text:"Les résultats dépendent du propre effort",correct:true},{text:"À cause des budgets de l'ère Edo",correct:false}],correctFb:"✨ Réponse philosophique correcte !",wrongFb:"❌ Incorrect."},
       {title:"Tombe d'Ii Naosuke",img:"images/5_井伊家墓所入口.jpg",images:["images/5_井伊家墓所2.jpg","images/5_井伊家墓所7.jpg","images/5_井伊家墓所.jpg"],narrative:"Le Cimetière de la Famille Ii est un Site Historique National — un sanctuaire spécial où l'air semble changer dès que l'on y entre.\n\nAu fond repose Ii Naosuke, le Grand Conseiller de la fin de la période Edo.\n\nFace à la menace de colonisation occidentale, il prit la courageuse décision de signer le traité avec les États-Unis en 1858, mettant fin à plus de 250 ans d'isolement national. Sa décision attira une vive opposition et il perdit finalement la vie lors de l'Incident de Sakuradamon — mais son courage historique continue de respirer dans cette terre.\n\nVeuillez réfléchir sur le poids de cette histoire et offrir une prière silencieuse.",question:"Quel était le titre gouvernemental d'Ii Naosuke ?",options:[{text:"Tairō (Grand Conseiller)",correct:true},{text:"Shōgun",correct:false}],correctFb:"⛩ Correct ! Une figure clé dans la modernisation du Japon.",wrongFb:"❌ Incorrect."},
@@ -2740,9 +2741,12 @@ async function doCheckout(){
     const res = await fetch('/.netlify/functions/config');
     const cfg = await res.json();
     if(cfg.paymentMode === 'live'){
-      showToast('STRIPE',state.lang==='ja'
-        ?'課金システム準備中です。しばらくお待ちください。'
-        :'Payment system coming soon. Please wait.');
+      /* TODO: Stripe等の実際の決済システムと連携したら、ここで決済処理に置き換える。
+         連携が完了するまでの暫定対応として、デモモードと同様に無課金で次へ進める。 */
+      showToast('WELCOME',state.lang==='ja'
+        ?'ご利用ありがとうございます。体験を開始します。'
+        :'Thank you. Starting your experience.');
+      setTimeout(()=>showPage('page-sync'),1400);
     } else {
       /* DEMOモード：無課金で次へ */
       showToast('DEMO MODE',state.lang==='ja'
@@ -2815,7 +2819,7 @@ function applyLangUI(lk){
   _set('appealEyebrow','textContent',d.appealEyebrow||(isJa?'体験価値 · Premium Experience':'Premium Experience · 体験価値'));
   _set('appealTitle','innerHTML',d.appealTitle||(isJa?'<em>プレミアムな参拝体験をあなたに</em>Premium Pilgrimage Experience':'<em>Premium Pilgrimage Experience</em>プレミアムな参拝体験をあなたに'));
   _set('appealFeat1Title','textContent',d.appealFeat1Title||(isJa?'豪徳寺10大スポット AIナレーション＆参拝ガイド':'10-Spot AI Audio Guide & Worship Manners'));
-  _set('appealFeat1Desc','textContent',d.appealFeat1Desc||(isJa?'各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。三重塔に隠された「3匹の隠れ招き猫」探しもサポートします！':"AI narration walks you through each spot's history, highlights, and proper worship etiquette — plus helps you find the 3 hidden cats in the Three-Story Pagoda!"));
+  _set('appealFeat1Desc','textContent',d.appealFeat1Desc||(isJa?'各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。三重塔に隠された「隠れ招き猫」探しもサポートします！':"AI narration walks you through each spot's history, highlights, and proper worship etiquette — plus helps you find the hidden cats in the Three-Story Pagoda!"));
   _set('appealFeat2Title','textContent',d.appealFeat2Title||(isJa?'📷 隠れ招き猫探しゲーム':'📷 Hidden Cat Photo Hunt Game'));
   _set('appealFeat2Desc','textContent',d.appealFeat2Desc||(isJa?'境内で見つけた招き猫を写真に撮ってアップロードすると、AIが正解かどうかを判定。参拝が楽しい宝探しゲームになります。':"Snap a photo of the lucky cat you find on the grounds and upload it — AI instantly checks if you're right. It turns your visit into a fun treasure hunt!"));
   _set('appealFeat3Title','textContent',d.appealFeat3Title||(isJa?'10大スポット 満願成就スタンプラリー':'10-Spot Completion Stamp Rally'));
@@ -3996,99 +4000,111 @@ function _stopQuestSlides(){clearInterval(_qSlideTimer);}
 const HIDDEN_CATS_I18N={
   ja:{
     badge:'🐱 特別ミッション',
-    title:'🐱 三重塔に隠された3匹の招き猫を探せ！',
-    desc:['現地で実際に目視で探してみましょう！','見つけたら写真を撮ってアップロードしてください。','AIが招き猫かどうか自動で判定します。'],
+    title:'🐱 三重塔の隠れ招き猫を探せ！',
+    desc:['現地で実際に目視で探してみましょう！','見つけたら写真を撮ってアップロードしてください。','AIが招き猫かどうか自動で判定します。','（隠れ猫が全部で何匹いるかは豪徳寺でも非公表。まずは3枚集めてみましょう！）'],
     uploadBtn:'📷 写真をアップロードして答え合わせ',
     hint1Btn:'💡 ヒント① 招き猫の特徴を見る',
-    hint1Text:'一重目の屋根の下に、小さく手招きをしている木彫りの猫が3匹隠れています。十二支の彫刻の近くをよく探してみてください。',
+    hint1Text:'三重塔を囲む十二支の彫刻の中、「子（ねずみ）」のそばに招き猫が彫られています。それとは別に、初重・二重には手招きをする本物そっくりの猫の彫刻も隠れているそうです。隠れ猫の総数は豪徳寺の公式サイトでも公表されておらず「ぜひ数えに来てください」とのこと。まずは見つけやすいところから探してみましょう。',
     hint2Btn:'🖼️ ヒント② 写真で場所を確認',
     hint3Btn:'📍 ヒント③ 正確な場所を教えて',
-    hint3Text:['1匹目：北西側の軒下、ねずみの彫刻の右横','2匹目：南東側の軒下、うさぎの彫刻の左横','3匹目：正面軒下中央、龍の彫刻のすぐ下'],
+    hint3Text:['初重（1階）：十二支の彫刻の中、「子（ねずみ）」のそばに招き猫が彫られています。ねずみの片方は小判をくわえています。','二重（2階）正面：右手を挙げて招く白猫の彫刻があります。','二重（2階）右側：寅・卯・辰の彫刻のあたりに赤トラ柄の親子猫が隠れており、仔猫は玉で遊んでいます。'],
     aiJudging:'🔍 AIが判定中...',
     notFound:'？',
     foundLabel:'✅ 発見！',
-    foundMsg:['🐱 1匹目の隠れ招き猫を発見！！','🐱🐱 2匹目の隠れ招き猫を発見！！','🐱🐱🐱 3匹全員発見！満願成就！！'],
+    foundMsg:['🐱 隠れ招き猫を1枚キャッチ！','🐱🐱 隠れ招き猫を2枚キャッチ！','🐱🐱🐱 隠れ招き猫を3枚キャッチ！ミッションコンプリート！'],
     missionComplete:'🎉 ミッションコンプリート！',
+    notFoundMsg:'🔍 招き猫が確認できませんでした。角度や明るさを変えて、もう一度撮影してみてください。',
+    errorMsg:'⚠️ 判定中にエラーが発生しました。通信環境をご確認のうえ、もう一度お試しください。',
   },
   en:{
     badge:'🐱 SPECIAL MISSION',
-    title:'🐱 Find the 3 Hidden Cats in the Pagoda!',
-    desc:['Try to find them on-site with your own eyes!','When you find one, take a photo and upload it.',"AI will automatically verify if it's a hidden cat."],
+    title:'🐱 Find the Hidden Cats in the Pagoda!',
+    desc:['Try to find them on-site with your own eyes!','When you find one, take a photo and upload it.',"AI will automatically verify if it's a hidden cat.",'(Nobody knows exactly how many hidden cats there are — even Goutokuji keeps it a secret! Start by collecting 3 photos.)'],
     uploadBtn:'📷 Upload Photo to Verify',
     hint1Btn:'💡 Hint① What does the cat look like?',
-    hint1Text:'Three small hand-carved beckoning cats are hidden under the roof of the first tier. Look carefully near the zodiac animal carvings.',
+    hint1Text:'Among the zodiac carvings around the pagoda, a beckoning cat is carved next to the Rat ("Ne"). Separately, realistic-looking waving cat carvings are also said to be hidden on the first and second tiers. The exact total number of hidden cats is not published by Goutokuji — they simply invite visitors to "come and count them yourself." Start by looking in the easier-to-spot places.',
     hint2Btn:'🖼️ Hint② See photo clues',
     hint3Btn:'📍 Hint③ Tell me the exact location',
-    hint3Text:['Cat 1: Under northwest eave, right of the Rat carving','Cat 2: Under southeast eave, left of the Rabbit carving','Cat 3: Under front center eave, just below the Dragon carving'],
+    hint3Text:['1st tier: Among the zodiac carvings, a beckoning cat sits next to the Rat carving — one of the rats is holding a gold coin in its mouth.','2nd tier, front: A white cat carving waves with its right paw raised.','2nd tier, right side: Near the Tiger/Rabbit/Dragon carvings, a red tabby mother cat and kittens are hidden — the kittens are playing with a ball.'],
     aiJudging:'🔍 AI is verifying...',
     notFound:'?',
     foundLabel:'✅ Found!',
-    foundMsg:['🐱 Found Hidden Cat #1!!','🐱🐱 Found Hidden Cat #2!!','🐱🐱🐱 All 3 Cats Found! Mission Complete!!'],
+    foundMsg:['🐱 Caught 1 hidden cat photo!','🐱🐱 Caught 2 hidden cat photos!','🐱🐱🐱 Caught 3 hidden cat photos! Mission Complete!'],
     missionComplete:'🎉 Mission Complete!',
+    notFoundMsg:"🔍 Couldn't confirm a beckoning cat in this photo. Try a different angle or better lighting.",
+    errorMsg:'⚠️ Something went wrong while verifying. Please check your connection and try again.',
   },
   zh:{
     badge:'🐱 特别任务',
-    title:'🐱 寻找三重塔中隐藏的3只招财猫！',
-    desc:['请在现场亲眼寻找！','找到后拍照上传。','AI将自动判断是否为招财猫。'],
+    title:'🐱 寻找三重塔中隐藏的招财猫！',
+    desc:['请在现场亲眼寻找！','找到后拍照上传。','AI将自动判断是否为招财猫。','（隐藏的招财猫总共有几只，连豪德寺官方也未公开。先收集3张照片看看吧！）'],
     uploadBtn:'📷 上传照片进行验证',
     hint1Btn:'💡 提示① 招财猫的特征',
-    hint1Text:'第一层屋檐下，藏着3只手招式的小型木雕招财猫。请仔细寻找十二生肖雕刻附近。',
+    hint1Text:'环绕三重塔的十二生肖雕刻中，「子（鼠）」的旁边刻有一只招财猫。据说除此之外，一层和二层还隐藏着几只栩栩如生的招手猫雕刻。隐藏招财猫的确切数量豪德寺官方并未公布，只是邀请游客「请自己来数一数」。请先从容易发现的地方找起吧。',
     hint2Btn:'🖼️ 提示② 通过照片确认位置',
     hint3Btn:'📍 提示③ 告诉我准确位置',
-    hint3Text:['第1只：西北侧屋檐下，鼠雕刻右侧','第2只：东南侧屋檐下，兔雕刻左侧','第3只：正面屋檐中央，龙雕刻正下方'],
+    hint3Text:['一层：十二生肖雕刻中，「子（鼠）」旁边刻有招财猫，其中一只老鼠口中还叼着金币。','二层正面：有一只举起右手招手的白猫雕刻。','二层右侧：在虎、兔、龙雕刻附近，藏着一对红色虎斑猫母子，小猫正在玩球。'],
     aiJudging:'🔍 AI判定中...',
     notFound:'？',
     foundLabel:'✅ 已发现！',
-    foundMsg:['🐱 发现第1只隐藏招财猫！！','🐱🐱 发现第2只隐藏招财猫！！','🐱🐱🐱 3只全部找到！圆满成就！！'],
+    foundMsg:['🐱 捕获第1张隐藏招财猫照片！','🐱🐱 捕获第2张隐藏招财猫照片！','🐱🐱🐱 捕获第3张隐藏招财猫照片！任务完成！'],
     missionComplete:'🎉 任务完成！',
+    notFoundMsg:'🔍 未能确认照片中有招财猫。请更换角度或光线后再次拍摄。',
+    errorMsg:'⚠️ 判定过程中发生错误。请检查网络连接后重试。',
   },
   ko:{
     badge:'🐱 특별 미션',
-    title:'🐱 삼중탑에 숨겨진 3마리 고양이를 찾아라！',
-    desc:['현장에서 직접 눈으로 찾아보세요！','찾으면 사진을 찍어 업로드하세요.','AI가 자동으로 고양이인지 판별합니다。'],
+    title:'🐱 삼중탑에 숨겨진 마네키네코를 찾아라！',
+    desc:['현장에서 직접 눈으로 찾아보세요！','찾으면 사진을 찍어 업로드하세요.','AI가 자동으로 고양이인지 판별합니다。','（숨은 고양이가 전부 몇 마리인지는 고토쿠지도 공식적으로 밝히지 않았습니다. 우선 3장을 모아 보세요！）'],
     uploadBtn:'📷 사진을 업로드하여 확인하기',
     hint1Btn:'💡 힌트① 마네키네코의 특징 보기',
-    hint1Text:'1층 지붕 아래에 손짓하는 작은 목조 고양이 3마리가 숨겨져 있습니다. 십이지 조각 근처를 잘 찾아보세요.',
+    hint1Text:'삼중탑을 둘러싼 십이지 조각 중, 「자(쥐)」 옆에 마네키네코가 새겨져 있습니다. 그 외에도 1층과 2층에는 손짓하는 실감나는 고양이 조각이 숨겨져 있다고 합니다. 숨은 고양이의 정확한 총 수는 고토쿠지 공식 사이트에도 공개되어 있지 않으며, "직접 세어 보러 오세요"라고 안내하고 있습니다. 먼저 찾기 쉬운 곳부터 찾아보세요.',
     hint2Btn:'🖼️ 힌트② 사진으로 위치 확인',
     hint3Btn:'📍 힌트③ 정확한 위치 알려주기',
-    hint3Text:['1번째: 북서쪽 처마 아래, 쥐 조각 오른쪽','2번째: 남동쪽 처마 아래, 토끼 조각 왼쪽','3번째: 정면 처마 중앙, 용 조각 바로 아래'],
+    hint3Text:['1층: 십이지 조각 중 「자(쥐)」 옆에 마네키네코가 새겨져 있습니다. 쥐 한 마리는 금화를 물고 있습니다.','2층 정면: 오른손을 들어 손짓하는 흰 고양이 조각이 있습니다.','2층 오른쪽: 호랑이·토끼·용 조각 부근에 붉은 얼룩무늬 어미 고양이와 새끼 고양이가 숨겨져 있으며, 새끼 고양이는 공을 가지고 놀고 있습니다.'],
     aiJudging:'🔍 AI가 판정 중...',
     notFound:'？',
     foundLabel:'✅ 발견！',
-    foundMsg:['🐱 1번째 숨겨진 고양이 발견！！','🐱🐱 2번째 숨겨진 고양이 발견！！','🐱🐱🐱 3마리 모두 발견! 만원성취！！'],
+    foundMsg:['🐱 숨은 고양이 사진 1장 포착！','🐱🐱 숨은 고양이 사진 2장 포착！','🐱🐱🐱 숨은 고양이 사진 3장 포착！미션 컴플리트！'],
     missionComplete:'🎉 미션 컴플리트！',
+    notFoundMsg:'🔍 사진에서 마네키네코를 확인할 수 없었습니다. 각도나 밝기를 바꿔 다시 촬영해 주세요.',
+    errorMsg:'⚠️ 판정 중 오류가 발생했습니다. 통신 상태를 확인한 후 다시 시도해 주세요.',
   },
   es:{
     badge:'🐱 MISIÓN ESPECIAL',
-    title:'🐱 ¡Encuentra los 3 Gatos Ocultos en la Pagoda!',
-    desc:['¡Intenta encontrarlos en el lugar con tus propios ojos!','Cuando encuentres uno, toma una foto y súbela.','La IA verificará automáticamente si es un gato oculto.'],
+    title:'🐱 ¡Encuentra los Gatos Ocultos en la Pagoda!',
+    desc:['¡Intenta encontrarlos en el lugar con tus propios ojos!','Cuando encuentres uno, toma una foto y súbela.','La IA verificará automáticamente si es un gato oculto.','(Nadie sabe con certeza cuántos gatos ocultos hay — ¡ni siquiera Goutokuji lo revela! Empieza por reunir 3 fotos.)'],
     uploadBtn:'📷 Subir Foto para Verificar',
     hint1Btn:'💡 Pista① ¿Cómo es el gato?',
-    hint1Text:'Tres pequeños gatos de la suerte tallados en madera están ocultos bajo el techo del primer nivel. Busca con cuidado cerca de las tallas del zodíaco.',
+    hint1Text:'Entre las tallas del zodíaco que rodean la pagoda, hay un gato de la suerte tallado junto a la Rata ("Ne"). Además, se dice que hay tallas de gatos saludando muy realistas ocultas en el primer y segundo nivel. El número total exacto de gatos ocultos no está publicado por Goutokuji — simplemente invitan a los visitantes a "venir a contarlos ustedes mismos". Empieza buscando en los lugares más fáciles de encontrar.',
     hint2Btn:'🖼️ Pista② Ver pistas fotográficas',
     hint3Btn:'📍 Pista③ Dime la ubicación exacta',
-    hint3Text:['Gato 1: Bajo el alero noroeste, a la derecha de la talla de la Rata','Gato 2: Bajo el alero sureste, a la izquierda de la talla del Conejo','Gato 3: Bajo el alero frontal central, justo debajo de la talla del Dragón'],
+    hint3Text:['Primer nivel: Entre las tallas del zodíaco, hay un gato de la suerte junto a la talla de la Rata — una de las ratas sostiene una moneda de oro en la boca.','Segundo nivel, frente: Una talla de gato blanco saluda con la pata derecha levantada.','Segundo nivel, lado derecho: Cerca de las tallas del Tigre, el Conejo y el Dragón, se esconde una gata atigrada roja con sus crías — los gatitos juegan con una bola.'],
     aiJudging:'🔍 La IA está verificando...',
     notFound:'?',
     foundLabel:'✅ ¡Encontrado!',
-    foundMsg:['🐱 ¡Gato Oculto #1 Encontrado!!','🐱🐱 ¡Gato Oculto #2 Encontrado!!','🐱🐱🐱 ¡Los 3 Gatos Encontrados! ¡Misión Completa!!'],
+    foundMsg:['🐱 ¡Foto de gato oculto #1 capturada!','🐱🐱 ¡Foto de gato oculto #2 capturada!','🐱🐱🐱 ¡Foto de gato oculto #3 capturada! ¡Misión Completa!'],
     missionComplete:'🎉 ¡Misión Completa!',
+    notFoundMsg:'🔍 No se pudo confirmar un gato de la suerte en esta foto. Prueba con otro ángulo o mejor iluminación.',
+    errorMsg:'⚠️ Ocurrió un error durante la verificación. Comprueba tu conexión e inténtalo de nuevo.',
   },
   fr:{
     badge:'🐱 MISSION SPÉCIALE',
-    title:'🐱 Trouvez les 3 Chats Cachés dans la Pagode!',
-    desc:['Essayez de les trouver sur place avec vos propres yeux!','Quand vous en trouvez un, prenez une photo et téléchargez-la.',"L'IA vérifiera automatiquement s'il s'agit d'un chat caché."],
+    title:'🐱 Trouvez les Chats Cachés dans la Pagode!',
+    desc:['Essayez de les trouver sur place avec vos propres yeux!','Quand vous en trouvez un, prenez une photo et téléchargez-la.',"L'IA vérifiera automatiquement s'il s'agit d'un chat caché.","(Personne ne connaît le nombre exact de chats cachés — même Goutokuji garde le secret! Commencez par rassembler 3 photos.)"],
     uploadBtn:'📷 Télécharger une Photo pour Vérifier',
     hint1Btn:'💡 Indice① À quoi ressemble le chat?',
-    hint1Text:'Trois petits chats porte-bonheur sculptés en bois sont cachés sous le toit du premier niveau. Cherchez attentivement près des sculptures du zodiaque.',
+    hint1Text:"Parmi les sculptures du zodiaque qui entourent la pagode, un chat porte-bonheur est sculpté à côté du Rat (« Ne »). On dit également que des sculptures de chats saluant, très réalistes, sont cachées aux premier et deuxième niveaux. Le nombre exact de chats cachés n'est pas publié par Goutokuji — ils invitent simplement les visiteurs à « venir les compter eux-mêmes ». Commencez par chercher aux endroits les plus faciles à repérer.",
     hint2Btn:'🖼️ Indice② Voir les indices photo',
     hint3Btn:'📍 Indice③ Dites-moi l\'emplacement exact',
-    hint3Text:["Chat 1 : Sous l'avant-toit nord-ouest, à droite de la sculpture du Rat","Chat 2 : Sous l'avant-toit sud-est, à gauche de la sculpture du Lapin","Chat 3 : Sous l'avant-toit central avant, juste en dessous de la sculpture du Dragon"],
+    hint3Text:["1er niveau : Parmi les sculptures du zodiaque, un chat porte-bonheur se trouve à côté de la sculpture du Rat — l'un des rats tient une pièce d'or dans la bouche.","2e niveau, devant : Une sculpture de chat blanc salue, la patte droite levée.","2e niveau, côté droit : Près des sculptures du Tigre, du Lapin et du Dragon, une chatte tigrée rouge et ses chatons sont cachés — les chatons jouent avec une balle."],
     aiJudging:"🔍 L'IA vérifie...",
     notFound:'?',
     foundLabel:'✅ Trouvé!',
-    foundMsg:['🐱 Chat Caché n°1 Trouvé!!','🐱🐱 Chat Caché n°2 Trouvé!!','🐱🐱🐱 Les 3 Chats Trouvés! Mission Accomplie!!'],
+    foundMsg:['🐱 Photo de chat caché n°1 capturée!','🐱🐱 Photo de chat caché n°2 capturée!','🐱🐱🐱 Photo de chat caché n°3 capturée! Mission Accomplie!'],
     missionComplete:'🎉 Mission Accomplie!',
+    notFoundMsg:"🔍 Impossible de confirmer un chat porte-bonheur sur cette photo. Essayez un autre angle ou un meilleur éclairage.",
+    errorMsg:"⚠️ Une erreur s'est produite pendant la vérification. Vérifiez votre connexion et réessayez.",
   },
 };
 
@@ -4155,23 +4171,62 @@ function toggleCatHint(n){
   if(el)el.classList.toggle('show');
 }
 
-function handleCatPhotoUpload(input){
+/* アップロード画像をリサイズしてJPEGのdata URIに変換する
+   （Claude APIの画像トークン数と通信量を抑えるため、長辺1024px程度に縮小） */
+function _resizeImageForAI(file,maxDim){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        let w=img.width,h=img.height;
+        if(w>=h&&w>maxDim){h=Math.round(h*maxDim/w);w=maxDim;}
+        else if(h>w&&h>maxDim){w=Math.round(w*maxDim/h);h=maxDim;}
+        const canvas=document.createElement('canvas');
+        canvas.width=w;canvas.height=h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        resolve(canvas.toDataURL('image/jpeg',0.82));
+      };
+      img.onerror=()=>reject(new Error('image_load_failed'));
+      img.src=reader.result;
+    };
+    reader.onerror=()=>reject(new Error('file_read_failed'));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleCatPhotoUpload(input){
   if(!input.files||!input.files.length)return;
   const t=HIDDEN_CATS_I18N[state.lang]||HIDDEN_CATS_I18N['en'];
   const loading=document.getElementById('catAiLoading');
   const foundMsg=document.getElementById('catFoundMsg');
   const banner=document.getElementById('catMissionBanner');
-  if(foundMsg)foundMsg.classList.remove('show');
+  const file=input.files[0];
+  if(foundMsg)foundMsg.classList.remove('show','warn');
   if(banner)banner.classList.remove('show');
   if(loading)loading.classList.add('show');
 
-  /* TODO: Claude API連携
-     将来的にここでアップロード画像を
-     Claude APIに送信して照合判定を行う
-     現在はダミーとして常に成功を返す */
-  setTimeout(()=>{
+  try{
+    const imageDataUri=await _resizeImageForAI(file,1024);
+    const res=await fetch('/.netlify/functions/verify-cat-photo',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({image:imageDataUri,lang:state.lang}),
+    });
+    if(!res.ok)throw new Error('request_failed');
+    const data=await res.json();
+
     if(loading)loading.classList.remove('show');
     input.value='';
+
+    if(!data.found){
+      if(foundMsg){
+        foundMsg.textContent=t.notFoundMsg;
+        foundMsg.classList.add('show','warn');
+      }
+      return;
+    }
+
     if(state.foundCats.length>=3)return;
 
     const idx=state.foundCats.length;
@@ -4188,7 +4243,14 @@ function handleCatPhotoUpload(input){
       stampSpot(1);
       if(banner)banner.classList.add('show');
     }
-  },2000);
+  }catch(e){
+    if(loading)loading.classList.remove('show');
+    input.value='';
+    if(foundMsg){
+      foundMsg.textContent=t.errorMsg;
+      foundMsg.classList.add('show','warn');
+    }
+  }
 }
 
 function _playMissionCompleteSound(){

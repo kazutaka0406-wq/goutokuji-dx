@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# 環境変数（APIキーなどの秘密情報）
+.env
