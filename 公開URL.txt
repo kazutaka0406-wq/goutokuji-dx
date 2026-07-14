@@ -1,3 +1,13 @@
+ローカルホスト
+起動
+python -m http.server 3000
+停止
+Ctrl + C
+
+http://localhost:3000/
+
+
+
 デバッグ用
 https://goutokuji-dx-dev.netlify.app
 

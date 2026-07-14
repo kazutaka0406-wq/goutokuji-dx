@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豪徳寺DX提案資料 v4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff;font-size:14px;line-height:1.7}
+
+/* Cover */
+.cover{background:linear-gradient(135deg,#1a1208 0%,#2d1f0a 50%,#1a1208 100%);color:#fff;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 40px;position:relative;page-break-after:always}
+.cover::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.cover-badge{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:11px;letter-spacing:.2em;padding:6px 20px;border-radius:20px;margin-bottom:32px;display:inline-block}
+.cover-main-title{font-family:'Noto Serif JP',serif;font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.3em;margin-bottom:16px}
+.cover-title{font-family:'Noto Serif JP',serif;font-size:32px;font-weight:700;line-height:1.4;margin-bottom:12px;background:linear-gradient(135deg,#f5e6c0,#c9a84c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cover-subtitle{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:48px;line-height:1.8;max-width:600px}
+.cover-meta{position:absolute;bottom:40px;right:40px;text-align:right}
+.cover-meta p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.8}
+.cover-meta strong{color:rgba(201,168,76,.8)}
+.cover-url{margin-top:24px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:12px 24px;display:inline-block}
+.cover-url p{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:4px}
+.cover-url a{color:#c9a84c;font-size:13px;text-decoration:none;letter-spacing:.05em}
+
+/* Page */
+.page{max-width:900px;margin:0 auto;padding:60px 40px;page-break-after:always}
+.page:last-child{page-break-after:auto}
+
+/* Section header */
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:32px;padding-bottom:16px;border-bottom:2px solid #c9a84c}
+.section-number{background:#c9a84c;color:#fff;font-size:11px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:#1a1208}
+.section-subtitle{font-size:12px;color:#888;letter-spacing:.1em;margin-left:auto}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px}
+.cards-2{grid-template-columns:repeat(2,1fr)}
+.card{background:#faf8f4;border:1px solid #e8e0d0;border-radius:8px;padding:24px}
+.card-icon{font-size:24px;margin-bottom:12px}
+.card-title{font-weight:700;font-size:14px;color:#1a1208;margin-bottom:8px}
+.card-body{font-size:13px;color:#555;line-height:1.7}
+
+/* Accent cards */
+.card-accent-blue{border-left:4px solid #2563eb;background:#eff6ff}
+.card-accent-green{border-left:4px solid #16a34a;background:#f0fdf4}
+.card-accent-amber{border-left:4px solid #c9a84c;background:#fefce8}
+.card-accent-red{border-left:4px solid #dc2626;background:#fef2f2}
+
+/* Problem section */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.problem-item{padding:20px;border-radius:8px;border:1px solid #e8e0d0}
+.problem-item h4{font-weight:700;color:#1a1208;margin-bottom:8px;font-size:14px}
+.problem-item ul{list-style:none;padding:0}
+.problem-item ul li{font-size:13px;color:#555;padding:4px 0;padding-left:16px;position:relative}
+.problem-item ul li::before{content:'•';position:absolute;left:0;color:#c9a84c}
+
+/* Flow */
+.flow{display:flex;gap:0;margin:24px 0;align-items:stretch}
+.flow-item{flex:1;background:#faf8f4;border:1px solid #e8e0d0;padding:20px 16px;text-align:center;position:relative}
+.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:#c9a84c;z-index:1;background:#fff;padding:2px}
+.flow-num{background:#c9a84c;color:#fff;font-size:11px;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.flow-title{font-weight:700;font-size:12px;color:#1a1208;margin-bottom:6px}
+.flow-desc{font-size:11px;color:#777;line-height:1.5}
+
+/* Feature table */
+.compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px}
+.compare-table th{background:#1a1208;color:#c9a84c;padding:12px 16px;text-align:left;font-weight:700;font-size:12px;letter-spacing:.05em}
+.compare-table td{padding:12px 16px;border-bottom:1px solid #e8e0d0;vertical-align:top}
+.compare-table tr:nth-child(even) td{background:#faf8f4}
+.compare-table .check{color:#16a34a;font-weight:700}
+.compare-table .cross{color:#dc2626}
+.compare-table .col-official{background:#fff3cd!important}
+.compare-table .col-our{background:#d4edda!important}
+
+/* Roadmap */
+.roadmap{position:relative;padding-left:40px}
+.roadmap::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#c9a84c,#e8e0d0)}
+.roadmap-item{position:relative;margin-bottom:32px}
+.roadmap-item::before{content:attr(data-phase);position:absolute;left:-40px;top:2px;width:28px;height:28px;background:#c9a84c;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.roadmap-item h4{font-weight:700;color:#1a1208;margin-bottom:6px}
+.roadmap-item p{font-size:13px;color:#555;line-height:1.7}
+.roadmap-item .phase-label{display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;padding:2px 10px;border-radius:10px;margin-bottom:6px;font-weight:700}
+.roadmap-item .phase-label.current{background:#dcfce7;color:#166534}
+
+/* Stakeholder */
+.stakeholder-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stakeholder{border-radius:8px;padding:24px;border:1px solid}
+.stakeholder-gov{border-color:#93c5fd;background:#eff6ff}
+.stakeholder-temple{border-color:#86efac;background:#f0fdf4}
+.stakeholder-local{border-color:#fcd34d;background:#fefce8}
+.stakeholder h4{font-weight:700;margin-bottom:12px;font-size:14px;display:flex;align-items:center;gap:8px}
+.stakeholder ul{list-style:none;padding:0}
+.stakeholder ul li{font-size:12px;color:#555;padding:4px 0;padding-left:16px;position:relative;line-height:1.6}
+.stakeholder ul li::before{content:'✓';position:absolute;left:0;font-weight:700}
+.stakeholder-gov ul li::before{color:#2563eb}
+.stakeholder-temple ul li::before{color:#16a34a}
+.stakeholder-local ul li::before{color:#d97706}
+
+/* Revenue */
+.revenue-box{background:linear-gradient(135deg,#1a1208,#2d1f0a);color:#fff;border-radius:8px;padding:32px;margin:24px 0}
+.revenue-box h4{color:#c9a84c;font-family:'Noto Serif JP',serif;font-size:16px;margin-bottom:20px}
+.revenue-items{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.revenue-item{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:16px;text-align:center}
+.revenue-item .num{font-size:28px;font-weight:900;color:#c9a84c;line-height:1}
+.revenue-item .unit{font-size:11px;color:rgba(255,255,255,.6);margin-top:4px}
+.revenue-item .label{font-size:12px;color:rgba(255,255,255,.8);margin-top:8px}
+
+/* Demo box */
+.demo-box{background:#1a1208;border-radius:8px;padding:24px;color:#fff;display:flex;align-items:center;gap:24px;margin:24px 0}
+.demo-box .qr-placeholder{width:80px;height:80px;background:rgba(201,168,76,.2);border:2px dashed rgba(201,168,76,.4);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(201,168,76,.6);text-align:center;flex-shrink:0}
+.demo-box .demo-text h4{color:#c9a84c;font-size:14px;margin-bottom:8px}
+.demo-box .demo-text p{font-size:12px;color:rgba(255,255,255,.7);line-height:1.7}
+.demo-box .demo-text a{color:#c9a84c;font-size:13px}
+
+/* Notice box */
+.notice{background:#fef3c7;border:1px solid #fcd34d;border-radius:6px;padding:16px 20px;margin:16px 0;font-size:13px;color:#78350f}
+.notice strong{font-weight:700}
+
+/* Tag */
+.tag{display:inline-block;font-size:11px;padding:2px 10px;border-radius:10px;font-weight:700;margin-right:6px}
+.tag-new{background:#dcfce7;color:#166534}
+.tag-plan{background:#dbeafe;color:#1e40af}
+
+/* Footer */
+.footer{text-align:center;padding:24px;color:#999;font-size:11px;border-top:1px solid #e8e0d0;margin-top:40px}
+
+@media print{
+  .page{page-break-after:always}
+  body{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-badge">CONFIDENTIAL · 事業提案書</div>
+  <p class="cover-main-title">世田谷区観光振興・地域共生DX提案資料</p>
+  <h1 class="cover-title">ITとゲーミフィケーションを活用した<br>豪徳寺インバウンドDX事業</h1>
+  <p class="cover-subtitle">
+    アプリ不要のWebサービスと謎解きによる、<br>
+    マナー啓発・境内回遊・地域経済循環の持続可能モデル実証実験<br>
+    <span style="color:rgba(201,168,76,.7)">〜 収益地域還元型・受益者負担モデル 〜</span>
+  </p>
+
+  <div class="cover-url">
+    <p>デモサイト（実際に動作するプロトタイプ）</p>
+    <a href="https://goutokuji-dx-dev.netlify.app" target="_blank">https://goutokuji-dx-dev.netlify.app</a>
+  </div>
+
+  <div class="cover-meta">
+    <p><strong>提案者</strong></p>
+    <p>ウンベラータ合同会社</p>
+    <p>東京都世田谷区宮坂</p>
+    <p style="margin-top:8px"><strong>提案日</strong></p>
+    <p>2026年7月</p>
+  </div>
+</div>
+
+<!-- ===== P1: 現状と課題 ===== -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div class="section-title">現状と課題 ── インバウンド急増がもたらす光と影</div>
+  </div>
+
+  <div class="problem-grid">
+    <div class="problem-item" style="border-left:4px solid #c9a84c">
+      <h4>📈 インバウンド需要の急増</h4>
+      <ul>
+        <li>招き猫の発祥地として海外SNS・旅ブログで急拡散</li>
+        <li>豪徳寺駅・山下駅から寺院への外国人観光客が連日多数来訪</li>
+        <li>欧米・アジア・中南米など多様な国籍の観光客が増加</li>
+        <li>地域の活気に繋がる一方、急激な環境変化への対応が急務</li>
+      </ul>
+    </div>
+    <div class="problem-item" style="border-left:4px solid #dc2626">
+      <h4>⚠️ 課題① マナー摩擦（オーバーツーリズム）</h4>
+      <ul>
+        <li>静粛な境内での大声・参拝作法の誤解</li>
+        <li>文化財・繊細な招き猫置物への接触リスク</li>
+        <li>通学路・狭い生活道路の混雑</li>
+        <li>案内看板による「禁止・強制」は無視されがち</li>
+      </ul>
+    </div>
+    <div class="problem-item" style="border-left:4px solid #2563eb">
+      <h4>⚠️ 課題② 経済波及の乖離</h4>
+      <ul>
+        <li>多くの観光客が「豪徳寺参拝のみ」で直帰</li>
+        <li>世田谷八幡神社・常徳院・松陰神社への回遊が少ない</li>
+        <li>宮坂商店街エリアへ人の流れが波及していない</li>
+        <li>地域経済への恩恵が限定的</li>
+      </ul>
+    </div>
+    <div class="problem-item" style="border-left:4px solid #16a34a">
+      <h4>⚠️ 課題③ 言語・情報格差</h4>
+      <ul>
+        <li>豪徳寺公式サイトは日本語・英語のみ</li>
+        <li>中国語・韓国語・スペイン語・フランス語に非対応</li>
+        <li>参拝作法・歴史的背景の多言語説明が不足</li>
+        <li>来訪者の満足度・理解度に大きな差</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>本提案のコアメッセージ：</strong>
+    「禁止・規制」の看板を増やすのではなく、IT・エンタメの力で観光客が<strong>自発的にマナーを守り・文化を深く理解し・地域に回遊する</strong>仕組みを構築します。
+  </div>
+</div>
+
+<!-- ===== P2: 解決策 ===== -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div class="section-title">解決策 ── 3つのアプローチ</div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="border-top:4px solid #c9a84c">
+      <div class="card-icon">🎮</div>
+      <div class="card-title">規制ではなく「エンタメ」</div>
+      <div class="card-body">
+        謎解きクイズ・スタンプラリー・AIおみくじを通じて、日本の伝統文化や礼儀作法を<strong>楽しみながら自然に習得</strong>してもらう仕組みを提供。観光客の自発的なマナー実践を促します。
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid #2563eb">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">スマートな地域回遊</div>
+      <div class="card-body">
+        全スポット制覇後に近隣観光地（世田谷八幡神社・常徳院・松陰神社）や地元店舗への案内を自然な動線として提示。豪徳寺「点」から世田谷「面」への回遊を促進します。
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid #16a34a">
+      <div class="card-icon">♻️</div>
+      <div class="card-title">持続可能な地域還元</div>
+      <div class="card-body">
+        受益者負担型（1,000円程度）で有償提供し、収益の一部を豪徳寺の文化財保護・区の環境美化活動に寄付。<strong>行政予算ゼロで自立運営</strong>できる持続可能モデルです。
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Noto Serif JP',serif;margin:32px 0 16px;color:#1a1208">公式サイトとの差別化 ── 補完関係として連携</h3>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>比較項目</th>
+        <th class="col-official">豪徳寺公式サイト<br>（gotokuji.jp）</th>
+        <th class="col-our">本WEBアプリ<br>（豪徳寺DX）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>対応言語</strong></td>
+        <td class="col-official">日本語・英語（2言語）</td>
+        <td class="col-our"><span class="check">✓</span> 日・英・中・韓・西・仏（6言語）</td>
+      </tr>
+      <tr>
+        <td><strong>コンテンツ形式</strong></td>
+        <td class="col-official">静的な情報提供</td>
+        <td class="col-our"><span class="check">✓</span> インタラクティブ体験（クイズ・スタンプ・おみくじ）</td>
+      </tr>
+      <tr>
+        <td><strong>マナー啓発</strong></td>
+        <td class="col-official">なし</td>
+        <td class="col-our"><span class="check">✓</span> ゲーミフィケーションで自然習得</td>
+      </tr>
+      <tr>
+        <td><strong>参拝体験の深化</strong></td>
+        <td class="col-official">基本情報のみ</td>
+        <td class="col-our"><span class="check">✓</span> 10大スポット詳細ナレーション・歴史クイズ</td>
+      </tr>
+      <tr>
+        <td><strong>地域回遊誘導</strong></td>
+        <td class="col-official">なし</td>
+        <td class="col-our"><span class="check">✓</span> 周辺スポット・地元店舗への自然な導線</td>
+      </tr>
+      <tr>
+        <td><strong>収益・還元</strong></td>
+        <td class="col-official">なし</td>
+        <td class="col-our"><span class="check">✓</span> 売上の一部を文化財保護費として寄付</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#888;margin-top:8px">※ 本WEBアプリは公式サイトの競合ではなく、異なる体験価値を提供する<strong>補完サービス</strong>として位置づけます。</p>
+</div>
+
+<!-- ===== P3: 体験フロー ===== -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div class="section-title">体験フロー ── スマートフォン1つで完結</div>
+  </div>
+
+  <div class="flow">
+    <div class="flow-item">
+      <div class="flow-num">1</div>
+      <div class="flow-title">認知・アクセス</div>
+      <div class="flow-desc">参道付近の看板QRをスキャン。アプリDL不要でブラウザ起動</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">2</div>
+      <div class="flow-title">言語選択</div>
+      <div class="flow-desc">6言語から選択。以降すべてネイティブ言語で体験</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">3</div>
+      <div class="flow-title">決済</div>
+      <div class="flow-desc">クレジットカード等で1,000円程度を安全に決済（Stripe）</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">4</div>
+      <div class="flow-title">マナー確認</div>
+      <div class="flow-desc">チェックボックス形式で参拝作法を自然にインプット</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">5</div>
+      <div class="flow-title">散策・謎解き</div>
+      <div class="flow-desc">10大スポットをナレーション＋クイズで巡る。スタンプ収集</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">6</div>
+      <div class="flow-title">回遊・おみくじ</div>
+      <div class="flow-desc">全制覇でAIおみくじ解放＋周辺エリアへ自然に誘導</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Noto Serif JP',serif;margin:32px 0 16px;color:#1a1208">主要コンテンツ一覧</h3>
+  <div class="cards cards-2">
+    <div>
+      <div class="card card-accent-amber" style="margin-bottom:16px">
+        <div class="card-title">🏯 10大スポット・スタンプラリー</div>
+        <div class="card-body">山門から地蔵堂まで10スポットを現地写真＋多言語ナレーション＋歴史クイズで案内。クイズ正解でデジタル御朱印スタンプを獲得。外国人が自然に境内を隅々まで観察・回遊する設計。</div>
+      </div>
+      <div class="card card-accent-blue">
+        <div class="card-title">🐱 三重塔 隠れ招き猫ミッション</div>
+        <div class="card-body">三重塔に職人が隠した3匹の招き猫を写真撮影で発見するミッション。段階式ヒント機能付き。写真でAI照合（将来実装予定）し、3匹全発見でスタンプ獲得。</div>
+      </div>
+    </div>
+    <div>
+      <div class="card card-accent-green" style="margin-bottom:16px">
+        <div class="card-title">🎋 AIデジタルおみくじ</div>
+        <div class="card-body">10スタンプ全制覇で解放される特別なおみくじ。総運・恋愛・仕事・金運・旅行・健康・交友の7項目をAIがリアルタイム生成（将来実装）。6言語で毎回ユニークな内容を提供。</div>
+      </div>
+      <div class="card card-accent-red">
+        <div class="card-title">🗺️ 周辺スポット回遊ナビ</div>
+        <div class="card-body">参拝完了後に世田谷八幡神社・常徳院・松陰神社・宮坂商店街への案内を提示。Googleマップ連携で徒歩ルートを表示。地元店舗の無料紹介で地域経済への送客を実現。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P4: 収益モデル ===== -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <div class="section-title">収益・還元モデル ── 三方良し の持続可能設計</div>
+  </div>
+
+  <div class="revenue-box">
+    <h4>💰 収益シミュレーション（想定）</h4>
+    <div class="revenue-items">
+      <div class="revenue-item">
+        <div class="num">1,000<span style="font-size:16px">円</span></div>
+        <div class="unit">グローバル基準で見れば約6.5ドル</div>
+        <div class="label">参拝者1人あたりの利用料金</div>
+      </div>
+      <div class="revenue-item">
+        <div class="num">50<span style="font-size:16px">%</span></div>
+        <div class="unit">実証実験フェーズは要協議</div>
+        <div class="label">想定コンバージョン率（QRスキャン→決済）</div>
+      </div>
+      <div class="revenue-item">
+        <div class="num">一部</div>
+        <div class="unit">割合は豪徳寺様と協議</div>
+        <div class="label">売上から豪徳寺・区へ寄付</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stakeholder-grid">
+    <div class="stakeholder stakeholder-gov">
+      <h4>🏛️ 世田谷区役所</h4>
+      <ul>
+        <li>行政予算コストゼロで実施可能</li>
+        <li>売上の一部が環境美化・観光振興費に</li>
+        <li>WebAR・AIを活用した全国先進事例の獲得</li>
+        <li>オーバーツーリズム対策の実績づくり</li>
+        <li>観光DX推進の旗印となる事業</li>
+      </ul>
+    </div>
+    <div class="stakeholder stakeholder-temple">
+      <h4>⛩️ 豪徳寺</h4>
+      <ul>
+        <li>文化財保護のための継続的な寄付金収入</li>
+        <li>マナー向上で境内の神聖な環境が守られる</li>
+        <li>個別案内・注意対応の人的負担が大幅軽減</li>
+        <li>多言語対応で世界中の参拝者に深く伝わる</li>
+        <li>公式サイトとの補完でブランド価値向上</li>
+      </ul>
+    </div>
+    <div class="stakeholder stakeholder-local">
+      <h4>🏘️ 地域・観光客</h4>
+      <ul>
+        <li>参拝後の良質な観光客が商店街へ流入</li>
+        <li>住宅街でのマナー違反が減少</li>
+        <li>地域住民が観光をポジティブに受容</li>
+        <li>6言語対応で世界中の観光客が深く楽しめる</li>
+        <li>1,000円以下で極めて高い体験価値を提供</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Noto Serif JP',serif;margin:32px 0 16px;color:#1a1208">看板設置について</h3>
+  <div class="card card-accent-amber">
+    <div class="card-body">
+      豪徳寺参道付近に、弊社関係者が借地権を有する土地（アパート付属駐車場）が存在します。当該地権者の承諾のもと、QRコード付きの案内看板を設置することが可能です。これにより、<strong>豪徳寺境内や公道への設置許可を取得することなく</strong>、参拝者への認知導線を確保できます。詳細については別途ご相談させてください。
+    </div>
+  </div>
+</div>
+
+<!-- ===== P5: 技術・安全性 ===== -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <div class="section-title">技術的特徴・安全性 ── 信頼できるインフラ</div>
+  </div>
+
+  <div class="cards">
+    <div class="card card-accent-blue">
+      <div class="card-icon">📱</div>
+      <div class="card-title">アプリ不要・即利用</div>
+      <div class="card-body">QRコードをスキャンするだけでブラウザ上で即起動。App Store・Google Playへのダウンロード不要。スマートフォンさえあれば世界中の観光客がすぐに利用開始できます。</div>
+    </div>
+    <div class="card card-accent-green">
+      <div class="card-icon">🔒</div>
+      <div class="card-title">決済セキュリティ</div>
+      <div class="card-body">決済処理は世界標準のStripeを採用。カード情報は弊社サーバーを一切通過せず、PCI DSS準拠の安全な環境で処理されます。返金・不正検知機能も標準装備。</div>
+    </div>
+    <div class="card card-accent-amber">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">Netlify CDN配信</div>
+      <div class="card-body">グローバルCDN（Netlify）を利用した高速配信。世界中どこからアクセスしても快適な表示速度を実現。99.99%の稼働率保証。急激なアクセス増にも自動対応。</div>
+    </div>
+    <div class="card card-accent-red">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">Claude AI連携</div>
+      <div class="card-body">世界最高水準のAI（Anthropic Claude）をおみくじ生成・画像照合に活用。将来的には訪問者データ分析・改善提案の自動化にも応用予定。</div>
+    </div>
+    <div class="card" style="border-top:4px solid #7c3aed">
+      <div class="card-icon">🔐</div>
+      <div class="card-title">個人情報保護</div>
+      <div class="card-body">利用者の個人情報収集は最小限（決済に必要な情報のみ）。プライバシーポリシーを明示し、GDPRなど国際基準に準拠した運営を行います。</div>
+    </div>
+    <div class="card" style="border-top:4px solid #db2777">
+      <div class="card-icon">📊</div>
+      <div class="card-title">管理者ダッシュボード</div>
+      <div class="card-body">訪問者数・決済数・満足度・スポット別滞在時間をリアルタイム集計。豪徳寺・区役所への定期レポート提供も可能。データに基づいた継続的改善を実施。</div>
+    </div>
+  </div>
+
+  <div class="demo-box">
+    <div class="qr-placeholder">デモ<br>QR<br>コード</div>
+    <div class="demo-text">
+      <h4>🎯 実際に動くプロトタイプをご覧ください</h4>
+      <p>本提案は「絵に描いた餅」ではありません。今この瞬間、実際に動作するデモサイトをご確認いただけます。スマートフォンでQRコードをスキャンするか、下記URLにアクセスしてください。</p>
+      <p style="margin-top:8px"><a href="https://goutokuji-dx-dev.netlify.app">https://goutokuji-dx-dev.netlify.app</a></p>
+      <p style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">※ デモ版のため決済機能はスキップ可能。全コンテンツを無料で体験できます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P6: ロードマップ ===== -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">6</div>
+    <div class="section-title">実施ロードマップ ── 段階的な実証実験</div>
+  </div>
+
+  <div class="roadmap">
+    <div class="roadmap-item" data-phase="1">
+      <div class="phase-label current">現在</div>
+      <h4>フェーズ1：世田谷区役所へのご相談（本提案）</h4>
+      <p>プロジェクト主旨（受益者負担・地域還元モデル）のご賛同、地域観光における課題感のすり合わせとアドバイスの拝受。プロトタイプのデモをご確認いただき、事業の実現性をご判断ください。</p>
+    </div>
+    <div class="roadmap-item" data-phase="2">
+      <div class="phase-label">2026年7〜8月</div>
+      <h4>フェーズ2：区役所様と連携した豪徳寺へのご相談</h4>
+      <p>「行政のご紹介・ご同席」のもと、お寺の環境維持と文化財寄付金還元の共同提案として豪徳寺様へ公式アプローチ。収益還元の具体的な割合・条件を協議します。</p>
+    </div>
+    <div class="roadmap-item" data-phase="3">
+      <div class="phase-label">2026年8〜9月</div>
+      <h4>フェーズ3：本番機能実装・近隣店舗への無料掲載声がけ</h4>
+      <p>Stripe決済システムの本番導入、AI機能の完全実装（Claude API連携）、管理者ダッシュボード構築。同時に宮坂周辺店舗へのご協力依頼・掲載コンテンツ制作。</p>
+    </div>
+    <div class="roadmap-item" data-phase="4">
+      <div class="phase-label">2026年秋〜</div>
+      <h4>フェーズ4：看板設置・実証実験開始</h4>
+      <p>弊社関係者が借地権を有する豪徳寺参道付近の土地（地権者承諾済み）にQRコード付き案内看板を設置。実証実験スタート。訪問者データ・収益を定期的に区・豪徳寺へレポート。</p>
+    </div>
+    <div class="roadmap-item" data-phase="5">
+      <div class="phase-label">将来</div>
+      <h4>フェーズ5：他寺社・地域への横展開</h4>
+      <p>豪徳寺での実証実験データをもとに、世田谷線沿線の他寺社・観光スポットへのサービス展開を検討。世田谷区全体の観光DXモデルとして全国に発信します。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;padding:24px;background:#faf8f4;border-radius:8px;border:1px solid #e8e0d0">
+    <h3 style="font-family:'Noto Serif JP',serif;color:#1a1208;margin-bottom:16px">本日お願いしたいこと</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <p style="font-weight:700;color:#c9a84c;margin-bottom:8px">① 課題感のすり合わせ</p>
+        <p style="font-size:13px;color:#555">インバウンドのマナー問題・地域回遊の課題について、区のご見解・現状をお聞かせください。</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:#c9a84c;margin-bottom:8px">② デモサイトのご体験</p>
+        <p style="font-size:13px;color:#555">実際に動くプロトタイプをその場でご体験いただき、コンテンツの質と実現性をご確認ください。</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:#c9a84c;margin-bottom:8px">③ 豪徳寺へのご紹介</p>
+        <p style="font-size:13px;color:#555">区からのご紹介・ご同席のもと豪徳寺へアプローチできれば、信頼性が格段に高まります。</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:#c9a84c;margin-bottom:8px">④ アドバイス・ご意見</p>
+        <p style="font-size:13px;color:#555">行政の立場からの率直なご意見・改善点をいただき、より良いサービスにしてまいります。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>ウンベラータ合同会社</strong> ｜ 東京都世田谷区宮坂</p>
+    <p style="margin-top:4px">デモサイト：https://goutokuji-dx-dev.netlify.app ｜ 提案日：2026年7月</p>
+    <p style="margin-top:4px;color:#bbb">本資料の内容は商談・交渉目的のみにご使用ください。無断転載・二次利用をお断りします。</p>
+  </div>
+</div>
+
+</body>
+</html>
