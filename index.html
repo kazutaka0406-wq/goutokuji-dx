@@ -2449,12 +2449,22 @@ const _seasonMessages={
   },
 };
 
-window.addEventListener('DOMContentLoaded',()=>{
+window.addEventListener('DOMContentLoaded',async()=>{
+
+  /* 本番サービス開始前（PAYMENT_MODE!=='live'）は、当日中の再課金不要パス機能そのものを無効化し、
+     常にlocalStorageを全消去してトップ（言語選択）から開始する。
+     本番サービス開始をpaymentMode='live'切り替えで宣言した時点で、この機能が自動的に有効になる。 */
+  let _isLive=false;
+  try{
+    const _cfgRes=await fetch('/.netlify/functions/config');
+    const _cfg=await _cfgRes.json();
+    _isLive=_cfg.paymentMode==='live';
+  }catch(e){_isLive=false;}
 
   /* 当日中の同一端末アクセスは再課金・進捗リセットなしで再開できるようにする。
      日付境界は端末ローカル時刻の0:00（toDateStringが日替わりで変わる)。 */
   const _paidDate=localStorage.getItem('goutokuji_dx_paid_date');
-  const _isSameDayPaid=localStorage.getItem('goutokuji_dx_paid')==='true'&&_paidDate===new Date().toDateString();
+  const _isSameDayPaid=_isLive&&localStorage.getItem('goutokuji_dx_paid')==='true'&&_paidDate===new Date().toDateString();
   let _restore=null;
   if(_isSameDayPaid){
     let _visited=new Set(),_cats=[];
