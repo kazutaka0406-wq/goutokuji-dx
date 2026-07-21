@@ -319,17 +319,6 @@ p{line-height:1.85}
   background:rgba(0,0,0,.28);font-size:.6875rem;color:var(--mist);opacity:.7;
   font-family:var(--font-mono);line-height:1.75;text-align:center}
 
-#page-group-share{background:var(--ink)}
-.share-inner{max-width:420px;width:100%;margin:0 auto;padding:36px 22px 40px;display:flex;flex-direction:column;gap:22px}
-.share-title{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:5px;text-align:center}
-.share-subtitle{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;opacity:.75;text-align:center}
-.qr-dummy{width:152px;height:152px;margin:0 auto;background:var(--white);padding:10px;border-radius:4px;display:flex;flex-direction:column;justify-content:space-between}
-.qr-row{display:flex;justify-content:space-between;align-items:center}
-.qr-corner{width:26px;height:26px;background:var(--ink);border-radius:2px}
-.qr-center{font-size:1.5rem;text-align:center;flex:1}
-.qr-dot{width:8px;height:8px;background:var(--ink);border-radius:50%}
-.share-desc-box{background:rgba(255,255,255,.02);border:1px dashed rgba(201,168,76,.28);padding:14px;border-radius:4px;font-size:.8125rem;color:var(--mist);line-height:1.7;opacity:.9}
-
 #page-survey{background:var(--ink)}
 .survey-header{padding:36px 22px 22px;position:relative;max-width:480px;width:100%;margin:0 auto}
 .survey-header::after{content:'';position:absolute;bottom:0;left:22px;right:22px;height:1px;
@@ -805,15 +794,6 @@ p{line-height:1.85}
 .sync-subtitle{
   font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;
   color:var(--gold);text-transform:uppercase;opacity:.75}
-.sync-qr-wrap{
-  width:160px;height:160px;margin:0 auto;
-  background:var(--white);padding:10px;border-radius:6px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  box-shadow:0 4px 20px rgba(0,0,0,.5)}
-.sync-qr-row{display:flex;justify-content:space-between;align-items:center}
-.sync-qr-corner{width:28px;height:28px;background:var(--ink);border-radius:2px}
-.sync-qr-center{font-size:1.75rem;text-align:center;flex:1}
-.sync-qr-dot{width:8px;height:8px;background:var(--ink);border-radius:50%}
 .sync-desc{
   background:rgba(255,255,255,.025);border:1px dashed rgba(201,168,76,.28);
   padding:14px 16px;border-radius:4px;
@@ -1484,35 +1464,19 @@ p{line-height:1.85}
   <div class="sync-inner">
 
     <div class="sync-header fade-up">
-      <div style="font-size:2rem;margin-bottom:12px">👥</div>
-      <h2 class="sync-title" id="syncTitle">同行者デバイスを同期</h2>
-      <div class="sync-subtitle" id="syncSubtitle">COMPANION DEVICE SYNC</div>
-    </div>
-
-    <div class="sync-qr-wrap fade-up fade-up-1">
-      <div class="sync-qr-row">
-        <div class="sync-qr-corner"></div>
-        <div class="sync-qr-dot"></div>
-        <div class="sync-qr-corner"></div>
-      </div>
-      <div class="sync-qr-row">
-        <div class="sync-qr-center">🐱</div>
-      </div>
-      <div class="sync-qr-row">
-        <div class="sync-qr-corner"></div>
-        <div class="sync-qr-dot"></div>
-        <div class="sync-qr-corner"></div>
-      </div>
+      <div style="font-size:2rem;margin-bottom:12px">🎫</div>
+      <h2 class="sync-title" id="syncTitle">ご購入ありがとうございます</h2>
+      <div class="sync-subtitle" id="syncSubtitle">PURCHASE COMPLETE</div>
     </div>
 
     <div class="sync-desc fade-up fade-up-2" id="syncDesc">
-      同行者のスマホで標準カメラを起動し、QRコードをスキャンしてください。追加費用なしで最大4台のデバイスに完全なガイドが展開されます。<br>
-      Open your companion's camera app and scan the QR code to share the full guide — no extra payment required for up to 4 devices.
+      参拝ガイドの準備をしています。しばらくお待ちください。<br>
+      Preparing your pilgrimage guide. Please wait a moment.
     </div>
 
     <button class="btn-primary fade-up fade-up-3" id="syncNextBtn"
       onclick="playClickSound();showPage('page-manners')">
-      同期して次へ ➔
+      次へ進む ➔
     </button>
 
     <div class="sync-skip-note fade-up fade-up-4" id="syncSkipNote">
@@ -1663,15 +1627,6 @@ p{line-height:1.85}
     <div class="stripe-note" id="lblStripeNote">🔒 Secured by Stripe</div>
   </div>
   <div class="corporate-footer" id="prePayFooter"></div>
-</section>
-
-<section class="page" id="page-group-share">
-  <div class="share-inner">
-    <div class="fade-up" style="text-align:center"><div style="font-size:2rem;margin-bottom:12px">👥</div><h2 class="share-title" id="lblShareTitle">Group Device Connection</h2><div class="share-subtitle" id="lblShareSubtitle">MULTIPASS NODE SYNC</div></div>
-    <div class="qr-dummy fade-up fade-up-1"><div class="qr-row"><div class="qr-corner"></div><div class="qr-dot"></div><div class="qr-corner"></div></div><div class="qr-row"><div class="qr-center">🐱</div></div><div class="qr-row"><div class="qr-corner"></div><div class="qr-dot"></div><div class="qr-corner"></div></div></div>
-    <div class="share-desc-box fade-up fade-up-2" id="lblShareBoxDesc"></div>
-    <button class="btn-primary fade-up fade-up-3" id="lblShareNextBtn" onclick="showPage('page-full-map')">All Devices Ready ➔</button>
-  </div>
 </section>
 
 
@@ -1870,7 +1825,7 @@ const CONFIG_LANG = {
     mannerAgreeBtn:"I Agree &amp; Unlock Passport →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 Residential Silence</h4><p>Routes pass through quiet residential blocks. Please keep voices low at all times.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 Do Not Touch Statues or Cats</h4><p>Please do not touch the fortune cats or Buddhist statues. Help preserve these sacred cultural artefacts.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 Do Not Cross Fences</h4><p>Strictly forbidden to enter fences around the pagoda or cat shelves.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 Control Audio Volume</h4><p>Use headphones or minimum volume to protect the temple's serenity.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 No Walking Smartphone</h4><p>Stop completely before reading. Do not walk while viewing your screen.</p></div></div>`,
     heroTitle:"<em>Sanctuary of Beckoning Cats</em>GOUTOKUJI DX",
-    priceTitle:"Premium 10-Spots Pass",priceIncludes:"10-Spots · Companion Sharing · Free Fortune",
+    priceTitle:"Premium 10-Spots Pass",priceIncludes:"10-Spots · AI Narration · Free Fortune",
     freeOmiBadge:"🎁 BONUS:<br>FREE FORTUNE!",
     buyBtn:"🐱 &nbsp; Purchase Premium Pass &nbsp; ¥1,000",
     stripeNote:"🔒 Secured by Stripe · Progress auto-saves",
@@ -1879,10 +1834,7 @@ const CONFIG_LANG = {
     manganMsg:"Under the blessing of the Beckoning Cat, you have completed all 10 Goutokuji landmarks. May this sacred journey bring great fortune to your life. You answered all 10 quizzes correctly and completed your Goshuin stamp collection.",
     sampleTitle:"✨ Experience Sample Preview",
     sampleDesc:"After purchase: detailed pagoda-cat close-ups, Ii Naosuke grave route map, and ElevenLabs AI narration all unlock.",
-    features:["<strong>👥 Multi-Device Share</strong> — One purchase unlocks up to 4 companion devices via QR sync.","<strong>🎋 Free Fortune Slip</strong> — Multidimensional oracle (Romance/Health/Moving) 100% FREE.","<strong>🗺️ 10 Landmark Paths</strong> — Real on-site photography from Sanmon Gate to Jizo-do Hall."],
-    shareTitle:"Synchronize Companions",shareSubtitle:"Multi-Device Ticket Validation",
-    shareBoxDesc:"<strong>Token Sharing:</strong> Companions scan the QR with their camera app to mirror the license for free.",
-    shareNextBtn:"All Devices Synchronized ➔",
+    features:["<strong>🎋 Free Fortune Slip</strong> — Multidimensional oracle (Romance/Health/Moving) 100% FREE.","<strong>🗺️ 10 Landmark Paths</strong> — Real on-site photography from Sanmon Gate to Jizo-do Hall."],
     surveyTitle:"Configure Your <em>Visit Profile</em>",
     partyLabel:"01 — Companion Setup",historyLabel:"02 — Visit History",
     optSolo:"Solo",optCouple:"Couple",optFamily:"Family",optFriends:"Friends",
@@ -1951,7 +1903,7 @@ const CONFIG_LANG = {
     mannerAgreeBtn:"ルールを守ってパスを有効化 →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 周辺住宅街での静粛性確保</h4><p>豪徳寺周辺は非常に閑静な住宅街です。参拝経路での大声での会話は絶対にお控えください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 仏像・招き猫への接触禁止</h4><p>招き猫や仏像などに決して手を触れないようにしてください。大切な文化財・奉納物の保護にご協力ください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 柵・ロープ内側への立入禁止</h4><p>三重塔の木造土台や招福殿の奉納棚の保護柵内に絶対に入らないでください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 音声ボリュームへの配慮</h4><p>音声ガイド再生時は必ずイヤホンを使用するか音量を最小限に絞ってください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 歩きスマホ禁止</h4><p>境内での転倒・衝突防止のため、スマホを見ながら歩く行為は禁止です。必ず立ち止まってからご覧ください。</p></div></div>`,
     heroTitle:"<em>招き猫の発祥聖地</em>豪徳寺プレミアムDX",
-    priceTitle:"境内完全制覇10大スポットパス",priceIncludes:"10箇所ナビ · 家族スマホ同期 · 特典おみくじ無料",
+    priceTitle:"境内完全制覇10大スポットパス",priceIncludes:"10箇所ナビ · AIナレーション · 特典おみくじ無料",
     freeOmiBadge:"🎁 特典：<br>おみくじ無料！",
     buyBtn:"🐱 &nbsp; プレミアムパスを購入する &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe安全決済 · ブラウザを閉じても進捗を自動復旧",
@@ -1961,10 +1913,7 @@ const CONFIG_LANG = {
     manganMsg:"招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。10のクイズすべてに正解し、御朱印を満願しました。",
     sampleTitle:"✨ 体験プレビュー",
     sampleDesc:"パス購入後、三重塔の猫クローズアップ解説・井伊直弼墓所の詳細ルートマップ・ElevenLabs音声解説がすべてアンロックされます。",
-    features:["<strong>👥 同行者スマホ無料同期</strong> — 1人購入でご家族・友人のスマホ最大4台を完全無料で同期できます。","<strong>🎋 本格おみくじが無料特典</strong> — 恋愛・転居・健康の分野別デジタルおみくじを無料で引けます。","<strong>🗺️ 現地撮影写真による10大箇所巡り</strong> — 山門から地蔵堂まで、リアルな現地写真をもとにした完璧なルート案内。"],
-    shareTitle:"同行者デバイスの同期",shareSubtitle:"1パスで最大4台まで無料接続",
-    shareBoxDesc:"<strong>【シェア方法】</strong> 同行者のスマホで標準カメラを起動しQRコードをスキャンしてください。追加支払いなしに全員の画面にガイドが展開されます。",
-    shareNextBtn:"全員の同期が完了 → 次へ",
+    features:["<strong>🎋 本格おみくじが無料特典</strong> — 恋愛・転居・健康の分野別デジタルおみくじを無料で引けます。","<strong>🗺️ 現地撮影写真による10大箇所巡り</strong> — 山門から地蔵堂まで、リアルな現地写真をもとにした完璧なルート案内。"],
     surveyTitle:"本日の参拝について<br><em>教えてください</em>",
     partyLabel:"01 — 同行者の確認",historyLabel:"02 — 来訪回数",
     optSolo:"お一人様",optCouple:"夫婦・恋人",optFamily:"家族・ファミリー",optFriends:"友人・グループ",
@@ -2028,16 +1977,13 @@ const CONFIG_LANG = {
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 请保持安静</h4><p>豪德寺周围是宁静的住宅区。参拜途中请避免大声交谈，保持肃静。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 禁止触摸招财猫或佛像</h4><p>严禁触摸招财猫或任何佛像。请协助保护珍贵的文化财产与奉纳品。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 禁止进入围栏内</h4><p>严禁跨越三重塔基座或招猫殿周围的保护围栏。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 请控制音量</h4><p>使用语音导览时，请佩戴耳机或将音量调至最低，以维护境内的宁静。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 禁止边走边看手机</h4><p>为防止碰撞或跌倒，请在安全的地方停下后再查看本导览。</p></div></div>`,
     mannersGuideText:"请确认以下所有事项并勾选",
     heroTitle:"<em>招财猫发祥圣地</em>豪德寺高级导览",
-    priceTitle:"境内10大景点通行证",priceIncludes:"10景点导览 · 同伴设备同步 · 免费御签",
+    priceTitle:"境内10大景点通行证",priceIncludes:"10景点导览 · AI语音导览 · 免费御签",
     freeOmiBadge:"🎁 附赠：<br>免费御签！",
     buyBtn:"🐱 &nbsp; 购买高级通行证 &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe 安全支付 · 关闭浏览器后自动恢复进度",
     sampleTitle:"✨ 体验预览",
     sampleDesc:"购买后解锁三重塔猫咪特写解说、井伊直弼墓所详细路线图及 ElevenLabs AI 语音导览。",
-    features:["<strong>👥 同伴设备免费同步</strong> — 一人购买，最多4台设备可免费共享。","<strong>🎋 免费御签特典</strong> — 涵盖恋爱·搬迁·健康，购票后免费抽取。","<strong>🗺️ 10大景点实地导览</strong> — 从山门到地藏堂，依托真实现场照片进行完整路线导览。"],
-    shareTitle:"同步同伴设备",shareSubtitle:"多设备票证验证",
-    shareBoxDesc:"<strong>【分享方法】</strong> 请同伴用手机摄像头扫描 QR 码，无需额外付费即可在其设备上解锁导览。",
-    shareNextBtn:"全部设备同步完成 → 下一步",
+    features:["<strong>🎋 免费御签特典</strong> — 涵盖恋爱·搬迁·健康，购票后免费抽取。","<strong>🗺️ 10大景点实地导览</strong> — 从山门到地藏堂，依托真实现场照片进行完整路线导览。"],
     surveyTitle:"请告诉我们<br><em>您的参观信息</em>",
     partyLabel:"01 — 同行人员",historyLabel:"02 — 参观次数",
     optSolo:"独自旅行",optCouple:"情侣/夫妻",optFamily:"家庭/家族",optFriends:"朋友/团体",
@@ -2091,9 +2037,9 @@ const CONFIG_LANG = {
     checkoutPayLabel:"开始高级体验",checkoutSkipLabel:"跳过进入演示 →",
     checkoutPriceOrig:"<s>原价 ¥1,500</s>",checkoutPriceMonitor:"限时特别体验价",
     manganMsg:"在招财猫的庇护下，您已圆满巡礼豪德寺十大景点。愿这段殊胜的缘分为您带来洪福。您答对了全部10道题，集齐了所有御朱印印章。",
-    syncTitle:"同步同伴设备",syncSubtitle:"同伴设备同步",
-    syncDesc:"请同伴用手机摄像头扫描二维码。最多4台设备可共享完整导览，无需额外付费。",
-    syncNextBtn:"同步完成，继续 ➔",syncSkipNote:"跳过 →",
+    syncTitle:"感谢您的购买",syncSubtitle:"购买完成",
+    syncDesc:"正在为您准备参拜导览，请稍候。",
+    syncNextBtn:"继续 ➔",syncSkipNote:"跳过 →",
     mannersTitle:"境内参拜规则・礼仪",mannersSubtitle:"礼仪与安全规则",
     mannersAgreeBtn:"确认礼仪并继续 ➔",
     steps:[
@@ -2117,16 +2063,13 @@ const CONFIG_LANG = {
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 조용한 분위기 유지</h4><p>고토쿠지 주변은 조용한 주택가입니다. 참배 중 큰 소리로 대화하지 마시기 바랍니다.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 불상·마네키네코 접촉 금지</h4><p>마네키네코나 불상에 절대 손을 대지 마십시오. 소중한 문화재 보호에 협조해 주십시오.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 울타리 내부 출입 금지</h4><p>삼중탑 기단부나 쇼후쿠덴 주위의 보호 울타리 안으로 절대 들어가지 마십시오.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 음량 조절</h4><p>음성 가이드 재생 시 이어폰을 사용하거나 음량을 최소로 줄여 주십시오.</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 보행 중 스마트폰 사용 금지</h4><p>충돌 및 낙상 방지를 위해 안전한 곳에 멈춘 뒤 화면을 확인해 주십시오.</p></div></div>`,
     mannersGuideText:"아래 항목을 확인하고 체크박스를 표시해 주세요",
     heroTitle:"<em>행운의 고양이 발상지</em>고토쿠지 프리미엄 DX",
-    priceTitle:"경내 10대 명소 완전 정복 패스",priceIncludes:"10개소 내비 · 기기 동기화 · 무료 오미쿠지",
+    priceTitle:"경내 10대 명소 완전 정복 패스",priceIncludes:"10개소 내비 · AI 내레이션 · 무료 오미쿠지",
     freeOmiBadge:"🎁 특전：<br>오미쿠지 무료！",
     buyBtn:"🐱 &nbsp; 프리미엄 패스 구매 &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe 안전 결제 · 브라우저를 닫아도 진행상황 자동 복원",
     sampleTitle:"✨ 체험 미리보기",
     sampleDesc:"패스 구매 후 삼중탑 고양이 클로즈업 해설, 이이 나오스케 묘소 경로 안내, ElevenLabs AI 음성 가이드가 모두 해제됩니다.",
-    features:["<strong>👥 동행자 기기 무료 동기화</strong> — 1인 구매 후 최대 4대 기기를 무료로 동기화할 수 있습니다.","<strong>🎋 무료 오미쿠지 특전</strong> — 연애·이사·건강 분야의 오미쿠지를 추가 요금 없이 뽑을 수 있습니다.","<strong>🗺️ 현장 촬영 사진으로 10대 명소 순례</strong> — 산몬에서 지조도까지 실제 사진 기반 완벽한 경로 안내."],
-    shareTitle:"동행자 기기 동기화",shareSubtitle:"1개 패스로 최대 4대까지 무료 연결",
-    shareBoxDesc:"<strong>【공유 방법】</strong> 동행자의 스마트폰 카메라로 QR 코드를 스캔하면 추가 결제 없이 모든 기기에서 가이드가 열립니다.",
-    shareNextBtn:"전원 동기화 완료 → 다음",
+    features:["<strong>🎋 무료 오미쿠지 특전</strong> — 연애·이사·건강 분야의 오미쿠지를 추가 요금 없이 뽑을 수 있습니다.","<strong>🗺️ 현장 촬영 사진으로 10대 명소 순례</strong> — 산몬에서 지조도까지 실제 사진 기반 완벽한 경로 안내."],
     surveyTitle:"오늘 방문에 대해<br><em>알려주세요</em>",
     partyLabel:"01 — 동행자 확인",historyLabel:"02 — 방문 횟수",
     optSolo:"혼자",optCouple:"커플/부부",optFamily:"가족",optFriends:"친구/그룹",
@@ -2180,9 +2123,9 @@ const CONFIG_LANG = {
     checkoutPayLabel:"프리미엄 체험 시작하기",checkoutSkipLabel:"데모로 건너뛰기 →",
     checkoutPriceOrig:"<s>정상가 ¥1,500</s>",checkoutPriceMonitor:"한정 모니터 가격",
     manganMsg:"마네키네코의 가호 아래, 고토쿠지 10대 명소 순례를 모두 마쳤습니다. 이 인연이 당신에게 큰 복운을 가져다주기를 바랍니다. 10개의 퀴즈를 모두 맞히고 어주인을 만원성취했습니다.",
-    syncTitle:"동행자 기기 동기화",syncSubtitle:"동행자 기기 동기화",
-    syncDesc:"동행자의 스마트폰 카메라로 QR 코드를 스캔해 주세요. 추가 비용 없이 최대 4대까지 완전한 가이드를 공유할 수 있습니다.",
-    syncNextBtn:"동기화 후 계속 ➔",syncSkipNote:"건너뛰기 →",
+    syncTitle:"구매해 주셔서 감사합니다",syncSubtitle:"구매 완료",
+    syncDesc:"참배 가이드를 준비하고 있습니다. 잠시만 기다려 주세요.",
+    syncNextBtn:"계속 ➔",syncSkipNote:"건너뛰기 →",
     mannersTitle:"경내 참배 규칙・매너",mannersSubtitle:"매너 및 안전 규칙",
     mannersAgreeBtn:"매너 확인 후 진행 ➔",
     steps:[
@@ -2210,10 +2153,7 @@ const CONFIG_LANG = {
     buyBtn:"🐱 &nbsp; Comprar Pase Premium &nbsp; ¥1,000",
     stripeNote:"🔒 Pago seguro con Stripe",
     sampleTitle:"✨ Vista previa de la experiencia",sampleDesc:"Tras la compra: guía de voz IA y mapas detallados disponibles.",
-    features:["<strong>👥 Sincronización multidispositivo</strong> — Compartir gratis hasta 4 dispositivos.","<strong>🎋 Omikuji Gratis</strong> — Oráculo digital 100% gratuito.","<strong>🗺️ 10 Hitos</strong> — Navegación con fotos reales del lugar."],
-    shareTitle:"Sincronizar dispositivos",shareSubtitle:"COMPANION DEVICE SYNC",
-    shareBoxDesc:"<strong>Compartir:</strong> Escanea el código QR con la cámara de tu dispositivo.",
-    shareNextBtn:"Todos sincronizados ➔",
+    features:["<strong>🎋 Omikuji Gratis</strong> — Oráculo digital 100% gratuito.","<strong>🗺️ 10 Hitos</strong> — Navegación con fotos reales del lugar."],
     surveyTitle:"Tu perfil de visita",partyLabel:"01 — Acompañantes",historyLabel:"02 — Historial",
     optSolo:"Solo",optCouple:"Pareja",optFamily:"Familia",optFriends:"Amigos",
     optFirst:"Primera vez",optRepeat:"Ya he venido",
@@ -2252,9 +2192,9 @@ const CONFIG_LANG = {
     checkoutPayLabel:"Iniciar Experiencia Premium",checkoutSkipLabel:"Saltar al Demo →",
     checkoutPriceOrig:"<s>Precio normal ¥1.500</s>",checkoutPriceMonitor:"Precio especial de lanzamiento",
     manganMsg:"Bajo la bendición del Gato de la Fortuna, has completado los 10 lugares emblemáticos de Goutokuji. Que este sagrado vínculo te traiga una gran fortuna. Respondiste correctamente las 10 preguntas y completaste tu colección de sellos Goshuin.",
-    syncTitle:"Sincronizar Dispositivos de Compañeros",syncSubtitle:"COMPANION DEVICE SYNC",
-    syncDesc:"Abre la cámara de tu acompañante y escanea el código QR. El guía completo se despliega en hasta 4 dispositivos sin coste adicional.",
-    syncNextBtn:"Sincronizado, continuar ➔",syncSkipNote:"Omitir →",
+    syncTitle:"Gracias por su compra",syncSubtitle:"Compra completada",
+    syncDesc:"Estamos preparando su guía de peregrinación. Espere un momento.",
+    syncNextBtn:"Continuar ➔",syncSkipNote:"Omitir →",
     mannersTitle:"Reglas y Modales del Santuario",mannersSubtitle:"MANNERS & SAFETY RULES",
     mannersAgreeBtn:"Confirmar y Continuar ➔",
     mannersGuideText:"Por favor revise y marque todos los elementos a continuación",
@@ -2285,10 +2225,7 @@ const CONFIG_LANG = {
     buyBtn:"🐱 &nbsp; Acheter le Pass Premium &nbsp; ¥1,000",
     stripeNote:"🔒 Paiement sécurisé par Stripe",
     sampleTitle:"✨ Aperçu de l'expérience",sampleDesc:"Après l'achat : guide vocal IA et cartes détaillées disponibles.",
-    features:["<strong>👥 Synchronisation multi-appareils</strong> — Partage gratuit jusqu'à 4 appareils.","<strong>🎋 Omikuji Gratuit</strong> — Oracle numérique 100% gratuit.","<strong>🗺️ 10 Sites</strong> — Navigation avec photos réelles du lieu."],
-    shareTitle:"Synchroniser les appareils",shareSubtitle:"COMPANION DEVICE SYNC",
-    shareBoxDesc:"<strong>Partage :</strong> Scannez le code QR avec l'appareil photo de votre appareil.",
-    shareNextBtn:"Tous synchronisés ➔",
+    features:["<strong>🎋 Omikuji Gratuit</strong> — Oracle numérique 100% gratuit.","<strong>🗺️ 10 Sites</strong> — Navigation avec photos réelles du lieu."],
     surveyTitle:"Votre profil de visite",partyLabel:"01 — Accompagnateurs",historyLabel:"02 — Historique",
     optSolo:"Seul",optCouple:"Couple",optFamily:"Famille",optFriends:"Amis",
     optFirst:"Première fois",optRepeat:"Déjà venu",
@@ -2327,9 +2264,9 @@ const CONFIG_LANG = {
     checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutSkipLabel:"Passer à la Démo →",
     checkoutPriceOrig:"<s>Prix normal ¥1.500</s>",checkoutPriceMonitor:"Prix de lancement limité",
     manganMsg:"Sous la bénédiction du Chat Porte-Bonheur, vous avez visité les 10 sites emblématiques de Goutokuji. Que ce lien sacré vous apporte une grande fortune. Vous avez répondu correctement aux 10 quiz et complété votre collection de tampons Goshuin.",
-    syncTitle:"Synchroniser les Appareils Compagnons",syncSubtitle:"COMPANION DEVICE SYNC",
-    syncDesc:"Ouvrez l'appareil photo de votre compagnon et scannez le code QR. Le guide complet se déploie sur jusqu'à 4 appareils sans frais supplémentaires.",
-    syncNextBtn:"Synchronisé, continuer ➔",syncSkipNote:"Passer →",
+    syncTitle:"Merci pour votre achat",syncSubtitle:"Achat terminé",
+    syncDesc:"Nous préparons votre guide de pèlerinage. Veuillez patienter un instant.",
+    syncNextBtn:"Continuer ➔",syncSkipNote:"Passer →",
     mannersTitle:"Règles et Bonnes Manières du Sanctuaire",mannersSubtitle:"MANNERS & SAFETY RULES",
     mannersAgreeBtn:"Confirmer et Continuer ➔",
     mannersGuideText:"Veuillez vérifier et cocher tous les éléments ci-dessous",
@@ -2351,7 +2288,7 @@ const CONFIG_LANG = {
 
 
 
-const state={lang:null,group:null,visit:null,currentStep:0,surveyRatings:{overall:0,guide:0,quiz:0,price:0},omikujiDraws:0,omikujiGroupSize:1,visitedSpots:new Set(),foundCats:[]};
+const state={lang:null,group:null,visit:null,currentStep:0,surveyRatings:{overall:0,guide:0,quiz:0,price:0},omikujiDraws:0,visitedSpots:new Set(),foundCats:[]};
 let quizAnswered=false,shortsInterval=null,shortsIdx=0;
 
 /* タップ時の金色波紋エフェクト */
@@ -2867,11 +2804,6 @@ function applyLangUI(lk){
   const fl=document.getElementById('dynamicFeatureList');
   if(fl) fl.innerHTML=d.features.map(f=>`<div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">${f}</div></div>`).join('');
 
-  _set('lblShareTitle','textContent',d.shareTitle);
-  _set('lblShareSubtitle','textContent',d.shareSubtitle);
-  _set('lblShareBoxDesc','innerHTML',d.shareBoxDesc);
-  _set('lblShareNextBtn','textContent',d.shareNextBtn);
-
   _set('lblSurveyTitle','innerHTML',d.surveyTitle);
   _set('lblPartyLabel','textContent',d.partyLabel);
   _set('lblHistoryLabel','textContent',d.historyLabel);
@@ -2913,10 +2845,10 @@ function applyLangUI(lk){
   _set('checkoutInc4','textContent',d.checkoutInc4||(isJa?'無料おみくじ＆SNSシェア':'Free Omikuji & Social Sharing'));
   _set('checkoutPayLabel','textContent',d.checkoutPayLabel||(isJa?'プレミアム体験を開始する':'Start Premium Experience'));
   _set('checkoutSkipLabel','textContent',d.checkoutSkipLabel||(isJa?'スキップしてデモ体験 →':'Skip to Demo →'));
-  _set('syncTitle','textContent',d.syncTitle||(isJa?'同行者デバイスを同期':'Sync Companion Devices'));
-  _set('syncSubtitle','textContent',d.syncSubtitle||'COMPANION DEVICE SYNC');
-  _set('syncDesc','innerHTML',d.syncDesc||(isJa?'同行者のスマホで標準カメラを起動し、QRコードをスキャンしてください。追加費用なしで最大4台のデバイスに完全なガイドが展開されます。':'Open your companion\'s camera app and scan the QR code to share the full guide — no extra payment required for up to 4 devices.'));
-  _set('syncNextBtn','textContent',d.syncNextBtn||(isJa?'同期して次へ ➔':'Sync & Proceed ➔'));
+  _set('syncTitle','textContent',d.syncTitle||(isJa?'ご購入ありがとうございます':'Purchase Complete'));
+  _set('syncSubtitle','textContent',d.syncSubtitle||'PURCHASE COMPLETE');
+  _set('syncDesc','innerHTML',d.syncDesc||(isJa?'参拝ガイドの準備をしています。しばらくお待ちください。':'Preparing your pilgrimage guide. Please wait a moment.'));
+  _set('syncNextBtn','textContent',d.syncNextBtn||(isJa?'次へ進む ➔':'Proceed ➔'));
   _set('syncSkipNote','innerHTML',`<span onclick="playClickSound();showPage('page-manners')" style="cursor:pointer;color:var(--gold);opacity:.6">${d.syncSkipNote||(isJa?'スキップして次へ':'Skip →')}</span>`);
   _set('mannersTitle','textContent',d.mannersTitle||(isJa?'境内参拝規則・マナー':'Sanctuary Rules & Manners'));
   _set('mannersSubtitle','textContent',d.mannersSubtitle||'MANNERS & SAFETY RULES');
@@ -2988,7 +2920,7 @@ if(_bs)_bs.addEventListener('click',()=>{
   const isJa=state.lang==='ja';
   showToast('STRIPE API',isJa?'プレミアムライセンス確定（¥1,000）。決済が完了しました。':'Premium license secured (¥1,000). Payment complete.');
   localStorage.setItem('goutokuji_dx_paid','true');
-  setTimeout(()=>showPage('page-group-share'),900);
+  setTimeout(()=>showPage('page-full-map'),900);
 });}
 
 function selectOption(btn){
@@ -5019,7 +4951,6 @@ function restartTour(){
   state.currentStep=0;
   state.surveyRatings={overall:0,guide:0,quiz:0,price:0};
   state.omikujiDraws=0;
-  state.omikujiGroupSize=1;
   state.visitedSpots=new Set();
   state.foundCats=[];
 
