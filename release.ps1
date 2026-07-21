@@ -25,7 +25,7 @@ if ($changes) {
     git add -A
     git commit -m "$message"
 
-    Write-Host "[3/5] GitHub（main）へ push（デバッグ用Netlifyが自動ビルドされます）..."
+    Write-Host "[3/5] GitHub（main）へ push（デバッグ用Netlifyはビルド停止設定のため反映されません。現地確認が必要な場合は別途Netlify側でビルドを再開してください）..."
     git push origin main
 } else {
     Write-Host "コミットする変更はありません。既存の main の内容で本番反映を行います。" -ForegroundColor Yellow

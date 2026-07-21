@@ -156,6 +156,19 @@
   .stars{color:var(--gold);letter-spacing:1px;white-space:nowrap;}
   .empty-msg{color:var(--text-muted);font-size:.8125rem;padding:16px 0;}
   #loadErr{color:var(--critical);font-size:.8125rem;}
+
+  .analyze-content{font-size:.875rem;line-height:1.75;color:var(--text-secondary);}
+  .analyze-content h2,.analyze-content h3{
+    color:var(--gold-light);
+    font-size:.9375rem;
+    margin:18px 0 8px;
+  }
+  .analyze-content h2:first-child,.analyze-content h3:first-child{margin-top:0;}
+  .analyze-content p{margin:0 0 10px;}
+  .analyze-content ul{margin:0 0 12px;padding-left:20px;}
+  .analyze-content li{margin-bottom:6px;}
+  .analyze-content strong{color:var(--text-primary);}
+  .analyze-loading{color:var(--text-muted);font-size:.8125rem;}
 </style>
 </head>
 <body>
@@ -208,6 +221,14 @@
     <div class="card-sub" id="surveySub"></div>
     <div id="surveyTableWrap"></div>
   </div>
+
+  <div class="card">
+    <h2>🤖 AIによる分析・改善提案</h2>
+    <div class="card-sub">上記のアンケート・利用データをもとに、傾向分析と改善提案をAIが生成します（ボタンを押すたびにAPIを呼び出すため、必要なタイミングで実行してください）</div>
+    <button class="refresh-btn" id="analyzeBtn" onclick="analyzeFeedback()" style="width:auto;padding:9px 18px;font-size:.8125rem;margin-bottom:14px;">🔍 分析を実行</button>
+    <div id="analyzeErr" style="color:var(--critical);font-size:.8125rem;margin-bottom:8px;"></div>
+    <div id="analyzeResult"></div>
+  </div>
 </div>
 
 <script>
@@ -252,6 +273,8 @@ async function loadStats(isLogin){
 
 function _fmtPct(v){return v===null||v===undefined?'—':Math.round(v*100)+'%';}
 function _fmtNum(v){return v===null||v===undefined?'—':v;}
+function _fmtAvg(v){return v===null||v===undefined?'—':v.toFixed(1);}
+function _stars(n){n=n||0;return '★'.repeat(n)+'☆'.repeat(5-n);}
 
 function _barChart(el,items,{max}={}){
   el.innerHTML='';
@@ -269,13 +292,19 @@ function _barChart(el,items,{max}={}){
   });
 }
 
+let _lastData=null;
+
 function render(data){
+  _lastData=data;
   const tiles=document.getElementById('tiles');
   tiles.innerHTML=`
     <div class="tile"><div class="tile-label">総購入数（当日パス発行）</div><div class="tile-value">${_fmtNum(data.totalPurchases)}</div></div>
     <div class="tile"><div class="tile-label">10スポット完全踏破率</div><div class="tile-value">${_fmtPct(data.completionRate)} <small>(${data.completedCount}/${data.totalVisitorsWithProgress})</small></div></div>
-    <div class="tile"><div class="tile-label">平均満足度</div><div class="tile-value">${data.avgRating!==null?data.avgRating.toFixed(1):'—'} <small>/ 5（n=${data.surveyCount}）</small></div></div>
     <div class="tile"><div class="tile-label">おみくじ実施数</div><div class="tile-value">${_fmtNum(data.omikujiDrawCount)}</div></div>
+    <div class="tile"><div class="tile-label">総合満足度</div><div class="tile-value">${_fmtAvg(data.avgRating)} <small>/ 5（n=${data.surveyCount}）</small></div></div>
+    <div class="tile"><div class="tile-label">ガイドの分かりやすさ</div><div class="tile-value">${_fmtAvg(data.avgGuideRating)} <small>/ 5</small></div></div>
+    <div class="tile"><div class="tile-label">クイズの楽しさ</div><div class="tile-value">${_fmtAvg(data.avgQuizRating)} <small>/ 5</small></div></div>
+    <div class="tile"><div class="tile-label">料金への納得感</div><div class="tile-value">${_fmtAvg(data.avgPriceRating)} <small>/ 5</small></div></div>
   `;
 
   const stampItems=data.stampCounts.map((v,i)=>({label:'S'+(i+1),value:v}));
@@ -321,19 +350,110 @@ function render(data){
   }else{
     wrap.innerHTML=`
       <table>
-        <thead><tr><th>日時</th><th>言語</th><th>評価</th><th>コメント</th></tr></thead>
+        <thead><tr><th>日時</th><th>言語</th><th>総合</th><th>ガイド</th><th>クイズ</th><th>料金</th><th>コメント</th></tr></thead>
         <tbody>
           ${data.surveys.map(s=>`
             <tr>
               <td>${new Date(s.created_at).toLocaleString('ja-JP')}</td>
               <td>${(s.lang||'-').toUpperCase()}</td>
-              <td class="stars">${'★'.repeat(s.rating||0)}${'☆'.repeat(5-(s.rating||0))}</td>
+              <td class="stars">${_stars(s.rating)}</td>
+              <td class="stars">${_stars(s.guideRating)}</td>
+              <td class="stars">${_stars(s.quizRating)}</td>
+              <td class="stars">${_stars(s.priceRating)}</td>
               <td class="comment">${(s.comment||'').replace(/</g,'&lt;')}</td>
             </tr>
           `).join('')}
         </tbody>
       </table>
     `;
+  }
+}
+
+/* 簡易Markdown→HTML変換（外部ライブラリを使わず見出し・太字・箇条書き・段落のみ対応） */
+function _mdToHtml(md){
+  const esc=(s)=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const lines=md.replace(/\r\n/g,'\n').split('\n');
+  let html='';
+  let inList=false;
+  const closeList=()=>{if(inList){html+='</ul>';inList=false;}};
+  for(let raw of lines){
+    const line=raw.trim();
+    if(!line){closeList();continue;}
+    const heading=line.match(/^(#{1,4})\s+(.*)$/);
+    if(heading){
+      closeList();
+      const lvl=Math.min(heading[1].length+1,4);
+      html+=`<h${lvl}>${esc(heading[2]).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</h${lvl}>`;
+      continue;
+    }
+    if(/^-{3,}$/.test(line)){
+      closeList();
+      html+='<hr style="border:none;border-top:1px solid var(--gridline);margin:14px 0;">';
+      continue;
+    }
+    const bullet=line.match(/^[-*]\s+(.*)$/);
+    if(bullet){
+      if(!inList){html+='<ul>';inList=true;}
+      html+=`<li>${esc(bullet[1]).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</li>`;
+      continue;
+    }
+    closeList();
+    html+=`<p>${esc(line).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</p>`;
+  }
+  closeList();
+  return html;
+}
+
+async function analyzeFeedback(){
+  const btn=document.getElementById('analyzeBtn');
+  const errEl=document.getElementById('analyzeErr');
+  const resultEl=document.getElementById('analyzeResult');
+  errEl.textContent='';
+  if(!_lastData){errEl.textContent='先にダッシュボードを読み込んでください。';return;}
+
+  btn.disabled=true;
+  const _origLabel=btn.textContent;
+  btn.textContent='分析中...';
+  resultEl.innerHTML='<div class="analyze-loading">AIがアンケート・利用データを分析しています（数十秒かかる場合があります）...</div>';
+
+  const stats={
+    totalPurchases:_lastData.totalPurchases,
+    completionRate:_lastData.completionRate,
+    completedCount:_lastData.completedCount,
+    totalVisitorsWithProgress:_lastData.totalVisitorsWithProgress,
+    stampCounts:_lastData.stampCounts,
+    omikujiRankCounts:_lastData.omikujiRankCounts,
+    avgRating:_lastData.avgRating,
+    avgGuideRating:_lastData.avgGuideRating,
+    avgQuizRating:_lastData.avgQuizRating,
+    avgPriceRating:_lastData.avgPriceRating,
+    surveys:_lastData.surveys,
+  };
+
+  try{
+    const res=await fetch('/.netlify/functions/analyze-feedback',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password:_pw,stats}),
+    });
+    if(res.status===401){
+      errEl.textContent='認証に失敗しました。再度ログインしてください。';
+      resultEl.innerHTML='';
+      return;
+    }
+    if(!res.ok){
+      errEl.textContent='分析に失敗しました。しばらくしてから再度お試しください。';
+      resultEl.innerHTML='';
+      return;
+    }
+    const data=await res.json();
+    resultEl.innerHTML=`<div class="analyze-content">${_mdToHtml(data.analysis||'')}</div>`;
+  }catch(e){
+    errEl.textContent='通信エラーが発生しました。';
+    resultEl.innerHTML='';
+  }finally{
+    btn.disabled=false;
+    btn.textContent=_origLabel;
   }
 }
 </script>

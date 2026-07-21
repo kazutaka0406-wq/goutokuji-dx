@@ -1846,7 +1846,10 @@ p{line-height:1.85}
     </div>
     <div class="feedback-card fade-up fade-up-1">
       <div class="feedback-title" id="lblSurveyFormTitle">Feedback Survey</div>
-      <div><div class="survey-label" id="lblSurveyStarLabel">Satisfaction:</div><div class="survey-stars"><button class="star-btn" onclick="rateStars(1)">★</button><button class="star-btn" onclick="rateStars(2)">★</button><button class="star-btn" onclick="rateStars(3)">★</button><button class="star-btn" onclick="rateStars(4)">★</button><button class="star-btn" onclick="rateStars(5)">★</button></div></div>
+      <div><div class="survey-label" id="lblSurveyStarLabel">Satisfaction:</div><div class="survey-stars" data-metric="overall"><button class="star-btn" onclick="rateStars('overall',1)">★</button><button class="star-btn" onclick="rateStars('overall',2)">★</button><button class="star-btn" onclick="rateStars('overall',3)">★</button><button class="star-btn" onclick="rateStars('overall',4)">★</button><button class="star-btn" onclick="rateStars('overall',5)">★</button></div></div>
+      <div><div class="survey-label" id="lblSurveyGuideLabel">Guide Clarity:</div><div class="survey-stars" data-metric="guide"><button class="star-btn" onclick="rateStars('guide',1)">★</button><button class="star-btn" onclick="rateStars('guide',2)">★</button><button class="star-btn" onclick="rateStars('guide',3)">★</button><button class="star-btn" onclick="rateStars('guide',4)">★</button><button class="star-btn" onclick="rateStars('guide',5)">★</button></div></div>
+      <div><div class="survey-label" id="lblSurveyQuizLabel">Quiz Enjoyment:</div><div class="survey-stars" data-metric="quiz"><button class="star-btn" onclick="rateStars('quiz',1)">★</button><button class="star-btn" onclick="rateStars('quiz',2)">★</button><button class="star-btn" onclick="rateStars('quiz',3)">★</button><button class="star-btn" onclick="rateStars('quiz',4)">★</button><button class="star-btn" onclick="rateStars('quiz',5)">★</button></div></div>
+      <div><div class="survey-label" id="lblSurveyPriceLabel">Value for Price:</div><div class="survey-stars" data-metric="price"><button class="star-btn" onclick="rateStars('price',1)">★</button><button class="star-btn" onclick="rateStars('price',2)">★</button><button class="star-btn" onclick="rateStars('price',3)">★</button><button class="star-btn" onclick="rateStars('price',4)">★</button><button class="star-btn" onclick="rateStars('price',5)">★</button></div></div>
       <div><div class="survey-label" id="lblSurveyTextLabel">Comments:</div><textarea class="survey-textarea" id="surveyComments" placeholder="Please write here..." oninput="localStorage.setItem('goutokuji_dx_survey_comment',this.value)"></textarea></div>
       <button class="btn-secondary" onclick="submitFeedback()" style="border-color:var(--sage);color:#a8d4a0" id="lblSurveySubmitBtn">Submit</button>
     </div>
@@ -1897,7 +1900,7 @@ const CONFIG_LANG = {
       {rank:"⭐ Middle Fortune (中吉)",text:"<strong>【Romance】</strong> Warm connections are forming.<br><strong>【Moving】</strong> Steady progress. Take careful steps.<br><strong>【Health】</strong> Balance is key. Good sleep recommended."}
     ],
     nextSpots:"Recommended Nearby Routes",restartBtn:"↺ Reset &amp; Start New Tour",
-    surveyFormTitle:"Experience Feedback",surveyStarLabel:"Satisfaction:",surveyTextLabel:"Comments:",surveySubmitBtn:"Submit",
+    surveyFormTitle:"Experience Feedback",surveyStarLabel:"Satisfaction:",surveyGuideLabel:"Guide Clarity:",surveyQuizLabel:"Quiz Enjoyment:",surveyPriceLabel:"Value for Price:",surveyTextLabel:"Comments:",surveySubmitBtn:"Submit",
     mapEyebrow:"Sanctuary Overview",
     mapTitle:"<em>Sanctuary Master Map</em>Goutokuji",
     mapDescTitle:"📍 10 Key Landmarks",
@@ -1979,7 +1982,7 @@ const CONFIG_LANG = {
       {rank:"⭐ 中吉 (Chu-Kichi)",text:"<strong>【結婚・恋愛】</strong> 温かな縁が育まれつつあります。<br><strong>【転居・方位】</strong> 着実な前進。慎重な一歩が吉。<br><strong>【身体・健康】</strong> バランスが鍵。良質な睡眠と自然の中の散歩を。"}
     ],
     nextSpots:"あなたにおすすめの周辺スポット",restartBtn:"↺ 進捗リセット・新ツアー",
-    surveyFormTitle:"アプリ満足度アンケート",surveyStarLabel:"総合満足度:",surveyTextLabel:"改善点・ご感想:",surveySubmitBtn:"アンケートを送信",
+    surveyFormTitle:"アプリ満足度アンケート",surveyStarLabel:"総合満足度:",surveyGuideLabel:"ガイドの分かりやすさ:",surveyQuizLabel:"クイズの楽しさ:",surveyPriceLabel:"料金への納得感:",surveyTextLabel:"改善点・ご感想:",surveySubmitBtn:"アンケートを送信",
     mapEyebrow:"境内ご案内",
     mapTitle:"<em>境内全体マップ</em>豪徳寺",
     mapDescTitle:"📍 境内10大スポット案内",
@@ -2051,7 +2054,7 @@ const CONFIG_LANG = {
       {rank:"⭐ 中吉",text:"<strong>【恋爱·婚姻】</strong> 温暖的缘分正在形成。<br><strong>【搬迁·方位】</strong> 稳步前进，谨慎迈步。<br><strong>【身体·健康】</strong> 均衡为关键，充足睡眠推荐。"}
     ],
     nextSpots:"推荐周边景点",restartBtn:"↺ 重置 &amp; 开始新游览",
-    surveyFormTitle:"使用体验满意度调查",surveyStarLabel:"总体满意度:",surveyTextLabel:"改善建议或意见:",surveySubmitBtn:"提交反馈",
+    surveyFormTitle:"使用体验满意度调查",surveyStarLabel:"总体满意度:",surveyGuideLabel:"讲解易懂程度:",surveyQuizLabel:"问答趣味性:",surveyPriceLabel:"价格满意度:",surveyTextLabel:"改善建议或意见:",surveySubmitBtn:"提交反馈",
     staticInfo:`<strong>【开放时间】</strong> 6:00〜17:00 ｜ 寺务所: 8:00〜16:30<br><strong>【联系方式】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     wmTitle:"<em>欢迎来到豪德寺</em>Welcome to Goutokuji",wmNextBtn:"继续 ➔",
     wmNarrLabel:"🎙 语音导览 — 境内全体解说",wmPlayLabel:"播放语音导览",
@@ -2140,7 +2143,7 @@ const CONFIG_LANG = {
       {rank:"⭐ 중길（中吉）",text:"<strong>【연애·결혼】</strong> 따뜻한 인연이 무르익고 있습니다.<br><strong>【이사·방위】</strong> 착실하게 전진하세요. 신중한 한 걸음이 길합니다.<br><strong>【건강】</strong> 균형이 핵심입니다. 충분한 수면을 권장합니다."}
     ],
     nextSpots:"추천 주변 명소",restartBtn:"↺ 초기화 &amp; 새 투어 시작",
-    surveyFormTitle:"이용 만족도 조사",surveyStarLabel:"종합 만족도:",surveyTextLabel:"개선 사항 또는 의견:",surveySubmitBtn:"설문 제출",
+    surveyFormTitle:"이용 만족도 조사",surveyStarLabel:"종합 만족도:",surveyGuideLabel:"가이드 이해도:",surveyQuizLabel:"퀴즈 재미:",surveyPriceLabel:"가격 만족도:",surveyTextLabel:"개선 사항 또는 의견:",surveySubmitBtn:"설문 제출",
     staticInfo:`<strong>【관람 시간】</strong> 6:00〜17:00 ｜ 사무소: 8:00〜16:30<br><strong>【문의】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     wmTitle:"<em>고토쿠지에 오신 것을 환영합니다</em>Welcome to Goutokuji",wmNextBtn:"다음으로 ➔",
     wmNarrLabel:"🎙 오디오 가이드 — 경내 전체 내레이션",wmPlayLabel:"오디오 가이드 재생",
@@ -2226,7 +2229,7 @@ const CONFIG_LANG = {
       {rank:"⭐ Fortuna Media (中吉)",text:"<strong>[Amor]</strong> Conexiones cálidas se forman.<br><strong>[Mudanza]</strong> Progreso constante.<br><strong>[Salud]</strong> El equilibrio es la clave."}
     ],
     nextSpots:"Rutas cercanas recomendadas",restartBtn:"↺ Reiniciar Tour",
-    surveyFormTitle:"Encuesta de satisfacción",surveyStarLabel:"Satisfacción:",surveyTextLabel:"Comentarios:",surveySubmitBtn:"Enviar",
+    surveyFormTitle:"Encuesta de satisfacción",surveyStarLabel:"Satisfacción:",surveyGuideLabel:"Claridad de la guía:",surveyQuizLabel:"Diversión del cuestionario:",surveyPriceLabel:"Satisfacción con el precio:",surveyTextLabel:"Comentarios:",surveySubmitBtn:"Enviar",
     welcomeNarr:"Antes de comenzar nuestra visita, permítame presentarle la imagen completa de este hermoso y antiguo templo.\\n\\nGoutokuji es un vasto santuario sagrado envuelto en una exuberante vegetación verde.\\n\\nEl nombre oficial del templo es Daikei-zan Goutokuji, fundado en 1480 durante el período Muromachi. En 1633, el señor Ii Naotaka estableció este templo como el lugar de culto principal de la familia Ii en Edo. El nombre del templo deriva del nombre budista póstumo de Naotaka.\\n\\nGoutokuji es también conocido como el lugar de nacimiento del gato de la fortuna. Según la leyenda, el señor Naotaka fue invitado por un gato blanco a entrar al templo. Se detuvo y momentos después estalló una tormenta. Gracias al gato fue protegido, y el gato fue honrado como portador de buena fortuna con el nombre de Maneki-neko.\\n\\nRuta recomendada: Camine recto por el sendero bordeado de pinos y pase por la Puerta Sanmon. Verá la Pagoda de Tres Pisos a su izquierda — en algún lugar, gatos de la fortuna ocultos esperan ser descubiertos. Frente a usted está el Salón del Buda, y más allá el Shofuku-den. Tras el Cementerio de la Familia Ii, continúe por el Salón Principal, el Salón de los Patriarcas, la Puerta Roja, la Torre de la Campana y el Salón Jizo.\\n\\nEn cada lugar encontrará fotografías reales y preguntas de quiz históricas exclusivas. Responda todos correctamente y le esperará un oráculo especial.\\n\\nAhora, smartphone en mano, respire profundamente y comience su peregrinación.",
     wmTitle:"<em>Bienvenido a Goutokuji</em>Welcome to Goutokuji",wmNextBtn:"Continuar ➔",
     wmNarrLabel:"🎙 Audioguía — Narración del Recinto",wmPlayLabel:"Reproducir Audioguía",
@@ -2301,7 +2304,7 @@ const CONFIG_LANG = {
       {rank:"⭐ Fortune Moyenne (中吉)",text:"<strong>[Amour]</strong> Des connexions chaleureuses se forment.<br><strong>[Déménagement]</strong> Progrès constant.<br><strong>[Santé]</strong> L'équilibre est la clé."}
     ],
     nextSpots:"Itinéraires recommandés à proximité",restartBtn:"↺ Recommencer",
-    surveyFormTitle:"Enquête de satisfaction",surveyStarLabel:"Satisfaction :",surveyTextLabel:"Commentaires :",surveySubmitBtn:"Envoyer",
+    surveyFormTitle:"Enquête de satisfaction",surveyStarLabel:"Satisfaction :",surveyGuideLabel:"Clarté du guide :",surveyQuizLabel:"Plaisir du quiz :",surveyPriceLabel:"Satisfaction tarifaire :",surveyTextLabel:"Commentaires :",surveySubmitBtn:"Envoyer",
     welcomeNarr:"Avant de commencer notre visite, laissez-moi vous présenter le portrait complet de ce magnifique et ancien temple.\\n\\nGoutokuji est un vaste sanctuaire sacré enveloppé d'une végétation luxuriante.\\n\\nLe nom officiel du temple est Daikei-zan Goutokuji, fondé en 1480 sous la période Muromachi. En 1633, le seigneur Ii Naotaka a établi ce temple comme lieu de culte principal de la famille Ii à Edo. Le nom du temple est dérivé du nom bouddhiste posthume de Naotaka.\\n\\nGoutokuji est également connu comme le lieu de naissance du chat porte-bonheur. Selon la légende, le seigneur Naotaka fut invité par un chat blanc à entrer dans le temple. Il s'arrêta et peu après une violente tempête éclata. Protégé grâce au chat, il honora l'animal comme porteur de bonne fortune, le nommant Maneki-neko.\\n\\nItinéraire recommandé : Marchez tout droit le long de l'allée de pins et passez par la Porte Sanmon. Vous verrez la Pagode à Trois Étages sur votre gauche — quelque part en elle, des chats porte-bonheur cachés attendent d'être découverts. Devant vous se trouve le Pavillon du Bouddha, et plus loin le Shofuku-den. Après le Cimetière de la Famille Ii, continuez par le Hall Principal, la Salle des Patriarches, la Porte Rouge, la Tour de la Cloche et enfin le Hall Jizo.\\n\\nÀ chaque endroit, vous trouverez de vraies photos et des questions de quiz historiques exclusives. Répondez correctement à tous et un oracle spécial vous attend.\\n\\nMaintenant, smartphone en main, respirez profondément et commencez votre pèlerinage.",
     wmTitle:"<em>Bienvenue à Goutokuji</em>Welcome to Goutokuji",wmNextBtn:"Continuer ➔",
     wmNarrLabel:"🎙 Audioguide — Narration du Sanctuaire",wmPlayLabel:"Lire l'Audioguide",
@@ -2348,7 +2351,7 @@ const CONFIG_LANG = {
 
 
 
-const state={lang:null,group:null,visit:null,currentStep:0,rating:0,omikujiDraws:0,omikujiGroupSize:1,visitedSpots:new Set(),foundCats:[]};
+const state={lang:null,group:null,visit:null,currentStep:0,surveyRatings:{overall:0,guide:0,quiz:0,price:0},omikujiDraws:0,omikujiGroupSize:1,visitedSpots:new Set(),foundCats:[]};
 let quizAnswered=false,shortsInterval=null,shortsIdx=0;
 
 /* タップ時の金色波紋エフェクト */
@@ -2462,7 +2465,7 @@ window.addEventListener('DOMContentLoaded',()=>{
       step:parseInt(localStorage.getItem('goutokuji_dx_step'),10)||0,
       visited:_visited,
       cats:_cats,
-      rating:parseInt(localStorage.getItem('goutokuji_dx_rating'),10)||0,
+      surveyRatings:(()=>{try{return Object.assign({overall:0,guide:0,quiz:0,price:0},JSON.parse(localStorage.getItem('goutokuji_dx_survey_ratings')||'{}'));}catch(e){return {overall:0,guide:0,quiz:0,price:0};}})(),
       comment:localStorage.getItem('goutokuji_dx_survey_comment')||'',
       omikujiResult:(()=>{try{return JSON.parse(localStorage.getItem('goutokuji_dx_omikuji_result')||'null');}catch(e){return null;}})(),
     };
@@ -2559,7 +2562,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     applyLangUI(state.lang);
     const _surveyBox=document.getElementById('surveyComments');
     if(_surveyBox)_surveyBox.value=_restore.comment;
-    rateStars(_restore.rating);
+    ['overall','guide','quiz','price'].forEach(m=>rateStars(m,_restore.surveyRatings[m]));
     const _toClear=state.visitedSpots.size>=10;
     showPage(_toClear?'page-clear':'page-quest');
     if(_toClear&&_restore.omikujiResult){
@@ -2962,6 +2965,9 @@ function applyLangUI(lk){
   _set('lblRestartBtn','innerHTML',d.restartBtn);
   _set('lblSurveyFormTitle','textContent',d.surveyFormTitle);
   _set('lblSurveyStarLabel','textContent',d.surveyStarLabel);
+  _set('lblSurveyGuideLabel','textContent',d.surveyGuideLabel);
+  _set('lblSurveyQuizLabel','textContent',d.surveyQuizLabel);
+  _set('lblSurveyPriceLabel','textContent',d.surveyPriceLabel);
   _set('lblSurveyTextLabel','textContent',d.surveyTextLabel);
   _set('lblSurveySubmitBtn','textContent',d.surveySubmitBtn);
 }
@@ -3226,25 +3232,30 @@ async function executeOmikujiFlow(){
   }catch(e){}
 
   if(!fortune){
-    /* 本番：Claude APIでその場限りのおみくじを生成する。失敗時はダミーデータへフォールバック */
-    try{
-      const apiRes=await fetch('/.netlify/functions/omikuji',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({lang}),
-      });
-      if(apiRes.ok){
-        const data=await apiRes.json();
-        if(data&&data.fortune&&data.fortune.rank)fortune=data.fortune;
-      }
-    }catch(e){}
+    /* 「おみくじを引いている」演出の最短表示時間。
+       API応答を待ってから演出時間を追加で待つと二重に待たされるため、
+       演出とAPI呼び出しを並行させ、遅い方に合わせて描画する */
+    const _minDelay=new Promise(r=>setTimeout(r,1800));
 
-    if(!fortune){
+    const _draw=(async()=>{
+      /* 本番：Claude APIでその場限りのおみくじを生成する。失敗時はダミーデータへフォールバック */
+      try{
+        const apiRes=await fetch('/.netlify/functions/omikuji',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({lang}),
+        });
+        if(apiRes.ok){
+          const data=await apiRes.json();
+          if(data&&data.fortune&&data.fortune.rank)return data.fortune;
+        }
+      }catch(e){}
+
       const ranks=['大吉','中吉','小吉','吉','末吉','凶'];
       const rank=ranks[Math.floor(Math.random()*ranks.length)];
       const langData=OMIKUJI_DUMMY_DATA[lang]||OMIKUJI_DUMMY_DATA['en'];
       const fortuneData=langData[rank]||langData['凶'];
-      fortune={
+      return {
         rank:rank,
         rankReading:fortuneData.rankReading,
         poem:fortuneData.poem,
@@ -3256,15 +3267,18 @@ async function executeOmikujiFlow(){
         health:fortuneData.health,
         friendship:fortuneData.friendship,
       };
-    }
+    })();
 
+    const [,drawnFortune]=await Promise.all([_minDelay,_draw]);
+    fortune=drawnFortune;
     localStorage.setItem('goutokuji_dx_omikuji_result',JSON.stringify(fortune));
     _trackEvent('omikuji',fortune);
+  }else{
+    /* 復帰時は抽選済みなので短い演出のみ */
+    await new Promise(r=>setTimeout(r,300));
   }
 
-  setTimeout(()=>{
-    _renderOmikujiResult(fortune,lang,btn,res,d);
-  },5500);
+  _renderOmikujiResult(fortune,lang,btn,res,d);
 }
 
 function _renderOmikujiResult(fortune,lang,btn,res,d){
@@ -3753,13 +3767,25 @@ function updateStampRail_clear(){
   updateStampRail();
 }
 
-function rateStars(n){state.rating=n;localStorage.setItem('goutokuji_dx_rating',n);document.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('active',i<n));}
+function rateStars(metric,n){
+  state.surveyRatings[metric]=n;
+  localStorage.setItem('goutokuji_dx_survey_ratings',JSON.stringify(state.surveyRatings));
+  document.querySelectorAll(`.survey-stars[data-metric="${metric}"] .star-btn`).forEach((s,i)=>s.classList.toggle('active',i<n));
+}
 function submitFeedback(){
   const _comment=document.getElementById('surveyComments').value;
-  _trackEvent('survey',{rating:state.rating,comment:_comment});
+  _trackEvent('survey',{
+    rating:state.surveyRatings.overall,
+    guideRating:state.surveyRatings.guide,
+    quizRating:state.surveyRatings.quiz,
+    priceRating:state.surveyRatings.price,
+    comment:_comment,
+  });
   showToast('FEEDBACK',state.lang==='ja'?'アンケートのご協力ありがとうございました！':'Thank you for your valuable feedback!');
-  document.getElementById('surveyComments').value='';rateStars(0);
+  document.getElementById('surveyComments').value='';
+  ['overall','guide','quiz','price'].forEach(m=>rateStars(m,0));
   localStorage.removeItem('goutokuji_dx_survey_comment');
+  localStorage.removeItem('goutokuji_dx_survey_ratings');
 }
 
 function demoElevenLabs(){showToast('ELEVENLABS API','ElevenLabs API Call Demo\nModel: eleven_multilingual_v2\nStreaming audio narration would play here.');}
@@ -4981,7 +5007,7 @@ function restartTour(){
   state.group=null;
   state.visit=null;
   state.currentStep=0;
-  state.rating=0;
+  state.surveyRatings={overall:0,guide:0,quiz:0,price:0};
   state.omikujiDraws=0;
   state.omikujiGroupSize=1;
   state.visitedSpots=new Set();
@@ -4998,7 +5024,7 @@ function restartTour(){
   const omBtn=document.getElementById('btnDrawOmikuji');
   if(omBtn){const _d3=CONFIG_LANG[state.lang||'ja'];omBtn.disabled=false;omBtn.innerHTML='<span id="lblOmiBtnText">'+((_d3&&_d3.omiBtnText)||'Draw Fortune')+'</span>';}
   document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
-  try{rateStars(0);}catch(e){}
+  try{['overall','guide','quiz','price'].forEach(m=>rateStars(m,0));}catch(e){}
   
   const mb=document.getElementById('mannersAgreeBtn');
   if(mb){mb.disabled=true;mb.style.opacity='.45';mb.style.cursor='not-allowed';mb.style.pointerEvents='none';}

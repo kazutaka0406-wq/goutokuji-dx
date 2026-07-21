@@ -77,6 +77,9 @@ exports.handler = async function(event) {
       } else if (r.event_type === 'survey') {
         surveys.push({
           rating: r.payload && r.payload.rating,
+          guideRating: r.payload && r.payload.guideRating,
+          quizRating: r.payload && r.payload.quizRating,
+          priceRating: r.payload && r.payload.priceRating,
           comment: r.payload && r.payload.comment,
           lang: r.lang,
           created_at: r.created_at,
@@ -93,9 +96,16 @@ exports.handler = async function(event) {
     const completionRate = totalVisitorsWithProgress
       ? completedSessions.size / totalVisitorsWithProgress
       : null;
-    const avgRating = surveys.length
-      ? surveys.reduce((a, s) => a + (s.rating || 0), 0) / surveys.length
-      : null;
+    const _avgOf = (field) => {
+      const answered = surveys.filter((s) => s[field] > 0);
+      return answered.length
+        ? answered.reduce((a, s) => a + s[field], 0) / answered.length
+        : null;
+    };
+    const avgRating = _avgOf('rating');
+    const avgGuideRating = _avgOf('guideRating');
+    const avgQuizRating = _avgOf('quizRating');
+    const avgPriceRating = _avgOf('priceRating');
 
     return {
       statusCode: 200,
@@ -111,6 +121,9 @@ exports.handler = async function(event) {
         omikujiDrawCount: Object.values(omikujiRankCounts).reduce((a, b) => a + b, 0),
         omikujiSamples,
         avgRating,
+        avgGuideRating,
+        avgQuizRating,
+        avgPriceRating,
         surveyCount: surveys.length,
         surveys: surveys.slice(0, 200),
         rawEventCount: rows.length,
