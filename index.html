@@ -783,25 +783,6 @@ p{line-height:1.85}
   color:var(--mist);opacity:.5;letter-spacing:.1em}
 .checkout-free-note a{color:var(--gold);opacity:.7;cursor:pointer}
 
-#page-sync{background:var(--ink)}
-.sync-inner{
-  max-width:440px;width:100%;margin:0 auto;
-  padding:72px 28px 80px;display:flex;flex-direction:column;gap:28px}
-.sync-header{text-align:center}
-.sync-title{
-  font-family:var(--font-display);font-size:1.5rem;font-weight:300;
-  color:var(--white);margin-bottom:5px}
-.sync-subtitle{
-  font-family:var(--font-mono);font-size:.625rem;letter-spacing:.2em;
-  color:var(--gold);text-transform:uppercase;opacity:.75}
-.sync-desc{
-  background:rgba(255,255,255,.025);border:1px dashed rgba(201,168,76,.28);
-  padding:14px 16px;border-radius:4px;
-  font-size:.8125rem;color:var(--mist);line-height:1.7;opacity:.9}
-.sync-skip-note{
-  text-align:center;font-family:var(--font-mono);font-size:.625rem;
-  color:var(--mist);opacity:.45;letter-spacing:.1em}
-
 #page-manners{background:var(--ink)}
 .manners-inner{
   max-width:440px;width:100%;margin:0 auto;
@@ -1454,35 +1435,7 @@ p{line-height:1.85}
 
     <div class="checkout-free-note fade-up fade-up-3">
       🔒 Secured by Stripe
-      <span id="checkoutSkipWrap">&nbsp;·&nbsp;<span onclick="playClickSound();showPage('page-sync')" id="checkoutSkipLabel">スキップしてデモ体験 →</span></span>
-    </div>
-
-  </div>
-</section>
-
-<section class="page" id="page-sync">
-  <div class="sync-inner">
-
-    <div class="sync-header fade-up">
-      <div style="font-size:2rem;margin-bottom:12px">🎫</div>
-      <h2 class="sync-title" id="syncTitle">ご購入ありがとうございます</h2>
-      <div class="sync-subtitle" id="syncSubtitle">PURCHASE COMPLETE</div>
-    </div>
-
-    <div class="sync-desc fade-up fade-up-2" id="syncDesc">
-      参拝ガイドの準備をしています。しばらくお待ちください。<br>
-      Preparing your pilgrimage guide. Please wait a moment.
-    </div>
-
-    <button class="btn-primary fade-up fade-up-3" id="syncNextBtn"
-      onclick="playClickSound();showPage('page-manners')">
-      次へ進む ➔
-    </button>
-
-    <div class="sync-skip-note fade-up fade-up-4" id="syncSkipNote">
-      <span onclick="playClickSound();showPage('page-manners')" style="cursor:pointer;color:var(--gold);opacity:.6">
-        スキップして次へ / Skip →
-      </span>
+      <span id="checkoutSkipWrap">&nbsp;·&nbsp;<span onclick="playClickSound();showPage('page-manners')" id="checkoutSkipLabel">スキップしてデモ体験 →</span></span>
     </div>
 
   </div>
@@ -2037,9 +1990,6 @@ const CONFIG_LANG = {
     checkoutPayLabel:"开始高级体验",checkoutSkipLabel:"跳过进入演示 →",
     checkoutPriceOrig:"<s>原价 ¥1,500</s>",checkoutPriceMonitor:"限时特别体验价",
     manganMsg:"在招财猫的庇护下，您已圆满巡礼豪德寺十大景点。愿这段殊胜的缘分为您带来洪福。您答对了全部10道题，集齐了所有御朱印印章。",
-    syncTitle:"感谢您的购买",syncSubtitle:"购买完成",
-    syncDesc:"正在为您准备参拜导览，请稍候。",
-    syncNextBtn:"继续 ➔",syncSkipNote:"跳过 →",
     mannersTitle:"境内参拜规则・礼仪",mannersSubtitle:"礼仪与安全规则",
     mannersAgreeBtn:"确认礼仪并继续 ➔",
     steps:[
@@ -2123,9 +2073,6 @@ const CONFIG_LANG = {
     checkoutPayLabel:"프리미엄 체험 시작하기",checkoutSkipLabel:"데모로 건너뛰기 →",
     checkoutPriceOrig:"<s>정상가 ¥1,500</s>",checkoutPriceMonitor:"한정 모니터 가격",
     manganMsg:"마네키네코의 가호 아래, 고토쿠지 10대 명소 순례를 모두 마쳤습니다. 이 인연이 당신에게 큰 복운을 가져다주기를 바랍니다. 10개의 퀴즈를 모두 맞히고 어주인을 만원성취했습니다.",
-    syncTitle:"구매해 주셔서 감사합니다",syncSubtitle:"구매 완료",
-    syncDesc:"참배 가이드를 준비하고 있습니다. 잠시만 기다려 주세요.",
-    syncNextBtn:"계속 ➔",syncSkipNote:"건너뛰기 →",
     mannersTitle:"경내 참배 규칙・매너",mannersSubtitle:"매너 및 안전 규칙",
     mannersAgreeBtn:"매너 확인 후 진행 ➔",
     steps:[
@@ -2192,9 +2139,6 @@ const CONFIG_LANG = {
     checkoutPayLabel:"Iniciar Experiencia Premium",checkoutSkipLabel:"Saltar al Demo →",
     checkoutPriceOrig:"<s>Precio normal ¥1.500</s>",checkoutPriceMonitor:"Precio especial de lanzamiento",
     manganMsg:"Bajo la bendición del Gato de la Fortuna, has completado los 10 lugares emblemáticos de Goutokuji. Que este sagrado vínculo te traiga una gran fortuna. Respondiste correctamente las 10 preguntas y completaste tu colección de sellos Goshuin.",
-    syncTitle:"Gracias por su compra",syncSubtitle:"Compra completada",
-    syncDesc:"Estamos preparando su guía de peregrinación. Espere un momento.",
-    syncNextBtn:"Continuar ➔",syncSkipNote:"Omitir →",
     mannersTitle:"Reglas y Modales del Santuario",mannersSubtitle:"MANNERS & SAFETY RULES",
     mannersAgreeBtn:"Confirmar y Continuar ➔",
     mannersGuideText:"Por favor revise y marque todos los elementos a continuación",
@@ -2264,9 +2208,6 @@ const CONFIG_LANG = {
     checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutSkipLabel:"Passer à la Démo →",
     checkoutPriceOrig:"<s>Prix normal ¥1.500</s>",checkoutPriceMonitor:"Prix de lancement limité",
     manganMsg:"Sous la bénédiction du Chat Porte-Bonheur, vous avez visité les 10 sites emblématiques de Goutokuji. Que ce lien sacré vous apporte une grande fortune. Vous avez répondu correctement aux 10 quiz et complété votre collection de tampons Goshuin.",
-    syncTitle:"Merci pour votre achat",syncSubtitle:"Achat terminé",
-    syncDesc:"Nous préparons votre guide de pèlerinage. Veuillez patienter un instant.",
-    syncNextBtn:"Continuer ➔",syncSkipNote:"Passer →",
     mannersTitle:"Règles et Bonnes Manières du Sanctuaire",mannersSubtitle:"MANNERS & SAFETY RULES",
     mannersAgreeBtn:"Confirmer et Continuer ➔",
     mannersGuideText:"Veuillez vérifier et cocher tous les éléments ci-dessous",
@@ -2525,7 +2466,7 @@ function changeFontSize(size,btn){
   document.documentElement.style.setProperty('--font-scale',{small:'1.0',medium:'1.2',large:'1.4',xlarge:'1.6'}[size]);
 }
 
-const PAGE_ORDER=['page-lang-select','page-welcome-map','page-app-appeal','page-checkout','page-sync','page-manners','page-full-map','page-quest','page-clear'];
+const PAGE_ORDER=['page-lang-select','page-welcome-map','page-app-appeal','page-checkout','page-manners','page-full-map','page-quest','page-clear'];
 function showPage(id){
   /* グローバル言語切替ボタンの表示制御 */
   const glb=document.getElementById('globalLangBtn');
@@ -2546,13 +2487,11 @@ function showPage(id){
 
   const applyPageLogic=()=>{
     document.getElementById('navBack').classList.toggle('visible',id!=='page-lang-select');
-    if(id==='page-sync'){
+    if(id==='page-visual-intro')startShortsEngine();else stopShortsEngine();
+    if(id==='page-manners'){
       localStorage.setItem('goutokuji_dx_paid','true');
       localStorage.setItem('goutokuji_dx_paid_date',new Date().toDateString());
       _trackEvent('purchase',{});
-    }
-    if(id==='page-visual-intro')startShortsEngine();else stopShortsEngine();
-    if(id==='page-manners'){
       const mb=document.getElementById('mannersBox');
 
       setTimeout(()=>{
@@ -2757,17 +2696,17 @@ async function doCheckout(){
       showToast('WELCOME',state.lang==='ja'
         ?'ご利用ありがとうございます。体験を開始します。'
         :'Thank you. Starting your experience.');
-      setTimeout(()=>showPage('page-sync'),1400);
+      setTimeout(()=>showPage('page-manners'),1400);
     } else {
       /* DEMOモード：無課金で次へ */
       showToast('DEMO MODE',state.lang==='ja'
         ?'【DEMOモード】無料で体験を開始します。'
         :'[DEMO MODE] Starting free experience.');
-      setTimeout(()=>showPage('page-sync'),1400);
+      setTimeout(()=>showPage('page-manners'),1400);
     }
   } catch(e){
     /* フォールバック：エラー時はDEMOとして動作 */
-    setTimeout(()=>showPage('page-sync'),1400);
+    setTimeout(()=>showPage('page-manners'),1400);
   }
 }
 
@@ -2845,11 +2784,6 @@ function applyLangUI(lk){
   _set('checkoutInc4','textContent',d.checkoutInc4||(isJa?'無料おみくじ＆SNSシェア':'Free Omikuji & Social Sharing'));
   _set('checkoutPayLabel','textContent',d.checkoutPayLabel||(isJa?'プレミアム体験を開始する':'Start Premium Experience'));
   _set('checkoutSkipLabel','textContent',d.checkoutSkipLabel||(isJa?'スキップしてデモ体験 →':'Skip to Demo →'));
-  _set('syncTitle','textContent',d.syncTitle||(isJa?'ご購入ありがとうございます':'Purchase Complete'));
-  _set('syncSubtitle','textContent',d.syncSubtitle||'PURCHASE COMPLETE');
-  _set('syncDesc','innerHTML',d.syncDesc||(isJa?'参拝ガイドの準備をしています。しばらくお待ちください。':'Preparing your pilgrimage guide. Please wait a moment.'));
-  _set('syncNextBtn','textContent',d.syncNextBtn||(isJa?'次へ進む ➔':'Proceed ➔'));
-  _set('syncSkipNote','innerHTML',`<span onclick="playClickSound();showPage('page-manners')" style="cursor:pointer;color:var(--gold);opacity:.6">${d.syncSkipNote||(isJa?'スキップして次へ':'Skip →')}</span>`);
   _set('mannersTitle','textContent',d.mannersTitle||(isJa?'境内参拝規則・マナー':'Sanctuary Rules & Manners'));
   _set('mannersSubtitle','textContent',d.mannersSubtitle||'MANNERS & SAFETY RULES');
   _set('mannersAgreeBtn','textContent',d.mannersAgreeBtn||(isJa?'マナーを確認して進む ➔':'Confirm & Proceed ➔'));
