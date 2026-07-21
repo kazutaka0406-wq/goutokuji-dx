@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>豪徳寺DX 管理者ダッシュボード</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ink:#1a1512;
+    --parchment:#f7f2e7;
+    --gold:#c9a84c;
+    --gold-light:#e0c878;
+    --red:#9b2335;
+    --surface-1:#241d18;
+    --surface-2:#2c231c;
+    --text-primary:#f7f2e7;
+    --text-secondary:#c3bcae;
+    --text-muted:#8f8778;
+    --gridline:#3a3128;
+    --baseline:#4a4033;
+    --series-1:#3987e5;
+    --series-1-dim:rgba(57,135,229,.18);
+    --good:#0ca30c;
+    --critical:#e66767;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text-primary);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    min-height:100vh;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px;}
+  h1{
+    font-size:1.375rem;
+    font-weight:700;
+    color:var(--gold-light);
+    letter-spacing:.02em;
+    margin:0 0 4px;
+  }
+  .sub{color:var(--text-muted);font-size:.8125rem;margin-bottom:28px;}
+
+  /* --- ログインゲート --- */
+  #gate{
+    max-width:360px;
+    margin:80px auto;
+    background:var(--surface-1);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+    padding:28px;
+    text-align:center;
+  }
+  #gate h1{margin-bottom:18px;}
+  #gate input{
+    width:100%;
+    padding:12px 14px;
+    border-radius:6px;
+    border:1px solid rgba(255,255,255,.15);
+    background:var(--surface-2);
+    color:var(--text-primary);
+    font-size:.9375rem;
+    margin-bottom:12px;
+  }
+  #gate button, .refresh-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(135deg,var(--gold) 0%,#a68432 100%);
+    color:#1a1512;
+    font-weight:700;
+    font-size:.9375rem;
+    cursor:pointer;
+  }
+  #gateError{color:var(--critical);font-size:.8125rem;margin-top:10px;min-height:1em;}
+
+  /* --- ダッシュボード --- */
+  #dash{display:none;}
+  .toprow{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+  .refresh-btn{width:auto;padding:9px 18px;font-size:.8125rem;}
+
+  .tiles{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:12px;
+    margin:20px 0 32px;
+  }
+  .tile{
+    background:var(--surface-1);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .tile-label{font-size:.6875rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:6px;}
+  .tile-value{font-size:1.75rem;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;}
+  .tile-value small{font-size:.9375rem;color:var(--text-secondary);font-weight:600;}
+
+  .card{
+    background:var(--surface-1);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:10px;
+    padding:20px 20px 12px;
+    margin-bottom:24px;
+  }
+  .card h2{
+    font-size:.9375rem;
+    font-weight:700;
+    color:var(--text-primary);
+    margin:0 0 4px;
+  }
+  .card .card-sub{font-size:.75rem;color:var(--text-muted);margin-bottom:18px;}
+
+  /* --- 棒グラフ（自作・軽量） --- */
+  .barchart{
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+    height:160px;
+    padding:0 4px;
+    border-bottom:1px solid var(--baseline);
+    position:relative;
+  }
+  .barchart::before{
+    content:'';
+    position:absolute;left:0;right:0;top:0;
+    height:1px;background:var(--gridline);
+  }
+  .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0;}
+  .bar-val{font-size:.6875rem;color:var(--text-secondary);margin-bottom:4px;font-variant-numeric:tabular-nums;}
+  .bar-rect{
+    width:100%;
+    max-width:34px;
+    background:var(--series-1);
+    border-radius:4px 4px 0 0;
+    transition:opacity .15s;
+    cursor:default;
+  }
+  .bar-rect:hover{opacity:.75;}
+  .bar-label{font-size:.6875rem;color:var(--text-muted);margin-top:8px;text-align:center;line-height:1.3;}
+
+  table{width:100%;border-collapse:collapse;font-size:.8125rem;}
+  th{
+    text-align:left;
+    color:var(--text-muted);
+    font-weight:600;
+    font-size:.6875rem;
+    letter-spacing:.05em;
+    padding:8px 10px;
+    border-bottom:1px solid var(--gridline);
+  }
+  td{padding:10px;border-bottom:1px solid var(--gridline);color:var(--text-secondary);vertical-align:top;}
+  td.comment{color:var(--text-primary);white-space:pre-wrap;}
+  .stars{color:var(--gold);letter-spacing:1px;white-space:nowrap;}
+  .empty-msg{color:var(--text-muted);font-size:.8125rem;padding:16px 0;}
+  #loadErr{color:var(--critical);font-size:.8125rem;}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <h1>🐱 豪徳寺DX 管理者ダッシュボード</h1>
+  <input type="password" id="pwInput" placeholder="管理者パスワード" autocomplete="off">
+  <button onclick="login()">ログイン</button>
+  <div id="gateError"></div>
+</div>
+
+<div class="wrap" id="dash">
+  <div class="toprow">
+    <div>
+      <h1>🐱 豪徳寺DX 管理者ダッシュボード</h1>
+      <div class="sub">直近のイベントデータ（最大5000件）を集計して表示しています。</div>
+    </div>
+    <button class="refresh-btn" onclick="loadStats()">🔄 更新</button>
+  </div>
+  <div id="loadErr"></div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="card">
+    <h2>スポット別 スタンプ獲得数</h2>
+    <div class="card-sub">10大スポットそれぞれで正解・スタンプ獲得された回数</div>
+    <div class="barchart" id="stampChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>おみくじ結果の分布</h2>
+    <div class="card-sub">満願成就後に引かれたおみくじの結果内訳</div>
+    <div class="barchart" id="omikujiChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>おみくじ 生成内容の確認（直近20件）</h2>
+    <div class="card-sub">AIが生成したおみくじ全文の品質確認用（言語崩れ・不自然な内容がないかのチェックに）</div>
+    <div id="omikujiSamplesWrap"></div>
+  </div>
+
+  <div class="card">
+    <h2>購入（当日パス発行）の日別推移</h2>
+    <div class="card-sub">直近14日分</div>
+    <div class="barchart" id="purchaseChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>アンケート（満足度・自由記述）</h2>
+    <div class="card-sub" id="surveySub"></div>
+    <div id="surveyTableWrap"></div>
+  </div>
+</div>
+
+<script>
+let _pw='';
+
+function login(){
+  const pw=document.getElementById('pwInput').value;
+  if(!pw)return;
+  _pw=pw;
+  loadStats(true);
+}
+
+document.getElementById('pwInput').addEventListener('keydown',(e)=>{
+  if(e.key==='Enter')login();
+});
+
+async function loadStats(isLogin){
+  const errEl=isLogin?document.getElementById('gateError'):document.getElementById('loadErr');
+  errEl.textContent='';
+  try{
+    const res=await fetch('/.netlify/functions/admin-stats',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password:_pw}),
+    });
+    if(res.status===401){
+      errEl.textContent='パスワードが正しくありません。';
+      return;
+    }
+    if(!res.ok){
+      errEl.textContent='データの取得に失敗しました。しばらくしてから再度お試しください。';
+      return;
+    }
+    const data=await res.json();
+    render(data);
+    document.getElementById('gate').style.display='none';
+    document.getElementById('dash').style.display='block';
+  }catch(e){
+    errEl.textContent='通信エラーが発生しました。';
+  }
+}
+
+function _fmtPct(v){return v===null||v===undefined?'—':Math.round(v*100)+'%';}
+function _fmtNum(v){return v===null||v===undefined?'—':v;}
+
+function _barChart(el,items,{max}={}){
+  el.innerHTML='';
+  const m=max||Math.max(1,...items.map(i=>i.value));
+  items.forEach(it=>{
+    const col=document.createElement('div');
+    col.className='bar-col';
+    const h=Math.max(2,Math.round((it.value/m)*120));
+    col.innerHTML=`
+      <div class="bar-val">${it.value}</div>
+      <div class="bar-rect" style="height:${h}px" title="${it.label}: ${it.value}"></div>
+      <div class="bar-label">${it.label}</div>
+    `;
+    el.appendChild(col);
+  });
+}
+
+function render(data){
+  const tiles=document.getElementById('tiles');
+  tiles.innerHTML=`
+    <div class="tile"><div class="tile-label">総購入数（当日パス発行）</div><div class="tile-value">${_fmtNum(data.totalPurchases)}</div></div>
+    <div class="tile"><div class="tile-label">10スポット完全踏破率</div><div class="tile-value">${_fmtPct(data.completionRate)} <small>(${data.completedCount}/${data.totalVisitorsWithProgress})</small></div></div>
+    <div class="tile"><div class="tile-label">平均満足度</div><div class="tile-value">${data.avgRating!==null?data.avgRating.toFixed(1):'—'} <small>/ 5（n=${data.surveyCount}）</small></div></div>
+    <div class="tile"><div class="tile-label">おみくじ実施数</div><div class="tile-value">${_fmtNum(data.omikujiDrawCount)}</div></div>
+  `;
+
+  const stampItems=data.stampCounts.map((v,i)=>({label:'S'+(i+1),value:v}));
+  _barChart(document.getElementById('stampChart'),stampItems);
+
+  const rankOrder=['大吉','中吉','小吉','吉','末吉','凶'];
+  const omikujiItems=rankOrder.map(r=>({label:r,value:data.omikujiRankCounts[r]||0}));
+  _barChart(document.getElementById('omikujiChart'),omikujiItems);
+
+  const samplesWrap=document.getElementById('omikujiSamplesWrap');
+  if(!data.omikujiSamples||!data.omikujiSamples.length){
+    samplesWrap.innerHTML='<div class="empty-msg">まだ抽選履歴がありません。</div>';
+  }else{
+    samplesWrap.innerHTML=`
+      <table>
+        <thead><tr><th>日時</th><th>言語</th><th>結果</th><th>詩句・総運</th></tr></thead>
+        <tbody>
+          ${data.omikujiSamples.map(s=>`
+            <tr>
+              <td>${new Date(s.created_at).toLocaleString('ja-JP')}</td>
+              <td>${(s.lang||'-').toUpperCase()}</td>
+              <td>${(s.rank||'').replace(/</g,'&lt;')}<br><span style="color:var(--text-muted);font-size:.6875rem;">${(s.rankReading||'').replace(/</g,'&lt;')}</span></td>
+              <td class="comment">「${(s.poem||'').replace(/</g,'&lt;')}」\n${(s.overall||'').replace(/</g,'&lt;')}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
+  const days=Object.keys(data.purchaseDays).sort().slice(-14);
+  const purchaseItems=days.map(d=>({label:d.slice(5),value:data.purchaseDays[d]}));
+  if(purchaseItems.length){
+    _barChart(document.getElementById('purchaseChart'),purchaseItems);
+  }else{
+    document.getElementById('purchaseChart').innerHTML='<div class="empty-msg">まだデータがありません。</div>';
+  }
+
+  document.getElementById('surveySub').textContent=`直近${data.surveys.length}件を表示（全${data.surveyCount}件）`;
+  const wrap=document.getElementById('surveyTableWrap');
+  if(!data.surveys.length){
+    wrap.innerHTML='<div class="empty-msg">まだ回答がありません。</div>';
+  }else{
+    wrap.innerHTML=`
+      <table>
+        <thead><tr><th>日時</th><th>言語</th><th>評価</th><th>コメント</th></tr></thead>
+        <tbody>
+          ${data.surveys.map(s=>`
+            <tr>
+              <td>${new Date(s.created_at).toLocaleString('ja-JP')}</td>
+              <td>${(s.lang||'-').toUpperCase()}</td>
+              <td class="stars">${'★'.repeat(s.rating||0)}${'☆'.repeat(5-(s.rating||0))}</td>
+              <td class="comment">${(s.comment||'').replace(/</g,'&lt;')}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+}
+</script>
+</body>
+</html>

@@ -1847,7 +1847,7 @@ p{line-height:1.85}
     <div class="feedback-card fade-up fade-up-1">
       <div class="feedback-title" id="lblSurveyFormTitle">Feedback Survey</div>
       <div><div class="survey-label" id="lblSurveyStarLabel">Satisfaction:</div><div class="survey-stars"><button class="star-btn" onclick="rateStars(1)">★</button><button class="star-btn" onclick="rateStars(2)">★</button><button class="star-btn" onclick="rateStars(3)">★</button><button class="star-btn" onclick="rateStars(4)">★</button><button class="star-btn" onclick="rateStars(5)">★</button></div></div>
-      <div><div class="survey-label" id="lblSurveyTextLabel">Comments:</div><textarea class="survey-textarea" id="surveyComments" placeholder="Please write here..."></textarea></div>
+      <div><div class="survey-label" id="lblSurveyTextLabel">Comments:</div><textarea class="survey-textarea" id="surveyComments" placeholder="Please write here..." oninput="localStorage.setItem('goutokuji_dx_survey_comment',this.value)"></textarea></div>
       <button class="btn-secondary" onclick="submitFeedback()" style="border-color:var(--sage);color:#a8d4a0" id="lblSurveySubmitBtn">Submit</button>
     </div>
     <div class="recommend-section fade-up fade-up-2"><div class="section-label" id="lblNextSpots">Next Local Guide</div><div id="spotList"></div></div>
@@ -2448,9 +2448,30 @@ const _seasonMessages={
 
 window.addEventListener('DOMContentLoaded',()=>{
 
+  /* 当日中の同一端末アクセスは再課金・進捗リセットなしで再開できるようにする。
+     日付境界は端末ローカル時刻の0:00（toDateStringが日替わりで変わる)。 */
+  const _paidDate=localStorage.getItem('goutokuji_dx_paid_date');
+  const _isSameDayPaid=localStorage.getItem('goutokuji_dx_paid')==='true'&&_paidDate===new Date().toDateString();
+  let _restore=null;
+  if(_isSameDayPaid){
+    let _visited=new Set(),_cats=[];
+    try{_visited=new Set(JSON.parse(localStorage.getItem('goutokuji_dx_visited')||'[]'));}catch(e){}
+    try{_cats=JSON.parse(localStorage.getItem('goutokuji_dx_foundcats')||'[]');}catch(e){}
+    _restore={
+      lang:localStorage.getItem('goutokuji_dx_lang')||'ja',
+      step:parseInt(localStorage.getItem('goutokuji_dx_step'),10)||0,
+      visited:_visited,
+      cats:_cats,
+      rating:parseInt(localStorage.getItem('goutokuji_dx_rating'),10)||0,
+      comment:localStorage.getItem('goutokuji_dx_survey_comment')||'',
+      omikujiResult:(()=>{try{return JSON.parse(localStorage.getItem('goutokuji_dx_omikuji_result')||'null');}catch(e){return null;}})(),
+    };
+  }else{
+    localStorage.clear();
+  }
+
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-lang-select').classList.add('active');
-  localStorage.clear();
 
   document.addEventListener('click',function(e){
     window._lastClickX=e.clientX;
@@ -2526,6 +2547,26 @@ window.addEventListener('DOMContentLoaded',()=>{
     /* 最初はlang-selectが表示されるので非表示 */
     _glbInit.style.display='none';
   }
+
+  /* 当日中の再課金不要パスが有効な場合、参拝の続きへ直接復帰する */
+  if(_restore){
+    state.lang=_restore.lang;
+    state.currentStep=_restore.step;
+    state.visitedSpots=_restore.visited;
+    state.foundCats=_restore.cats;
+    const codes={ja:'JA',en:'EN',zh:'ZH',ko:'KO',es:'ES',fr:'FR'};
+    if(globalLangBtn)globalLangBtn.textContent=codes[state.lang]||state.lang.toUpperCase();
+    applyLangUI(state.lang);
+    const _surveyBox=document.getElementById('surveyComments');
+    if(_surveyBox)_surveyBox.value=_restore.comment;
+    rateStars(_restore.rating);
+    const _toClear=state.visitedSpots.size>=10;
+    showPage(_toClear?'page-clear':'page-quest');
+    if(_toClear&&_restore.omikujiResult){
+      /* 既におみくじを引いていた場合は同じ結果を再表示する（APIは呼ばれない） */
+      setTimeout(()=>executeOmikujiFlow(),500);
+    }
+  }
 });
 
 function changeFontSize(size,btn){
@@ -2555,6 +2596,11 @@ function showPage(id){
 
   const applyPageLogic=()=>{
     document.getElementById('navBack').classList.toggle('visible',id!=='page-lang-select');
+    if(id==='page-sync'){
+      localStorage.setItem('goutokuji_dx_paid','true');
+      localStorage.setItem('goutokuji_dx_paid_date',new Date().toDateString());
+      _trackEvent('purchase',{});
+    }
     if(id==='page-visual-intro')startShortsEngine();else stopShortsEngine();
     if(id==='page-manners'){
       const mb=document.getElementById('mannersBox');
@@ -3141,7 +3187,7 @@ const OMIKUJI_DUMMY_DATA={
   },
 };
 
-function executeOmikujiFlow(){
+async function executeOmikujiFlow(){
   const lang=state.lang||'ja';
   const d=CONFIG_LANG[lang];
   const btn=document.getElementById('btnDrawOmikuji');
@@ -3172,18 +3218,33 @@ function executeOmikujiFlow(){
   };
   btn.innerHTML=processingMessages[lang]||processingMessages['en'];
 
-  /* 5.5秒後にダミーデータで結果表示
-     TODO: 豪徳寺許可取得後にClaude API連携（/.netlify/functions/omikuji）に切り替える */
-  setTimeout(()=>{
+  /* 既に結果が確定している場合（同日中の再表示・復帰）は同じ結果をそのまま使い、APIは呼ばない */
+  let fortune=null;
+  try{
+    const _stored=localStorage.getItem('goutokuji_dx_omikuji_result');
+    if(_stored)fortune=JSON.parse(_stored);
+  }catch(e){}
+
+  if(!fortune){
+    /* 本番：Claude APIでその場限りのおみくじを生成する。失敗時はダミーデータへフォールバック */
     try{
-      /* ダミーおみくじデータ */
+      const apiRes=await fetch('/.netlify/functions/omikuji',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({lang}),
+      });
+      if(apiRes.ok){
+        const data=await apiRes.json();
+        if(data&&data.fortune&&data.fortune.rank)fortune=data.fortune;
+      }
+    }catch(e){}
+
+    if(!fortune){
       const ranks=['大吉','中吉','小吉','吉','末吉','凶'];
       const rank=ranks[Math.floor(Math.random()*ranks.length)];
-
       const langData=OMIKUJI_DUMMY_DATA[lang]||OMIKUJI_DUMMY_DATA['en'];
       const fortuneData=langData[rank]||langData['凶'];
-
-      const fortune={
+      fortune={
         rank:rank,
         rankReading:fortuneData.rankReading,
         poem:fortuneData.poem,
@@ -3195,7 +3256,19 @@ function executeOmikujiFlow(){
         health:fortuneData.health,
         friendship:fortuneData.friendship,
       };
+    }
 
+    localStorage.setItem('goutokuji_dx_omikuji_result',JSON.stringify(fortune));
+    _trackEvent('omikuji',fortune);
+  }
+
+  setTimeout(()=>{
+    _renderOmikujiResult(fortune,lang,btn,res,d);
+  },5500);
+}
+
+function _renderOmikujiResult(fortune,lang,btn,res,d){
+    try{
       /* 項目ラベルの多言語対応 */
       const labels={
         ja:{overall:'総運',love:'恋愛',work:'仕事',wealth:'金運',travel:'旅行',health:'健康',friendship:'交友'},
@@ -3428,7 +3501,6 @@ function executeOmikujiFlow(){
       btn.style.cursor='pointer';
       btn.innerHTML='<span id="lblOmiBtnText">'+(d.omiBtnText||'Draw Fortune')+'</span>';
     }
-  },5500);
 }
 
 let _shopSlideTimer=null;
@@ -3681,10 +3753,13 @@ function updateStampRail_clear(){
   updateStampRail();
 }
 
-function rateStars(n){state.rating=n;document.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('active',i<n));}
+function rateStars(n){state.rating=n;localStorage.setItem('goutokuji_dx_rating',n);document.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('active',i<n));}
 function submitFeedback(){
+  const _comment=document.getElementById('surveyComments').value;
+  _trackEvent('survey',{rating:state.rating,comment:_comment});
   showToast('FEEDBACK',state.lang==='ja'?'アンケートのご協力ありがとうございました！':'Thank you for your valuable feedback!');
   document.getElementById('surveyComments').value='';rateStars(0);
+  localStorage.removeItem('goutokuji_dx_survey_comment');
 }
 
 function demoElevenLabs(){showToast('ELEVENLABS API','ElevenLabs API Call Demo\nModel: eleven_multilingual_v2\nStreaming audio narration would play here.');}
@@ -4352,6 +4427,7 @@ async function handleCatPhotoUpload(input){
 
     const idx=state.foundCats.length;
     state.foundCats.push(idx);
+    localStorage.setItem('goutokuji_dx_foundcats',JSON.stringify(state.foundCats));
     _renderCatFindCards();
 
     if(foundMsg){
@@ -4634,8 +4710,28 @@ function updateStampRail(){
   });
 }
 
+function _getSessionId(){
+  let sid=localStorage.getItem('goutokuji_dx_session_id');
+  if(!sid){
+    sid=(crypto.randomUUID?crypto.randomUUID():(Date.now()+'-'+Math.random().toString(36).slice(2)));
+    localStorage.setItem('goutokuji_dx_session_id',sid);
+  }
+  return sid;
+}
+function _trackEvent(type,payload){
+  try{
+    fetch('/.netlify/functions/track-event',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type,sessionId:_getSessionId(),lang:state.lang,payload:payload||{}}),
+    }).catch(()=>{});
+  }catch(e){}
+}
+
 function stampSpot(idx){
   state.visitedSpots.add(idx);
+  localStorage.setItem('goutokuji_dx_visited',JSON.stringify(Array.from(state.visitedSpots)));
+  _trackEvent('stamp',{spot:idx});
   updateStampRail();
 }
 
