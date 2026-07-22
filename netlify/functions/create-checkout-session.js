@@ -1,4 +1,4 @@
-const PRICE_JPY = 1000;
+const PRICE_JPY = 1100; // 税込価格（免税事業者のため納税義務はないが、総額表示のため税込相当額を決済価格とする）
 
 const PRODUCT_NAME = {
   ja: '豪徳寺 デジタルプレミアムパンフレット',
@@ -53,6 +53,9 @@ exports.handler = async function(event) {
   params.set('line_items[0][price_data][currency]', 'jpy');
   params.set('line_items[0][price_data][unit_amount]', String(PRICE_JPY));
   params.set('line_items[0][price_data][product_data][name]', PRODUCT_NAME[lang] || PRODUCT_NAME.en);
+  /* Managed Payments（Merchant of Record機能）は国内単一商品には不要なうえ、
+     お客様への表示販売者がLinkになってしまうため無効化し、通常のStripe Checkoutにする */
+  params.set('managed_payments[enabled]', 'false');
 
   try {
     const res = await fetch('https://api.stripe.com/v1/checkout/sessions', {

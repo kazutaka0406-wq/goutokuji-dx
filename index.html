@@ -804,6 +804,9 @@ p{line-height:1.85}
   font-family:var(--font-display);font-size:1.75rem;font-weight:600;
   color:var(--gold);line-height:1;letter-spacing:-.02em}
 .checkout-price-now sup{font-size:.85rem;vertical-align:super}
+.checkout-tax-note{
+  font-family:var(--font-mono);font-size:.6875rem;font-weight:400;
+  color:var(--mist);opacity:.7;letter-spacing:.02em;margin-left:4px}
 
 .wm-slides-wrap{
   width:100vw;margin-left:calc(-50vw + 50%);position:relative;overflow:hidden;
@@ -1413,7 +1416,7 @@ p{line-height:1.85}
         <div class="checkout-price-val checkout-price-stack">
           <div class="checkout-price-orig" id="checkoutPriceOrig"><s>通常 ¥1,500</s></div>
           <div class="checkout-price-monitor-label" id="checkoutPriceMonitor">今だけモニター価格</div>
-          <div class="checkout-price-now"><sup>¥</sup>1,000</div>
+          <div class="checkout-price-now"><sup>¥</sup>1,100<span class="checkout-tax-note" id="checkoutTaxNote">（税込）</span></div>
         </div>
       </div>
       <div class="checkout-price-badge" id="checkoutPriceBadge">🎁 おみくじ<br>無料特典！</div>
@@ -1782,7 +1785,7 @@ const CONFIG_LANG = {
     freeOmiBadge:"🎁 BONUS:<br>FREE FORTUNE!",
     buyBtn:"🐱 &nbsp; Purchase Premium Pass &nbsp; ¥1,000",
     stripeNote:"🔒 Secured by Stripe · Progress auto-saves",
-    checkoutPayLabel:"Start Premium Experience",
+    checkoutPayLabel:"Start Premium Experience",checkoutContinueLabel:"Continue Your Visit",
     appealFeat3Desc:"Answer all 10 spot quizzes correctly to earn a glowing digital stamp sheet as proof of completion!",
     manganMsg:"Under the blessing of the Beckoning Cat, you have completed all 10 Goutokuji landmarks. May this sacred journey bring great fortune to your life. You answered all 10 quizzes correctly and completed your Goshuin stamp collection.",
     sampleTitle:"✨ Experience Sample Preview",
@@ -1819,7 +1822,7 @@ const CONFIG_LANG = {
     appealTitle:"Premium Pilgrimage Experience",
     checkoutEyebrow:"Premium Guide · Unlock",
     checkoutTitle:"Unlock Premium Guide",
-    checkoutPriceOrig:"<s>Regular ¥1,500</s>",checkoutPriceMonitor:"Limited-Time Monitor Price",
+    checkoutPriceOrig:"<s>Regular ¥1,500</s>",checkoutPriceMonitor:"Limited-Time Monitor Price",taxNote:"(tax incl.)",
     readMoreLabel:"▼ Read More",showLessLabel:"▲ Show Less",
     wmNextBtn:"Continue ➔",
     mapSpots:[
@@ -1860,8 +1863,8 @@ const CONFIG_LANG = {
     freeOmiBadge:"🎁 特典：<br>おみくじ無料！",
     buyBtn:"🐱 &nbsp; プレミアムパスを購入する &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe安全決済 · ブラウザを閉じても進捗を自動復旧",
-    checkoutPayLabel:"プレミアム体験を開始する",
-    checkoutPriceOrig:"<s>通常 ¥1,500</s>",checkoutPriceMonitor:"今だけモニター価格",
+    checkoutPayLabel:"プレミアム体験を開始する",checkoutContinueLabel:"参拝を続ける",
+    checkoutPriceOrig:"<s>通常 ¥1,500</s>",checkoutPriceMonitor:"今だけモニター価格",taxNote:"（税込）",
     appealFeat3Desc:"10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！",
     manganMsg:"招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。10のクイズすべてに正解し、御朱印を満願しました。",
     sampleTitle:"✨ 体験プレビュー",
@@ -1987,8 +1990,8 @@ const CONFIG_LANG = {
     checkoutPriceLabel:"数字高级导览手册",checkoutPriceBadge:"🎁 御签<br>免费特典！",
     checkoutInc1:"AI 语音导览＆参拜礼仪指南",checkoutInc2:"📷 寻找隐藏招财猫游戏",
     checkoutInc3:"10大景点完成纪念印章集",checkoutInc4:"免费御签＆社交分享",
-    checkoutPayLabel:"开始高级体验",checkoutSkipLabel:"跳过进入演示 →",
-    checkoutPriceOrig:"<s>原价 ¥1,500</s>",checkoutPriceMonitor:"限时特别体验价",
+    checkoutPayLabel:"开始高级体验",checkoutContinueLabel:"继续参观",checkoutSkipLabel:"跳过进入演示 →",
+    checkoutPriceOrig:"<s>原价 ¥1,500</s>",checkoutPriceMonitor:"限时特别体验价",taxNote:"（含税）",
     manganMsg:"在招财猫的庇护下，您已圆满巡礼豪德寺十大景点。愿这段殊胜的缘分为您带来洪福。您答对了全部10道题，集齐了所有御朱印印章。",
     mannersTitle:"境内参拜规则・礼仪",mannersSubtitle:"礼仪与安全规则",
     mannersAgreeBtn:"确认礼仪并继续 ➔",
@@ -2070,8 +2073,8 @@ const CONFIG_LANG = {
     checkoutPriceLabel:"디지털 프리미엄 팜플렛",checkoutPriceBadge:"🎁 오미쿠지<br>무료 특전！",
     checkoutInc1:"AI 내레이션＆참배 예절 가이드",checkoutInc2:"📷 숨은 마네키네코 찾기 게임",
     checkoutInc3:"10대 명소 만원성취 스탬프 랠리",checkoutInc4:"무료 오미쿠지＆SNS 공유",
-    checkoutPayLabel:"프리미엄 체험 시작하기",checkoutSkipLabel:"데모로 건너뛰기 →",
-    checkoutPriceOrig:"<s>정상가 ¥1,500</s>",checkoutPriceMonitor:"한정 모니터 가격",
+    checkoutPayLabel:"프리미엄 체험 시작하기",checkoutContinueLabel:"참배 계속하기",checkoutSkipLabel:"데모로 건너뛰기 →",
+    checkoutPriceOrig:"<s>정상가 ¥1,500</s>",checkoutPriceMonitor:"한정 모니터 가격",taxNote:"(세금 포함)",
     manganMsg:"마네키네코의 가호 아래, 고토쿠지 10대 명소 순례를 모두 마쳤습니다. 이 인연이 당신에게 큰 복운을 가져다주기를 바랍니다. 10개의 퀴즈를 모두 맞히고 어주인을 만원성취했습니다.",
     mannersTitle:"경내 참배 규칙・매너",mannersSubtitle:"매너 및 안전 규칙",
     mannersAgreeBtn:"매너 확인 후 진행 ➔",
@@ -2136,8 +2139,8 @@ const CONFIG_LANG = {
     checkoutEyebrow:"Guía Premium · Desbloquear",checkoutTitle:"<em>Unlock Premium Guide</em>Desbloquear Guía Premium",
     checkoutPriceLabel:"Guía Digital Premium",checkoutPriceBadge:"🎁 ¡Omikuji<br>Gratis!",
     checkoutInc1:"Guía de Audio IA y Etiqueta de Oración",checkoutInc2:"📷 Juego de Búsqueda del Gato Oculto",checkoutInc3:"Rally de Sellos de Finalización (10 Lugares)",checkoutInc4:"Omikuji Gratis y Compartir en Redes",
-    checkoutPayLabel:"Iniciar Experiencia Premium",checkoutSkipLabel:"Saltar al Demo →",
-    checkoutPriceOrig:"<s>Precio normal ¥1.500</s>",checkoutPriceMonitor:"Precio especial de lanzamiento",
+    checkoutPayLabel:"Iniciar Experiencia Premium",checkoutContinueLabel:"Continuar tu Visita",checkoutSkipLabel:"Saltar al Demo →",
+    checkoutPriceOrig:"<s>Precio normal ¥1.500</s>",checkoutPriceMonitor:"Precio especial de lanzamiento",taxNote:"(impuestos incl.)",
     manganMsg:"Bajo la bendición del Gato de la Fortuna, has completado los 10 lugares emblemáticos de Goutokuji. Que este sagrado vínculo te traiga una gran fortuna. Respondiste correctamente las 10 preguntas y completaste tu colección de sellos Goshuin.",
     mannersTitle:"Reglas y Modales del Santuario",mannersSubtitle:"MANNERS & SAFETY RULES",
     mannersAgreeBtn:"Confirmar y Continuar ➔",
@@ -2205,8 +2208,8 @@ const CONFIG_LANG = {
     checkoutEyebrow:"Guide Premium · Déverrouiller",checkoutTitle:"<em>Unlock Premium Guide</em>Déverrouiller le Guide Premium",
     checkoutPriceLabel:"Guide Numérique Premium",checkoutPriceBadge:"🎁 Omikuji<br>Gratuit !",
     checkoutInc1:"Guide Audio IA et Étiquette de Prière",checkoutInc2:"📷 Jeu de Chasse au Chat Caché",checkoutInc3:"Rally de Tampons de Complétion (10 Sites)",checkoutInc4:"Omikuji Gratuit et Partage Social",
-    checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutSkipLabel:"Passer à la Démo →",
-    checkoutPriceOrig:"<s>Prix normal ¥1.500</s>",checkoutPriceMonitor:"Prix de lancement limité",
+    checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutContinueLabel:"Continuer votre Visite",checkoutSkipLabel:"Passer à la Démo →",
+    checkoutPriceOrig:"<s>Prix normal ¥1.500</s>",checkoutPriceMonitor:"Prix de lancement limité",taxNote:"(taxes incl.)",
     manganMsg:"Sous la bénédiction du Chat Porte-Bonheur, vous avez visité les 10 sites emblématiques de Goutokuji. Que ce lien sacré vous apporte une grande fortune. Vous avez répondu correctement aux 10 quiz et complété votre collection de tampons Goshuin.",
     mannersTitle:"Règles et Bonnes Manières du Sanctuaire",mannersSubtitle:"MANNERS & SAFETY RULES",
     mannersAgreeBtn:"Confirmer et Continuer ➔",
@@ -2343,6 +2346,12 @@ window.addEventListener('DOMContentLoaded',async()=>{
   const _langDebugBtn=document.getElementById('langDebugBtn');
   if(_langDebugBtn&&_isLive)_langDebugBtn.style.display='none';
 
+  /* Stripeからのリダイレクト復帰中は、_handleStripeReturn()が画面遷移を専任で担当する。
+     同日再入場パスの復元ロジックが同時にshowPage()を呼ぶと、showPage()内部の
+     フェード遷移が非同期（最大約400ms遅延）なため2つの遷移が競合し、
+     両方のページにactiveクラスが残ってしまう不具合の原因になるため、ここで完全に分離する。 */
+  const _hasStripeReturn=new URLSearchParams(location.search).has('stripe');
+
   /* 当日中の同一端末アクセスは再課金・進捗リセットなしで再開できるようにする。
      日付境界は端末ローカル時刻の0:00（toDateStringが日替わりで変わる)。 */
   const _paidDate=localStorage.getItem('goutokuji_dx_paid_date');
@@ -2425,6 +2434,8 @@ window.addEventListener('DOMContentLoaded',async()=>{
               .replace(/\n/g,' ');
             nt.classList.remove('expanded');
           }
+        } else if(pid==='page-checkout'){
+          _updateCheckoutSkipVisibility();
         }
       }
       langDD.classList.remove('open');
@@ -2443,8 +2454,9 @@ window.addEventListener('DOMContentLoaded',async()=>{
     _glbInit.style.display='none';
   }
 
-  /* 当日中の再課金不要パスが有効な場合、参拝の続きへ直接復帰する */
-  if(_restore){
+  /* 当日中の再課金不要パスが有効な場合、参拝の続きへ直接復帰する
+     （Stripeからの復帰中は_handleStripeReturn()に遷移を譲るためスキップ） */
+  if(_restore&&!_hasStripeReturn){
     state.lang=_restore.lang;
     state.currentStep=_restore.step;
     state.visitedSpots=_restore.visited;
@@ -2493,6 +2505,11 @@ async function _handleStripeReturn(){
     localStorage.setItem('goutokuji_dx_session_id',sid);
     showPage('page-checkout');
     showToast('STRIPE',lang==='ja'?'決済を確認しています…':'Confirming your payment…');
+    /* showPage()はフェード用に内部で最大約250msの遅延後にactiveクラスを付け替える設計のため、
+       その完了前に次のshowPage()を呼ぶと両ページにactiveクラスが残ってしまう。
+       verify-paymentが極めて速く返る場合（Webhookが決済直後に既に届いているケース）でも
+       確実に前の遷移を完了させてから次へ進めるよう、ここで少し待つ。 */
+    await new Promise(r=>setTimeout(r,400));
     let paid=false;
     for(let i=0;i<6;i++){
       try{
@@ -2731,15 +2748,27 @@ function _startCheckoutSlides(){
 }
 function _stopCheckoutSlides(){clearInterval(_coSlideTimer);}
 
+function _isSameDayPaidNow(){
+  return localStorage.getItem('goutokuji_dx_paid')==='true'
+    && localStorage.getItem('goutokuji_dx_paid_date')===new Date().toDateString();
+}
+
 async function _updateCheckoutSkipVisibility(){
   const wrap=document.getElementById('checkoutSkipWrap');
-  if(!wrap)return;
+  const payLabel=document.getElementById('checkoutPayLabel');
   try{
     const res=await fetch('/.netlify/functions/config');
     const cfg=await res.json();
-    wrap.style.display=cfg.paymentMode==='demo'?'':'none';
+    if(wrap)wrap.style.display=cfg.paymentMode==='demo'?'':'none';
+    if(payLabel){
+      const d=CONFIG_LANG[state.lang||'ja'];
+      const _continuing=cfg.paymentMode==='live'&&_isSameDayPaidNow();
+      payLabel.textContent=_continuing
+        ?((d&&d.checkoutContinueLabel)||'Continue Your Visit')
+        :((d&&d.checkoutPayLabel)||'Start Premium Experience');
+    }
   }catch(e){
-    wrap.style.display='';
+    if(wrap)wrap.style.display='';
   }
 }
 
@@ -2749,6 +2778,12 @@ async function doCheckout(){
     const res = await fetch('/.netlify/functions/config');
     const cfg = await res.json();
     if(cfg.paymentMode === 'live'){
+      /* 当日中に既に決済済みの場合（例：戻るボタンで決済画面に再訪した場合）は、
+         再度Stripeへ遷移させず、そのまま先へ進める。 */
+      if(_isSameDayPaidNow()){
+        showPage('page-manners');
+        return;
+      }
       /* Stripe Checkout（ホスト型）へ遷移し、戻ってきた際にwebhook確定済みか
          verify-paymentで確認できたときのみ次へ進める（_handleStripeReturnが処理）。 */
       if(payBtn)payBtn.disabled=true;
@@ -2853,6 +2888,7 @@ function applyLangUI(lk){
   _set('checkoutPriceOrig','innerHTML',d.checkoutPriceOrig||(isJa?'<s>通常 ¥1,500</s>':'<s>Regular ¥1,500</s>'));
   _set('checkoutPriceMonitor','textContent',d.checkoutPriceMonitor||(isJa?'今だけモニター価格':'Limited-Time Monitor Price'));
   _set('checkoutPriceBadge','innerHTML',d.checkoutPriceBadge||(isJa?'🎁 おみくじ<br>無料特典！':'🎁 FREE<br>OMIKUJI!'));
+  _set('checkoutTaxNote','textContent',d.taxNote||(isJa?'（税込）':'(tax incl.)'));
   _set('checkoutInc1','textContent',d.checkoutInc1||(isJa?'AIナレーション＆参拝ガイド':'AI Audio Guide & Worship Manners'));
   _set('checkoutInc2','textContent',d.checkoutInc2||(isJa?'📷 隠れ招き猫探しゲーム':'📷 Hidden Cat Photo Hunt Game'));
   _set('checkoutInc3','textContent',d.checkoutInc3||(isJa?'10大スポット 満願成就スタンプラリー':'10-Spot Completion Stamp Rally'));
