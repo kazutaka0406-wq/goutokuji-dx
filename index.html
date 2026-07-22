@@ -1308,7 +1308,7 @@ p{line-height:1.85}
       </button>
     </div>
     <div class="lang-foot-note fade-up fade-up-4">You can change this at any time</div>
-    <button class="lang-debug-btn fade-up fade-up-4" onclick="debugGoToClear()">DEBUG: Skip to Clear Screen</button>
+    <button class="lang-debug-btn fade-up fade-up-4" id="langDebugBtn" onclick="debugGoToClear()">DEBUG: Skip to Clear Screen</button>
   </div>
 </section>
 
@@ -1771,7 +1771,7 @@ p{line-height:1.85}
 
 const CONFIG_LANG = {
   en:{
-    flag:'🇬🇧',code:'EN',
+    code:'EN',
     introTitle:"Welcome to Goutokuji Premium DX",introNextBtn:"Proceed to Safety Etiquette →",
     mannerTitle:"Sanctuary Rules & Manners",mannerSubtitle:"Manners & Safety",
     mannersGuideText:"Please review and check all items below",
@@ -1849,7 +1849,7 @@ const CONFIG_LANG = {
     ]
   },
   ja:{
-    flag:'🇯🇵',code:'JA',
+    code:'JA',
     introTitle:"豪徳寺プレミアムガイド DX",introNextBtn:"参拝マナー・安全確認へ →",
     mannerTitle:"境内参拝規則・マナー",mannerSubtitle:"参拝マナーと安全上のご注意",
     mannersGuideText:"以下を確認してチェックボックスをつけてください",
@@ -1923,7 +1923,7 @@ const CONFIG_LANG = {
     ]
   },
   zh:{
-    flag:'🇨🇳',code:'ZH',
+    code:'ZH',
     introTitle:"豪德寺高级导览 DX",introNextBtn:"前往参拜礼仪指南 →",
     mannerTitle:"境内参拝规则・礼仪",mannerSubtitle:"礼仪与安全注意事项",
     mannerAgreeBtn:"我同意并解锁通行证 →",
@@ -2006,7 +2006,7 @@ const CONFIG_LANG = {
     ]
   },
   ko:{
-    flag:'🇰🇷',code:'KO',
+    code:'KO',
     introTitle:"고토쿠지 프리미엄 가이드 DX",introNextBtn:"참배 예절 안내로 이동 →",
     mannerTitle:"경내 참배 규칙・매너",mannerSubtitle:"예절 및 안전 주의사항",
     mannerAgreeBtn:"규칙에 동의하고 패스 활성화 →",
@@ -2089,7 +2089,7 @@ const CONFIG_LANG = {
     ]
   },
   es:{
-    flag:'🇪🇸',code:'ES',
+    code:'ES',
     introTitle:"Guía Premium de Goutokuji DX",introNextBtn:"Ver reglas de etiqueta →",
     mannerTitle:"Reglas y Modales del Santuario",mannerSubtitle:"MANNERS & SAFETY RULES",
     mannerAgreeBtn:"Acepto y desbloqueo el pase →",
@@ -2158,7 +2158,7 @@ const CONFIG_LANG = {
   }
 ,
   fr:{
-    flag:'🇫🇷',code:'FR',
+    code:'FR',
     introTitle:"Guide Premium de Goutokuji DX",introNextBtn:"Voir les règles d'étiquette →",
     mannerTitle:"Règles et Bonnes Manières du Sanctuaire",mannerSubtitle:"MANNERS & SAFETY RULES",
     mannerAgreeBtn:"J'accepte et déverrouille le pass →",
@@ -2339,6 +2339,10 @@ window.addEventListener('DOMContentLoaded',async()=>{
     _isLive=_cfg.paymentMode==='live';
   }catch(e){_isLive=false;}
 
+  /* デバッグ用「クリア画面へスキップ」ボタンは、本番サービス開始後は非表示にする */
+  const _langDebugBtn=document.getElementById('langDebugBtn');
+  if(_langDebugBtn&&_isLive)_langDebugBtn.style.display='none';
+
   /* 当日中の同一端末アクセスは再課金・進捗リセットなしで再開できるようにする。
      日付境界は端末ローカル時刻の0:00（toDateStringが日替わりで変わる)。 */
   const _paidDate=localStorage.getItem('goutokuji_dx_paid_date');
@@ -2458,7 +2462,60 @@ window.addEventListener('DOMContentLoaded',async()=>{
       setTimeout(()=>executeOmikujiFlow(),500);
     }
   }
+
+  await _handleStripeReturn();
 });
+
+/* Stripe Checkoutからのリダイレクト復帰（success_url/cancel_url）を処理する。
+   sid/langはlocalStorage経由ではなくURLクエリで受け渡す
+   （このタイミングではlocalStorage.clear()が既に走っている可能性があるため）。 */
+async function _handleStripeReturn(){
+  const params=new URLSearchParams(location.search);
+  const stripeResult=params.get('stripe');
+  if(!stripeResult)return;
+  const sid=params.get('sid');
+  const lang=params.get('lang')||'ja';
+
+  state.lang=lang;
+  const codes={ja:'JA',en:'EN',zh:'ZH',ko:'KO',es:'ES',fr:'FR'};
+  const glb=document.getElementById('globalLangBtn');
+  if(glb)glb.textContent=codes[lang]||lang.toUpperCase();
+  applyLangUI(lang);
+
+  if(stripeResult==='cancelled'){
+    showPage('page-checkout');
+    showToast('STRIPE',lang==='ja'?'決済がキャンセルされました。':'Payment was cancelled.');
+    history.replaceState(null,'',location.pathname);
+    return;
+  }
+
+  if(stripeResult==='success'&&sid){
+    localStorage.setItem('goutokuji_dx_session_id',sid);
+    showPage('page-checkout');
+    showToast('STRIPE',lang==='ja'?'決済を確認しています…':'Confirming your payment…');
+    let paid=false;
+    for(let i=0;i<6;i++){
+      try{
+        const res=await fetch('/.netlify/functions/verify-payment',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({sessionId:sid}),
+        });
+        const data=await res.json();
+        if(data.paid){paid=true;break;}
+      }catch(e){}
+      await new Promise(r=>setTimeout(r,1200));
+    }
+    if(paid){
+      history.replaceState(null,'',location.pathname);
+      showPage('page-manners');
+    }else{
+      showToast('STRIPE',lang==='ja'
+        ?'決済の確認に時間がかかっています。ページを再読み込みして再確認します。'
+        :'Payment confirmation is taking longer than expected. Reload the page to check again.');
+    }
+  }
+}
 
 function changeFontSize(size,btn){
   document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
@@ -2687,16 +2744,32 @@ async function _updateCheckoutSkipVisibility(){
 }
 
 async function doCheckout(){
+  const payBtn=document.getElementById('btnCheckoutPay');
   try{
     const res = await fetch('/.netlify/functions/config');
     const cfg = await res.json();
     if(cfg.paymentMode === 'live'){
-      /* TODO: Stripe等の実際の決済システムと連携したら、ここで決済処理に置き換える。
-         連携が完了するまでの暫定対応として、デモモードと同様に無課金で次へ進める。 */
-      showToast('WELCOME',state.lang==='ja'
-        ?'ご利用ありがとうございます。体験を開始します。'
-        :'Thank you. Starting your experience.');
-      setTimeout(()=>showPage('page-manners'),1400);
+      /* Stripe Checkout（ホスト型）へ遷移し、戻ってきた際にwebhook確定済みか
+         verify-paymentで確認できたときのみ次へ進める（_handleStripeReturnが処理）。 */
+      if(payBtn)payBtn.disabled=true;
+      try{
+        const csRes=await fetch('/.netlify/functions/create-checkout-session',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({sessionId:_getSessionId(),lang:state.lang}),
+        });
+        const csData=await csRes.json();
+        if(csRes.ok && csData.url){
+          window.location.href=csData.url;
+          return;
+        }
+        throw new Error(csData.error||'checkout_session_failed');
+      }catch(e){
+        if(payBtn)payBtn.disabled=false;
+        showToast('ERROR',state.lang==='ja'
+          ?'決済ページの準備に失敗しました。時間をおいて再度お試しください。'
+          :'Could not start checkout. Please try again shortly.');
+      }
     } else {
       /* DEMOモード：無課金で次へ */
       showToast('DEMO MODE',state.lang==='ja'
@@ -2705,8 +2778,10 @@ async function doCheckout(){
       setTimeout(()=>showPage('page-manners'),1400);
     }
   } catch(e){
-    /* フォールバック：エラー時はDEMOとして動作 */
-    setTimeout(()=>showPage('page-manners'),1400);
+    if(payBtn)payBtn.disabled=false;
+    showToast('ERROR',state.lang==='ja'
+      ?'通信エラーが発生しました。時間をおいて再度お試しください。'
+      :'A network error occurred. Please try again shortly.');
   }
 }
 
