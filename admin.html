@@ -43,8 +43,8 @@
   }
   .sub{color:var(--text-muted);font-size:.8125rem;margin-bottom:28px;}
 
-  /* --- ログインゲート --- */
-  #gate{
+  /* --- ログインゲート（パスワード・OTP共通） --- */
+  .gate-box{
     max-width:360px;
     margin:80px auto;
     background:var(--surface-1);
@@ -53,8 +53,9 @@
     padding:28px;
     text-align:center;
   }
-  #gate h1{margin-bottom:18px;}
-  #gate input{
+  .gate-box h1{margin-bottom:18px;}
+  .gate-box .gate-hint{color:var(--text-muted);font-size:.8125rem;margin-bottom:14px;line-height:1.6;}
+  .gate-box input{
     width:100%;
     padding:12px 14px;
     border-radius:6px;
@@ -63,8 +64,10 @@
     color:var(--text-primary);
     font-size:.9375rem;
     margin-bottom:12px;
+    text-align:center;
+    letter-spacing:.05em;
   }
-  #gate button, .refresh-btn{
+  .gate-box button, .refresh-btn{
     width:100%;
     padding:12px;
     border:none;
@@ -75,7 +78,7 @@
     font-size:.9375rem;
     cursor:pointer;
   }
-  #gateError{color:var(--critical);font-size:.8125rem;margin-top:10px;min-height:1em;}
+  .gate-err{color:var(--critical);font-size:.8125rem;margin-top:10px;min-height:1em;}
 
   /* --- ダッシュボード --- */
   #dash{display:none;}
@@ -173,11 +176,19 @@
 </head>
 <body>
 
-<div id="gate">
+<div id="gate" class="gate-box">
   <h1>🐱 豪徳寺DX 管理者ダッシュボード</h1>
   <input type="password" id="pwInput" placeholder="管理者パスワード" autocomplete="off">
   <button onclick="login()">ログイン</button>
-  <div id="gateError"></div>
+  <div id="gateError" class="gate-err"></div>
+</div>
+
+<div id="otpGate" class="gate-box" style="display:none;">
+  <h1>🐱 豪徳寺DX 管理者ダッシュボード</h1>
+  <div class="gate-hint">登録メールアドレスに送信した6桁の確認コードを入力してください（5分間有効）</div>
+  <input type="text" id="otpInput" placeholder="6桁コード" autocomplete="off" inputmode="numeric" maxlength="6">
+  <button onclick="verifyOtp()">確認する</button>
+  <div id="otpError" class="gate-err"></div>
 </div>
 
 <div class="wrap" id="dash">
@@ -282,30 +293,82 @@
 </div>
 
 <script>
-let _pw='';
+let _sessionToken='';
+let _otpSession='';
 
-function login(){
+function _lockoutMsg(data){
+  if(data&&data.lockedUntil){
+    const t=new Date(data.lockedUntil).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'});
+    return `試行回数が多いため一時的にロックされています（${t}頃まで）。しばらくしてから再度お試しください。`;
+  }
+  return '試行回数が多いため一時的にロックされています。しばらくしてから再度お試しください。';
+}
+
+async function login(){
   const pw=document.getElementById('pwInput').value;
   if(!pw)return;
-  _pw=pw;
-  loadStats(true);
+  const errEl=document.getElementById('gateError');
+  errEl.textContent='';
+  try{
+    const res=await fetch('/.netlify/functions/admin-login',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password:pw}),
+    });
+    const data=await res.json().catch(()=>({}));
+    if(res.status===423){errEl.textContent=_lockoutMsg(data);return;}
+    if(res.status===401){errEl.textContent='パスワードが正しくありません。';return;}
+    if(!res.ok){errEl.textContent='ログインに失敗しました。しばらくしてから再度お試しください。';return;}
+    _otpSession=data.otpSession;
+    document.getElementById('gate').style.display='none';
+    document.getElementById('otpGate').style.display='block';
+    document.getElementById('otpInput').focus();
+  }catch(e){
+    errEl.textContent='通信エラーが発生しました。';
+  }
 }
 
 document.getElementById('pwInput').addEventListener('keydown',(e)=>{
   if(e.key==='Enter')login();
 });
 
+async function verifyOtp(){
+  const code=document.getElementById('otpInput').value.trim();
+  if(!code)return;
+  const errEl=document.getElementById('otpError');
+  errEl.textContent='';
+  try{
+    const res=await fetch('/.netlify/functions/admin-verify-otp',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({otpSession:_otpSession,code}),
+    });
+    const data=await res.json().catch(()=>({}));
+    if(res.status===423){errEl.textContent=_lockoutMsg(data);return;}
+    if(res.status===401){errEl.textContent='コードが正しくないか、有効期限が切れています。';return;}
+    if(!res.ok){errEl.textContent='確認に失敗しました。しばらくしてから再度お試しください。';return;}
+    _sessionToken=data.sessionToken;
+    await loadStats(true);
+  }catch(e){
+    errEl.textContent='通信エラーが発生しました。';
+  }
+}
+
+document.getElementById('otpInput').addEventListener('keydown',(e)=>{
+  if(e.key==='Enter')verifyOtp();
+});
+
 async function loadStats(isLogin){
-  const errEl=isLogin?document.getElementById('gateError'):document.getElementById('loadErr');
+  const errEl=isLogin?document.getElementById('otpError'):document.getElementById('loadErr');
   errEl.textContent='';
   try{
     const res=await fetch('/.netlify/functions/admin-stats',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({password:_pw}),
+      body:JSON.stringify({sessionToken:_sessionToken}),
     });
     if(res.status===401){
-      errEl.textContent='パスワードが正しくありません。';
+      errEl.textContent='セッションが無効です。もう一度ログインしてください。';
       return;
     }
     if(!res.ok){
@@ -315,6 +378,7 @@ async function loadStats(isLogin){
     const data=await res.json();
     render(data);
     document.getElementById('gate').style.display='none';
+    document.getElementById('otpGate').style.display='none';
     document.getElementById('dash').style.display='block';
   }catch(e){
     errEl.textContent='通信エラーが発生しました。';
@@ -558,7 +622,7 @@ async function analyzeFeedback(){
     const res=await fetch('/.netlify/functions/analyze-feedback',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({password:_pw,stats}),
+      body:JSON.stringify({sessionToken:_sessionToken,stats}),
     });
     if(res.status===401){
       errEl.textContent='認証に失敗しました。再度ログインしてください。';
@@ -596,7 +660,7 @@ async function issueSupportPass(){
     const res=await fetch('/.netlify/functions/issue-support-pass',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({password:_pw}),
+      body:JSON.stringify({sessionToken:_sessionToken}),
     });
     if(res.status===401){
       errEl.textContent='認証に失敗しました。再度ログインしてください。';

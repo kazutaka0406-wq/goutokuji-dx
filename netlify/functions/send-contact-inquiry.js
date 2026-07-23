@@ -1,5 +1,6 @@
+const { sendEmail } = require('./lib/resend');
+
 const CONTACT_EMAIL_TO = 'umbellata0430@gmail.com';
-const CONTACT_EMAIL_FROM = 'Goutokuji DX <onboarding@resend.dev>';
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
@@ -38,23 +39,15 @@ exports.handler = async function(event) {
   }
 
   try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: CONTACT_EMAIL_FROM,
-        to: [CONTACT_EMAIL_TO],
-        reply_to: contact,
-        subject: `【豪徳寺DX】アプリお問い合わせ: ${name}`,
-        html: `<p><strong>お名前:</strong> ${escapeHtml(name)}</p>
+    const res = await sendEmail({
+      to: CONTACT_EMAIL_TO,
+      replyTo: contact,
+      subject: `【豪徳寺DX】アプリお問い合わせ: ${name}`,
+      html: `<p><strong>お名前:</strong> ${escapeHtml(name)}</p>
 <p><strong>連絡先:</strong> ${escapeHtml(contact)}</p>
 <p><strong>言語:</strong> ${escapeHtml(lang || '-')}</p>
 <p><strong>お問い合わせ内容:</strong></p>
 <p>${escapeHtml(content).replace(/\n/g, '<br>')}</p>`,
-      }),
     });
 
     if (!res.ok) {

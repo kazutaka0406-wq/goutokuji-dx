@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { verifySessionToken } = require('./lib/adminAuth');
 
 /* トークンの有効期限＝発行時点のJST（UTC+9）でのその日の23:59:59 */
 function jstEndOfDayIso() {
@@ -18,7 +19,7 @@ exports.handler = async function(event) {
     return { statusCode: 405, headers, body: JSON.stringify({ error: 'method_not_allowed' }) };
   }
 
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY || !process.env.ADMIN_PASSWORD) {
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY || !process.env.ADMIN_SESSION_SECRET) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: 'not_configured' }) };
   }
 
@@ -29,7 +30,7 @@ exports.handler = async function(event) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'invalid_body' }) };
   }
 
-  if (body.password !== process.env.ADMIN_PASSWORD) {
+  if (!verifySessionToken(body.sessionToken)) {
     return { statusCode: 401, headers, body: JSON.stringify({ error: 'unauthorized' }) };
   }
 

@@ -3,3 +3,6 @@
 
 # 環境変数（APIキーなどの秘密情報）
 .env
+
+# Stripeのバックアップコード等の機密情報
+トラブル時マニュアル/stripe_backup_code.txt
