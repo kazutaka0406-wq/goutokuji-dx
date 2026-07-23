@@ -193,9 +193,27 @@
   <div class="tiles" id="tiles"></div>
 
   <div class="card">
+    <h2>言語別 利用者数</h2>
+    <div class="card-sub">どの言語が選ばれているかの内訳（一度でも何らかの操作をした来訪者ベース）</div>
+    <div class="barchart" id="langUsageChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>言語別 完了率・満足度</h2>
+    <div class="card-sub">言語ごとの参拝完了率とアンケート平均（多言語対応の効果検証用）</div>
+    <div id="langBreakdownWrap"></div>
+  </div>
+
+  <div class="card">
     <h2>スポット別 スタンプ獲得数</h2>
     <div class="card-sub">10大スポットそれぞれで正解・スタンプ獲得された回数</div>
     <div class="barchart" id="stampChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>スポット別 クイズ正答率</h2>
+    <div class="card-sub">初回で正解した割合（正解数 ÷ (正解数＋不正解回答数)）。低いスポットは問題文・選択肢の見直し候補</div>
+    <div class="barchart" id="quizRateChart"></div>
   </div>
 
   <div class="card">
@@ -212,8 +230,26 @@
 
   <div class="card">
     <h2>購入（当日パス発行）の日別推移</h2>
-    <div class="card-sub">直近14日分</div>
+    <div class="card-sub">直近14日分（日本時間）</div>
     <div class="barchart" id="purchaseChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>購入・推定売上の曜日別傾向</h2>
+    <div class="card-sub">曜日ごとの購入件数（日本時間）。¥マークの棒は推定売上（¥1,100/件で概算）</div>
+    <div class="barchart" id="weekdayChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>購入・推定売上の月別推移</h2>
+    <div class="card-sub">直近12ヶ月分（日本時間）</div>
+    <div class="barchart" id="monthChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>購入・推定売上の年別推移</h2>
+    <div class="card-sub">日本時間ベース</div>
+    <div class="barchart" id="yearChart"></div>
   </div>
 
   <div class="card">
@@ -228,6 +264,20 @@
     <button class="refresh-btn" id="analyzeBtn" onclick="analyzeFeedback()" style="width:auto;padding:9px 18px;font-size:.8125rem;margin-bottom:14px;">🔍 分析を実行</button>
     <div id="analyzeErr" style="color:var(--critical);font-size:.8125rem;margin-bottom:8px;"></div>
     <div id="analyzeResult"></div>
+  </div>
+
+  <div class="card">
+    <h2>🔑 サポート用一時アクセスパス発行</h2>
+    <div class="card-sub">「課金したのに使えない」等の問い合わせを受けた際、再課金なしで参拝を再開できる当日限り・1回限りのURLをその場で発行します。発行後、そのURLをお客様にご案内してください。</div>
+    <button class="refresh-btn" id="issuePassBtn" onclick="issueSupportPass()" style="width:auto;padding:9px 18px;font-size:.8125rem;margin-bottom:14px;">🔑 発行する</button>
+    <div id="issuePassErr" style="color:var(--critical);font-size:.8125rem;margin-bottom:8px;"></div>
+    <div id="issuePassResult" style="display:none;">
+      <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:6px;">以下のURLをお客様にご案内ください（本日23:59まで・1回限り有効）：</div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="issuePassUrl" readonly style="flex:1;padding:10px;font-family:monospace;font-size:.75rem;border-radius:6px;border:1px solid rgba(255,255,255,.15);background:var(--surface-1);color:var(--text-primary);" onclick="this.select()">
+        <button class="refresh-btn" style="width:auto;padding:9px 16px;font-size:.75rem;" onclick="_copySupportPassUrl()">📋 コピー</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -274,18 +324,20 @@ async function loadStats(isLogin){
 function _fmtPct(v){return v===null||v===undefined?'—':Math.round(v*100)+'%';}
 function _fmtNum(v){return v===null||v===undefined?'—':v;}
 function _fmtAvg(v){return v===null||v===undefined?'—':v.toFixed(1);}
+function _fmtYen(v){return v===null||v===undefined?'—':'¥'+v.toLocaleString('ja-JP');}
 function _stars(n){n=n||0;return '★'.repeat(n)+'☆'.repeat(5-n);}
 
-function _barChart(el,items,{max}={}){
+function _barChart(el,items,{max,unit}={}){
   el.innerHTML='';
+  unit=unit||'';
   const m=max||Math.max(1,...items.map(i=>i.value));
   items.forEach(it=>{
     const col=document.createElement('div');
     col.className='bar-col';
     const h=Math.max(2,Math.round((it.value/m)*120));
     col.innerHTML=`
-      <div class="bar-val">${it.value}</div>
-      <div class="bar-rect" style="height:${h}px" title="${it.label}: ${it.value}"></div>
+      <div class="bar-val">${it.value}${unit}</div>
+      <div class="bar-rect" style="height:${h}px" title="${it.label}: ${it.value}${unit}"></div>
       <div class="bar-label">${it.label}</div>
     `;
     el.appendChild(col);
@@ -305,10 +357,51 @@ function render(data){
     <div class="tile"><div class="tile-label">ガイドの分かりやすさ</div><div class="tile-value">${_fmtAvg(data.avgGuideRating)} <small>/ 5</small></div></div>
     <div class="tile"><div class="tile-label">クイズの楽しさ</div><div class="tile-value">${_fmtAvg(data.avgQuizRating)} <small>/ 5</small></div></div>
     <div class="tile"><div class="tile-label">料金への納得感</div><div class="tile-value">${_fmtAvg(data.avgPriceRating)} <small>/ 5</small></div></div>
+    <div class="tile"><div class="tile-label">隠れ招き猫 AI判定 正答率</div><div class="tile-value">${_fmtPct(data.catVerifyRate)} <small>(${_fmtNum(data.catVerifyFoundCount)}/${_fmtNum(data.catVerifyTotal)})</small></div></div>
+    <div class="tile"><div class="tile-label">SNSシェアボタン押下率</div><div class="tile-value">${_fmtPct(data.shareClickRate)} <small>(${_fmtNum(data.shareClickCount)}件 / おみくじ${_fmtNum(data.omikujiDrawCount)}件)</small></div></div>
+    <div class="tile"><div class="tile-label">隠れ招き猫 ヒント利用率</div><div class="tile-value">${_fmtPct(data.hintUsageRate)} <small>(写真判定を試みた人のうち)</small></div></div>
+    <div class="tile"><div class="tile-label">AIナレーション再生（スタンプ1件あたり）</div><div class="tile-value">${data.narrationPlayRate===null?'—':data.narrationPlayRate.toFixed(2)} <small>回（計${_fmtNum(data.narrationPlayCount)}回再生）</small></div></div>
+    <div class="tile"><div class="tile-label">推定売上合計</div><div class="tile-value">${_fmtYen(data.estimatedRevenueTotal)} <small>（¥1,100/件で概算）</small></div></div>
   `;
+
+  const LANG_LABELS={ja:'日本語',en:'English',zh:'中文',ko:'한국어',es:'Español',fr:'Français'};
+  const langUsageEntries=Object.entries(data.languageUsageCounts||{}).sort((a,b)=>b[1]-a[1]);
+  const langUsageItems=langUsageEntries.map(([lang,count])=>({label:LANG_LABELS[lang]||lang.toUpperCase(),value:count}));
+  if(langUsageItems.length){
+    _barChart(document.getElementById('langUsageChart'),langUsageItems);
+  }else{
+    document.getElementById('langUsageChart').innerHTML='<div class="empty-msg">まだデータがありません。</div>';
+  }
+
+  const langBreakdownWrap=document.getElementById('langBreakdownWrap');
+  if(!data.languageBreakdown||!data.languageBreakdown.length){
+    langBreakdownWrap.innerHTML='<div class="empty-msg">まだデータがありません。</div>';
+  }else{
+    langBreakdownWrap.innerHTML=`
+      <table>
+        <thead><tr><th>言語</th><th>参拝者数</th><th>完了率</th><th>総合満足度</th><th>ガイド</th><th>クイズ</th><th>料金</th></tr></thead>
+        <tbody>
+          ${data.languageBreakdown.map(l=>`
+            <tr>
+              <td>${LANG_LABELS[l.lang]||l.lang.toUpperCase()}</td>
+              <td>${l.visitorCount}（完了${l.completedCount}）</td>
+              <td>${_fmtPct(l.completionRate)}</td>
+              <td>${_fmtAvg(l.avgRating)}</td>
+              <td>${_fmtAvg(l.avgGuideRating)}</td>
+              <td>${_fmtAvg(l.avgQuizRating)}</td>
+              <td>${_fmtAvg(l.avgPriceRating)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
 
   const stampItems=data.stampCounts.map((v,i)=>({label:'S'+(i+1),value:v}));
   _barChart(document.getElementById('stampChart'),stampItems);
+
+  const quizRateItems=(data.quizCorrectRates||[]).map((r,i)=>({label:'S'+(i+1),value:r===null?0:Math.round(r*100)}));
+  _barChart(document.getElementById('quizRateChart'),quizRateItems,{max:100,unit:'%'});
 
   const rankOrder=['大吉','中吉','小吉','吉','末吉','凶'];
   const omikujiItems=rankOrder.map(r=>({label:r,value:data.omikujiRankCounts[r]||0}));
@@ -341,6 +434,30 @@ function render(data){
     _barChart(document.getElementById('purchaseChart'),purchaseItems);
   }else{
     document.getElementById('purchaseChart').innerHTML='<div class="empty-msg">まだデータがありません。</div>';
+  }
+
+  const weekdayLabels=data.weekdayLabels||['日','月','火','水','木','金','土'];
+  const weekdayItems=(data.purchaseWeekdayCounts||[]).map((v,i)=>({label:weekdayLabels[i],value:v}));
+  if(weekdayItems.some(it=>it.value>0)){
+    _barChart(document.getElementById('weekdayChart'),weekdayItems);
+  }else{
+    document.getElementById('weekdayChart').innerHTML='<div class="empty-msg">まだデータがありません。</div>';
+  }
+
+  const months=Object.keys(data.purchaseMonths||{}).sort().slice(-12);
+  const monthItems=months.map(m=>({label:m.slice(2),value:data.purchaseMonths[m]}));
+  if(monthItems.length){
+    _barChart(document.getElementById('monthChart'),monthItems);
+  }else{
+    document.getElementById('monthChart').innerHTML='<div class="empty-msg">まだデータがありません。</div>';
+  }
+
+  const years=Object.keys(data.purchaseYears||{}).sort();
+  const yearItems=years.map(y=>({label:y,value:data.purchaseYears[y]}));
+  if(yearItems.length){
+    _barChart(document.getElementById('yearChart'),yearItems);
+  }else{
+    document.getElementById('yearChart').innerHTML='<div class="empty-msg">まだデータがありません。</div>';
   }
 
   document.getElementById('surveySub').textContent=`直近${data.surveys.length}件を表示（全${data.surveyCount}件）`;
@@ -422,11 +539,18 @@ async function analyzeFeedback(){
     completedCount:_lastData.completedCount,
     totalVisitorsWithProgress:_lastData.totalVisitorsWithProgress,
     stampCounts:_lastData.stampCounts,
+    quizCorrectRates:_lastData.quizCorrectRates,
     omikujiRankCounts:_lastData.omikujiRankCounts,
     avgRating:_lastData.avgRating,
     avgGuideRating:_lastData.avgGuideRating,
     avgQuizRating:_lastData.avgQuizRating,
     avgPriceRating:_lastData.avgPriceRating,
+    catVerifyRate:_lastData.catVerifyRate,
+    shareClickRate:_lastData.shareClickRate,
+    hintUsageRate:_lastData.hintUsageRate,
+    narrationPlayRate:_lastData.narrationPlayRate,
+    languageUsageCounts:_lastData.languageUsageCounts,
+    languageBreakdown:_lastData.languageBreakdown,
     surveys:_lastData.surveys,
   };
 
@@ -454,6 +578,52 @@ async function analyzeFeedback(){
   }finally{
     btn.disabled=false;
     btn.textContent=_origLabel;
+  }
+}
+
+async function issueSupportPass(){
+  const btn=document.getElementById('issuePassBtn');
+  const errEl=document.getElementById('issuePassErr');
+  const resultEl=document.getElementById('issuePassResult');
+  errEl.textContent='';
+  resultEl.style.display='none';
+
+  btn.disabled=true;
+  const _origLabel=btn.textContent;
+  btn.textContent='発行中...';
+
+  try{
+    const res=await fetch('/.netlify/functions/issue-support-pass',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password:_pw}),
+    });
+    if(res.status===401){
+      errEl.textContent='認証に失敗しました。再度ログインしてください。';
+      return;
+    }
+    if(!res.ok){
+      errEl.textContent='発行に失敗しました。しばらくしてから再度お試しください。';
+      return;
+    }
+    const data=await res.json();
+    document.getElementById('issuePassUrl').value=data.url;
+    resultEl.style.display='block';
+  }catch(e){
+    errEl.textContent='通信エラーが発生しました。';
+  }finally{
+    btn.disabled=false;
+    btn.textContent=_origLabel;
+  }
+}
+
+function _copySupportPassUrl(){
+  const input=document.getElementById('issuePassUrl');
+  input.select();
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(input.value);
+  }else{
+    document.execCommand('copy');
   }
 }
 </script>

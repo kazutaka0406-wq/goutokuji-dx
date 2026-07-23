@@ -1,4 +1,4 @@
-const ALLOWED_TYPES = ['purchase', 'stamp', 'omikuji', 'survey'];
+const ALLOWED_TYPES = ['purchase', 'stamp', 'omikuji', 'survey', 'quiz_wrong', 'cat_verify', 'share_click', 'hint_used', 'narration_play'];
 
 exports.handler = async function(event) {
   const headers = {

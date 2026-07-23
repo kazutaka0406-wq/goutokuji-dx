@@ -184,6 +184,23 @@ p{line-height:1.85}
   color:var(--mist);opacity:.5;background:transparent;border:1px dashed rgba(214,207,196,.35);
   border-radius:4px;padding:8px 14px;cursor:pointer;text-transform:uppercase}
 .lang-debug-btn:active{opacity:.8}
+.lang-contact-btn{margin-top:16px;font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.08em;
+  color:var(--gold-light);background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;padding:10px 18px;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;gap:2px;transition:all .2s}
+.lang-contact-btn:hover{background:rgba(201,168,76,.14);border-color:var(--gold)}
+.lang-contact-btn-sub{font-size:.5625rem;opacity:.6;letter-spacing:.06em}
+
+.contact-form-inner{max-width:520px;margin:0 auto;padding:74px 22px 60px;display:flex;flex-direction:column;gap:16px}
+.contact-form-desc{font-size:.875rem;color:var(--mist);opacity:.85;line-height:1.7}
+.contact-input{width:100%;background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.25);
+  border-radius:3px;color:var(--white);padding:10px;font-family:var(--font-body);font-size:.875rem;margin-top:4px}
+.contact-form-status{text-align:center;font-size:.8125rem;min-height:1.2em;color:var(--gold-light)}
+.contact-form-status.error{color:var(--red-light)}
+.contact-back-link{display:block;text-align:center;margin-top:2px;background:transparent;border:none;
+  color:var(--mist);opacity:.7;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.05em;
+  cursor:pointer;text-decoration:underline}
+.contact-back-link:hover{opacity:1;color:var(--gold-light)}
 
 #page-visual-intro{background:var(--ink)}
 .intro-inner{max-width:420px;width:100%;margin:0 auto;padding:32px 22px 40px;display:flex;flex-direction:column;gap:18px}
@@ -1328,7 +1345,38 @@ p{line-height:1.85}
       </button>
     </div>
     <div class="lang-foot-note fade-up fade-up-4">You can change this at any time</div>
+    <button class="lang-contact-btn fade-up fade-up-4" onclick="playClickSound();openContactForm()">✉️ アプリに関するお問い合わせ<span class="lang-contact-btn-sub">App Inquiry</span></button>
     <button class="lang-debug-btn fade-up fade-up-4" id="langDebugBtn" onclick="debugGoToClear()">DEBUG: Skip to Clear Screen</button>
+  </div>
+</section>
+
+<section class="page" id="page-contact-form">
+  <div class="contact-form-inner">
+    <div class="fade-up">
+      <div class="wm-eyebrow">Support</div>
+      <h2 class="wm-title" id="contactFormTitle">アプリに関するお問い合わせ</h2>
+    </div>
+    <p class="contact-form-desc fade-up fade-up-1" id="contactFormDesc">本アプリの内容・不具合・ご要望など、何でもお気軽にご連絡ください。担当者が内容を確認のうえご連絡させていただく場合がございます。</p>
+
+    <div class="feedback-card fade-up fade-up-2">
+      <div>
+        <div class="survey-label" id="contactNameLabel">お名前</div>
+        <input type="text" class="contact-input" id="contactNameInput" placeholder="山田 太郎" autocomplete="name">
+      </div>
+      <div>
+        <div class="survey-label" id="contactContactLabel">ご連絡先（メールアドレス等）</div>
+        <input type="text" class="contact-input" id="contactContactInput" placeholder="example@email.com" autocomplete="email">
+      </div>
+      <div>
+        <div class="survey-label" id="contactContentLabel">お問い合わせ内容</div>
+        <textarea class="survey-textarea" id="contactContentInput" style="height:120px" placeholder="内容をご記入ください"></textarea>
+      </div>
+    </div>
+
+    <div class="contact-form-status" id="contactFormStatus"></div>
+
+    <button class="btn-share-inline fade-up fade-up-3" id="contactSubmitBtnEl" onclick="playClickSound();submitContactForm()">送信する</button>
+    <button class="contact-back-link fade-up fade-up-3" id="contactBackBtnEl" onclick="playClickSound();closeContactForm()">← 言語選択に戻る</button>
   </div>
 </section>
 
@@ -1838,6 +1886,16 @@ const CONFIG_LANG = {
     wmTitle:"Welcome to Goutokuji",
     wmNarrLabel:"🎙 Audio Guide — Sanctuary Narration",
     wmPlayLabel:"Play Audio Guide",
+    contactNoticeText:"⚠️ For questions or inquiries about this app, please contact us using the \"App Inquiry\" button at the bottom of the language selection screen.<br><br>※ Please refrain from contacting Goutokuji Temple's office directly.",
+    contactNoticeOkBtn:"Got It, Continue",
+    contactFormTitle:"App Inquiry",
+    contactFormDesc:"Please feel free to contact us about anything related to this app — content, issues, or requests. Our team may follow up with you.",
+    contactNameLabel:"Name",contactNamePlaceholder:"John Smith",
+    contactContactLabel:"Contact Info (email, etc.)",contactContactPlaceholder:"example@email.com",
+    contactContentLabel:"Inquiry Details",contactContentPlaceholder:"Please describe your inquiry",
+    contactSubmitBtn:"Submit",contactBackBtn:"← Back to Language Selection",
+    contactSendingMsg:"Sending...",contactSuccessMsg:"Your inquiry has been received. Thank you.",
+    contactErrorMsg:"Failed to send. Please try again later.",contactRequiredMsg:"Please fill in all required fields",
     appealEyebrow:"Premium Experience",
     appealTitle:"Premium Pilgrimage Experience",
     checkoutEyebrow:"Premium Guide · Purchase",
@@ -1920,6 +1978,16 @@ const CONFIG_LANG = {
     welcomeNarr:"参拝の前に、この美しい寺院の全体像をご案内いたします。\\n\\nここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。\\n\\n正式名称を「大谿山 豪徳寺」といい、室町時代の文明12年（1480年）に創建されました。江戸時代の寛永10年（1633年）、世田谷が彦根藩の所領となると、藩主・井伊直孝公が深く帰依し、井伊家の江戸における菩提寺として整備されました。寺号は直孝公の戒名「久昌院殿豪徳天英大居士」に由来しています。\\n\\nまた豪徳寺は、招き猫発祥の地としても広く知られています。ある日、鷹狩りの帰りにこの地を通りかかった直孝公が、門前の白猫に手招きされてお寺に立ち寄ったところ、まもなく激しい雷雨が降り始めました。猫のおかげで雷雨を避けられ、和尚との法談も楽しめた直孝公は、この縁に深く感動したと伝えられています。その後、福を招いたこの猫は「招福猫児（まねきねこ）」と呼ばれ、招福殿にお祀りされるようになりました。\\n\\nおすすめの順路をご案内します。まず、綺麗に剪定された松並木の参道をまっすぐ進み、正面の歴史ある山門をくぐります。境内に入ると左手に三重塔が見えてきます。実は塔のどこかに隠れ招き猫がひっそりと潜んでいます。ぜひ探してみてください。まっすぐ進むと正面に仏殿、その左手奥には数千の招福猫児が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る時計回りのルートが、最も美しい動線です。\\n\\n各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。クイズを全問正解されると、特別なおみくじを引くことができます。\\n\\nさあ、スマホを片手に、心を落ち着かせて歩き始めましょう。",
     wmTitle:"<em>豪徳寺へようこそ</em>Welcome to Goutokuji",
     wmNarrLabel:"🎙 音声ガイド — 境内全体ナレーション",wmPlayLabel:"音声ガイドを再生",
+    contactNoticeText:"⚠️ 本アプリに関するご質問・お問い合わせは、言語選択画面下部の「アプリに関するお問い合わせ」ボタンよりご連絡ください。<br><br>※　豪徳寺の寺務所などへの問い合わせはご遠慮ください。",
+    contactNoticeOkBtn:"了解して進む",
+    contactFormTitle:"アプリに関するお問い合わせ",
+    contactFormDesc:"本アプリの内容・不具合・ご要望など、何でもお気軽にご連絡ください。担当者が内容を確認のうえご連絡させていただく場合がございます。",
+    contactNameLabel:"お名前",contactNamePlaceholder:"山田 太郎",
+    contactContactLabel:"ご連絡先（メールアドレス等）",contactContactPlaceholder:"example@email.com",
+    contactContentLabel:"お問い合わせ内容",contactContentPlaceholder:"内容をご記入ください",
+    contactSubmitBtn:"送信する",contactBackBtn:"← 言語選択に戻る",
+    contactSendingMsg:"送信中...",contactSuccessMsg:"お問い合わせを受け付けました。ありがとうございました。",
+    contactErrorMsg:"送信に失敗しました。時間をおいて再度お試しください。",contactRequiredMsg:"必須項目をご入力ください",
     mannersCheckToast:"チェックボックスをすべてつけてから進んでください",
     wmNextBtn:"次へ進む ➔",
     readMoreLabel:"▼ 続きを読む",showLessLabel:"▲ 閉じる",
@@ -1984,6 +2052,16 @@ const CONFIG_LANG = {
     staticInfo:`<strong>【开放时间】</strong> 6:00〜17:00 ｜ 寺务所: 8:00〜16:30<br><strong>【联系方式】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     wmTitle:"<em>欢迎来到豪德寺</em>Welcome to Goutokuji",wmNextBtn:"继续 ➔",
     wmNarrLabel:"🎙 语音导览 — 境内全体解说",wmPlayLabel:"播放语音导览",
+    contactNoticeText:"⚠️ 关于本应用的问题或咨询，请通过语言选择页面底部的「应用咨询」按钮与我们联系。<br><br>※ 请勿直接联系豪德寺寺务所等。",
+    contactNoticeOkBtn:"知道了，继续",
+    contactFormTitle:"应用咨询",
+    contactFormDesc:"关于本应用的内容、问题或建议，欢迎随时联系我们。我们可能会与您联系确认详情。",
+    contactNameLabel:"姓名",contactNamePlaceholder:"王小明",
+    contactContactLabel:"联系方式（邮箱等）",contactContactPlaceholder:"example@email.com",
+    contactContentLabel:"咨询内容",contactContentPlaceholder:"请填写咨询内容",
+    contactSubmitBtn:"提交",contactBackBtn:"← 返回语言选择",
+    contactSendingMsg:"发送中...",contactSuccessMsg:"您的咨询已收到，谢谢。",
+    contactErrorMsg:"发送失败，请稍后再试。",contactRequiredMsg:"请填写所有必填项",
     readMoreLabel:"▼ 查看更多",showLessLabel:"▲ 收起",
     welcomeNarr:"在参拜之前，让我为您介绍这座美丽古刹的全貌。\\n\\n这里，豪德寺，是一片被郁郁葱葱的绿意所环抱的广阔圣域。\\n\\n寺院正式名称为「大谿山 豪德寺」，创建于室町时代的文明12年（1480年）。江户时代寛永10年（1633年），世田谷成为彦根藩领地后，藩主·井伊直孝公将其定为井伊家在江户的菩提寺。寺名源于直孝公的戒名「久昌院殿豪德天英大居士」。\\n\\n豪德寺同时也以招财猫发祥地而广为人知。相传某日，直孝公在鹰猎归途中被寺门前的一只白猫招手引入寺内。不久，一场猛烈的雷雨骤然而降。正是因为猫咪的指引，直孝公才得以躲避雷雨。深受感动的直孝公将此视为奇缘，此后这只带来福气的猫被尊称为「招福猫児」，供奉于招福殿之中。\\n\\n推荐参拜路线：首先沿着修剪整齐的松树参道径直前行，穿过正面历史悠久的山门。进入境内后，左手边可见三重塔——塔的某处，静静隐藏着招财猫，请务必一探究竟。径直前行，正面即为佛殿，其左后方便是排列着数千只招福猫児的招福殿。在最深处参拜完井伊家墓所后，依次游览本殿、开祖堂、朱红色的赤门、历史悠久的钟楼，最后到达地藏堂。\\n\\n每个景点都备有现场拍摄的真实照片，以及其他地方从未公开过的历史趣味问答。全部答对后，您将可以抽取特别御签。\\n\\n现在，请手持智能手机，静下心来，踏上这段朝圣之旅吧。",
     mapEyebrow:"境内导览",mapTitle:"<em>境内全体地图</em>豪德寺",
@@ -2068,6 +2146,16 @@ const CONFIG_LANG = {
     staticInfo:`<strong>【관람 시간】</strong> 6:00〜17:00 ｜ 사무소: 8:00〜16:30<br><strong>【문의】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     wmTitle:"<em>고토쿠지에 오신 것을 환영합니다</em>Welcome to Goutokuji",wmNextBtn:"다음으로 ➔",
     wmNarrLabel:"🎙 오디오 가이드 — 경내 전체 내레이션",wmPlayLabel:"오디오 가이드 재생",
+    contactNoticeText:"⚠️ 본 앱에 관한 질문이나 문의는 언어 선택 화면 하단의 「앱 문의」 버튼을 통해 연락해 주세요.<br><br>※ 고토쿠지 사무소 등으로의 문의는 삼가주시기 바랍니다.",
+    contactNoticeOkBtn:"확인하고 계속하기",
+    contactFormTitle:"앱 문의",
+    contactFormDesc:"본 앱의 내용, 오류, 요청 사항 등 무엇이든 편하게 문의해 주세요. 담당자가 확인 후 연락드릴 수 있습니다.",
+    contactNameLabel:"성함",contactNamePlaceholder:"홍길동",
+    contactContactLabel:"연락처（이메일 등）",contactContactPlaceholder:"example@email.com",
+    contactContentLabel:"문의 내용",contactContentPlaceholder:"문의 내용을 입력해 주세요",
+    contactSubmitBtn:"제출",contactBackBtn:"← 언어 선택으로 돌아가기",
+    contactSendingMsg:"전송 중...",contactSuccessMsg:"문의가 접수되었습니다. 감사합니다.",
+    contactErrorMsg:"전송에 실패했습니다. 잠시 후 다시 시도해 주세요.",contactRequiredMsg:"필수 항목을 입력해 주세요",
     readMoreLabel:"▼ 더 보기",showLessLabel:"▲ 접기",
     welcomeNarr:"참배를 시작하기 전에, 이 아름다운 고찰의 전체적인 모습을 안내해 드리겠습니다.\\n\\n이곳 고토쿠지는 푸른 숲에 둘러싸인 광활한 성역입니다.\\n\\n정식 명칭은 「대계산 고토쿠지（大谿山 豪德寺）」이며, 무로마치 시대인 1480년에 창건되었습니다. 에도 시대인 1633년, 세타가야가 히코네 번의 영지가 되면서 번주 이이 나오타카 공이 이이 가문의 에도 보리사로 정비하였습니다. 절 이름은 나오타카 공의 법호에서 유래합니다.\\n\\n고토쿠지는 또한 마네키네코의 발상지로도 널리 알려져 있습니다. 어느 날 매 사냥을 마치고 귀환하던 나오타카 공이 절 문 앞의 흰 고양이에게 이끌려 절에 들렀는데, 곧이어 거센 뇌우가 쏟아졌습니다. 고양이 덕분에 비를 피한 나오타카 공은 이 인연에 깊이 감동하였고, 이후 이 고양이는 「쇼후쿠네코（招福猫児）」로 불리며 쇼후쿠덴에 모셔지게 되었습니다.\\n\\n추천 참배 순로：먼저 잘 다듬어진 소나무 가로수 참도를 따라 산몬을 통과합니다. 경내에 들어서면 왼쪽에 삼중탑이 보입니다. 탑 어딘가에 숨은 마네키네코가 조용히 기다리고 있습니다. 앞으로 나아가면 불전이, 그 왼편 안쪽에는 쇼후쿠덴이 자리하고 있습니다. 이이 가 묘소를 참배한 후, 본전, 개조당, 아카몬, 종루, 마지막으로 지조도를 둘러보는 시계 방향 루트가 가장 아름답습니다.\\n\\n각 스폿에는 현장 사진과 역사 퀴즈가 준비되어 있습니다. 퀴즈를 전부 맞히면 특별한 오미쿠지를 뽑을 수 있습니다.\\n\\n자, 스마트폰을 손에 들고 마음을 차분히 가라앉혀 발걸음을 내딛어 보세요.",
     mapEyebrow:"경내 안내",mapTitle:"<em>경내 전체 지도</em>고토쿠지",
@@ -2149,6 +2237,16 @@ const CONFIG_LANG = {
     welcomeNarr:"Antes de comenzar nuestra visita, permítame presentarle la imagen completa de este hermoso y antiguo templo.\\n\\nGoutokuji es un vasto santuario sagrado envuelto en una exuberante vegetación verde.\\n\\nEl nombre oficial del templo es Daikei-zan Goutokuji, fundado en 1480 durante el período Muromachi. En 1633, el señor Ii Naotaka estableció este templo como el lugar de culto principal de la familia Ii en Edo. El nombre del templo deriva del nombre budista póstumo de Naotaka.\\n\\nGoutokuji es también conocido como el lugar de nacimiento del gato de la fortuna. Según la leyenda, el señor Naotaka fue invitado por un gato blanco a entrar al templo. Se detuvo y momentos después estalló una tormenta. Gracias al gato fue protegido, y el gato fue honrado como portador de buena fortuna con el nombre de Maneki-neko.\\n\\nRuta recomendada: Camine recto por el sendero bordeado de pinos y pase por la Puerta Sanmon. Verá la Pagoda de Tres Pisos a su izquierda — en algún lugar, gatos de la fortuna ocultos esperan ser descubiertos. Frente a usted está el Salón del Buda, y más allá el Shofuku-den. Tras el Cementerio de la Familia Ii, continúe por el Salón Principal, el Salón de los Patriarcas, la Puerta Roja, la Torre de la Campana y el Salón Jizo.\\n\\nEn cada lugar encontrará fotografías reales y preguntas de quiz históricas exclusivas. Responda todos correctamente y le esperará un oráculo especial.\\n\\nAhora, smartphone en mano, respire profundamente y comience su peregrinación.",
     wmTitle:"<em>Bienvenido a Goutokuji</em>Welcome to Goutokuji",wmNextBtn:"Continuar ➔",
     wmNarrLabel:"🎙 Audioguía — Narración del Recinto",wmPlayLabel:"Reproducir Audioguía",
+    contactNoticeText:"⚠️ Para preguntas o consultas sobre esta app, contáctenos usando el botón \"Consulta sobre la App\" en la parte inferior de la pantalla de selección de idioma.<br><br>※ Por favor, absténgase de contactar directamente a la oficina del Templo Goutokuji.",
+    contactNoticeOkBtn:"Entendido, continuar",
+    contactFormTitle:"Consulta sobre la App",
+    contactFormDesc:"Contáctenos libremente sobre cualquier cosa relacionada con esta app: contenido, problemas o solicitudes. Es posible que nos pongamos en contacto con usted.",
+    contactNameLabel:"Nombre",contactNamePlaceholder:"Juan Pérez",
+    contactContactLabel:"Contacto (correo electrónico, etc.)",contactContactPlaceholder:"example@email.com",
+    contactContentLabel:"Detalles de la Consulta",contactContentPlaceholder:"Describa su consulta",
+    contactSubmitBtn:"Enviar",contactBackBtn:"← Volver a Selección de Idioma",
+    contactSendingMsg:"Enviando...",contactSuccessMsg:"Su consulta ha sido recibida. Gracias.",
+    contactErrorMsg:"Error al enviar. Inténtelo de nuevo más tarde.",contactRequiredMsg:"Por favor complete todos los campos obligatorios",
     staticInfo:`<strong>[Horario]</strong> 6:00〜17:00 | Oficina: 8:00〜16:30<br><strong>[Contacto]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     mapEyebrow:"Descripción del Santuario",mapTitle:"<em>Mapa General</em>Goutokuji",
     mapDescTitle:"📍 10 Lugares Clave",
@@ -2219,6 +2317,16 @@ const CONFIG_LANG = {
     welcomeNarr:"Avant de commencer notre visite, laissez-moi vous présenter le portrait complet de ce magnifique et ancien temple.\\n\\nGoutokuji est un vaste sanctuaire sacré enveloppé d'une végétation luxuriante.\\n\\nLe nom officiel du temple est Daikei-zan Goutokuji, fondé en 1480 sous la période Muromachi. En 1633, le seigneur Ii Naotaka a établi ce temple comme lieu de culte principal de la famille Ii à Edo. Le nom du temple est dérivé du nom bouddhiste posthume de Naotaka.\\n\\nGoutokuji est également connu comme le lieu de naissance du chat porte-bonheur. Selon la légende, le seigneur Naotaka fut invité par un chat blanc à entrer dans le temple. Il s'arrêta et peu après une violente tempête éclata. Protégé grâce au chat, il honora l'animal comme porteur de bonne fortune, le nommant Maneki-neko.\\n\\nItinéraire recommandé : Marchez tout droit le long de l'allée de pins et passez par la Porte Sanmon. Vous verrez la Pagode à Trois Étages sur votre gauche — quelque part en elle, des chats porte-bonheur cachés attendent d'être découverts. Devant vous se trouve le Pavillon du Bouddha, et plus loin le Shofuku-den. Après le Cimetière de la Famille Ii, continuez par le Hall Principal, la Salle des Patriarches, la Porte Rouge, la Tour de la Cloche et enfin le Hall Jizo.\\n\\nÀ chaque endroit, vous trouverez de vraies photos et des questions de quiz historiques exclusives. Répondez correctement à tous et un oracle spécial vous attend.\\n\\nMaintenant, smartphone en main, respirez profondément et commencez votre pèlerinage.",
     wmTitle:"<em>Bienvenue à Goutokuji</em>Welcome to Goutokuji",wmNextBtn:"Continuer ➔",
     wmNarrLabel:"🎙 Audioguide — Narration du Sanctuaire",wmPlayLabel:"Lire l'Audioguide",
+    contactNoticeText:"⚠️ Pour toute question ou demande concernant cette application, veuillez nous contacter via le bouton « Contact concernant l'application » en bas de l'écran de sélection de la langue.<br><br>※ Veuillez vous abstenir de contacter directement le bureau du temple Goutokuji.",
+    contactNoticeOkBtn:"Compris, continuer",
+    contactFormTitle:"Contact concernant l'application",
+    contactFormDesc:"N'hésitez pas à nous contacter pour toute question concernant cette application — contenu, problèmes ou demandes. Notre équipe pourra vous recontacter.",
+    contactNameLabel:"Nom",contactNamePlaceholder:"Jean Dupont",
+    contactContactLabel:"Contact (email, etc.)",contactContactPlaceholder:"example@email.com",
+    contactContentLabel:"Détails de la Demande",contactContentPlaceholder:"Décrivez votre demande",
+    contactSubmitBtn:"Envoyer",contactBackBtn:"← Retour à la Sélection de la Langue",
+    contactSendingMsg:"Envoi en cours...",contactSuccessMsg:"Votre demande a été reçue. Merci.",
+    contactErrorMsg:"Échec de l'envoi. Veuillez réessayer plus tard.",contactRequiredMsg:"Veuillez remplir tous les champs obligatoires",
     staticInfo:`<strong>[Horaires]</strong> 6:00〜17:00 | Bureau : 8:00〜16:30<br><strong>[Contact]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
     mapEyebrow:"Présentation du Sanctuaire",mapTitle:"<em>Plan Général</em>Goutokuji",
     mapDescTitle:"📍 10 Sites Clés",
@@ -2379,6 +2487,9 @@ window.addEventListener('DOMContentLoaded',async()=>{
      フェード遷移が非同期（最大約400ms遅延）なため2つの遷移が競合し、
      両方のページにactiveクラスが残ってしまう不具合の原因になるため、ここで完全に分離する。 */
   const _hasStripeReturn=new URLSearchParams(location.search).has('stripe');
+  /* サポート用一時アクセスパス（?support_pass=token）での復帰中も、同日再入場パスの
+     復元ロジックとの競合を避けるため、Stripe復帰と同様に扱う */
+  const _hasSupportPass=new URLSearchParams(location.search).has('support_pass');
 
   /* 当日中の同一端末アクセスは再課金・進捗リセットなしで再開できるようにする。
      日付境界は端末ローカル時刻の0:00（toDateStringが日替わりで変わる)。 */
@@ -2486,7 +2597,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
 
   /* 当日中の再課金不要パスが有効な場合、参拝の続きへ直接復帰する
      （Stripeからの復帰中は_handleStripeReturn()に遷移を譲るためスキップ） */
-  if(_restore&&!_hasStripeReturn){
+  if(_restore&&!_hasStripeReturn&&!_hasSupportPass){
     state.lang=_restore.lang;
     state.currentStep=_restore.step;
     state.visitedSpots=_restore.visited;
@@ -2507,6 +2618,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
   }
 
   await _handleStripeReturn();
+  await _handleSupportPassReturn();
 });
 
 /* Stripe Checkoutからのリダイレクト復帰（success_url/cancel_url）を処理する。
@@ -2562,6 +2674,46 @@ async function _handleStripeReturn(){
         ?'決済の確認に時間がかかっています。ページを再読み込みして再確認します。'
         :'Payment confirmation is taking longer than expected. Reload the page to check again.');
     }
+  }
+}
+
+/* サポート用一時アクセスパス（?support_pass=token）での復帰を処理する。
+   決済トラブルの問い合わせに対し、管理者ダッシュボードから発行した当日限り・1回限りのURLで
+   再課金なしに参拝マナー画面へ進めるようにする。 */
+async function _handleSupportPassReturn(){
+  const params=new URLSearchParams(location.search);
+  const token=params.get('support_pass');
+  if(!token)return;
+
+  const lang=state.lang||localStorage.getItem('goutokuji_dx_lang')||'ja';
+  const isJa=lang==='ja';
+
+  try{
+    const res=await fetch('/.netlify/functions/verify-support-pass',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({token}),
+    });
+    const data=await res.json().catch(()=>({}));
+
+    history.replaceState(null,'',location.pathname);
+
+    if(data.ok){
+      localStorage.setItem('goutokuji_dx_paid','true');
+      localStorage.setItem('goutokuji_dx_paid_date',new Date().toDateString());
+      state.lang=lang;
+      localStorage.setItem('goutokuji_dx_lang',lang);
+      try{applyLangUI(lang);}catch(e){}
+      const codes={ja:'JA',en:'EN',zh:'ZH',ko:'KO',es:'ES',fr:'FR'};
+      const glb=document.getElementById('globalLangBtn');
+      if(glb){glb.style.display='flex';glb.textContent=codes[lang]||lang.toUpperCase();}
+      showPage('page-manners');
+      showToast('SUPPORT PASS',isJa?'アクセスを確認しました。参拝マナーをご確認のうえお進みください。':'Access confirmed. Please review the visiting manners to proceed.');
+    }else{
+      showToast('SUPPORT PASS',isJa?'このリンクは無効か、有効期限が切れています。お手数ですが再度お問い合わせください。':'This link is invalid or has expired. Please contact us again.');
+    }
+  }catch(e){
+    history.replaceState(null,'',location.pathname);
   }
 }
 
@@ -2680,6 +2832,7 @@ function showPage(id){
 {const _nb=document.getElementById('navBack');
 if(_nb)_nb.addEventListener('click',()=>{
   const active=document.querySelector('.page.active').id;
+  if(active==='page-contact-form'){closeContactForm();return;}
   const idx=PAGE_ORDER.indexOf(active);
   if(idx>0)showPage(PAGE_ORDER[idx-1]);
 });}
@@ -2708,13 +2861,133 @@ function selectLanguageGateway(langKey){
     window._lastClickX = undefined;
   }
 
-  showPage('page-welcome-map');
-
   const glbBtn=document.getElementById('globalLangBtn');
   if(glbBtn){
     glbBtn.style.display='flex';
     const codes={ja:'JA',en:'EN',zh:'ZH',ko:'KO',es:'ES',fr:'FR'};
     glbBtn.textContent=codes[langKey]||langKey.toUpperCase();
+  }
+
+  /* 「豪徳寺へようこそ」画面に進む前に、豪徳寺への直接問い合わせを控えてもらう注意ポップアップを表示 */
+  _showLangNoticeModal(langKey);
+}
+
+/* 言語選択直後に表示する注意ポップアップ。「了解しました」を押すとpage-welcome-mapへ遷移する */
+function _showLangNoticeModal(langKey){
+  const d=CONFIG_LANG[langKey]||CONFIG_LANG['ja'];
+  const existing=document.getElementById('langNoticeModal');
+  if(existing)existing.remove();
+
+  const modal=document.createElement('div');
+  modal.id='langNoticeModal';
+  modal.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);padding:20px;';
+  modal.innerHTML=`
+    <div style="background:linear-gradient(135deg,#251810,#1a1008);border:2px solid var(--gold);border-radius:12px;padding:26px 22px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.8),0 0 40px rgba(201,168,76,.2);">
+      <div style="font-size:.8125rem;color:var(--mist);line-height:1.8;text-align:left;margin-bottom:22px;">${d.contactNoticeText||''}</div>
+      <button id="langNoticeOkBtn" style="display:block;width:100%;background:linear-gradient(135deg,var(--gold) 0%,#a68432 100%);color:var(--ink);font-weight:600;font-family:var(--font-display);font-size:.9375rem;border:none;border-radius:4px;padding:14px;cursor:pointer;box-shadow:0 4px 18px rgba(201,168,76,.35);">${d.contactNoticeOkBtn||'OK'}</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  document.getElementById('langNoticeOkBtn').addEventListener('click',()=>{
+    playClickSound();
+    modal.remove();
+    showPage('page-welcome-map');
+  });
+}
+
+/* 言語未選択時（page-lang-selectの下部ボタンから直接開いた場合）に表示する日英併記のフォーム文言。
+   日本人以外の来訪者も入力できるよう、まだ言語が選ばれていない状態ではこちらを使う */
+const CONTACT_BILINGUAL={
+  contactFormTitle:"アプリに関するお問い合わせ / App Inquiry",
+  contactFormDesc:"本アプリの内容・不具合・ご要望など、何でもお気軽にご連絡ください。 / Feel free to contact us about anything related to this app — content, issues, or requests.",
+  contactNameLabel:"お名前 / Name",
+  contactNamePlaceholder:"山田 太郎 / John Smith",
+  contactContactLabel:"ご連絡先（メールアドレス等） / Contact Info (email, etc.)",
+  contactContactPlaceholder:"example@email.com",
+  contactContentLabel:"お問い合わせ内容 / Inquiry Details",
+  contactContentPlaceholder:"内容をご記入ください / Please describe your inquiry",
+  contactSubmitBtn:"送信する / Submit",
+  contactBackBtn:"← 言語選択に戻る / Back to Language Selection",
+  contactSendingMsg:"送信中... / Sending...",
+  contactSuccessMsg:"お問い合わせを受け付けました。ありがとうございました。 / Your inquiry has been received. Thank you.",
+  contactErrorMsg:"送信に失敗しました。時間をおいて再度お試しください。 / Failed to send. Please try again later.",
+  contactRequiredMsg:"必須項目をご入力ください / Please fill in all required fields",
+};
+
+/* 言語が選択済み（state.lang）ならその言語、未選択なら日英併記の文言を返す */
+function _contactLangDict(){
+  if(state.lang&&CONFIG_LANG[state.lang])return CONFIG_LANG[state.lang];
+  return CONTACT_BILINGUAL;
+}
+
+function _applyContactFormLang(d){
+  _set('contactFormTitle','textContent',d.contactFormTitle);
+  _set('contactFormDesc','textContent',d.contactFormDesc);
+  _set('contactNameLabel','textContent',d.contactNameLabel);
+  _set('contactContactLabel','textContent',d.contactContactLabel);
+  _set('contactContentLabel','textContent',d.contactContentLabel);
+  _set('contactSubmitBtnEl','textContent',d.contactSubmitBtn);
+  _set('contactBackBtnEl','textContent',d.contactBackBtn);
+  const cni=document.getElementById('contactNameInput'); if(cni)cni.placeholder=d.contactNamePlaceholder||'';
+  const cci=document.getElementById('contactContactInput'); if(cci)cci.placeholder=d.contactContactPlaceholder||'';
+  const cti=document.getElementById('contactContentInput'); if(cti)cti.placeholder=d.contactContentPlaceholder||'';
+}
+
+/* アプリに関するお問い合わせフォーム：豪徳寺への直接の問い合わせを避けるため、
+   言語選択画面から遷移する専用フォーム。PAGE_ORDERには含めず、戻るボタンは常にpage-lang-selectへ */
+function openContactForm(){
+  _applyContactFormLang(_contactLangDict());
+  const statusEl=document.getElementById('contactFormStatus');
+  if(statusEl){statusEl.textContent='';statusEl.classList.remove('error');}
+  const nameI=document.getElementById('contactNameInput');
+  const contactI=document.getElementById('contactContactInput');
+  const contentI=document.getElementById('contactContentInput');
+  if(nameI)nameI.value='';
+  if(contactI)contactI.value='';
+  if(contentI)contentI.value='';
+  const btn=document.getElementById('contactSubmitBtnEl');
+  if(btn){btn.disabled=false;btn.style.opacity='';}
+  showPage('page-contact-form');
+}
+
+function closeContactForm(){
+  showPage('page-lang-select');
+}
+
+async function submitContactForm(){
+  const d=_contactLangDict();
+  const nameI=document.getElementById('contactNameInput');
+  const contactI=document.getElementById('contactContactInput');
+  const contentI=document.getElementById('contactContentInput');
+  const name=nameI?nameI.value.trim():'';
+  const contact=contactI?contactI.value.trim():'';
+  const content=contentI?contentI.value.trim():'';
+  const statusEl=document.getElementById('contactFormStatus');
+  const btn=document.getElementById('contactSubmitBtnEl');
+
+  if(!name||!contact||!content){
+    if(statusEl){statusEl.classList.add('error');statusEl.textContent=d.contactRequiredMsg||'Please fill in all required fields';}
+    return;
+  }
+
+  if(btn){btn.disabled=true;btn.style.opacity='.6';}
+  if(statusEl){statusEl.classList.remove('error');statusEl.textContent=d.contactSendingMsg||'Sending...';}
+
+  try{
+    const res=await fetch('/.netlify/functions/send-contact-inquiry',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name,contact:contact,content:content,lang:state.lang||''})
+    });
+    if(!res.ok)throw new Error('send_failed');
+    if(statusEl)statusEl.textContent=d.contactSuccessMsg||'Your inquiry has been received. Thank you.';
+    if(nameI)nameI.value='';
+    if(contactI)contactI.value='';
+    if(contentI)contentI.value='';
+  }catch(e){
+    if(statusEl){statusEl.classList.add('error');statusEl.textContent=d.contactErrorMsg||'Failed to send. Please try again later.';}
+  }finally{
+    if(btn){btn.disabled=false;btn.style.opacity='';}
   }
 }
 
@@ -3145,6 +3418,7 @@ function answerQuiz(btn,isCorrect){
     /* 不正解：選んだボタンだけ赤くして再選択可能に */
     btn.classList.add('wrong');
     btn.disabled=true; /* この選択肢だけ無効化 */
+    _trackEvent('quiz_wrong',{spot:state.currentStep});
 
     /* 不正解メッセージを全言語対応で表示 */
     const wrongMessages={
@@ -3798,7 +4072,7 @@ let _realAudio=null;
 let _audioRaf=null;
 
 function handlePlayVoice(){
-  
+  _trackEvent('narration_play',{spot:state.currentStep});
   if(state.currentStep===0){
     const src=state.lang==='en'?'mp3/map_en.mp3':'mp3/map_ja.mp3';
     _initRealAudio(src);
@@ -4351,7 +4625,10 @@ function _renderCatFindCards(){
 
 function toggleCatHint(n){
   const el=document.getElementById('catHint'+n);
-  if(el)el.classList.toggle('show');
+  if(!el)return;
+  const opening=!el.classList.contains('show');
+  el.classList.toggle('show');
+  if(opening)_trackEvent('hint_used',{hintNum:n});
 }
 
 /* アップロード画像をリサイズしてJPEGのdata URIに変換する
@@ -4398,6 +4675,7 @@ async function handleCatPhotoUpload(input){
     });
     if(!res.ok)throw new Error('request_failed');
     const data=await res.json();
+    _trackEvent('cat_verify',{found:!!data.found});
 
     if(loading)loading.classList.remove('show');
     input.value='';
@@ -4862,6 +5140,7 @@ function _refreshShareArea(){
     btn.onclick=()=>{
       const rect=btn.getBoundingClientRect();
       _showGoldRipple(rect.left+rect.width/2,rect.top+rect.height/2);
+      _trackEvent('share_click',{hasCats:hasCats,hasOmikuji:hasOmikuji});
       _shareWithPhotos(shareText,hasCats?state.foundCatPhotos:null,btn,label);
     };
   }

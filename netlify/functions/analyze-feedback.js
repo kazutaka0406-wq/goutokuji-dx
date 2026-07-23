@@ -60,12 +60,29 @@ exports.handler = async function(event) {
     ? stats.stampCounts.map((c, i) => `スポット${i + 1}:${c}件`).join(' / ')
     : '(データなし)';
 
-  const prompt = `あなたは「豪徳寺DX」という寺院参拝デジタル体験アプリ（10大スポットのスタンプラリー・AIナレーション・各スポットのクイズ・満願後のおみくじ）の運営者向けに、アンケート結果を分析するアナリストです。
+  const quizRateLine = Array.isArray(stats.quizCorrectRates)
+    ? stats.quizCorrectRates.map((r, i) => `スポット${i + 1}:${pct(r)}`).join(' / ')
+    : '(データなし)';
+
+  const langLine = Array.isArray(stats.languageBreakdown) && stats.languageBreakdown.length
+    ? stats.languageBreakdown.map((l) =>
+        `${l.lang}: 参拝者${l.visitorCount}人・完了率${pct(l.completionRate)}・満足度${fmt1(l.avgRating)}`
+      ).join(' / ')
+    : '(データなし)';
+
+  const prompt = `あなたは「豪徳寺DX」という寺院参拝デジタル体験アプリ（10大スポットのスタンプラリー・AIナレーション・各スポットのクイズ・隠れ招き猫探しゲーム・満願後のおみくじ・SNSシェア機能）の運営者向けに、アンケート結果と利用データを分析するアナリストです。
 
 ## 集計データ
 - 総購入数（当日パス発行数）: ${stats.totalPurchases ?? '-'}
 - 10スポット完全踏破率: ${pct(stats.completionRate)}（${stats.completedCount ?? '-'} / ${stats.totalVisitorsWithProgress ?? '-'}）
 - スポット別スタンプ獲得数: ${stampLine}
+- スポット別クイズ正答率（初回正解率）: ${quizRateLine}
+- 隠れ招き猫探し（AI画像判定）正答率: ${pct(stats.catVerifyRate)}
+- 隠れ招き猫探し ヒント利用率: ${pct(stats.hintUsageRate)}
+- SNSシェアボタン押下率: ${pct(stats.shareClickRate)}
+- AIナレーション再生率（スタンプ1件あたりの平均再生回数）: ${typeof stats.narrationPlayRate === 'number' ? stats.narrationPlayRate.toFixed(2) : '-'}
+- 言語別の参拝者数・完了率・満足度: ${langLine}
+- 言語別 利用者数の内訳: ${stats.languageUsageCounts ? JSON.stringify(stats.languageUsageCounts) : '(データなし)'}
 - おみくじ結果分布: ${stats.omikujiRankCounts ? JSON.stringify(stats.omikujiRankCounts) : '(データなし)'}
 - アンケート平均（回答数${surveys.length}件）: 総合満足度${fmt1(stats.avgRating)} / ガイドの分かりやすさ${fmt1(stats.avgGuideRating)} / クイズの楽しさ${fmt1(stats.avgQuizRating)} / 料金への納得感${fmt1(stats.avgPriceRating)}
 
