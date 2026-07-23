@@ -8,7 +8,7 @@ exports.handler = async function(event) {
     return { statusCode: 405, headers, body: JSON.stringify({ error: 'method_not_allowed' }) };
   }
 
-  if (!process.env.ADMIN_PASSWORD || !process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.ADMIN_PASSWORD) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: 'not_configured' }) };
   }
 
@@ -21,6 +21,21 @@ exports.handler = async function(event) {
 
   if (body.password !== process.env.ADMIN_PASSWORD) {
     return { statusCode: 401, headers, body: JSON.stringify({ error: 'unauthorized' }) };
+  }
+
+  if (process.env.PAYMENT_MODE !== 'live') {
+    /* デモモードではAnthropic APIの使用量削減のため、実際のAI分析は行わずダミー文言を返す */
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        analysis: '## デモモード\n\nデモモード中はAnthropic APIの利用量削減のため、AIによる分析はダミー表示となっています。\n\n本番サービス開始後（`PAYMENT_MODE=live`）に実際の分析が有効になります。',
+      }),
+    };
+  }
+
+  if (!process.env.ANTHROPIC_API_KEY) {
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'not_configured' }) };
   }
 
   const stats = body.stats || {};

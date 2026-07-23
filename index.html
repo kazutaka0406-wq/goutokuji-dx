@@ -85,6 +85,15 @@ p{line-height:1.85}
   border-radius:2px;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;padding:13px 20px;
   cursor:pointer;text-align:center;text-transform:uppercase;transition:background .2s,color .2s}
 .btn-secondary:hover{background:var(--gold);color:var(--ink)}
+.btn-share-inline{
+  display:block;background:linear-gradient(135deg,var(--gold) 0%,#a68432 100%);
+  border:none;color:var(--ink);font-weight:600;
+  font-family:var(--font-display);font-size:.875rem;letter-spacing:.06em;
+  padding:15px 28px;border-radius:4px;cursor:pointer;width:100%;
+  box-shadow:0 4px 18px rgba(201,168,76,.35);
+  transition:transform .15s ease,box-shadow .2s ease}
+.btn-share-inline:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.45)}
+.btn-share-inline:active{transform:translateY(0)}
 .btn-api{background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);border-radius:2px;
   font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.1em;padding:10px 16px;cursor:pointer;
   transition:all .2s;text-transform:uppercase;white-space:nowrap;align-self:flex-start}
@@ -425,7 +434,12 @@ p{line-height:1.85}
     repeating-linear-gradient(115deg, rgba(255,255,255,.5) 0 2px, transparent 2px 7px);
   background-size:48px 48px,64px 64px,80px 80px,100% 100%;
   background-repeat:repeat,repeat,repeat,repeat}
-.omikuji-share-area{margin-top:14px;display:flex;flex-direction:column;align-items:center}
+.clear-combined-share{margin:14px 0;display:flex;flex-direction:column;align-items:center}
+.share-locked-msg{
+  text-align:center;font-family:var(--font-body);font-size:.8125rem;
+  color:var(--mist);opacity:.75;line-height:1.7;width:100%;
+  background:rgba(0,0,0,.15);border:1px solid rgba(201,168,76,.15);
+  border-radius:6px;padding:14px 18px}
 .omikuji-scroll-rod{height:12px;position:relative;flex-shrink:0;
   background:linear-gradient(180deg,#e8d08a 0%,#c9a84c 45%,#8a6f2c 100%)}
 .omikuji-scroll-rod::before,.omikuji-scroll-rod::after{content:'';position:absolute;top:-3px;bottom:-3px;width:12px;
@@ -782,6 +796,9 @@ p{line-height:1.85}
   text-align:center;font-family:var(--font-mono);font-size:.625rem;
   color:var(--mist);opacity:.5;letter-spacing:.1em}
 .checkout-free-note a{color:var(--gold);opacity:.7;cursor:pointer}
+.checkout-pay-note{
+  text-align:center;font-family:var(--font-body);font-size:.75rem;
+  color:var(--mist);opacity:.75;line-height:1.6;margin-top:8px;padding:0 8px}
 
 #page-manners{background:var(--ink)}
 .manners-inner{
@@ -1333,15 +1350,15 @@ p{line-height:1.85}
         <div class="appeal-feat-icon">🐱</div>
         <div class="appeal-feat-body">
           <div class="appeal-feat-title" id="appealFeat1Title">豪徳寺10大スポット AIナレーション＆参拝ガイド</div>
-          <div class="appeal-feat-desc" id="appealFeat1Desc">各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。三重塔に隠された「隠れ招き猫」探しもサポートします！</div>
+          <div class="appeal-feat-desc" id="appealFeat1Desc">各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。</div>
         </div>
       </div>
 
       <div class="appeal-feat">
         <div class="appeal-feat-icon">📷</div>
         <div class="appeal-feat-body">
-          <div class="appeal-feat-title" id="appealFeat2Title">📷 隠れ招き猫探しゲーム</div>
-          <div class="appeal-feat-desc" id="appealFeat2Desc">境内で見つけた招き猫を写真に撮ってアップロードすると、AIが正解かどうかを判定。参拝が楽しい宝探しゲームになります。</div>
+          <div class="appeal-feat-title" id="appealFeat2Title">隠れ招き猫探しゲーム</div>
+          <div class="appeal-feat-desc" id="appealFeat2Desc">三重塔に隠された招き猫を写真に撮ってアップロードすると、AIが正解かどうかを判定。参拝が楽しい宝探しゲームになります。</div>
         </div>
       </div>
 
@@ -1357,7 +1374,7 @@ p{line-height:1.85}
         <div class="appeal-feat-icon">🎋</div>
         <div class="appeal-feat-body">
           <div class="appeal-feat-title" id="appealFeat4Title">無料おみくじ＆SNSシェア</div>
-          <div class="appeal-feat-desc" id="appealFeat4Desc">10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！結果はそのままSNSでシェアして友達に自慢できます。</div>
+          <div class="appeal-feat-desc" id="appealFeat4Desc">10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！結果はそのままSNSでシェアすることができます。</div>
         </div>
       </div>
 
@@ -1388,9 +1405,9 @@ p{line-height:1.85}
   <div class="checkout-inner">
 
     <div class="fade-up">
-      <div class="checkout-eyebrow" id="checkoutEyebrow">Digital Premium Pamphlet · デジタルパンフレット</div>
+      <div class="checkout-eyebrow" id="checkoutEyebrow">Premium Guide · プレミアムガイド</div>
       <h2 class="checkout-title" id="checkoutTitle">
-        <em>Unlock Premium Guide</em>プレミアムパンフレットを解放</h2>
+        <em>豪徳寺参拝ガイドを購入</em>Purchase the Goutokuji Pilgrimage Guide</h2>
     </div>
 
     <div class="checkout-slides-wrap fade-up fade-up-1" id="checkoutSlidesWrap">
@@ -1412,7 +1429,7 @@ p{line-height:1.85}
 
     <div class="checkout-price-row fade-up fade-up-2">
       <div class="checkout-price-left">
-        <span class="checkout-price-label" id="checkoutPriceLabel">デジタルプレミアムパンフレット</span>
+        <span class="checkout-price-label" id="checkoutPriceLabel">デジタルプレミアムガイド</span>
         <div class="checkout-price-val checkout-price-stack">
           <div class="checkout-price-orig" id="checkoutPriceOrig"><s>通常 ¥1,500</s></div>
           <div class="checkout-price-monitor-label" id="checkoutPriceMonitor">今だけモニター価格</div>
@@ -1424,7 +1441,7 @@ p{line-height:1.85}
 
     <ul class="checkout-includes fade-up fade-up-2" id="checkoutIncludes">
       <li id="checkoutInc1">AIナレーション＆参拝ガイド</li>
-      <li id="checkoutInc2">📷 隠れ招き猫探しゲーム</li>
+      <li id="checkoutInc2">隠れ招き猫探しゲーム</li>
       <li id="checkoutInc3">10大スポット 満願成就スタンプラリー</li>
       <li id="checkoutInc4">無料おみくじ＆SNSシェア</li>
     </ul>
@@ -1432,9 +1449,11 @@ p{line-height:1.85}
     <div class="fade-up fade-up-3">
       <button class="btn-primary" id="btnCheckoutPay"
         onclick="playClickSound();doCheckout()">
-        🐱 &nbsp; <span id="checkoutPayLabel">プレミアム体験を開始する</span>
+        🐱 &nbsp; <span id="checkoutPayLabel">豪徳寺参拝ガイドを購入</span>
       </button>
     </div>
+
+    <div class="checkout-pay-note fade-up fade-up-3" id="checkoutPayNote">ボタンを押すと決済画面（Stripe）に移動します。クレジットカードでお支払いいただけます。</div>
 
     <div class="checkout-free-note fade-up fade-up-3">
       🔒 Secured by Stripe
@@ -1457,7 +1476,7 @@ p{line-height:1.85}
       disabled
       onclick="if(!this.disabled){playClickSound();showPage('page-full-map');}"
       style="opacity:.45;cursor:not-allowed;pointer-events:none;width:100%">
-      マナーを確認して進む ➔
+      理解して参拝を開始する ➔
     </button></div>
   </div>
 </section>
@@ -1623,7 +1642,7 @@ p{line-height:1.85}
     </div>
 
     <button class="btn-primary fade-up fade-up-4" id="lblMapStartBtn" onclick="showPage('page-quest')">
-      理解して巡礼を開始する / Start Sanctuary Pilgrimage ➔
+      各スポットの参拝を開始する / Start Visiting Each Spot ➔
     </button>
   </div>
 </section>
@@ -1752,7 +1771,6 @@ p{line-height:1.85}
       <div class="omikuji-lock-msg" id="omikujiLockMsg" style="display:none;white-space:pre-line;font-size:.8125rem;color:var(--mist);background:rgba(0,0,0,.25);border:1px solid rgba(201,168,76,.25);border-radius:6px;padding:12px;margin-bottom:12px;line-height:1.6;"></div>
       <button class="btn-primary" style="background:linear-gradient(135deg,var(--gold) 0%,#a68432 100%);padding:13px" id="btnDrawOmikuji" onclick="executeOmikujiFlow()">🎋 &nbsp;<span id="lblOmiBtnText">無料で運勢を占う ➔</span></button>
       <div class="omikuji-result-display" id="omikujiResultArea"></div>
-      <div class="omikuji-share-area" id="omikujiShareArea"></div>
       <div class="omikuji-used-msg" id="omikujiUsedBox" style="display:none"></div>
     </div>
     <div class="feedback-card fade-up fade-up-1">
@@ -1764,6 +1782,7 @@ p{line-height:1.85}
       <div><div class="survey-label" id="lblSurveyTextLabel">Comments:</div><textarea class="survey-textarea" id="surveyComments" placeholder="Please write here..." oninput="localStorage.setItem('goutokuji_dx_survey_comment',this.value)"></textarea></div>
       <button class="btn-secondary" onclick="submitFeedback()" style="border-color:var(--sage);color:#a8d4a0" id="lblSurveySubmitBtn">Submit</button>
     </div>
+    <div class="clear-combined-share fade-up" id="combinedShareArea"></div>
     <div class="recommend-section fade-up fade-up-2"><div class="section-label" id="lblNextSpots">Next Local Guide</div><div id="spotList"></div></div>
     <button class="btn-secondary fade-up fade-up-3" id="lblRestartBtn" onclick="restartTour()">↺ Start New Tour</button>
   </div>
@@ -1785,7 +1804,8 @@ const CONFIG_LANG = {
     freeOmiBadge:"🎁 BONUS:<br>FREE FORTUNE!",
     buyBtn:"🐱 &nbsp; Purchase Premium Pass &nbsp; ¥1,000",
     stripeNote:"🔒 Secured by Stripe · Progress auto-saves",
-    checkoutPayLabel:"Start Premium Experience",checkoutContinueLabel:"Continue Your Visit",
+    checkoutPayLabel:"Purchase the Goutokuji Pilgrimage Guide",checkoutContinueLabel:"Continue Your Visit",
+    checkoutPayNote:"Pressing this button takes you to the payment screen (Stripe). Credit card payments are accepted.",
     appealFeat3Desc:"Answer all 10 spot quizzes correctly to earn a glowing digital stamp sheet as proof of completion!",
     manganMsg:"Under the blessing of the Beckoning Cat, you have completed all 10 Goutokuji landmarks. May this sacred journey bring great fortune to your life. You answered all 10 quizzes correctly and completed your Goshuin stamp collection.",
     sampleTitle:"✨ Experience Sample Preview",
@@ -1800,7 +1820,7 @@ const CONFIG_LANG = {
     quizLabel:"Architectural History Quiz",
     clearTitle:"<em>All 10 Spots Completed!</em>Congratulations!",
     omiBoxTitle:"Lucky Cat Oracle",omiBoxDesc:"A special fortune slip exclusively for those who collect all 10 Goshuin stamps. Receive divine guidance on love, moving, and health.",
-    appealFeat4Desc:"After completing all 10 spots, draw your personalised fortune slip — 100% free! Share your result directly on social media to show your friends.",
+    appealFeat4Desc:"After completing all 10 spots, draw your personalised fortune slip — 100% free! You can share your result directly on social media.",
     omiBtnText:"🎋 Draw Free Fortune ➔",omiProcessing:"🎋 Drawing your fortune slip...",
     omiResults:[
       {rank:"✨ Great Fortune (大吉)",text:"<strong>【Romance】</strong> A stellar alignment approaches.<br><strong>【Moving】</strong> North-East is favoured.<br><strong>【Health】</strong> Vitality peak. Maintain your rhythm."},
@@ -1813,15 +1833,15 @@ const CONFIG_LANG = {
     mapTitle:"<em>Sanctuary Master Map</em>Goutokuji",
     mapDescTitle:"📍 10 Key Landmarks",
     mapRouteHint:"<strong>📍 Recommended Route:</strong><br>Main Gate (1) → Three-Story Pagoda (2) → Buddha Hall (3) → Shofukuden (4) → Ii Family Tombs (5) → Lecture Hall (6) → Patriarchs Hall (7) → Red Gate (8) → Bell Tower (9) → Jizo Hall (10)",
-    mapStartBtn:"Start Sanctuary Pilgrimage ➔",
+    mapStartBtn:"Start Visiting Each Spot ➔",
     welcomeNarr:"Before we begin our journey, let us understand the full picture of this beautiful ancient temple.\\n\\nGoutokuji is a sprawling sacred sanctuary enveloped in lush, verdant greenery.\\n\\nThe temple's official name is Daikei-zan Goutokuji, founded in 1480 during the Muromachi period. In 1633, when the Setagaya area came under the domain of the Hikone feudal clan, Lord Ii Naotaka developed deep devotion to the temple and established it as the Ii family's principal place of worship in Edo. The temple's name derives from Naotaka's posthumous Buddhist name.\\n\\nGoutokuji is also widely known as the birthplace of the beckoning cat. According to legend, Lord Naotaka was returning from a falconry excursion when he was beckoned by a white cat at the temple gate. He stopped to visit, and moments later, a fierce thunderstorm broke out. Thanks to the cat's invitation, he was spared from the storm and enjoyed a memorable conversation with the temple's abbot. Deeply moved by this fortunate encounter, the cat was honored as a bringer of good fortune and named Maneki-neko.\\n\\nHere is your recommended route. Walk straight along the pine-lined path and pass through the historic Sanmon Gate. Once inside the grounds, you will see the Three-Story Pagoda on your left — somewhere within it, hidden beckoning cats are quietly waiting to be found. Ahead of you stands the Buddha Hall, and beyond it to the left, the Shofuku-den, home to thousands of beckoning cats. After paying your respects at the Ii Family Cemetery at the far end, continue clockwise through the Main Hall, the Patriarchs Hall, the vermilion Red Gate, the historic Bell Tower, and finally the Jizo Hall.\\n\\nAt each spot, you will find real photographs taken on location, along with exclusive historical quiz questions. Answer all quizzes correctly and a special fortune slip awaits you.\\n\\nNow, smartphone in hand, take a deep breath and begin your pilgrimage.",
     wmTitle:"Welcome to Goutokuji",
     wmNarrLabel:"🎙 Audio Guide — Sanctuary Narration",
     wmPlayLabel:"Play Audio Guide",
     appealEyebrow:"Premium Experience",
     appealTitle:"Premium Pilgrimage Experience",
-    checkoutEyebrow:"Premium Guide · Unlock",
-    checkoutTitle:"Unlock Premium Guide",
+    checkoutEyebrow:"Premium Guide · Purchase",
+    checkoutTitle:"Purchase the Goutokuji Pilgrimage Guide",
     checkoutPriceOrig:"<s>Regular ¥1,500</s>",checkoutPriceMonitor:"Limited-Time Monitor Price",taxNote:"(tax incl.)",
     readMoreLabel:"▼ Read More",showLessLabel:"▲ Show Less",
     wmNextBtn:"Continue ➔",
@@ -1856,6 +1876,7 @@ const CONFIG_LANG = {
     introTitle:"豪徳寺プレミアムガイド DX",introNextBtn:"参拝マナー・安全確認へ →",
     mannerTitle:"境内参拝規則・マナー",mannerSubtitle:"参拝マナーと安全上のご注意",
     mannersGuideText:"以下を確認してチェックボックスをつけてください",
+    mannersAgreeBtn:"理解して参拝を開始する ➔",
     mannerAgreeBtn:"ルールを守ってパスを有効化 →",
     mannerItems:`<div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🤫 周辺住宅街での静粛性確保</h4><p>豪徳寺周辺は非常に閑静な住宅街です。参拝経路での大声での会話は絶対にお控えください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🙏 仏像・招き猫への接触禁止</h4><p>招き猫や仏像などに決して手を触れないようにしてください。大切な文化財・奉納物の保護にご協力ください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🚧 柵・ロープ内側への立入禁止</h4><p>三重塔の木造土台や招福殿の奉納棚の保護柵内に絶対に入らないでください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>🎧 音声ボリュームへの配慮</h4><p>音声ガイド再生時は必ずイヤホンを使用するか音量を最小限に絞ってください。</p></div></div><div class="manner-item"><input type="checkbox" class="manner-check" onchange="checkAllManners()"><div class="manner-item-text"><h4>📱 歩きスマホ禁止</h4><p>境内での転倒・衝突防止のため、スマホを見ながら歩く行為は禁止です。必ず立ち止まってからご覧ください。</p></div></div>`,
     heroTitle:"<em>招き猫の発祥聖地</em>豪徳寺プレミアムDX",
@@ -1863,7 +1884,10 @@ const CONFIG_LANG = {
     freeOmiBadge:"🎁 特典：<br>おみくじ無料！",
     buyBtn:"🐱 &nbsp; プレミアムパスを購入する &nbsp; ¥1,000",
     stripeNote:"🔒 Stripe安全決済 · ブラウザを閉じても進捗を自動復旧",
-    checkoutPayLabel:"プレミアム体験を開始する",checkoutContinueLabel:"参拝を続ける",
+    checkoutEyebrow:"Premium Guide · プレミアムガイド",
+    checkoutTitle:"<em>豪徳寺参拝ガイドを購入</em>Purchase the Goutokuji Pilgrimage Guide",
+    checkoutPayLabel:"豪徳寺参拝ガイドを購入",checkoutContinueLabel:"参拝を続ける",
+    checkoutPayNote:"ボタンを押すと決済画面（Stripe）に移動します。クレジットカードでお支払いいただけます。",
     checkoutPriceOrig:"<s>通常 ¥1,500</s>",checkoutPriceMonitor:"今だけモニター価格",taxNote:"（税込）",
     appealFeat3Desc:"10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！",
     manganMsg:"招き猫の加護のもと、豪徳寺10大スポットをすべて巡り終えました。この御縁が、あなたに大きな福運をもたらしますように。10のクイズすべてに正解し、御朱印を満願しました。",
@@ -1879,7 +1903,7 @@ const CONFIG_LANG = {
     quizLabel:"境内歴史クイズ",
     clearTitle:"<em>境内10大スポット完全制覇</em>おめでとうございます！",
     omiBoxTitle:"豪徳寺DX 招き猫おみくじ",omiBoxDesc:"10個すべての御朱印スタンプを集めた方だけが引ける特別なおみくじです。恋愛・転居・健康の神託があなたに届きます。",
-    appealFeat4Desc:"10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！結果はそのままSNSでシェアして友達に自慢できます。",
+    appealFeat4Desc:"10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！結果はそのままSNSでシェアすることができます。",
     omiBtnText:"🎋 無料で運勢を占う ➔",omiProcessing:"🎋 おみくじを引いています...",
     omiResults:[
       {rank:"✨ 大吉 (Dai-Kichi)",text:"<strong>【結婚・恋愛】</strong> 最高の良縁あり。素直な心が吉。<br><strong>【転居・方位】</strong> 極めて良好。北東方向に強いツキあり。<br><strong>【身体・健康】</strong> 活力みなぎる。現在の健康ペースを維持せよ。"},
@@ -1892,7 +1916,7 @@ const CONFIG_LANG = {
     mapTitle:"<em>境内全体マップ</em>豪徳寺",
     mapDescTitle:"📍 境内10大スポット案内",
     mapRouteHint:"<strong>📍 おすすめ順路：</strong><br>山門 (1) → 三重塔 (2) → 仏殿 (3) → 招福殿 (4) → 井伊家墓所 (5) → 法堂 (6) → 開祖堂 (7) → 赤門 (8) → 鐘楼 (9) → 地蔵堂 (10)",
-    mapStartBtn:"理解して巡礼を開始する ➔",
+    mapStartBtn:"各スポットの参拝を開始する ➔",
     welcomeNarr:"参拝の前に、この美しい寺院の全体像をご案内いたします。\\n\\nここ豪徳寺は、緑豊かな杜に包まれた広大な聖域です。\\n\\n正式名称を「大谿山 豪徳寺」といい、室町時代の文明12年（1480年）に創建されました。江戸時代の寛永10年（1633年）、世田谷が彦根藩の所領となると、藩主・井伊直孝公が深く帰依し、井伊家の江戸における菩提寺として整備されました。寺号は直孝公の戒名「久昌院殿豪徳天英大居士」に由来しています。\\n\\nまた豪徳寺は、招き猫発祥の地としても広く知られています。ある日、鷹狩りの帰りにこの地を通りかかった直孝公が、門前の白猫に手招きされてお寺に立ち寄ったところ、まもなく激しい雷雨が降り始めました。猫のおかげで雷雨を避けられ、和尚との法談も楽しめた直孝公は、この縁に深く感動したと伝えられています。その後、福を招いたこの猫は「招福猫児（まねきねこ）」と呼ばれ、招福殿にお祀りされるようになりました。\\n\\nおすすめの順路をご案内します。まず、綺麗に剪定された松並木の参道をまっすぐ進み、正面の歴史ある山門をくぐります。境内に入ると左手に三重塔が見えてきます。実は塔のどこかに隠れ招き猫がひっそりと潜んでいます。ぜひ探してみてください。まっすぐ進むと正面に仏殿、その左手奥には数千の招福猫児が並ぶ招福殿が構えています。さらに最奥の井伊家墓所を参拝した後、本殿、開祖堂、朱色の赤門、歴史ある鐘楼、そして最後に地蔵堂を巡る時計回りのルートが、最も美しい動線です。\\n\\n各スポットでは、現地で撮影された実際の写真とともに、他では明かされない歴史の伏線クイズをご用意しています。クイズを全問正解されると、特別なおみくじを引くことができます。\\n\\nさあ、スマホを片手に、心を落ち着かせて歩き始めましょう。",
     wmTitle:"<em>豪徳寺へようこそ</em>Welcome to Goutokuji",
     wmNarrLabel:"🎙 音声ガイド — 境内全体ナレーション",wmPlayLabel:"音声ガイドを再生",
@@ -1965,7 +1989,7 @@ const CONFIG_LANG = {
     mapEyebrow:"境内导览",mapTitle:"<em>境内全体地图</em>豪德寺",
     mapDescTitle:"📍 境内10大景点导览",
     mapRouteHint:"<strong>📍 推荐路线：</strong><br>山门 (1) → 三重塔 (2) → 佛殿 (3) → 招福殿 (4) → 井伊家墓所 (5) → 法堂 (6) → 开祖堂 (7) → 赤门 (8) → 钟楼 (9) → 地藏堂 (10)",
-    mapStartBtn:"确认后开始巡礼 ➔",
+    mapStartBtn:"开始参观各景点 ➔",
     mapSpots:[
       {n:"山门",d:"1923年关东大地震后重建。匾额刻有「碧云关」。"},
       {n:"三重塔",d:"2006年落成，高22.5m。十二生肖雕刻中隐藏有招财猫。"},
@@ -1980,21 +2004,22 @@ const CONFIG_LANG = {
     ],
     appealTitle:"<em>为您带来极致参拜体验</em>Premium Pilgrimage Experience",
     appealEyebrow:"体验价值 · Premium Experience",
-    appealFeat1Title:"10大景点 AI 语音导览＆参拜礼仪指南",appealFeat1Desc:"AI解说将带您了解各景点的由来、看点及正确的参拜礼仪，还能帮您找到隐藏在三重塔中的招财猫！",
-    appealFeat2Title:"📷 寻找隐藏招财猫游戏",appealFeat2Desc:"在境内拍下您找到的招财猫并上传，AI会立即判断是否正确，让参拜变成一场有趣的寻宝游戏！",
+    appealFeat1Title:"10大景点 AI 语音导览＆参拜礼仪指南",appealFeat1Desc:"AI解说将带您了解各景点的由来、看点及正确的参拜礼仪。",
+    appealFeat2Title:"寻找隐藏招财猫游戏",appealFeat2Desc:"在三重塔拍下隐藏的招财猫并上传，AI会立即判断是否正确，让参拜变成一场有趣的寻宝游戏！",
     appealFeat3Title:"10大景点完成纪念印章集",appealFeat3Desc:"在10大景点全部答题正确后，将获得朱红色数字御朱印印章表作为证明！",
-    appealFeat4Title:"免费御签＆社交分享",appealFeat4Desc:"走完10大景点后，可免费抽取专属御签占卜运势！结果还能直接分享到社交媒体，与朋友分享好运。",
+    appealFeat4Title:"免费御签＆社交分享",appealFeat4Desc:"走完10大景点后，可免费抽取专属御签占卜运势！结果还能直接分享到社交媒体。",
     appealNextBtn:"出发 ➔",
-    checkoutEyebrow:"Premium Guide · 解锁",
-    checkoutTitle:"<em>解锁高级导览</em>Unlock Premium Guide",
-    checkoutPriceLabel:"数字高级导览手册",checkoutPriceBadge:"🎁 御签<br>免费特典！",
-    checkoutInc1:"AI 语音导览＆参拜礼仪指南",checkoutInc2:"📷 寻找隐藏招财猫游戏",
+    checkoutEyebrow:"Premium Guide · 购买",
+    checkoutTitle:"<em>购买豪德寺参拜指南</em>Purchase the Goutokuji Pilgrimage Guide",
+    checkoutPriceLabel:"数字高级导览",checkoutPriceBadge:"🎁 御签<br>免费特典！",
+    checkoutInc1:"AI 语音导览＆参拜礼仪指南",checkoutInc2:"寻找隐藏招财猫游戏",
     checkoutInc3:"10大景点完成纪念印章集",checkoutInc4:"免费御签＆社交分享",
-    checkoutPayLabel:"开始高级体验",checkoutContinueLabel:"继续参观",checkoutSkipLabel:"跳过进入演示 →",
+    checkoutPayLabel:"购买豪德寺参拜指南",checkoutContinueLabel:"继续参观",checkoutSkipLabel:"跳过进入演示 →",
+    checkoutPayNote:"点击按钮将跳转至支付页面（Stripe）。支持信用卡支付。",
     checkoutPriceOrig:"<s>原价 ¥1,500</s>",checkoutPriceMonitor:"限时特别体验价",taxNote:"（含税）",
     manganMsg:"在招财猫的庇护下，您已圆满巡礼豪德寺十大景点。愿这段殊胜的缘分为您带来洪福。您答对了全部10道题，集齐了所有御朱印印章。",
     mannersTitle:"境内参拜规则・礼仪",mannersSubtitle:"礼仪与安全规则",
-    mannersAgreeBtn:"确认礼仪并继续 ➔",
+    mannersAgreeBtn:"已理解，开始参拜 ➔",
     steps:[
       {title:"山门",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"迎接您的第一个景点，是建于明治17年（1884年）的庄重木造山门。\n在关东大地震后经过重建，至今仍以沉稳的姿态巍然矗立。\n门额上刻有「碧云关」三字，意为「通往青云之上、觉悟彼岸的关门」。\n\n在禅宗中，跨过这道门绝不只是简单地迈步而入。\n这是一种净化心灵的仪式——将日常的烦恼、杂念与世俗的尘垢彻底隔绝，以清净之心踏入佛的圣域。\n\n在此为您介绍一项参拜礼仪：门槛（下方的横木）请务必跨过，而非踩踏。\n因为人们相信神佛居于门槛之中，踩踏门槛是极为失礼之举。\n\n穿过山门后，请深吸一口气。\n沿着绿意盎然的松树参道，缓缓向前迈步吧。",question:"豪德寺属于哪个佛教宗派？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"临济宗",correct:false}],correctFb:"🎯 正确！这是注重坐禅的曹洞宗寺院。",wrongFb:"❌ 错误。"},
       {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"这座木造三重塔于平成18年（2006年）落成，高达22.5米，其优美的身姿在境内格外引人注目。\n\n事实上，这座三重塔正是一项特别任务的舞台——在塔的某处，隐藏着悄悄被工匠雕刻于建筑之中的招财猫。\n\n请用您自己的双眼，仔细寻找这些充满工匠玩心的隐藏招财猫。\n\n本应用还配备了特别功能：拍下您找到的猫咪照片，即可进行答案核对。若实在难以找到，也可使用提示功能。",question:"塔内雕刻中与十二生肖一起隐藏的是什么？",options:[{text:"招财猫",correct:true},{text:"金龙纹章",correct:false}],correctFb:"🐱 完全正确！特写照片中可以清晰看到。",wrongFb:"❌ 再仔细看看屋檐角落。"},
@@ -2048,7 +2073,7 @@ const CONFIG_LANG = {
     mapEyebrow:"경내 안내",mapTitle:"<em>경내 전체 지도</em>고토쿠지",
     mapDescTitle:"📍 경내 10대 명소 안내",
     mapRouteHint:"<strong>📍 추천 경로：</strong><br>산몬 (1) → 삼중탑 (2) → 불전 (3) → 쇼후쿠덴 (4) → 이이가 묘소 (5) → 법당 (6) → 개조당 (7) → 아카몬 (8) → 종루 (9) → 지조도 (10)",
-    mapStartBtn:"확인 후 순례 시작 ➔",
+    mapStartBtn:"각 명소 참배 시작 ➔",
     mapSpots:[
       {n:"산몬",d:"관동대지진 후 재건. 현판에는 「벽운관」이라 적혀 있다."},
       {n:"삼중탑",d:"2006년 낙성. 높이 22.5m. 십이지 조각 중 마네키네코가 숨겨져 있다."},
@@ -2063,21 +2088,22 @@ const CONFIG_LANG = {
     ],
     appealTitle:"<em>당신에게 프리미엄 참배 체험을</em>Premium Pilgrimage Experience",
     appealEyebrow:"체험 가치 · Premium Experience",
-    appealFeat1Title:"10대 명소 AI 내레이션＆참배 예절 가이드",appealFeat1Desc:"AI 내레이션이 각 명소의 유래와 볼거리는 물론, 올바른 참배 예절까지 알려드립니다. 삼중탑에 숨겨진 마네키네코 찾기도 도와드려요!",
-    appealFeat2Title:"📷 숨은 마네키네코 찾기 게임",appealFeat2Desc:"경내에서 찾은 마네키네코를 촬영해 업로드하면 AI가 정답 여부를 바로 판별합니다. 참배가 즐거운 보물찾기 게임이 됩니다!",
+    appealFeat1Title:"10대 명소 AI 내레이션＆참배 예절 가이드",appealFeat1Desc:"AI 내레이션이 각 명소의 유래와 볼거리는 물론, 올바른 참배 예절까지 알려드립니다.",
+    appealFeat2Title:"숨은 마네키네코 찾기 게임",appealFeat2Desc:"삼중탑에 숨겨진 마네키네코를 촬영해 업로드하면 AI가 정답 여부를 바로 판별합니다. 참배가 즐거운 보물찾기 게임이 됩니다!",
     appealFeat3Title:"10대 명소 만원성취 스탬프 랠리",appealFeat3Desc:"10대 스팟 퀴즈를 모두 맞히면 빛나는 디지털 어주인 스탬프 시트가 발행됩니다！",
-    appealFeat4Title:"무료 오미쿠지＆SNS 공유",appealFeat4Desc:"10개 스팟을 모두 순회한 후 특별한 오미쿠지로 운세를 무료로 확인하세요! 결과는 그대로 SNS에 공유해 친구에게 자랑할 수 있습니다.",
+    appealFeat4Title:"무료 오미쿠지＆SNS 공유",appealFeat4Desc:"10개 스팟을 모두 순회한 후 특별한 오미쿠지로 운세를 무료로 확인하세요! 결과는 그대로 SNS에 공유할 수 있습니다.",
     appealNextBtn:"시작하기 ➔",
-    checkoutEyebrow:"Premium Guide · 잠금 해제",
-    checkoutTitle:"<em>프리미엄 가이드 잠금 해제</em>Unlock Premium Guide",
-    checkoutPriceLabel:"디지털 프리미엄 팜플렛",checkoutPriceBadge:"🎁 오미쿠지<br>무료 특전！",
-    checkoutInc1:"AI 내레이션＆참배 예절 가이드",checkoutInc2:"📷 숨은 마네키네코 찾기 게임",
+    checkoutEyebrow:"Premium Guide · 구매",
+    checkoutTitle:"<em>고토쿠지 참배 가이드 구매</em>Purchase the Goutokuji Pilgrimage Guide",
+    checkoutPriceLabel:"디지털 프리미엄 가이드",checkoutPriceBadge:"🎁 오미쿠지<br>무료 특전！",
+    checkoutInc1:"AI 내레이션＆참배 예절 가이드",checkoutInc2:"숨은 마네키네코 찾기 게임",
     checkoutInc3:"10대 명소 만원성취 스탬프 랠리",checkoutInc4:"무료 오미쿠지＆SNS 공유",
-    checkoutPayLabel:"프리미엄 체험 시작하기",checkoutContinueLabel:"참배 계속하기",checkoutSkipLabel:"데모로 건너뛰기 →",
+    checkoutPayLabel:"고토쿠지 참배 가이드 구매",checkoutContinueLabel:"참배 계속하기",checkoutSkipLabel:"데모로 건너뛰기 →",
+    checkoutPayNote:"버튼을 누르면 결제 화면(Stripe)으로 이동합니다. 신용카드로 결제하실 수 있습니다.",
     checkoutPriceOrig:"<s>정상가 ¥1,500</s>",checkoutPriceMonitor:"한정 모니터 가격",taxNote:"(세금 포함)",
     manganMsg:"마네키네코의 가호 아래, 고토쿠지 10대 명소 순례를 모두 마쳤습니다. 이 인연이 당신에게 큰 복운을 가져다주기를 바랍니다. 10개의 퀴즈를 모두 맞히고 어주인을 만원성취했습니다.",
     mannersTitle:"경내 참배 규칙・매너",mannersSubtitle:"매너 및 안전 규칙",
-    mannersAgreeBtn:"매너 확인 후 진행 ➔",
+    mannersAgreeBtn:"이해했습니다, 참배 시작 ➔",
     steps:[
       {title:"산몬",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"가장 먼저 여러분을 맞이하는 것은 메이지 17년（1884년）에 건립된 묵직한 목조 산몬입니다.\n관동대지진 이후 재건되어, 지금도 당당하고 고요한 자태를 유지하고 있습니다.\n현판에는 「벽운관（碧雲關）」이라는 글자가 새겨져 있으며, 「푸른 구름 너머, 깨달음으로 향하는 관문」을 의미합니다.\n\n선종에서 이 문을 통과하는 것은 단순히 걸음을 내딛는 행위가 아닙니다.\n일상의 고민과 잡념, 속세의 번뇌를 완전히 내려놓고 부처님의 성역으로 마음을 정화하여 입장하는, 영혼의 정화 의식입니다.\n\n한 가지 참배 예절을 안내드립니다.\n문 아래의 문지방은 절대 밟지 말고 「넘어서」 들어가는 것이 예의입니다.\n문지방에는 신불이 깃들어 있다는 믿음에서, 밟는 행위는 매우 실례가 된다고 여겨집니다.\n\n문을 통과한 후 깊게 숨을 한 번 들이쉬세요.\n푸른 소나무 가로수가 이어지는 참도를 따라 천천히 발걸음을 옮겨보세요.",question:"고토쿠지의 불교 종파는 무엇입니까？",options:[{text:"소토 선종（曹洞宗）",correct:true},{text:"린자이 선종",correct:false}],correctFb:"🎯 정답！좌선을 중시하는 소토 선종 사원입니다.",wrongFb:"❌ 틀렸습니다."},
       {title:"삼중탑",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"헤이세이 18년（2006년）에 낙성된 높이 22.5미터의 목조 삼중탑.\n그 아름다운 자태는 경내에서도 단연 눈길을 사로잡습니다.\n\n사실 이 삼중탑은 특별한 미션의 무대이기도 합니다. 탑 어딘가에 장인들이 장난기 넘치게 새겨 넣은 「숨겨진 마네키네코」를 찾는 것입니다.\n\n부디 자신의 눈으로 직접 찾아보세요.\n\n이 앱에는 찾은 고양이를 사진으로 촬영하여 정답 확인을 할 수 있는 특별 기능도 마련되어 있습니다. 찾기 어려운 경우에는 힌트 기능도 활용해 보세요.",question:"탑의 조각 중 십이지와 함께 숨겨진 것은？",options:[{text:"마네키네코",correct:true},{text:"황금 용",correct:false}],correctFb:"🐱 정답！클로즈업 사진에서 확인할 수 있습니다.",wrongFb:"❌ 틀렸습니다."},
@@ -2127,23 +2153,24 @@ const CONFIG_LANG = {
     mapEyebrow:"Descripción del Santuario",mapTitle:"<em>Mapa General</em>Goutokuji",
     mapDescTitle:"📍 10 Lugares Clave",
     mapRouteHint:"<strong>📍 Ruta recomendada:</strong><br>Puerta Principal (1) → Pagoda 3 pisos (2) → Salón del Buda (3) → Shofukuden (4) → Tumba Ii (5) → Gran Salón (6) → Patriarcas (7) → Puerta Roja (8) → Torre Campana (9) → Salón Jizo (10)",
-    mapStartBtn:"Iniciar Peregrinación ➔",
+    mapStartBtn:"Comenzar cada Lugar ➔",
     mapSpots:[{n:"Puerta Sanmon",d:"Reconstruida tras el terremoto de 1923."},{n:"Pagoda 3 pisos",d:"22.5m. Gato oculto en el zodíaco."},{n:"Salón del Buda",d:"Bien cultural de Setagaya."},{n:"Shofukuden",d:"Origen del Maneki Neko."},{n:"Tumba Ii",d:"Monumento histórico nacional."},{n:"Gran Salón",d:"Corazón espiritual del templo."},{n:"Patriarcas",d:"Tablillas ancestrales de abades."},{n:"Puerta Roja",d:"Donada por el clan Ii en 1885."},{n:"Torre Campana",d:"La más antigua de Setagaya (1679)."},{n:"Salón Jizo",d:"Completado en 2020."}],
     appealEyebrow:"Experiencia Premium",
     appealTitle:"<em>Una Experiencia de Peregrinación Premium</em>Premium Pilgrimage Experience",
-    appealFeat1Title:"Guía de Audio IA y Etiqueta de Oración para 10 Lugares",appealFeat1Desc:"La narración IA explica la historia, los puntos destacados y la etiqueta correcta de oración en cada lugar, ¡y te ayuda a encontrar los gatos ocultos en la Pagoda de Tres Pisos!",
-    appealFeat2Title:"📷 Juego de Búsqueda del Gato Oculto",appealFeat2Desc:"Fotografía el gato de la fortuna que encuentres en el templo y súbelo: la IA verificará al instante si es correcto. ¡Convierte tu visita en una divertida búsqueda del tesoro!",
+    appealFeat1Title:"Guía de Audio IA y Etiqueta de Oración para 10 Lugares",appealFeat1Desc:"La narración IA explica la historia, los puntos destacados y la etiqueta correcta de oración en cada lugar.",
+    appealFeat2Title:"Juego de Búsqueda del Gato Oculto",appealFeat2Desc:"Fotografía el gato de la fortuna oculto en la Pagoda de Tres Pisos y súbelo: la IA verificará al instante si es correcto. ¡Convierte tu visita en una divertida búsqueda del tesoro!",
     appealFeat3Title:"Rally de Sellos de Finalización",appealFeat3Desc:"¡Responde correctamente todos los cuestionarios de los 10 lugares para ganar una hoja de sellos digitales!",
-    appealFeat4Title:"Omikuji Gratis y Compartir en Redes",appealFeat4Desc:"¡Después de completar los 10 lugares, obtén tu oráculo personalizado totalmente gratis! Comparte tu resultado directamente en redes sociales con tus amigos.",
+    appealFeat4Title:"Omikuji Gratis y Compartir en Redes",appealFeat4Desc:"¡Después de completar los 10 lugares, obtén tu oráculo personalizado totalmente gratis! Puedes compartir tu resultado directamente en redes sociales.",
     appealNextBtn:"Continuar ➔",
-    checkoutEyebrow:"Guía Premium · Desbloquear",checkoutTitle:"<em>Unlock Premium Guide</em>Desbloquear Guía Premium",
+    checkoutEyebrow:"Guía Premium · Comprar",checkoutTitle:"<em>Purchase the Goutokuji Pilgrimage Guide</em>Comprar la Guía de Peregrinación de Goutokuji",
     checkoutPriceLabel:"Guía Digital Premium",checkoutPriceBadge:"🎁 ¡Omikuji<br>Gratis!",
-    checkoutInc1:"Guía de Audio IA y Etiqueta de Oración",checkoutInc2:"📷 Juego de Búsqueda del Gato Oculto",checkoutInc3:"Rally de Sellos de Finalización (10 Lugares)",checkoutInc4:"Omikuji Gratis y Compartir en Redes",
-    checkoutPayLabel:"Iniciar Experiencia Premium",checkoutContinueLabel:"Continuar tu Visita",checkoutSkipLabel:"Saltar al Demo →",
+    checkoutInc1:"Guía de Audio IA y Etiqueta de Oración",checkoutInc2:"Juego de Búsqueda del Gato Oculto",checkoutInc3:"Rally de Sellos de Finalización (10 Lugares)",checkoutInc4:"Omikuji Gratis y Compartir en Redes",
+    checkoutPayLabel:"Comprar la Guía de Peregrinación de Goutokuji",checkoutContinueLabel:"Continuar tu Visita",checkoutSkipLabel:"Saltar al Demo →",
+    checkoutPayNote:"Al pulsar este botón, accederás a la pantalla de pago (Stripe). Se aceptan pagos con tarjeta de crédito.",
     checkoutPriceOrig:"<s>Precio normal ¥1.500</s>",checkoutPriceMonitor:"Precio especial de lanzamiento",taxNote:"(impuestos incl.)",
     manganMsg:"Bajo la bendición del Gato de la Fortuna, has completado los 10 lugares emblemáticos de Goutokuji. Que este sagrado vínculo te traiga una gran fortuna. Respondiste correctamente las 10 preguntas y completaste tu colección de sellos Goshuin.",
     mannersTitle:"Reglas y Modales del Santuario",mannersSubtitle:"MANNERS & SAFETY RULES",
-    mannersAgreeBtn:"Confirmar y Continuar ➔",
+    mannersAgreeBtn:"Entendido, Comenzar mi Visita ➔",
     mannersGuideText:"Por favor revise y marque todos los elementos a continuación",
     wmNextBtn:"Continuar ➔",
     steps:[
@@ -2196,23 +2223,24 @@ const CONFIG_LANG = {
     mapEyebrow:"Présentation du Sanctuaire",mapTitle:"<em>Plan Général</em>Goutokuji",
     mapDescTitle:"📍 10 Sites Clés",
     mapRouteHint:"<strong>📍 Itinéraire recommandé :</strong><br>Porte Principale (1) → Pagode 3 étages (2) → Pavillon du Bouddha (3) → Shofukuden (4) → Tombeaux Ii (5) → Grand Hall (6) → Patriarches (7) → Porte Rouge (8) → Beffroi (9) → Jizo-do (10)",
-    mapStartBtn:"Commencer le Pèlerinage ➔",
+    mapStartBtn:"Commencer chaque Site ➔",
     mapSpots:[{n:"Porte Sanmon",d:"Reconstruite après le tremblement de terre de 1923."},{n:"Pagode 3 étages",d:"22,5m. Chat caché dans le zodiaque."},{n:"Pavillon du Bouddha",d:"Bien culturel de Setagaya."},{n:"Shofukuden",d:"Origine du Maneki Neko."},{n:"Tombeaux Ii",d:"Monument historique national."},{n:"Grand Hall",d:"Cœur spirituel du temple."},{n:"Patriarches",d:"Tablettes ancestrales des abbés."},{n:"Porte Rouge",d:"Donnée par le clan Ii en 1885."},{n:"Beffroi",d:"Le plus ancien de Setagaya (1679)."},{n:"Jizo-do",d:"Achevé en 2020."}],
     appealEyebrow:"Expérience Premium",
     appealTitle:"<em>Une Expérience de Pèlerinage Premium</em>Premium Pilgrimage Experience",
-    appealFeat1Title:"Guide Audio IA et Étiquette de Prière pour 10 Sites",appealFeat1Desc:"La narration IA vous explique l'histoire, les points forts et l'étiquette de prière appropriée pour chaque site, et vous aide à trouver les chats cachés dans la Pagode à Trois Étages !",
-    appealFeat2Title:"📷 Jeu de Chasse au Chat Caché",appealFeat2Desc:"Photographiez le chat porte-bonheur que vous trouvez sur le site et téléchargez-le : l'IA vérifie instantanément si c'est correct. Transformez votre visite en une chasse au trésor amusante !",
+    appealFeat1Title:"Guide Audio IA et Étiquette de Prière pour 10 Sites",appealFeat1Desc:"La narration IA vous explique l'histoire, les points forts et l'étiquette de prière appropriée pour chaque site.",
+    appealFeat2Title:"Jeu de Chasse au Chat Caché",appealFeat2Desc:"Photographiez le chat porte-bonheur caché dans la Pagode à Trois Étages et téléchargez-le : l'IA vérifie instantanément si c'est correct. Transformez votre visite en une chasse au trésor amusante !",
     appealFeat3Title:"Rally de Tampons de Complétion",appealFeat3Desc:"Répondez correctement à tous les quiz des 10 sites pour gagner une feuille de tampons numériques!",
-    appealFeat4Title:"Omikuji Gratuit et Partage Social",appealFeat4Desc:"Après avoir terminé les 10 sites, tirez votre oracle personnalisé entièrement gratuit ! Partagez votre résultat directement sur les réseaux sociaux avec vos amis.",
+    appealFeat4Title:"Omikuji Gratuit et Partage Social",appealFeat4Desc:"Après avoir terminé les 10 sites, tirez votre oracle personnalisé entièrement gratuit ! Vous pouvez partager votre résultat directement sur les réseaux sociaux.",
     appealNextBtn:"Continuer ➔",
-    checkoutEyebrow:"Guide Premium · Déverrouiller",checkoutTitle:"<em>Unlock Premium Guide</em>Déverrouiller le Guide Premium",
+    checkoutEyebrow:"Guide Premium · Acheter",checkoutTitle:"<em>Purchase the Goutokuji Pilgrimage Guide</em>Acheter le Guide de Pèlerinage de Goutokuji",
     checkoutPriceLabel:"Guide Numérique Premium",checkoutPriceBadge:"🎁 Omikuji<br>Gratuit !",
-    checkoutInc1:"Guide Audio IA et Étiquette de Prière",checkoutInc2:"📷 Jeu de Chasse au Chat Caché",checkoutInc3:"Rally de Tampons de Complétion (10 Sites)",checkoutInc4:"Omikuji Gratuit et Partage Social",
-    checkoutPayLabel:"Démarrer l'Expérience Premium",checkoutContinueLabel:"Continuer votre Visite",checkoutSkipLabel:"Passer à la Démo →",
+    checkoutInc1:"Guide Audio IA et Étiquette de Prière",checkoutInc2:"Jeu de Chasse au Chat Caché",checkoutInc3:"Rally de Tampons de Complétion (10 Sites)",checkoutInc4:"Omikuji Gratuit et Partage Social",
+    checkoutPayLabel:"Acheter le Guide de Pèlerinage de Goutokuji",checkoutContinueLabel:"Continuer votre Visite",checkoutSkipLabel:"Passer à la Démo →",
+    checkoutPayNote:"En appuyant sur ce bouton, vous accéderez à l'écran de paiement (Stripe). Les paiements par carte de crédit sont acceptés.",
     checkoutPriceOrig:"<s>Prix normal ¥1.500</s>",checkoutPriceMonitor:"Prix de lancement limité",taxNote:"(taxes incl.)",
     manganMsg:"Sous la bénédiction du Chat Porte-Bonheur, vous avez visité les 10 sites emblématiques de Goutokuji. Que ce lien sacré vous apporte une grande fortune. Vous avez répondu correctement aux 10 quiz et complété votre collection de tampons Goshuin.",
     mannersTitle:"Règles et Bonnes Manières du Sanctuaire",mannersSubtitle:"MANNERS & SAFETY RULES",
-    mannersAgreeBtn:"Confirmer et Continuer ➔",
+    mannersAgreeBtn:"Compris, Commencer ma Visite ➔",
     mannersGuideText:"Veuillez vérifier et cocher tous les éléments ci-dessous",
     wmNextBtn:"Continuer ➔",
     steps:[
@@ -2232,7 +2260,7 @@ const CONFIG_LANG = {
 
 
 
-const state={lang:null,group:null,visit:null,currentStep:0,surveyRatings:{overall:0,guide:0,quiz:0,price:0},omikujiDraws:0,visitedSpots:new Set(),foundCats:[]};
+const state={lang:null,group:null,visit:null,currentStep:0,surveyRatings:{overall:0,guide:0,quiz:0,price:0},omikujiDraws:0,visitedSpots:new Set(),foundCats:[],foundCatPhotos:[]};
 let quizAnswered=false,shortsInterval=null,shortsIdx=0;
 
 /* タップ時の金色波紋エフェクト */
@@ -2358,14 +2386,16 @@ window.addEventListener('DOMContentLoaded',async()=>{
   const _isSameDayPaid=_isLive&&localStorage.getItem('goutokuji_dx_paid')==='true'&&_paidDate===new Date().toDateString();
   let _restore=null;
   if(_isSameDayPaid){
-    let _visited=new Set(),_cats=[];
+    let _visited=new Set(),_cats=[],_catPhotos=[];
     try{_visited=new Set(JSON.parse(localStorage.getItem('goutokuji_dx_visited')||'[]'));}catch(e){}
     try{_cats=JSON.parse(localStorage.getItem('goutokuji_dx_foundcats')||'[]');}catch(e){}
+    try{_catPhotos=JSON.parse(localStorage.getItem('goutokuji_dx_cat_photos')||'[]');}catch(e){}
     _restore={
       lang:localStorage.getItem('goutokuji_dx_lang')||'ja',
       step:parseInt(localStorage.getItem('goutokuji_dx_step'),10)||0,
       visited:_visited,
       cats:_cats,
+      catPhotos:_catPhotos,
       surveyRatings:(()=>{try{return Object.assign({overall:0,guide:0,quiz:0,price:0},JSON.parse(localStorage.getItem('goutokuji_dx_survey_ratings')||'{}'));}catch(e){return {overall:0,guide:0,quiz:0,price:0};}})(),
       comment:localStorage.getItem('goutokuji_dx_survey_comment')||'',
       omikujiResult:(()=>{try{return JSON.parse(localStorage.getItem('goutokuji_dx_omikuji_result')||'null');}catch(e){return null;}})(),
@@ -2461,6 +2491,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
     state.currentStep=_restore.step;
     state.visitedSpots=_restore.visited;
     state.foundCats=_restore.cats;
+    state.foundCatPhotos=_restore.catPhotos;
     const codes={ja:'JA',en:'EN',zh:'ZH',ko:'KO',es:'ES',fr:'FR'};
     if(globalLangBtn)globalLangBtn.textContent=codes[state.lang]||state.lang.toUpperCase();
     applyLangUI(state.lang);
@@ -2765,7 +2796,7 @@ async function _updateCheckoutSkipVisibility(){
       const _continuing=cfg.paymentMode==='live'&&_isSameDayPaidNow();
       payLabel.textContent=_continuing
         ?((d&&d.checkoutContinueLabel)||'Continue Your Visit')
-        :((d&&d.checkoutPayLabel)||'Start Premium Experience');
+        :((d&&d.checkoutPayLabel)||'Purchase the Goutokuji Pilgrimage Guide');
     }
   }catch(e){
     if(wrap)wrap.style.display='';
@@ -2874,30 +2905,31 @@ function applyLangUI(lk){
   _set('appealEyebrow','textContent',d.appealEyebrow||(isJa?'体験価値 · Premium Experience':'Premium Experience · 体験価値'));
   _set('appealTitle','innerHTML',d.appealTitle||(isJa?'<em>プレミアムな参拝体験をあなたに</em>Premium Pilgrimage Experience':'<em>Premium Pilgrimage Experience</em>プレミアムな参拝体験をあなたに'));
   _set('appealFeat1Title','textContent',d.appealFeat1Title||(isJa?'豪徳寺10大スポット AIナレーション＆参拝ガイド':'10-Spot AI Audio Guide & Worship Manners'));
-  _set('appealFeat1Desc','textContent',d.appealFeat1Desc||(isJa?'各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。三重塔に隠された「隠れ招き猫」探しもサポートします！':"AI narration walks you through each spot's history, highlights, and proper worship etiquette — plus helps you find the hidden cats in the Three-Story Pagoda!"));
-  _set('appealFeat2Title','textContent',d.appealFeat2Title||(isJa?'📷 隠れ招き猫探しゲーム':'📷 Hidden Cat Photo Hunt Game'));
-  _set('appealFeat2Desc','textContent',d.appealFeat2Desc||(isJa?'境内で見つけた招き猫を写真に撮ってアップロードすると、AIが正解かどうかを判定。参拝が楽しい宝探しゲームになります。':"Snap a photo of the lucky cat you find on the grounds and upload it — AI instantly checks if you're right. It turns your visit into a fun treasure hunt!"));
+  _set('appealFeat1Desc','textContent',d.appealFeat1Desc||(isJa?'各スポットの由来や見どころに加え、正しい参拝の作法までAIナレーションが分かりやすく解説。':"AI narration walks you through each spot's history, highlights, and proper worship etiquette."));
+  _set('appealFeat2Title','textContent',d.appealFeat2Title||(isJa?'隠れ招き猫探しゲーム':'Hidden Cat Photo Hunt Game'));
+  _set('appealFeat2Desc','textContent',d.appealFeat2Desc||(isJa?'三重塔に隠された招き猫を写真に撮ってアップロードすると、AIが正解かどうかを判定。参拝が楽しい宝探しゲームになります。':"Snap a photo of the lucky cat hidden in the Three-Story Pagoda and upload it — AI instantly checks if you're right. It turns your visit into a fun treasure hunt!"));
   _set('appealFeat3Title','textContent',d.appealFeat3Title||(isJa?'10大スポット 満願成就スタンプラリー':'10-Spot Completion Stamp Rally'));
   _set('appealFeat3Desc','textContent',d.appealFeat3Desc||(isJa?'10大スポットのクイズに全問正解した証として、朱色に輝くデジタル御朱印スタンプシートが発行されます。達成感を手に入れましょう！':'Answer all 10 spot quizzes correctly to earn a glowing digital stamp sheet as proof of completion!'));
   _set('appealFeat4Title','textContent',d.appealFeat4Title||(isJa?'無料おみくじ＆SNSシェア':'Free Omikuji & Social Sharing'));
-  _set('appealFeat4Desc','textContent',d.appealFeat4Desc||(isJa?'10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！':'After completing all 10 spots, draw your personalised fortune slip — 100% free!'));
+  _set('appealFeat4Desc','textContent',d.appealFeat4Desc||(isJa?'10スポットを巡り終えた後、あなたの運勢を占う特製おみくじを無料で引けます！結果はそのままSNSでシェアすることができます。':'After completing all 10 spots, draw your personalised fortune slip — 100% free! You can share your result directly on social media.'));
   _set('appealNextBtn','textContent',d.appealNextBtn||(isJa?'さあ、始めよう ➔':'Proceed ➔'));
   _set('checkoutEyebrow','textContent',d.checkoutEyebrow||'Premium Guide · プレミアムガイド');
-  _set('checkoutTitle','innerHTML',d.checkoutTitle||(isJa?'<em>プレミアムパンフレットを解放</em>Unlock Premium Guide':'<em>Unlock Premium Guide</em>プレミアムパンフレットを解放'));
-  _set('checkoutPriceLabel','textContent',d.checkoutPriceLabel||(isJa?'デジタルプレミアムパンフレット':'Digital Premium Pamphlet'));
+  _set('checkoutTitle','innerHTML',d.checkoutTitle||(isJa?'<em>豪徳寺参拝ガイドを購入</em>Purchase the Goutokuji Pilgrimage Guide':'<em>Purchase the Goutokuji Pilgrimage Guide</em>豪徳寺参拝ガイドを購入'));
+  _set('checkoutPriceLabel','textContent',d.checkoutPriceLabel||(isJa?'デジタルプレミアムガイド':'Digital Premium Guide'));
   _set('checkoutPriceOrig','innerHTML',d.checkoutPriceOrig||(isJa?'<s>通常 ¥1,500</s>':'<s>Regular ¥1,500</s>'));
   _set('checkoutPriceMonitor','textContent',d.checkoutPriceMonitor||(isJa?'今だけモニター価格':'Limited-Time Monitor Price'));
   _set('checkoutPriceBadge','innerHTML',d.checkoutPriceBadge||(isJa?'🎁 おみくじ<br>無料特典！':'🎁 FREE<br>OMIKUJI!'));
   _set('checkoutTaxNote','textContent',d.taxNote||(isJa?'（税込）':'(tax incl.)'));
   _set('checkoutInc1','textContent',d.checkoutInc1||(isJa?'AIナレーション＆参拝ガイド':'AI Audio Guide & Worship Manners'));
-  _set('checkoutInc2','textContent',d.checkoutInc2||(isJa?'📷 隠れ招き猫探しゲーム':'📷 Hidden Cat Photo Hunt Game'));
+  _set('checkoutInc2','textContent',d.checkoutInc2||(isJa?'隠れ招き猫探しゲーム':'Hidden Cat Photo Hunt Game'));
   _set('checkoutInc3','textContent',d.checkoutInc3||(isJa?'10大スポット 満願成就スタンプラリー':'10-Spot Completion Stamp Rally'));
   _set('checkoutInc4','textContent',d.checkoutInc4||(isJa?'無料おみくじ＆SNSシェア':'Free Omikuji & Social Sharing'));
-  _set('checkoutPayLabel','textContent',d.checkoutPayLabel||(isJa?'プレミアム体験を開始する':'Start Premium Experience'));
+  _set('checkoutPayLabel','textContent',d.checkoutPayLabel||(isJa?'豪徳寺参拝ガイドを購入':'Purchase the Goutokuji Pilgrimage Guide'));
+  _set('checkoutPayNote','textContent',d.checkoutPayNote||(isJa?'ボタンを押すと決済画面（Stripe）に移動します。クレジットカードでお支払いいただけます。':'Pressing this button takes you to the payment screen (Stripe). Credit card payments are accepted.'));
   _set('checkoutSkipLabel','textContent',d.checkoutSkipLabel||(isJa?'スキップしてデモ体験 →':'Skip to Demo →'));
   _set('mannersTitle','textContent',d.mannersTitle||(isJa?'境内参拝規則・マナー':'Sanctuary Rules & Manners'));
   _set('mannersSubtitle','textContent',d.mannersSubtitle||'MANNERS & SAFETY RULES');
-  _set('mannersAgreeBtn','textContent',d.mannersAgreeBtn||(isJa?'マナーを確認して進む ➔':'Confirm & Proceed ➔'));
+  _set('mannersAgreeBtn','textContent',d.mannersAgreeBtn||(isJa?'理解して参拝を開始する ➔':'Understood — Begin My Visit ➔'));
   _set('mannersGuideText','innerHTML',d.mannersGuideText||'Please review and check all items below');
   const mb2=document.getElementById('mannersBox');
   if(mb2&&d)mb2.innerHTML=d.mannerItems||'';
@@ -3187,10 +3219,12 @@ async function executeOmikujiFlow(){
   const res=document.getElementById('omikujiResultArea');
   if(!btn||!res)return;
 
-  /* 鈴の音を再生 */
+  /* 鈴の音を再生（元は5秒の音声を、おみくじが開くまでの間と自然につながるよう
+     約7秒に引き伸ばして再生する。ブラウザの自動ピッチ補正により音程はほぼ保たれる） */
   try{
     const shrine=new Audio('mp3/神社の鈴.mp3');
     shrine.volume=0.7;
+    shrine.playbackRate=5/7;
     shrine.play().catch(()=>{});
   }catch(e){}
 
@@ -3225,18 +3259,29 @@ async function executeOmikujiFlow(){
     const _minDelay=new Promise(r=>setTimeout(r,1800));
 
     const _draw=(async()=>{
-      /* 本番：Claude APIでその場限りのおみくじを生成する。失敗時はダミーデータへフォールバック */
+      /* デモモードではAnthropic APIの使用量削減のため、実際のAPI呼び出しは行わずダミーデータを使う。
+         本番（paymentMode==='live'）の場合のみClaude APIでその場限りのおみくじを生成し、
+         失敗時はダミーデータへフォールバックする。 */
+      let _isLiveMode=false;
       try{
-        const apiRes=await fetch('/.netlify/functions/omikuji',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({lang}),
-        });
-        if(apiRes.ok){
-          const data=await apiRes.json();
-          if(data&&data.fortune&&data.fortune.rank)return data.fortune;
-        }
-      }catch(e){}
+        const _cfgRes=await fetch('/.netlify/functions/config');
+        const _cfg=await _cfgRes.json();
+        _isLiveMode=_cfg.paymentMode==='live';
+      }catch(e){_isLiveMode=false;}
+
+      if(_isLiveMode){
+        try{
+          const apiRes=await fetch('/.netlify/functions/omikuji',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({lang}),
+          });
+          if(apiRes.ok){
+            const data=await apiRes.json();
+            if(data&&data.fortune&&data.fortune.rank)return data.fortune;
+          }
+        }catch(e){}
+      }
 
       const ranks=['大吉','中吉','小吉','吉','末吉','凶'];
       const rank=ranks[Math.floor(Math.random()*ranks.length)];
@@ -3311,46 +3356,6 @@ function _renderOmikujiResult(fortune,lang,btn,res,d){
         </div>
       `).join('');
 
-      /* SNSシェア用：おみくじ結果全文を組み立て */
-      const shareHeaders={
-        ja:'🏯 豪徳寺 招き猫おみくじ',
-        en:'🏯 Goutokuji Lucky Cat Fortune',
-        zh:'🏯 豪德寺 招财猫御签',
-        ko:'🏯 고토쿠지 마네키네코 오미쿠지',
-        es:'🏯 Oráculo del Gato de la Fortuna de Goutokuji',
-        fr:'🏯 Oracle du Chat Porte-Bonheur de Goutokuji',
-      };
-      const shareItemsText=items.map(key=>`${itemIcons[key]} ${lb[key]}：${fortune[key]||''}`).join('\n');
-      const shareText=`${shareHeaders[lang]||shareHeaders['en']}\n🎋 ${fortune.rank}（${fortune.rankReading||''}）\n「${fortune.poem||''}」\n\n${shareItemsText}\n\n#豪徳寺 #Goutokuji #招き猫 #ManekiNeko #おみくじ\nhttps://goutokuji-dx.netlify.app`;
-
-      const shareLabels={
-        ja:'📤 おみくじの結果をシェアする',
-        en:'📤 Share Your Fortune Result',
-        zh:'📤 分享御签结果',
-        ko:'📤 오미쿠지 결과 공유하기',
-        es:'📤 Compartir tu Resultado del Oráculo',
-        fr:'📤 Partager le Résultat de l\'Oracle',
-      };
-      const shareLabel=shareLabels[lang]||shareLabels['en'];
-
-      const shareBtnHTML=`
-        <div style="margin-top:6px;text-align:center;">
-          <button id="btnShareOmikuji" style="
-            background:linear-gradient(135deg,rgba(155,35,53,.08),rgba(155,35,53,.04));
-            border:1px solid rgba(155,35,53,.4);
-            color:var(--red-light);
-            font-family:var(--font-display);
-            font-size:.875rem;
-            letter-spacing:.1em;
-            padding:14px 28px;
-            border-radius:4px;
-            cursor:pointer;
-            width:100%;
-            transition:all .2s;
-          ">${shareLabel}</button>
-        </div>
-      `;
-
       res.innerHTML=`
         <div class="omikuji-scroll-rod omikuji-scroll-rod--top"></div>
         <div class="omikuji-scroll-viewport" id="omikujiScrollViewport">
@@ -3387,8 +3392,7 @@ function _renderOmikujiResult(fortune,lang,btn,res,d){
           <div class="omikuji-scroll-roller" id="omikujiScrollRoller"></div>
         </div>
       `;
-      const shareArea=document.getElementById('omikujiShareArea');
-      if(shareArea)shareArea.innerHTML=shareBtnHTML;
+      _refreshShareArea();
       res.style.display='block';
       res.classList.remove('scroll-open','scroll-unrolling');
       const _scrollViewport=document.getElementById('omikujiScrollViewport');
@@ -3434,41 +3438,6 @@ function _renderOmikujiResult(fortune,lang,btn,res,d){
         },(_stage1Dur+_pauseDur)*1000);
       },400);
       showToast('OMIKUJI',lang==='ja'?'神託が届きました。':'Your fortune has been revealed.');
-
-      /* おみくじ結果のシェアボタン */
-      const shareBtn=document.getElementById('btnShareOmikuji');
-      if(shareBtn){
-        shareBtn.onclick=async()=>{
-          const rect=shareBtn.getBoundingClientRect();
-          _showGoldRipple(rect.left+rect.width/2,rect.top+rect.height/2);
-          if(navigator.share){
-            try{
-              await navigator.share({
-                title:'豪徳寺 GOUTOKUJI',
-                text:shareText,
-                url:'https://goutokuji-dx.netlify.app',
-              });
-            }catch(e){}
-          } else {
-            /* Web Share API非対応の場合はクリップボードにコピー */
-            try{
-              await navigator.clipboard.writeText(shareText);
-              const copied={
-                ja:'クリップボードにコピーしました！',
-                en:'Copied to clipboard!',
-                zh:'已复制到剪贴板！',
-                ko:'클립보드에 복사되었습니다！',
-                es:'¡Copiado al portapapeles!',
-                fr:'Copié dans le presse-papiers!',
-              };
-              shareBtn.textContent=copied[lang]||copied['en'];
-              setTimeout(()=>{
-                shareBtn.textContent=shareLabel;
-              },2000);
-            }catch(e){}
-          }
-        };
-      }
 
       /* ボタンをグレーアウト（引き直し不可） */
       btn.disabled=true;
@@ -3635,6 +3604,7 @@ function buildClearContent(){
   },3000);
 
   updateStampRail_clear();
+  _refreshShareArea();
 }
 
 const SHOP_I18N={
@@ -4358,6 +4328,10 @@ function _buildHiddenCatsSection(hcs){
       <div class="cat-hint-content" id="catHint3">${t.hint3Text.join('<br>')}</div>
     </div>`;
   _renderCatFindCards();
+  if(state.foundCats.length>=3){
+    const banner=document.getElementById('catMissionBanner');
+    if(banner)banner.classList.add('show');
+  }
 }
 
 function _renderCatFindCards(){
@@ -4440,7 +4414,9 @@ async function handleCatPhotoUpload(input){
 
     const idx=state.foundCats.length;
     state.foundCats.push(idx);
+    state.foundCatPhotos.push(imageDataUri);
     localStorage.setItem('goutokuji_dx_foundcats',JSON.stringify(state.foundCats));
+    try{localStorage.setItem('goutokuji_dx_cat_photos',JSON.stringify(state.foundCatPhotos));}catch(e){}
     _renderCatFindCards();
 
     if(foundMsg){
@@ -4748,6 +4724,149 @@ function stampSpot(idx){
   updateStampRail();
 }
 
+const OMIKUJI_ITEM_ORDER=['overall','love','work','wealth','travel','health','friendship'];
+const OMIKUJI_ITEM_ICONS={overall:'🌟',love:'❤️',work:'💼',wealth:'💰',travel:'✈️',health:'🏥',friendship:'🤝'};
+const OMIKUJI_ITEM_LABELS={
+  ja:{overall:'総運',love:'恋愛',work:'仕事',wealth:'金運',travel:'旅行',health:'健康',friendship:'交友'},
+  en:{overall:'Overall',love:'Love',work:'Work & Career',wealth:'Wealth',travel:'Travel',health:'Health',friendship:'Friendship'},
+  zh:{overall:'总运',love:'恋爱',work:'工作',wealth:'金运',travel:'旅行',health:'健康',friendship:'交友'},
+  ko:{overall:'총운',love:'연애',work:'직업',wealth:'금운',travel:'여행',health:'건강',friendship:'교우'},
+  es:{overall:'Fortuna General',love:'Amor',work:'Trabajo',wealth:'Riqueza',travel:'Viaje',health:'Salud',friendship:'Amistad'},
+  fr:{overall:'Fortune Générale',love:'Amour',work:'Travail',wealth:'Richesse',travel:'Voyage',health:'Santé',friendship:'Amitié'},
+};
+function _buildOmikujiShareText(fortune,lang){
+  const shareHeaders={
+    ja:'🏯 豪徳寺 招き猫おみくじ',
+    en:'🏯 Goutokuji Lucky Cat Fortune',
+    zh:'🏯 豪德寺 招财猫御签',
+    ko:'🏯 고토쿠지 마네키네코 오미쿠지',
+    es:'🏯 Oráculo del Gato de la Fortuna de Goutokuji',
+    fr:'🏯 Oracle du Chat Porte-Bonheur de Goutokuji',
+  };
+  const lb=OMIKUJI_ITEM_LABELS[lang]||OMIKUJI_ITEM_LABELS['en'];
+  const shareItemsText=OMIKUJI_ITEM_ORDER.map(key=>`${OMIKUJI_ITEM_ICONS[key]} ${lb[key]}：${fortune[key]||''}`).join('\n');
+  return `${shareHeaders[lang]||shareHeaders['en']}\n🎋 ${fortune.rank}（${fortune.rankReading||''}）\n「${fortune.poem||''}」\n\n${shareItemsText}\n\n#豪徳寺 #Goutokuji #招き猫 #ManekiNeko #おみくじ\nhttps://goutokuji-dx.netlify.app`;
+}
+function _buildCatOnlyShareText(lang){
+  const templates={
+    ja:`🐱 豪徳寺 三重塔の隠れ招き猫を発見しました！\n\n#豪徳寺 #Goutokuji #招き猫 #ManekiNeko #隠れ猫探し\nhttps://goutokuji-dx.netlify.app`,
+    en:`🐱 Found hidden cats in the Three-Story Pagoda at Goutokuji Temple!\n\n#Goutokuji #ManekiNeko #HiddenCats\nhttps://goutokuji-dx.netlify.app`,
+    zh:`🐱 在豪德寺三重塔，我发现了隐藏的招财猫！\n\n#豪德寺 #Goutokuji #招财猫 #寻找隐藏猫\nhttps://goutokuji-dx.netlify.app`,
+    ko:`🐱 고토쿠지 삼중탑에서 숨은 마네키네코를 발견했습니다！\n\n#고토쿠지 #Goutokuji #마네키네코\nhttps://goutokuji-dx.netlify.app`,
+    es:`🐱 ¡Encontré gatos ocultos en la Pagoda de Tres Pisos del Templo Goutokuji!\n\n#Goutokuji #GatoDeLaFortuna\nhttps://goutokuji-dx.netlify.app`,
+    fr:`🐱 J'ai trouvé des chats cachés dans la pagode à trois étages du temple Goutokuji !\n\n#Goutokuji #ChatPorteBonheur\nhttps://goutokuji-dx.netlify.app`,
+  };
+  return templates[lang]||templates['en'];
+}
+const COMBINED_SHARE_LABELS_WITH_CATS={
+  ja:'📤 見つけた隠れ招き猫とおみくじの結果をSNSで共有',
+  en:'📤 Share Your Cats Found & Fortune on Social Media',
+  zh:'📤 在社交媒体分享招财猫和御签结果',
+  ko:'📤 발견한 마네키네코와 오미쿠지 결과 SNS로 공유',
+  es:'📤 Compartir tus Gatos y Oráculo en Redes Sociales',
+  fr:'📤 Partager vos Chats et Oracle sur les Réseaux Sociaux',
+};
+const COMBINED_SHARE_LABELS_NO_CATS={
+  ja:'📤 おみくじの結果をSNSで共有',
+  en:'📤 Share Your Fortune Result on Social Media',
+  zh:'📤 在社交媒体分享御签结果',
+  ko:'📤 오미쿠지 결과 SNS로 공유하기',
+  es:'📤 Compartir tu Oráculo en Redes Sociales',
+  fr:'📤 Partager votre Oracle sur les Réseaux Sociaux',
+};
+const CAT_ONLY_SHARE_LABELS={
+  ja:'📤 見つけた隠れ招き猫をSNSで共有',
+  en:'📤 Share Your Cats Found on Social Media',
+  zh:'📤 在社交媒体分享招财猫',
+  ko:'📤 발견한 마네키네코 SNS로 공유',
+  es:'📤 Compartir tus Gatos en Redes Sociales',
+  fr:'📤 Partager vos Chats sur les Réseaux Sociaux',
+};
+const SHARE_LOCKED_MSG={
+  ja:'三重塔で隠れ招き猫を探すか、すべてのスポットで御朱印スタンプをゲットしておみくじを引くことでSNSで共有できます。',
+  en:'Find the hidden cats in the Three-Story Pagoda, or complete all 10 spots and draw your fortune, to unlock social sharing.',
+  zh:'在三重塔寻找隐藏的招财猫，或完成全部10大景点并抽取御签后，即可在社交媒体上分享。',
+  ko:'삼중탑에서 숨은 마네키네코를 찾거나, 10대 명소를 모두 완료하고 오미쿠지를 뽑으면 SNS에 공유할 수 있습니다.',
+  es:'Encuentra los gatos ocultos en la Pagoda de Tres Pisos, o completa los 10 lugares y saca tu oráculo, para poder compartir en redes sociales.',
+  fr:'Trouvez les chats cachés dans la Pagode à Trois Étages, ou terminez les 10 sites et tirez votre oracle, pour débloquer le partage sur les réseaux sociaux.',
+};
+/* dataURI（Base64）をFileオブジェクトに変換する（Web Share APIの画像添付に使用） */
+async function _dataUriToFile(dataUri,filename){
+  const blob=await (await fetch(dataUri)).blob();
+  return new File([blob],filename,{type:blob.type||'image/jpeg'});
+}
+/* テキスト共有（画像添付対応）。Web Share API非対応環境ではテキストのみクリップボードにコピー */
+async function _shareWithPhotos(text,dataUris,btn,normalLabel){
+  const lang=state.lang||'ja';
+  if(navigator.share){
+    try{
+      const shareData={title:'豪徳寺 GOUTOKUJI',text,url:'https://goutokuji-dx.netlify.app'};
+      if(dataUris&&dataUris.length){
+        try{
+          const files=await Promise.all(dataUris.map((uri,i)=>_dataUriToFile(uri,`goutokuji-cat-${i+1}.jpg`)));
+          if(navigator.canShare&&navigator.canShare({files}))shareData.files=files;
+        }catch(e){}
+      }
+      await navigator.share(shareData);
+    }catch(e){}
+  }else{
+    try{
+      await navigator.clipboard.writeText(text);
+      const copied={
+        ja:'クリップボードにコピーしました！',
+        en:'Copied to clipboard!',
+        zh:'已复制到剪贴板！',
+        ko:'클립보드에 복사되었습니다！',
+        es:'¡Copiado al portapapeles!',
+        fr:'Copié dans le presse-papiers!',
+      };
+      if(btn){
+        btn.textContent=copied[lang]||copied['en'];
+        setTimeout(()=>{btn.textContent=normalLabel;},2000);
+      }
+    }catch(e){}
+  }
+}
+/* SNSシェアボタンの表示を、隠れ招き猫の発見状況とおみくじの抽選状況に応じて出し分ける。
+   page-clearの、おみくじカードと売店案内の間（combinedShareArea、カード枠の外）に表示する。
+   4パターン：両方○→統合ボタン／猫のみ○→猫のみボタン／おみくじのみ○→おみくじのみボタン／両方×→案内文言 */
+function _refreshShareArea(){
+  const area=document.getElementById('combinedShareArea');
+  if(!area)return;
+  const lang=state.lang||'ja';
+  const hasCats=state.foundCatPhotos&&state.foundCatPhotos.length>0;
+  let fortune=null;
+  try{fortune=JSON.parse(localStorage.getItem('goutokuji_dx_omikuji_result')||'null');}catch(e){}
+  const hasOmikuji=!!fortune;
+
+  if(!hasCats&&!hasOmikuji){
+    area.innerHTML=`<div class="share-locked-msg">${SHARE_LOCKED_MSG[lang]||SHARE_LOCKED_MSG['en']}</div>`;
+    return;
+  }
+
+  let label,shareText;
+  if(hasCats&&hasOmikuji){
+    label=COMBINED_SHARE_LABELS_WITH_CATS[lang]||COMBINED_SHARE_LABELS_WITH_CATS['en'];
+    shareText=_buildOmikujiShareText(fortune,lang);
+  }else if(hasCats){
+    label=CAT_ONLY_SHARE_LABELS[lang]||CAT_ONLY_SHARE_LABELS['en'];
+    shareText=_buildCatOnlyShareText(lang);
+  }else{
+    label=COMBINED_SHARE_LABELS_NO_CATS[lang]||COMBINED_SHARE_LABELS_NO_CATS['en'];
+    shareText=_buildOmikujiShareText(fortune,lang);
+  }
+
+  area.innerHTML=`<button class="btn-share-inline" id="btnShareCombined">${label}</button>`;
+  const btn=document.getElementById('btnShareCombined');
+  if(btn){
+    btn.onclick=()=>{
+      const rect=btn.getBoundingClientRect();
+      _showGoldRipple(rect.left+rect.width/2,rect.top+rect.height/2);
+      _shareWithPhotos(shareText,hasCats?state.foundCatPhotos:null,btn,label);
+    };
+  }
+}
+
 /* 境内散策マップ上の各スポットの位置（スタンプ獲得ポップアップで使用） */
 const MAP_SPOT_POS=[
   {left:'56%',top:'85%'},
@@ -4998,12 +5117,13 @@ function restartTour(){
   state.omikujiDraws=0;
   state.visitedSpots=new Set();
   state.foundCats=[];
+  state.foundCatPhotos=[];
 
   try{localStorage.clear();}catch(e){}
 
   const res=document.getElementById('omikujiResultArea');
   if(res){res.style.display='none';res.classList.remove('scroll-open','scroll-unrolling');}
-  const shareArea=document.getElementById('omikujiShareArea');
+  const shareArea=document.getElementById('combinedShareArea');
   if(shareArea)shareArea.innerHTML='';
   const usedBox=document.getElementById('omikujiUsedBox');
   if(usedBox){usedBox.style.display='none';usedBox.textContent='';}

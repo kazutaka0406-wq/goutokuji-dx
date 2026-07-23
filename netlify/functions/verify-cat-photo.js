@@ -52,6 +52,11 @@ exports.handler = async function(event) {
     return { statusCode: 405, headers, body: JSON.stringify({ error: 'method_not_allowed' }) };
   }
 
+  if (process.env.PAYMENT_MODE !== 'live') {
+    /* デモモードではAnthropic APIの使用量削減のため、実際のAI画像判定は行わずダミーで常に成功とする */
+    return { statusCode: 200, headers, body: JSON.stringify({ found: true }) };
+  }
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: 'api_key_not_configured' }) };
   }
