@@ -202,6 +202,16 @@ p{line-height:1.85}
   cursor:pointer;text-decoration:underline}
 .contact-back-link:hover{opacity:1;color:var(--gold-light)}
 
+.legal-page-inner{max-width:560px;margin:0 auto;padding:74px 22px 60px;}
+.legal-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:.8125rem;line-height:1.75}
+.legal-table th{width:38%;text-align:left;vertical-align:top;padding:14px 10px 14px 0;color:var(--gold-light);
+  font-weight:600;border-top:1px solid rgba(201,168,76,.18)}
+.legal-table td{text-align:left;vertical-align:top;padding:14px 0;color:var(--mist);
+  border-top:1px solid rgba(201,168,76,.18)}
+.footer-legal-link{display:inline-block;margin-top:6px;font-family:var(--font-mono);font-size:.625rem;
+  letter-spacing:.05em;color:var(--gold);opacity:.75;text-decoration:underline;cursor:pointer}
+.footer-legal-link:hover{opacity:1}
+
 #page-visual-intro{background:var(--ink)}
 .intro-inner{max-width:420px;width:100%;margin:0 auto;padding:32px 22px 40px;display:flex;flex-direction:column;gap:18px}
 .intro-eyebrow{font-family:var(--font-mono);font-size:.625rem;letter-spacing:.25em;color:var(--gold);opacity:.75;text-transform:uppercase;margin-bottom:8px}
@@ -1346,6 +1356,7 @@ p{line-height:1.85}
     </div>
     <div class="lang-foot-note fade-up fade-up-4">You can change this at any time</div>
     <button class="lang-contact-btn fade-up fade-up-4" onclick="playClickSound();openContactForm()">✉️ アプリに関するお問い合わせ<span class="lang-contact-btn-sub">App Inquiry</span></button>
+    <span class="footer-legal-link fade-up fade-up-4" onclick="playClickSound();openTokushoho()">特定商取引法に基づく表記</span>
     <button class="lang-debug-btn fade-up fade-up-4" id="langDebugBtn" onclick="debugGoToClear()">DEBUG: Skip to Clear Screen</button>
   </div>
 </section>
@@ -1377,6 +1388,30 @@ p{line-height:1.85}
 
     <button class="btn-share-inline fade-up fade-up-3" id="contactSubmitBtnEl" onclick="playClickSound();submitContactForm()">送信する</button>
     <button class="contact-back-link fade-up fade-up-3" id="contactBackBtnEl" onclick="playClickSound();closeContactForm()">← 言語選択に戻る</button>
+  </div>
+</section>
+
+<section class="page" id="page-tokushoho">
+  <div class="legal-page-inner">
+    <div class="fade-up">
+      <div class="wm-eyebrow">Legal</div>
+      <h2 class="wm-title">特定商取引法に基づく表記</h2>
+    </div>
+    <table class="legal-table fade-up fade-up-1">
+      <tr><th>販売業者</th><td>ウンベラータ合同会社</td></tr>
+      <tr><th>運営統括責任者</th><td>清水 綾子</td></tr>
+      <tr><th>所在地</th><td>東京都世田谷区宮坂2-23-15</td></tr>
+      <tr><th>電話番号</th><td>090-2761-6708</td></tr>
+      <tr><th>メールアドレス</th><td>umbellata0430@gmail.com</td></tr>
+      <tr><th>販売価格</th><td>¥1,100（税込）</td></tr>
+      <tr><th>商品代金以外の必要料金</th><td>なし（インターネット接続料金・通信料等はお客様のご負担となります）</td></tr>
+      <tr><th>お支払い方法</th><td>クレジットカード決済（Stripe）</td></tr>
+      <tr><th>お支払い時期</th><td>ご購入手続き完了時に即時決済されます</td></tr>
+      <tr><th>商品（サービス）の提供時期</th><td>決済完了後、直ちにご利用いただけます</td></tr>
+      <tr><th>返品・キャンセルについて</th><td>本サービスはデジタルコンテンツの性質上、お客様のご都合による返品・返金はお受けしておりません。システムの不具合等により正常にご利用いただけなかった場合は、上記メールアドレスまでご連絡ください。</td></tr>
+      <tr><th>動作環境</th><td>スマートフォン・タブレット・PCの各種Webブラウザ（インターネット接続が必要です）</td></tr>
+    </table>
+    <button class="contact-back-link fade-up fade-up-2" onclick="playClickSound();closeTokushoho()">← 戻る</button>
   </div>
 </section>
 
@@ -1506,6 +1541,9 @@ p{line-height:1.85}
     <div class="checkout-free-note fade-up fade-up-3">
       🔒 Secured by Stripe
       <span id="checkoutSkipWrap">&nbsp;·&nbsp;<span onclick="playClickSound();showPage('page-manners')" id="checkoutSkipLabel">スキップしてデモ体験 →</span></span>
+    </div>
+    <div class="fade-up fade-up-3" style="text-align:center;margin-top:10px;">
+      <span class="footer-legal-link" onclick="playClickSound();openTokushoho()">特定商取引法に基づく表記</span>
     </div>
 
   </div>
@@ -1650,6 +1688,9 @@ p{line-height:1.85}
     <div class="stripe-note" id="lblStripeNote">🔒 Secured by Stripe</div>
   </div>
   <div class="corporate-footer" id="prePayFooter"></div>
+  <div class="corporate-footer" style="padding-top:0;border-top:none;">
+    <span class="footer-legal-link" onclick="playClickSound();openTokushoho()">特定商取引法に基づく表記</span>
+  </div>
 </section>
 
 
@@ -1835,6 +1876,9 @@ p{line-height:1.85}
     <button class="btn-secondary fade-up fade-up-3" id="lblRestartBtn" onclick="restartTour()">↺ Start New Tour</button>
   </div>
   <div class="corporate-footer" id="postPayFooter"></div>
+  <div class="corporate-footer" style="padding-top:0;border-top:none;">
+    <span class="footer-legal-link" onclick="playClickSound();openTokushoho()">特定商取引法に基づく表記</span>
+  </div>
 </section>
 
 <script>
@@ -1915,7 +1959,7 @@ const CONFIG_LANG = {
       {n:"Bell Tower (Bonshō)",d:"Cast 1679 — oldest bell in Setagaya. Designated cultural property in 2000."},
       {n:"Jizo Hall (Jizo-do)",d:"Completed 2020. A seated Jizo bodhisattva protects travellers and children."}
     ],
-    staticInfo:`<strong>[Hours]</strong> 6:00 AM – 5:00 PM | Office: 8:00 AM – 4:30 PM<br><strong>[Support]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
+    staticInfo:`<strong>[Hours]</strong> 6:00 AM – 5:00 PM | Office: 8:00 AM – 4:30 PM<br><strong>[Support]</strong> 090-2761-6708 / umbellata0430@gmail.com`,
     steps:[
       {title:"The Sanmon Gate",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"The first to greet you is the sturdy wooden Sanmon Gate, erected in 1884 during the Meiji era.\nRebuilt after the Great Kanto Earthquake, it continues to stand with quiet dignity to this day.\nThe plaque above reads Hekiunkan — meaning the gateway to enlightenment beyond the azure clouds.\n\nIn Zen Buddhism, passing through this gate is far more than a simple act of entry.\nIt is a ritual of purification — a moment to cast off the noise, worries, and illusions of the secular world,\nand enter the sacred realm of the Buddha with a cleansed heart and spirit.\n\nOne important etiquette tip: step over — never step on — the threshold at the base of the gate.\nIt is believed that the spirits of the gods and Buddha reside within the threshold,\nand treading upon it is considered deeply disrespectful.\nPlease be mindful as you enter.\n\nTake one deep breath as you pass through.\nThen walk slowly down the lush, pine-lined path that stretches before you.",question:"What Zen sect does Goutokuji belong to?",options:[{text:"Sōtō Zen Sect",correct:true},{text:"Rinzai Sect",correct:false}],correctFb:"🎯 Correct! Sōtō Zen — emphasising zazen (seated meditation).",wrongFb:"❌ Incorrect. Goutokuji belongs to Sōtō Zen."},
       {title:"Three-Story Pagoda",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"Completed in 2006, the wooden Three-Story Pagoda rises 22.5 meters into the sky — a breathtaking presence that commands attention.\n\nHidden within this pagoda is the stage for a very special mission: finding secret beckoning cats concealed somewhere within the structure.\n\nThe craftsmen who built this tower playfully carved tiny cats into the architecture — waiting quietly to be discovered. Can you find them with your own eyes?\n\nThis app includes a special feature: photograph the cat you find and check your answer. If you are having trouble, hints are available to guide you.",question:"What is hidden alongside the zodiac carvings?",options:[{text:"A carved Beckoning Cat",correct:true},{text:"A gold dragon crest",correct:false}],correctFb:"🐱 Perfect! Visible in the close-up photograph.",wrongFb:"❌ Look more closely at the corner of the eaves."},
@@ -2003,7 +2047,7 @@ const CONFIG_LANG = {
       {n:"梵鐘（鐘楼）",d:"延宝7年(1679年)鋳造。区内最古。平成12年に世田谷区指定有形文化財。"},
       {n:"地蔵堂",d:"令和2年(2020年)落慶。地蔵菩薩半跏像が安置されている。"}
     ],
-    staticInfo:`<strong>【豪徳寺 拝観時間】</strong> 6:00 〜 17:00 ｜ 寺務所: 8:00 〜 16:30<br><strong>【お問い合わせ】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
+    staticInfo:`<strong>【豪徳寺 拝観時間】</strong> 6:00 〜 17:00 ｜ 寺務所: 8:00 〜 16:30<br><strong>【お問い合わせ】</strong> 090-2761-6708 / umbellata0430@gmail.com`,
     steps:[
       {title:"山門",img:"images/1_山門.jpg",images:["images/1_山門3.jpg","images/1_山門4.jpg","images/3_仏殿前の焼香2.jpg"],narrative:"最初に出迎えるのは、明治17年（1884年）に上棟されたどっしりとした木造の山門です。\n関東大震災後に再建され、現在も堂々とした佇まいを保っています。\n額には「碧雲関」の文字が刻まれており、「青雲のかなたにある悟りへの関門」を意味しています。\n\n禅宗において、この門をくぐることは単なる通過ではありません。\n日常の悩みや邪念といった俗世の汚れを完全に切り離し、仏の聖域へと心を清めて入場する、魂の浄化の儀式です。\n\n一つ、参拝のマナーをご紹介します。\n門の敷居（下の木の部分）は踏まずに「またいで」入るのが礼儀とされています。\n敷居には神仏が宿るという考えから、踏みつけることは大変失礼とされているためです。\n外国人観光客の方もぜひ意識してみてください。\n\n門をくぐったら深呼吸をひとつ。\n緑豊かな参道の奥へ、ゆっくりと歩み始めましょう。",question:"豪徳寺の仏教の宗派はどれでしょう？",options:[{text:"曹洞宗（禅宗）",correct:true},{text:"臨済宗",correct:false}],correctFb:"🎯 正解！座禅を大切にする曹洞宗のお寺です。",wrongFb:"❌ 違います。曹洞宗です。"},
       {title:"三重塔",img:"images/2_三重塔.jpg",images:["images/2_三重塔.jpg","images/2_三重塔_2.jpg"],narrative:"平成18年（2006年）に落慶した、高さ22.5メートルの木造三重塔。\nその美しい姿は境内でもひときわ目を引きます。\n\n実はこの三重塔、よく見ると境内に隠された「招き猫」を探す特別なミッションの舞台になっています。\n\n職人たちが遊び心を込めて建物のどこかにひっそりと彫り込んだ招き猫を、ぜひ自分の目で探してみてください。\n\nこのアプリには、見つけた猫を写真で撮影して答え合わせができる特別機能も用意しています。見つけられない場合はヒントも活用してみましょう。",question:"三重塔の彫刻に十二支と一緒に隠されている動物は？",options:[{text:"招き猫",correct:true},{text:"龍",correct:false}],correctFb:"🐱 大正解！クローズアップ写真でその姿が確認できます。",wrongFb:"❌ もう一度、軒下の彫刻を確認してみましょう。"},
@@ -2049,7 +2093,7 @@ const CONFIG_LANG = {
     ],
     nextSpots:"推荐周边景点",restartBtn:"↺ 重置 &amp; 开始新游览",
     surveyFormTitle:"使用体验满意度调查",surveyStarLabel:"总体满意度:",surveyGuideLabel:"讲解易懂程度:",surveyQuizLabel:"问答趣味性:",surveyPriceLabel:"价格满意度:",surveyTextLabel:"改善建议或意见:",surveySubmitBtn:"提交反馈",
-    staticInfo:`<strong>【开放时间】</strong> 6:00〜17:00 ｜ 寺务所: 8:00〜16:30<br><strong>【联系方式】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
+    staticInfo:`<strong>【开放时间】</strong> 6:00〜17:00 ｜ 寺务所: 8:00〜16:30<br><strong>【联系方式】</strong> 090-2761-6708 / umbellata0430@gmail.com`,
     wmTitle:"<em>欢迎来到豪德寺</em>Welcome to Goutokuji",wmNextBtn:"继续 ➔",
     wmNarrLabel:"🎙 语音导览 — 境内全体解说",wmPlayLabel:"播放语音导览",
     contactNoticeText:"⚠️ 关于本应用的问题或咨询，请通过语言选择页面底部的「应用咨询」按钮与我们联系。<br><br>※ 请勿直接联系豪德寺寺务所等。",
@@ -2143,7 +2187,7 @@ const CONFIG_LANG = {
     ],
     nextSpots:"추천 주변 명소",restartBtn:"↺ 초기화 &amp; 새 투어 시작",
     surveyFormTitle:"이용 만족도 조사",surveyStarLabel:"종합 만족도:",surveyGuideLabel:"가이드 이해도:",surveyQuizLabel:"퀴즈 재미:",surveyPriceLabel:"가격 만족도:",surveyTextLabel:"개선 사항 또는 의견:",surveySubmitBtn:"설문 제출",
-    staticInfo:`<strong>【관람 시간】</strong> 6:00〜17:00 ｜ 사무소: 8:00〜16:30<br><strong>【문의】</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
+    staticInfo:`<strong>【관람 시간】</strong> 6:00〜17:00 ｜ 사무소: 8:00〜16:30<br><strong>【문의】</strong> 090-2761-6708 / umbellata0430@gmail.com`,
     wmTitle:"<em>고토쿠지에 오신 것을 환영합니다</em>Welcome to Goutokuji",wmNextBtn:"다음으로 ➔",
     wmNarrLabel:"🎙 오디오 가이드 — 경내 전체 내레이션",wmPlayLabel:"오디오 가이드 재생",
     contactNoticeText:"⚠️ 본 앱에 관한 질문이나 문의는 언어 선택 화면 하단의 「앱 문의」 버튼을 통해 연락해 주세요.<br><br>※ 고토쿠지 사무소 등으로의 문의는 삼가주시기 바랍니다.",
@@ -2247,7 +2291,7 @@ const CONFIG_LANG = {
     contactSubmitBtn:"Enviar",contactBackBtn:"← Volver a Selección de Idioma",
     contactSendingMsg:"Enviando...",contactSuccessMsg:"Su consulta ha sido recibida. Gracias.",
     contactErrorMsg:"Error al enviar. Inténtelo de nuevo más tarde.",contactRequiredMsg:"Por favor complete todos los campos obligatorios",
-    staticInfo:`<strong>[Horario]</strong> 6:00〜17:00 | Oficina: 8:00〜16:30<br><strong>[Contacto]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
+    staticInfo:`<strong>[Horario]</strong> 6:00〜17:00 | Oficina: 8:00〜16:30<br><strong>[Contacto]</strong> 090-2761-6708 / umbellata0430@gmail.com`,
     mapEyebrow:"Descripción del Santuario",mapTitle:"<em>Mapa General</em>Goutokuji",
     mapDescTitle:"📍 10 Lugares Clave",
     mapRouteHint:"<strong>📍 Ruta recomendada:</strong><br>Puerta Principal (1) → Pagoda 3 pisos (2) → Salón del Buda (3) → Shofukuden (4) → Tumba Ii (5) → Gran Salón (6) → Patriarcas (7) → Puerta Roja (8) → Torre Campana (9) → Salón Jizo (10)",
@@ -2327,7 +2371,7 @@ const CONFIG_LANG = {
     contactSubmitBtn:"Envoyer",contactBackBtn:"← Retour à la Sélection de la Langue",
     contactSendingMsg:"Envoi en cours...",contactSuccessMsg:"Votre demande a été reçue. Merci.",
     contactErrorMsg:"Échec de l'envoi. Veuillez réessayer plus tard.",contactRequiredMsg:"Veuillez remplir tous les champs obligatoires",
-    staticInfo:`<strong>[Horaires]</strong> 6:00〜17:00 | Bureau : 8:00〜16:30<br><strong>[Contact]</strong> 090-XXXX-XXXX / umbellata0430@gmail.com`,
+    staticInfo:`<strong>[Horaires]</strong> 6:00〜17:00 | Bureau : 8:00〜16:30<br><strong>[Contact]</strong> 090-2761-6708 / umbellata0430@gmail.com`,
     mapEyebrow:"Présentation du Sanctuaire",mapTitle:"<em>Plan Général</em>Goutokuji",
     mapDescTitle:"📍 10 Sites Clés",
     mapRouteHint:"<strong>📍 Itinéraire recommandé :</strong><br>Porte Principale (1) → Pagode 3 étages (2) → Pavillon du Bouddha (3) → Shofukuden (4) → Tombeaux Ii (5) → Grand Hall (6) → Patriarches (7) → Porte Rouge (8) → Beffroi (9) → Jizo-do (10)",
@@ -2833,6 +2877,7 @@ function showPage(id){
 if(_nb)_nb.addEventListener('click',()=>{
   const active=document.querySelector('.page.active').id;
   if(active==='page-contact-form'){closeContactForm();return;}
+  if(active==='page-tokushoho'){closeTokushoho();return;}
   const idx=PAGE_ORDER.indexOf(active);
   if(idx>0)showPage(PAGE_ORDER[idx-1]);
 });}
@@ -2952,6 +2997,18 @@ function openContactForm(){
 
 function closeContactForm(){
   showPage('page-lang-select');
+}
+
+/* 特定商取引法に基づく表記ページ：チェックアウト画面や言語選択画面等、複数の場所から
+   開けるようにするため、開いた時点のページへ戻れるようにしておく */
+let _tokushohoReturnPage='page-lang-select';
+function openTokushoho(){
+  const active=document.querySelector('.page.active');
+  if(active)_tokushohoReturnPage=active.id;
+  showPage('page-tokushoho');
+}
+function closeTokushoho(){
+  showPage(_tokushohoReturnPage);
 }
 
 async function submitContactForm(){
